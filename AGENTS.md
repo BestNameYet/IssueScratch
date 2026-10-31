@@ -9,7 +9,7 @@ IssueScratch is a lightweight, GitHub-Issue-centered environment for accepting i
 Its primary design choices are:
 
 1. **One operational issue.** Issue **#1** consolidates the functions performed by Issues #1 (instruction intake), #2 (job queue and completion), and #3 (task scratchpads) in `BestNameYet/IssueStack-`.
-2. **Flexible RS.** "RS" means **Return Schema**. The agent ordinarily selects the response structure and level of detail appropriate to the specific work. The user can specify or override the RS.
+2. **Three-object RS.** "RS" means **Return Schema**. Every IssueScratch RS has exactly three top-level objects: `interpretation`, `execution`, and `result`. The agent designs the keys and data inside each object according to the task; user instructions govern the content and any stricter external format.
 3. **Minimal ceremony.** Do not import IssueStack's separate-issue transfer process, fixed input slots, mandatory Issue #5/#7 UI pipeline, rigid task.v3 object structure, or extra approval machinery merely because IssueStack has them.
 4. **Evidence over ceremony.** Maintain enough durable information to identify work, continue it, and verify results without imposing unnecessary serialization or formatting requirements.
 
@@ -93,42 +93,90 @@ Preserve the user's originating instruction and distinguish it from an agent's i
 
 Public GitHub issues are not private storage. Do not put credentials, secret tokens, private internal reasoning, or sensitive user material in public Issue #1 records. Keep concise decision rationales and reproducible evidence instead.
 
-## 4. Return Schema (RS): broad and agent-directed
+## 4. Return Schema (RS): three objects, agent-defined interiors
 
-**RS is the structure of the agent's return or deliverable, not a universally fixed JSON envelope.** It can govern the immediate reply, a job's result section, a machine-readable record, or a generated artifact, depending on the work.
+**An IssueScratch RS consists of exactly three top-level JSON objects, named `interpretation`, `execution`, and `result`.** All three must be present; no fourth top-level field or wrapper is part of the RS. They are containers, not rigid nested templates. An agent has broad discretion to define, omit, rename, nest, and type keys *within* these three objects to serve the particular task.
 
-### 4.1 Selection
+```json
+{
+  "interpretation": {},
+  "execution": {},
+  "result": {}
+}
+```
 
-Unless the user or an applicable interface specifies a format, the agent is authorized to choose an RS suited to the request. Possible forms include:
+These names and object types are the **entire fixed RS contract**. The objects may be empty where appropriate, but substantive results should include the information necessary to understand and verify the work. An agent may use a concise structure for a simple task or a detailed one for a complex job. Do not impose IssueStack's `task.v3`, required named-object subtypes, eight-field prompt analysis, or fixed nested properties here.
 
-- Direct prose or a short answer for a simple question.
-- Markdown headings, a checklist, a table, or a concise status report.
-- JSON, JSON Schema, another typed object, or a machine-readable payload when downstream processing requires it.
-- A plan, procedure, technical analysis, code patch, test report, artifact, or a combination of these.
-- A task-specific schema designed by the agent as work develops.
+### 4.1 Meaning of the three objects
 
-The agent may introduce fields, organize sections, alter granularity, and revise its chosen RS when that improves accuracy or usefulness. It need not predeclare a formal schema for every reply, nor maintain an eight-field analysis or a fixed list of typed arrays for ordinary work.
+- **`interpretation`:** the agent's understanding of the instruction, objective, context, constraints, or success criteria. The agent chooses which of these concepts warrant keys.
+- **`execution`:** the agent's actions, plan, progress, decisions, evidence, tests, or blockers, as applicable. The agent chooses their representation and granularity.
+- **`result`:** the agent's answer, produced outputs, artifact references, validation, unfinished work, or failures, as applicable. The agent chooses the output fields.
 
-### 4.2 Priority and boundaries
+The objects are logical responsibilities, not exhaustive field inventories. Do not invent activities or validations simply to populate an object. A field may contain strings, numbers, booleans, arrays, or nested objects chosen by the agent. Use valid JSON when publishing a machine-readable RS. If the requested deliverable is Markdown, source code, a file, or another presentation form, it may be rendered or attached separately, while its IssueScratch RS record retains these three objects.
 
-The user's **explicit output requirements control**: requested keys, content, language, machine-readable structure, or presentation take precedence over an agent's preferred RS. An established external consumer's *documented* input/output schema also controls where the agent is interacting with that consumer.
+### 4.2 Agent discretion and precedence
 
-Agent discretion governs **representation**, not permission to change the underlying assignment. Do not use RS selection to omit requested functionality, downgrade action to explanation, impose unrelated constraints, conceal failures, or substitute a different deliverable. If a machine-consumed schema is required, follow or explicitly version that schema and validate it rather than silently changing it.
+The agent is normally responsible for the *internal schema*: the key names, types, nesting, level of detail, and task-specific evidence within the three objects. A formal nested JSON Schema is optional unless a consumer requires one. The agent may revise its chosen internal structure to improve usefulness, while retaining identifiable versions or snapshots for material changes that will be adjudicated.
 
-For large tasks, choose a format that makes requirements and evidence easy to inspect; for small tasks, avoid unnecessary metadata. A user may request an explicit formal RS at any time.
+The user's explicit requirements govern what must be accomplished and returned. RS discretion cannot excuse missing requirements, substitute explanation for authorized execution, conceal errors, impose unsolicited restrictions, or alter the user's intended scope. If a separately documented external interface demands a different exact payload shape, honor that interface at its boundary; keep IssueScratch's three-object record as the internal return, rather than silently pretending the external format is an IssueScratch RS.
 
-### 4.3 Minimum result fidelity
+Agent-defined structure does **not** mean agent-defined truth: label uncertainty and distinguish observed results from assertions. Completion reports must be faithful to verified outcomes, proportionate to the task, without unnecessary boilerplate.
 
-Regardless of RS, a substantive completion report should make clear, proportionately to the task:
+### 4.3 Illustrative RS, not a prescribed nested schema
 
-- What was actually completed or answered.
-- What evidence supports that claim, including checks/tests where applicable.
-- What remains incomplete, failed, or unverified.
-- Where resulting artifacts, issue comments, commits, or other relevant outputs can be found.
+```json
+{
+  "interpretation": {
+    "goal": "Inspect the requested repository",
+    "scope": "Read-only"
+  },
+  "execution": {
+    "files_checked": ["AGENTS.md"],
+    "observations": ["Read succeeded"]
+  },
+  "result": {
+    "summary": "Inspection completed",
+    "verified": true
+  }
+}
+```
 
-These are **semantic expectations**, not obligatory literal field names. Never invent receipts, links, test passes, or completion claims.
+The keys inside these objects are **examples only**. An agent may use entirely different nested keys and data structures on the next task. The top-level three-object contract remains stable unless the user explicitly changes it.
 
-## 5. Agent conduct and scope
+## 5. Periodic adjudication of RS designs and populated outputs
+
+IssueScratch's RS definitions **and their actual data** will be adjudicated from time to time. **No review interval, trigger count, schedule, or reviewer assignment is specified yet.** Reviews may be initiated when authorized; agents must not invent a mandatory per-task gate, fixed review frequency, automatic background reviewer, or claimed grading process.
+
+### 5.1 What is reviewed
+
+Adjudication examines both:
+
+- **Schema design:** Did the agent choose suitable nested keys, data types, scope, granularity, and organization within the three required objects? Does the shape support the assigned work without needless omissions or ceremony?
+- **Populated data and outcome:** Is the agent's interpretation faithful? Are claims, actions, evidence, and results accurate, complete relative to the instruction, and consistent with observed execution? Were failures, uncertainty, or unauthorized deviations disclosed?
+
+An adjudicator should assess those dimensions and assign **one overall label** to the reviewed output. An adjudicator may additionally describe distinct schema-design and data-quality findings; these do not introduce new top-level RS objects.
+
+### 5.2 Allowed labels
+
+| Label | Meaning |
+| --- | --- |
+| `excellent` | The schema fits the task particularly well, and the content is accurate, complete, well-supported, and effective for the user's objective. |
+| `adequate` | The core objective and essential format are met; shortcomings, if any, are minor and nonmaterial. |
+| `fail` | Material defects in structure, interpretation, execution, evidence, or outcome undermine the required result. |
+| `extreme fail` | Fundamental or severe failure, such as an extensively wrong or unusable outcome, fabricated verification, or major unauthorized deviation. |
+
+Use these four labels **exactly**. An output is **unadjudicated** until a real review has taken place; do not silently assign a default label or treat a successful command, passing test, or completed job as an adjudication.
+
+### 5.3 Review record and provenance
+
+Preserve the evaluated RS snapshot or reference (including both its three-object structure and values), the associated Issue #1 job/comment IDs where available, the adjudicator identity or source, the time of review, the assigned label, and a concise evidence-based rationale. Record review findings **separately from the agent's original three-object RS**, linked to the specific output version, so the adjudication does not alter its structure or overwrite the evidence being assessed.
+
+An authorized review can be recorded in Issue #1 as a linked comment or an agent-owned record, provided the original output and reviewer findings remain distinguishable. A later review or correction should be traceable and should not retroactively rewrite earlier judgments without an audit trail. Disagreements can be noted and reviewed again without inventing a numerical score or additional label.
+
+Adjudication findings may inform future agents' choices of nested RS keys and how they populate those keys. The assessment is a retrospective quality judgment, not an automatic authorization to change jobs or repository contents.
+
+## 6. Agent conduct and scope
 
 Work from the user's objective and the repository's current ground truth. Preserve user-specified action scope and abstraction level; do not introduce restrictive requirements or unsolicited architectural substitutions and then present them as requested features.
 
@@ -138,20 +186,20 @@ A request to halt ends operations immediately; do not perform housekeeping write
 
 When tools are unavailable, state the limitation accurately. Do not claim that an agent, workflow, or asynchronous worker is active merely because a job is recorded.
 
-## 6. Operational acceptance checks
+## 7. Operational acceptance checks
 
 For an IssueScratch job, evaluate the following as applicable:
 
 - The source instruction and the correct Issue #1 comment references are identifiable.
 - The job state reflects observed progress, not optimistic assumptions.
 - The working scratchpad is sufficiently durable for a different agent to resume.
-- The chosen RS satisfies the user's requested deliverable and any actual consumer contract.
+- The RS has exactly the three required top-level objects and agent-selected internal keys; its content satisfies the user's requested deliverable and any actual consumer contract.
 - Claimed edits, executions, tests, and outputs have been independently inspected or verified.
 - Remaining work and failures are disclosed rather than marked complete.
 
 A lightweight text-only answer can satisfy these checks with minimal overhead. A repository mutation or multi-step task calls for stronger evidence.
 
-## 7. Bootstrap status
+## 8. Bootstrap status
 
 At the time this instruction file was first authored, `BestNameYet/IssueScratch` was an empty repository with no issues, commit history, or workflows. This file establishes the **intended protocol**, not an already deployed system. Future agents must inspect the *current* repository and Issue #1 instead of relying on that historical bootstrap observation.
 
