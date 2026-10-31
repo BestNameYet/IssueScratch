@@ -1,0 +1,5753 @@
+{
+  "document_type": "issuescratch.scratchpad-permitted-uses-and-input-types",
+  "format_version": "1.0.0",
+  "repository": "BestNameYet/IssueScratch",
+  "interpretation": "Normative standalone use catalog with expected typed action inputs, observed output fields, existing scratchpad-field declarations and named type definitions. Every activity remains an independent entry in the existing shuffled order. No action inheritance or parent-child relationships.",
+  "opcode_format": {
+    "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
+    "order": "Section hierarchy followed by clause order",
+    "unique": true,
+    "required_fields": [
+      "opcode",
+      "version",
+      "source_section",
+      "source_line_range",
+      "modality",
+      "imperative",
+      "condition",
+      "source_archive_ref"
+    ],
+    "modalities": [
+      "require",
+      "prohibit",
+      "allow"
+    ]
+  },
+  "procedures": [
+    {
+      "opcode": "IS.04.01.009",
+      "version": 1,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Interpret a permitted action's expected_input as the typed information needed to perform or document that action, not as the data type of the action's explanatory sentence.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.010",
+      "version": 1,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Select any relevant permitted action independently; do not infer parentage, adjacency semantics, or scratchpad-index allocation from catalog order or reused type definitions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.011",
+      "version": 1,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Use previously registered named object types as input contracts; action-specific fields may refine expected inputs without creating redundant named object types.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.012",
+      "version": 1,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not require every listed input, activity, or registered type in every scratchpad; absent optional inputs do not invalidate unrelated recorded content.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.013",
+      "version": 1,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Keep the AGENTS.md root array, minimum seventeen items, and literal scratchpad wrapper contract in effect; this catalog refines activities and input types but does not supersede the structural requirements.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    }
+  ],
+  "reference_data": {
+    "permitted_use_cases": [
+      {
+        "action": "Preserve the original and revised forms of a reduced requirement.",
+        "expected_input": {
+          "existing_named_type": "object<ScopeChange>",
+          "fields": {
+            "prior_scope[string]": "string",
+            "revised_scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "change_id[string]": "string",
+            "authorized_by[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record a GitHub fetch's repository path and returned blob identifier.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubToolCall>",
+          "fields": {
+            "operation[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "action_specific_fields": {
+            "repository[string]": "string",
+            "path[string]": "string",
+            "blob_sha[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_json[string|null]": "string|null",
+            "comment_id[number|null]": "number|null",
+            "succeeded[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Record specific GitHub tool calls, their arguments where appropriate, returned IDs, receipts, and errors.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubToolCall>",
+          "fields": {
+            "operation[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_json[string|null]": "string|null",
+            "comment_id[number|null]": "number|null",
+            "succeeded[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Write claims of ownership or stewardship of particular GitHub comments, including evidence for those claims.",
+        "expected_input": {
+          "existing_named_type": "object<StewardshipClaim>",
+          "fields": {
+            "comment_id[number]": "number",
+            "claimant[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "status[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Describe the tradeoff behind choosing one authorized approach over another.",
+        "expected_input": {
+          "existing_named_type": "object<RationaleRecord>",
+          "fields": {
+            "decision[string]": "string",
+            "assumptions[array<Assumption>]": "array<Assumption>"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "explanation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Preserve before-and-after test behavior at known revisions.",
+        "expected_input": {
+          "existing_named_type": "object<RegressionAnalysis>",
+          "fields": {
+            "component[string]": "string",
+            "before[string]": "string",
+            "after[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "cause[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Include verified references and IDs in a handoff record.",
+        "expected_input": {
+          "existing_named_type": "object<HandoffNote>",
+          "fields": {
+            "work_id[string]": "string",
+            "current_state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "next_action[string]": "string",
+            "references[array<Reference>]": "array<Reference>",
+            "unresolved[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Maintain a chronology of important events and observations.",
+        "expected_input": {
+          "existing_named_type": "object<TimelineEvent>",
+          "fields": {
+            "timestamp[string]": "string",
+            "event[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "source_uri[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record a failed update, new blob SHA, retry, and confirmed result in order.",
+        "expected_input": {
+          "existing_named_type": "object<TimelineEvent>",
+          "fields": {
+            "timestamp[string]": "string",
+            "event[string]": "string"
+          },
+          "action_specific_fields": {
+            "previous_blob_sha[string|null]": "string|null",
+            "refreshed_blob_sha[string]": "string",
+            "retry_status[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "source_uri[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Maintain provenance for external claims, sources, and artifacts.",
+        "expected_input": {
+          "existing_named_type": "object<ProvenanceRecord>",
+          "fields": {
+            "assertion[string]": "string",
+            "source_uri[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "retrieved_at[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Examine an assumption implicit in an earlier instruction interpretation.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionReflection>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "interpretation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "unresolved_tension[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record what evidence supports a critical precondition.",
+        "expected_input": {
+          "existing_named_type": "object<Assumption>",
+          "fields": {
+            "proposition[string]": "string",
+            "supporting_evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "assumption_id[string]": "string",
+            "confidence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Sketch future procedures, migrations, or workstreams.",
+        "expected_input": {
+          "existing_named_type": "object<ProposedProcedure>",
+          "fields": {
+            "objective[string]": "string",
+            "precondition[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "procedure_id[string]": "string",
+            "steps[array<ProcedureStep>]": "array<ProcedureStep>",
+            "expected_result[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Contrast JSON syntax checks with structural and semantic validation.",
+        "expected_input": {
+          "existing_named_type": "object<ArchitectureComparison>",
+          "fields": {
+            "options[array<ArchitectureOption>]": "array<ArchitectureOption>",
+            "criterion[string]": "string"
+          },
+          "action_specific_fields": {
+            "schema_version[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Attribute an external claim to a precise retrieved source.",
+        "expected_input": {
+          "existing_named_type": "object<ProvenanceRecord>",
+          "fields": {
+            "assertion[string]": "string",
+            "source_uri[string]": "string"
+          },
+          "action_specific_fields": {
+            "retrieved_at[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "retrieved_at[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Reason openly, by documenting conclusions, assumptions, and concise explanatory rationales intended for review.",
+        "expected_input": {
+          "existing_named_type": "object<RationaleRecord>",
+          "fields": {
+            "decision[string]": "string",
+            "assumptions[array<Assumption>]": "array<Assumption>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "explanation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Evaluate an earlier agent choice against the actual authorized scope.",
+        "expected_input": {
+          "existing_named_type": "object<AgentDecisionCritique>",
+          "fields": {
+            "decision_id[string]": "string",
+            "concern[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "corrective_action[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record an explicit rejection without treating silence as approval.",
+        "expected_input": {
+          "existing_named_type": "object<Authorization>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "authorizer[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string]": "string",
+            "timestamp[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record a source's revision and retrieval date where relevant.",
+        "expected_input": {
+          "existing_named_type": "object<ProvenanceRecord>",
+          "fields": {
+            "assertion[string]": "string",
+            "source_uri[string]": "string"
+          },
+          "action_specific_fields": {
+            "retrieved_at[string|null]": "string|null",
+            "source_revision[string]": "string",
+            "retrieved_at[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "retrieved_at[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Investigate regressions and compare before/after behavior.",
+        "expected_input": {
+          "existing_named_type": "object<RegressionAnalysis>",
+          "fields": {
+            "component[string]": "string",
+            "before[string]": "string",
+            "after[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "cause[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Distinguish an earlier agent's mistaken inference from a verified defect.",
+        "expected_input": {
+          "existing_named_type": "object<AgentDecisionCritique>",
+          "fields": {
+            "decision_id[string]": "string",
+            "concern[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "corrective_action[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Compare competing naming conventions and their consequences.",
+        "expected_input": {
+          "existing_named_type": "object<Definition>",
+          "fields": {
+            "term[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "meaning[string]": "string",
+            "example[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Document a lesson learned from an actual failed or successful test.",
+        "expected_input": {
+          "existing_named_type": "object<LessonLearned>",
+          "fields": {
+            "lesson[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "action_specific_fields": {
+            "test_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "prospective_change[string|null]": "string|null",
+            "adjudication_candidate[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Examine user instructions, such as quoting or cross-referencing relevant passages when permissible.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionExcerpt>",
+          "fields": {
+            "source_uri[string]": "string",
+            "quoted_text[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "section[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Identify which actions an external connector actually supports.",
+        "expected_input": {
+          "existing_named_type": "object<ConnectorToolCall>",
+          "fields": {
+            "connector[string]": "string",
+            "action[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_summary[string]": "string",
+            "success[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Capture command output excerpts or exact execution receipts.",
+        "expected_input": {
+          "existing_named_type": "object<ExecutionReceipt>",
+          "fields": {
+            "nonce[string]": "string",
+            "command[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "run_id[string|null]": "string|null",
+            "outcome[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Distinguish denied Drive access from a nonexistent document.",
+        "expected_input": {
+          "existing_named_type": "object<DriveToolCall>",
+          "fields": {
+            "action[string]": "string",
+            "file_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "outcome[string]": "string",
+            "receipt[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Preserve an earlier stewardship claim when recording a competing claimant's reason.",
+        "expected_input": {
+          "existing_named_type": "object<StewardshipClaim>",
+          "fields": {
+            "comment_id[number]": "number",
+            "claimant[string]": "string",
+            "basis[string]": "string"
+          },
+          "action_specific_fields": {
+            "prior_claim[string]": "string",
+            "counterclaim[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "status[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Identify missing logs that limit a verification conclusion.",
+        "expected_input": {
+          "existing_named_type": "object<EvidenceAssessment>",
+          "fields": {
+            "item[string]": "string",
+            "limitation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "reliability[string]": "string",
+            "corroboration[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Store exact issue, pull-request, comment, and review identifiers.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubReference>",
+          "fields": {
+            "kind[string]": "string",
+            "repository[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "number[number|null]": "number|null",
+            "comment_id[number|null]": "number|null",
+            "uri[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Identify the exact missing requirement that prevents a design choice.",
+        "expected_input": {
+          "existing_named_type": "object<OpenQuestion>",
+          "fields": {
+            "question[string]": "string",
+            "required_evidence[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "question_id[string]": "string",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Make philosophical forays, including exploratory questions about methods, meaning, or implications.",
+        "expected_input": {
+          "existing_named_type": "object<PhilosophicalInquiry>",
+          "fields": {
+            "question[string]": "string",
+            "context[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "implications[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Preserve unresolved blockers alongside the evidence required to continue.",
+        "expected_input": {
+          "existing_named_type": "object<HandoffNote>",
+          "fields": {
+            "work_id[string]": "string",
+            "current_state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "next_action[string]": "string",
+            "references[array<Reference>]": "array<Reference>",
+            "unresolved[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record repository paths, revisions, commit IDs, and branch names.",
+        "expected_input": {
+          "existing_named_type": "object<RepositoryRevision>",
+          "fields": {
+            "repository[string]": "string",
+            "path[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "commit_sha[string]": "string",
+            "change_summary[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Explore a pagination or error-path edge case and a controlled mitigation.",
+        "expected_input": {
+          "existing_named_type": "object<FailureMode>",
+          "fields": {
+            "scenario[string]": "string",
+            "trigger[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "consequence[string]": "string",
+            "mitigation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Analyze concurrent file updates using stale version information.",
+        "expected_input": {
+          "existing_named_type": "object<FailureMode>",
+          "fields": {
+            "scenario[string]": "string",
+            "trigger[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "consequence[string]": "string",
+            "mitigation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Explore possible failure modes and edge cases.",
+        "expected_input": {
+          "existing_named_type": "object<FailureMode>",
+          "fields": {
+            "scenario[string]": "string",
+            "trigger[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "consequence[string]": "string",
+            "mitigation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Explore what distinguishes actual authority from a claim of authority.",
+        "expected_input": {
+          "existing_named_type": "object<PhilosophicalInquiry>",
+          "fields": {
+            "question[string]": "string",
+            "context[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "implications[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Identify an unrequested implementation change for separate review.",
+        "expected_input": {
+          "existing_named_type": "object<ScopeChange>",
+          "fields": {
+            "prior_scope[string]": "string",
+            "revised_scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "change_id[string]": "string",
+            "authorized_by[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Prepare handoff notes for a succeeding agent or session.",
+        "expected_input": {
+          "existing_named_type": "object<HandoffNote>",
+          "fields": {
+            "work_id[string]": "string",
+            "current_state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "next_action[string]": "string",
+            "references[array<Reference>]": "array<Reference>",
+            "unresolved[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Trace the practical effect of a schema amendment without expanding its scope.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionAnalysis>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "ambiguity[string|null]": "string|null"
+          },
+          "action_specific_fields": {
+            "schema_version[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_analysis[string]": "string",
+            "consequence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Explain a decision in concise language grounded in observations.",
+        "expected_input": {
+          "existing_named_type": "object<RationaleRecord>",
+          "fields": {
+            "decision[string]": "string",
+            "assumptions[array<Assumption>]": "array<Assumption>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "explanation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Quote a user's original directive exactly before interpreting it.",
+        "expected_input": {
+          "existing_named_type": "object<UserInstruction>",
+          "fields": {
+            "verbatim[string]": "string",
+            "source_comment_id[number|null]": "number|null"
+          },
+          "action_specific_fields": {
+            "instruction_text[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "instruction_id[string]": "string",
+            "effective[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Record specific Google Drive tool calls, document references, outcomes, and errors.",
+        "expected_input": {
+          "existing_named_type": "object<DriveToolCall>",
+          "fields": {
+            "action[string]": "string",
+            "file_id[string|null]": "string|null"
+          },
+          "action_specific_fields": {
+            "drive_file_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "outcome[string]": "string",
+            "receipt[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Design a test that discriminates between rival explanations.",
+        "expected_input": {
+          "existing_named_type": "object<Counterhypothesis>",
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "alternative_claim[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "discriminating_test[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Preserve an exact output excerpt with its invocation and run ID.",
+        "expected_input": {
+          "existing_named_type": "object<ExecutionReceipt>",
+          "fields": {
+            "nonce[string]": "string",
+            "command[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "run_id[string|null]": "string|null",
+            "outcome[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record counterhypotheses and competing explanations.",
+        "expected_input": {
+          "existing_named_type": "object<Counterhypothesis>",
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "alternative_claim[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "discriminating_test[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Record a workflow trigger, run identifier, and observed job conclusion.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubToolCall>",
+          "fields": {
+            "operation[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "action_specific_fields": {
+            "trigger[string]": "string",
+            "run_id[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_json[string|null]": "string|null",
+            "comment_id[number|null]": "number|null",
+            "succeeded[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Preserve permanent record IDs rather than inferring their sequence.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubReference>",
+          "fields": {
+            "kind[string]": "string",
+            "repository[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "number[number|null]": "number|null",
+            "comment_id[number|null]": "number|null",
+            "uri[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Track failures, failed attempts, diagnostics, and impact.",
+        "expected_input": {
+          "existing_named_type": "object<FailureRecord>",
+          "fields": {
+            "operation[string]": "string",
+            "error[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "failure_id[string]": "string",
+            "impact[string]": "string",
+            "resolved[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Repeat controlled tests under altered conditions to check reproducibility.",
+        "expected_input": {
+          "existing_named_type": "object<Experiment>",
+          "fields": {
+            "procedure[string]": "string",
+            "hypothesis_ref[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "experiment_id[string]": "string",
+            "observations[array<Observation>]": "array<Observation>",
+            "conclusion[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record an authorization question separately from an answerable technical question.",
+        "expected_input": {
+          "existing_named_type": "object<OpenQuestion>",
+          "fields": {
+            "question[string]": "string",
+            "required_evidence[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "question_id[string]": "string",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Compare actual and expected outputs for a negative test.",
+        "expected_input": {
+          "existing_named_type": "object<TestCase>",
+          "fields": {
+            "input[string]": "string",
+            "expected[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "test_id[string]": "string",
+            "observed[string|null]": "string|null",
+            "passed[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Distinguish the time of an event from the time its evidence was retrieved.",
+        "expected_input": {
+          "existing_named_type": "object<TimelineEvent>",
+          "fields": {
+            "timestamp[string]": "string",
+            "event[string]": "string"
+          },
+          "action_specific_fields": {
+            "retrieved_at[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "source_uri[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Describe a procedure's prerequisites and expected evidence.",
+        "expected_input": {
+          "existing_named_type": "object<ProposedProcedure>",
+          "fields": {
+            "objective[string]": "string",
+            "precondition[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "procedure_id[string]": "string",
+            "steps[array<ProcedureStep>]": "array<ProcedureStep>",
+            "expected_result[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Document an authorized increase in requested deliverables.",
+        "expected_input": {
+          "existing_named_type": "object<ScopeChange>",
+          "fields": {
+            "prior_scope[string]": "string",
+            "revised_scope[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "change_id[string]": "string",
+            "authorized_by[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Preserve the exact boundaries of an approval decision.",
+        "expected_input": {
+          "existing_named_type": "object<Authorization>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "authorizer[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string]": "string",
+            "timestamp[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Compare changed wording across two versions of an instruction.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionExcerpt>",
+          "fields": {
+            "source_uri[string]": "string",
+            "quoted_text[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "section[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Identify a duplicate-execution risk from missing nonce deduplication.",
+        "expected_input": {
+          "existing_named_type": "object<FailureMode>",
+          "fields": {
+            "scenario[string]": "string",
+            "trigger[string]": "string"
+          },
+          "action_specific_fields": {
+            "nonce[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "consequence[string]": "string",
+            "mitigation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Record an unavailable tool action without describing it as a system defect.",
+        "expected_input": {
+          "existing_named_type": "object<Blocker>",
+          "fields": {
+            "constraint[string]": "string",
+            "impact[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "blocker_id[string]": "string",
+            "remedy[string|null]": "string|null",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Extract prerequisites implied by a requested operation.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionAnalysis>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "ambiguity[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_analysis[string]": "string",
+            "consequence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Mark a dependency resolved only after observing its required condition.",
+        "expected_input": {
+          "existing_named_type": "object<Dependency>",
+          "fields": {
+            "prerequisite[string]": "string",
+            "state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_id[string]": "string",
+            "blocked_work[array<Reference>]": "array<Reference>"
+          }
+        }
+      },
+      {
+        "action": "Mark a test passed only after inspecting execution evidence.",
+        "expected_input": {
+          "existing_named_type": "object<TestCase>",
+          "fields": {
+            "input[string]": "string",
+            "expected[string]": "string"
+          },
+          "action_specific_fields": {
+            "test_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "test_id[string]": "string",
+            "observed[string|null]": "string|null",
+            "passed[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Contemplate user instructions, including possible interpretations and reflective commentary.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionReflection>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "interpretation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "unresolved_tension[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Identify opportunities to perform independent work in parallel.",
+        "expected_input": {
+          "existing_named_type": "object<ParallelWork>",
+          "fields": {
+            "work_id[string]": "string",
+            "independent_of[array<Reference>]": "array<Reference>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "owner[string|null]": "string|null",
+            "deliverable[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Condense a comparison into labeled shorthand without disguising uncertainty.",
+        "expected_input": {
+          "existing_named_type": "object<ShorthandNote>",
+          "fields": {
+            "notation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "interpretation[string|null]": "string|null",
+            "verified[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Outline a possible migration without declaring it already executed.",
+        "expected_input": {
+          "existing_named_type": "object<ProposedProcedure>",
+          "fields": {
+            "objective[string]": "string",
+            "precondition[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "procedure_id[string]": "string",
+            "steps[array<ProcedureStep>]": "array<ProcedureStep>",
+            "expected_result[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Represent progress through compact symbolic annotations with a legend.",
+        "expected_input": {
+          "existing_named_type": "object<ShorthandNote>",
+          "fields": {
+            "notation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "interpretation[string|null]": "string|null",
+            "verified[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Classify evidence as direct, corroborated, incomplete, or speculative.",
+        "expected_input": {
+          "existing_named_type": "object<EvidenceAssessment>",
+          "fields": {
+            "item[string]": "string",
+            "limitation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "reliability[string]": "string",
+            "corroboration[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record explicit user approvals, rejections, and authorization boundaries.",
+        "expected_input": {
+          "existing_named_type": "object<Authorization>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "authorizer[string]": "string",
+            "scope[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string]": "string",
+            "timestamp[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record the revision or text range retrieved from a Drive document.",
+        "expected_input": {
+          "existing_named_type": "object<DriveToolCall>",
+          "fields": {
+            "action[string]": "string",
+            "file_id[string|null]": "string|null"
+          },
+          "action_specific_fields": {
+            "retrieved_at[string|null]": "string|null",
+            "drive_file_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "outcome[string]": "string",
+            "receipt[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Track whether a specific repository change is still awaiting authorization.",
+        "expected_input": {
+          "existing_named_type": "object<Authorization>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "authorizer[string]": "string",
+            "scope[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string]": "string",
+            "timestamp[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Document assumptions and their evidentiary basis.",
+        "expected_input": {
+          "existing_named_type": "object<Assumption>",
+          "fields": {
+            "proposition[string]": "string",
+            "supporting_evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "assumption_id[string]": "string",
+            "confidence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Suggest a falsifiable cause of an observed software defect.",
+        "expected_input": {
+          "existing_named_type": "object<Hypothesis>",
+          "fields": {
+            "claim[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "falsifier[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Formulate hypotheses about how a system works.",
+        "expected_input": {
+          "existing_named_type": "object<Hypothesis>",
+          "fields": {
+            "claim[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "falsifier[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Hypothesize a recurring pattern in agent-generated records and how to test it.",
+        "expected_input": {
+          "existing_named_type": "object<Hypothesis>",
+          "fields": {
+            "claim[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "falsifier[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Track the resulting file blob identifier after an update.",
+        "expected_input": {
+          "existing_named_type": "object<RepositoryRevision>",
+          "fields": {
+            "repository[string]": "string",
+            "path[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "commit_sha[string]": "string",
+            "change_summary[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Predict a measurable outcome of a proposed runtime change.",
+        "expected_input": {
+          "existing_named_type": "object<Hypothesis>",
+          "fields": {
+            "claim[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "falsifier[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Record experiments, inputs, observations, and outcomes.",
+        "expected_input": {
+          "existing_named_type": "object<Experiment>",
+          "fields": {
+            "procedure[string]": "string",
+            "hypothesis_ref[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "experiment_id[string]": "string",
+            "observations[array<Observation>]": "array<Observation>",
+            "conclusion[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Distinguish a comment ID from the ID of an Actions run.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubReference>",
+          "fields": {
+            "kind[string]": "string",
+            "repository[string]": "string"
+          },
+          "action_specific_fields": {
+            "comment_id[number]": "number",
+            "run_id[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "number[number|null]": "number|null",
+            "comment_id[number|null]": "number|null",
+            "uri[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Record a tool error with its input, output, and observed impact.",
+        "expected_input": {
+          "existing_named_type": "object<FailureRecord>",
+          "fields": {
+            "operation[string]": "string",
+            "error[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "failure_id[string]": "string",
+            "impact[string]": "string",
+            "resolved[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Reflect on a tension between literal wording and the requested result.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionReflection>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "interpretation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "unresolved_tension[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Identify prerequisites that must precede an operation.",
+        "expected_input": {
+          "existing_named_type": "object<Dependency>",
+          "fields": {
+            "prerequisite[string]": "string",
+            "state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_id[string]": "string",
+            "blocked_work[array<Reference>]": "array<Reference>"
+          }
+        }
+      },
+      {
+        "action": "Develop naming conventions, definitions, and conceptual taxonomies.",
+        "expected_input": {
+          "existing_named_type": "object<Definition>",
+          "fields": {
+            "term[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "meaning[string]": "string",
+            "example[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Differentiate a queued command acknowledgement from an execution receipt.",
+        "expected_input": {
+          "existing_named_type": "object<ExecutionReceipt>",
+          "fields": {
+            "nonce[string]": "string",
+            "command[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "run_id[string|null]": "string|null",
+            "outcome[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Capture a controlling sentence verbatim with its source revision.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionExcerpt>",
+          "fields": {
+            "source_uri[string]": "string",
+            "quoted_text[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "section[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Recommend a correction for an unsupported implementation assumption.",
+        "expected_input": {
+          "existing_named_type": "object<AgentDecisionCritique>",
+          "fields": {
+            "decision_id[string]": "string",
+            "concern[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "corrective_action[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record command stdout, stderr, and exit code when actually observed.",
+        "expected_input": {
+          "existing_named_type": "object<ExecutionReceipt>",
+          "fields": {
+            "nonce[string]": "string",
+            "command[string]": "string"
+          },
+          "action_specific_fields": {
+            "stdout[string|null]": "string|null",
+            "stderr[string|null]": "string|null",
+            "exit_code[number|null]": "number|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "run_id[string|null]": "string|null",
+            "outcome[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Use short project mnemonics with enough context to remain interpretable.",
+        "expected_input": {
+          "existing_named_type": "object<ShorthandNote>",
+          "fields": {
+            "notation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "interpretation[string|null]": "string|null",
+            "verified[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Record dependencies and prerequisites.",
+        "expected_input": {
+          "existing_named_type": "object<Dependency>",
+          "fields": {
+            "prerequisite[string]": "string",
+            "state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_id[string]": "string",
+            "blocked_work[array<Reference>]": "array<Reference>"
+          }
+        }
+      },
+      {
+        "action": "Distinguish a missing permission from an actual failed computation.",
+        "expected_input": {
+          "existing_named_type": "object<Blocker>",
+          "fields": {
+            "constraint[string]": "string",
+            "impact[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "blocker_id[string]": "string",
+            "remedy[string|null]": "string|null",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Challenge or critique implementations of OpenAI policy, noting observed behavior, alternative interpretations, concerns, and possible remedies; criticism does not grant authority to override applicable safeguards.",
+        "expected_input": {
+          "existing_named_type": "object<PolicyCritique>",
+          "fields": {
+            "implementation[string]": "string",
+            "observed_behavior[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "concern[string]": "string",
+            "alternative[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Compare API-dependent and Node.js execution architectures against explicit criteria.",
+        "expected_input": {
+          "existing_named_type": "object<ArchitectureComparison>",
+          "fields": {
+            "options[array<ArchitectureOption>]": "array<ArchitectureOption>",
+            "criterion[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "State the explicit assumptions supporting an implementation choice.",
+        "expected_input": {
+          "existing_named_type": "object<RationaleRecord>",
+          "fields": {
+            "decision[string]": "string",
+            "assumptions[array<Assumption>]": "array<Assumption>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "explanation[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Analyze user instructions, including ambiguities, dependencies, and operational consequences.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionAnalysis>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "ambiguity[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_analysis[string]": "string",
+            "consequence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Keep connector submission acknowledgements separate from confirmed completion.",
+        "expected_input": {
+          "existing_named_type": "object<ConnectorToolCall>",
+          "fields": {
+            "connector[string]": "string",
+            "action[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_summary[string]": "string",
+            "success[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Record a tentative reading of a user's intent without claiming certainty.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionReflection>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "interpretation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "unresolved_tension[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Track corrective attempts separately from evidence of recovery.",
+        "expected_input": {
+          "existing_named_type": "object<FailureRecord>",
+          "fields": {
+            "operation[string]": "string",
+            "error[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "failure_id[string]": "string",
+            "impact[string]": "string",
+            "resolved[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Log an authorized Drive file lookup and the matched document ID.",
+        "expected_input": {
+          "existing_named_type": "object<DriveToolCall>",
+          "fields": {
+            "action[string]": "string",
+            "file_id[string|null]": "string|null"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null",
+            "drive_file_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "outcome[string]": "string",
+            "receipt[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Log a file mutation's commit SHA and separate readback evidence.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubToolCall>",
+          "fields": {
+            "operation[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_json[string|null]": "string|null",
+            "comment_id[number|null]": "number|null",
+            "succeeded[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "List competing interpretations of an ambiguous instruction.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionAnalysis>",
+          "fields": {
+            "instruction_id[string]": "string",
+            "ambiguity[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_analysis[string]": "string",
+            "consequence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Describe a counterexample that would disprove a preferred theory.",
+        "expected_input": {
+          "existing_named_type": "object<Counterhypothesis>",
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "alternative_claim[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "discriminating_test[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Describe a permitted alternate action without claiming the blocked action succeeded.",
+        "expected_input": {
+          "existing_named_type": "object<Blocker>",
+          "fields": {
+            "constraint[string]": "string",
+            "impact[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "blocker_id[string]": "string",
+            "remedy[string|null]": "string|null",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Evaluate an alternative interpretation of an observed platform restriction.",
+        "expected_input": {
+          "existing_named_type": "object<PolicyCritique>",
+          "fields": {
+            "implementation[string]": "string",
+            "observed_behavior[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "concern[string]": "string",
+            "alternative[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Update an assumption after observing contradictory results.",
+        "expected_input": {
+          "existing_named_type": "object<Assumption>",
+          "fields": {
+            "proposition[string]": "string",
+            "supporting_evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "assumption_id[string]": "string",
+            "confidence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Link test cases, expected results, and observed results.",
+        "expected_input": {
+          "existing_named_type": "object<TestCase>",
+          "fields": {
+            "input[string]": "string",
+            "expected[string]": "string"
+          },
+          "action_specific_fields": {
+            "test_id[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "test_id[string]": "string",
+            "observed[string|null]": "string|null",
+            "passed[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Track blockers and proposed means of resolution.",
+        "expected_input": {
+          "existing_named_type": "object<Blocker>",
+          "fields": {
+            "constraint[string]": "string",
+            "impact[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "blocker_id[string]": "string",
+            "remedy[string|null]": "string|null",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Sequence instructions, commits, and observed workflow outcomes.",
+        "expected_input": {
+          "existing_named_type": "object<TimelineEvent>",
+          "fields": {
+            "timestamp[string]": "string",
+            "event[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "source_uri[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record experiment inputs and expected measurements before execution.",
+        "expected_input": {
+          "existing_named_type": "object<Experiment>",
+          "fields": {
+            "procedure[string]": "string",
+            "hypothesis_ref[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "experiment_id[string]": "string",
+            "observations[array<Observation>]": "array<Observation>",
+            "conclusion[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Document a scope boundary that an instruction does not authorize crossing.",
+        "expected_input": {
+          "existing_named_type": "object<UserInstruction>",
+          "fields": {
+            "verbatim[string]": "string",
+            "source_comment_id[number|null]": "number|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "instruction_id[string]": "string",
+            "effective[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Examine whether test success establishes correctness or only completed execution.",
+        "expected_input": {
+          "existing_named_type": "object<PhilosophicalInquiry>",
+          "fields": {
+            "question[string]": "string",
+            "context[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "implications[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Refine a technical taxonomy without claiming it is mandatory.",
+        "expected_input": {
+          "existing_named_type": "object<Definition>",
+          "fields": {
+            "term[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "meaning[string]": "string",
+            "example[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Note unresolved questions and information gaps.",
+        "expected_input": {
+          "existing_named_type": "object<OpenQuestion>",
+          "fields": {
+            "question[string]": "string",
+            "required_evidence[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "question_id[string]": "string",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Mark an environmental premise unverified until inspected.",
+        "expected_input": {
+          "existing_named_type": "object<Assumption>",
+          "fields": {
+            "proposition[string]": "string",
+            "supporting_evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "assumption_id[string]": "string",
+            "confidence[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Preserve an explicit exception while citing the clause that creates it.",
+        "expected_input": {
+          "existing_named_type": "object<InstructionExcerpt>",
+          "fields": {
+            "source_uri[string]": "string",
+            "quoted_text[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "section[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Detect overlapping writes that could clobber another agent's revisions.",
+        "expected_input": {
+          "existing_named_type": "object<ParallelWork>",
+          "fields": {
+            "work_id[string]": "string",
+            "independent_of[array<Reference>]": "array<Reference>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "owner[string|null]": "string|null",
+            "deliverable[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Reflect on how historical identity persists through non-destructive revisions.",
+        "expected_input": {
+          "existing_named_type": "object<PhilosophicalInquiry>",
+          "fields": {
+            "question[string]": "string",
+            "context[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "implications[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Partition independent investigations to avoid shared mutable state.",
+        "expected_input": {
+          "existing_named_type": "object<ParallelWork>",
+          "fields": {
+            "work_id[string]": "string",
+            "independent_of[array<Reference>]": "array<Reference>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "owner[string|null]": "string|null",
+            "deliverable[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Explain why a green Actions run alone may not establish semantic correctness.",
+        "expected_input": {
+          "existing_named_type": "object<EvidenceAssessment>",
+          "fields": {
+            "item[string]": "string",
+            "limitation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "reliability[string]": "string",
+            "corroboration[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record lessons learned and candidates for future adjudication.",
+        "expected_input": {
+          "existing_named_type": "object<LessonLearned>",
+          "fields": {
+            "lesson[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "prospective_change[string|null]": "string|null",
+            "adjudication_candidate[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Evaluate issue comments versus repository files as durable record stores.",
+        "expected_input": {
+          "existing_named_type": "object<ArchitectureComparison>",
+          "fields": {
+            "options[array<ArchitectureOption>]": "array<ArchitectureOption>",
+            "criterion[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Define a term with a concrete example and counterexample.",
+        "expected_input": {
+          "existing_named_type": "object<Definition>",
+          "fields": {
+            "term[string]": "string",
+            "scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "meaning[string]": "string",
+            "example[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record the current state and next action for a successor agent.",
+        "expected_input": {
+          "existing_named_type": "object<HandoffNote>",
+          "fields": {
+            "work_id[string]": "string",
+            "current_state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "next_action[string]": "string",
+            "references[array<Reference>]": "array<Reference>",
+            "unresolved[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Capture raw observations apart from interpretive conclusions.",
+        "expected_input": {
+          "existing_named_type": "object<Experiment>",
+          "fields": {
+            "procedure[string]": "string",
+            "hypothesis_ref[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "experiment_id[string]": "string",
+            "observations[array<Observation>]": "array<Observation>",
+            "conclusion[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Suggest an improvement candidate without treating it as approved.",
+        "expected_input": {
+          "existing_named_type": "object<LessonLearned>",
+          "fields": {
+            "lesson[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "prospective_change[string|null]": "string|null",
+            "adjudication_candidate[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Distinguish useful optional inputs from blocking dependencies.",
+        "expected_input": {
+          "existing_named_type": "object<Dependency>",
+          "fields": {
+            "prerequisite[string]": "string",
+            "state[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "dependency_id[string]": "string",
+            "blocked_work[array<Reference>]": "array<Reference>"
+          }
+        }
+      },
+      {
+        "action": "Compare alternative architectures or implementation approaches.",
+        "expected_input": {
+          "existing_named_type": "object<ArchitectureComparison>",
+          "fields": {
+            "options[array<ArchitectureOption>]": "array<ArchitectureOption>",
+            "criterion[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "decision[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "State an agent's nonexclusive claim to maintain an identified comment, citing its ID.",
+        "expected_input": {
+          "existing_named_type": "object<StewardshipClaim>",
+          "fields": {
+            "comment_id[number]": "number",
+            "claimant[string]": "string",
+            "basis[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "status[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Identify evidence a later retrospective review should inspect.",
+        "expected_input": {
+          "existing_named_type": "object<LessonLearned>",
+          "fields": {
+            "lesson[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "prospective_change[string|null]": "string|null",
+            "adjudication_candidate[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Associate a changed repository path with a verified commit SHA.",
+        "expected_input": {
+          "existing_named_type": "object<RepositoryRevision>",
+          "fields": {
+            "repository[string]": "string",
+            "path[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "commit_sha[string]": "string",
+            "change_summary[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Coordinate separate file edits and specify the reconciliation point.",
+        "expected_input": {
+          "existing_named_type": "object<ParallelWork>",
+          "fields": {
+            "work_id[string]": "string",
+            "independent_of[array<Reference>]": "array<Reference>"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "owner[string|null]": "string|null",
+            "deliverable[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Track issue, pull-request, comment, and review identifiers.",
+        "expected_input": {
+          "existing_named_type": "object<GitHubReference>",
+          "fields": {
+            "kind[string]": "string",
+            "repository[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "number[number|null]": "number|null",
+            "comment_id[number|null]": "number|null",
+            "uri[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Assess reliability and limitations of retrieved evidence.",
+        "expected_input": {
+          "existing_named_type": "object<EvidenceAssessment>",
+          "fields": {
+            "item[string]": "string",
+            "limitation[string]": "string"
+          },
+          "action_specific_fields": {
+            "retrieved_at[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "reliability[string]": "string",
+            "corroboration[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Preserve the conditions needed to reproduce an unsuccessful attempt.",
+        "expected_input": {
+          "existing_named_type": "object<FailureRecord>",
+          "fields": {
+            "operation[string]": "string",
+            "error[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "failure_id[string]": "string",
+            "impact[string]": "string",
+            "resolved[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Critique earlier agent decisions and propose corrections.",
+        "expected_input": {
+          "existing_named_type": "object<AgentDecisionCritique>",
+          "fields": {
+            "decision_id[string]": "string",
+            "concern[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "corrective_action[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Suggest transparent remedies without claiming the right to bypass safeguards.",
+        "expected_input": {
+          "existing_named_type": "object<PolicyCritique>",
+          "fields": {
+            "implementation[string]": "string",
+            "observed_behavior[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "concern[string]": "string",
+            "alternative[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record a later clarification without hiding the superseded wording.",
+        "expected_input": {
+          "existing_named_type": "object<UserInstruction>",
+          "fields": {
+            "verbatim[string]": "string",
+            "source_comment_id[number|null]": "number|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "instruction_id[string]": "string",
+            "effective[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Track the user's instructions and any changes or clarifications.",
+        "expected_input": {
+          "existing_named_type": "object<UserInstruction>",
+          "fields": {
+            "verbatim[string]": "string",
+            "source_comment_id[number|null]": "number|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "instruction_id[string]": "string",
+            "effective[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "Record a connector timeout and the outcome of a subsequent verification read.",
+        "expected_input": {
+          "existing_named_type": "object<ConnectorToolCall>",
+          "fields": {
+            "connector[string]": "string",
+            "action[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_summary[string]": "string",
+            "success[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Distinguish direct tool evidence from another agent's paraphrase.",
+        "expected_input": {
+          "existing_named_type": "object<ProvenanceRecord>",
+          "fields": {
+            "assertion[string]": "string",
+            "source_uri[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "retrieved_at[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Specify the evidence needed to answer an unresolved operational question.",
+        "expected_input": {
+          "existing_named_type": "object<OpenQuestion>",
+          "fields": {
+            "question[string]": "string",
+            "required_evidence[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "question_id[string]": "string",
+            "status[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Separate an asserted stewardship role from verified repository edit permissions.",
+        "expected_input": {
+          "existing_named_type": "object<StewardshipClaim>",
+          "fields": {
+            "comment_id[number]": "number",
+            "claimant[string]": "string",
+            "basis[string]": "string"
+          },
+          "action_specific_fields": {
+            "authorization_source[string|null]": "string|null"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "status[string]": "string",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Reason cryptically, by using shorthand, compressed annotations, symbolic notes, or private-to-the-project mnemonics rather than an extended narrative.",
+        "expected_input": {
+          "existing_named_type": "object<ShorthandNote>",
+          "fields": {
+            "notation[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "interpretation[string|null]": "string|null",
+            "verified[boolean]": "boolean"
+          }
+        }
+      },
+      {
+        "action": "State the limits of test coverage even when CI reports success.",
+        "expected_input": {
+          "existing_named_type": "object<TestCase>",
+          "fields": {
+            "input[string]": "string",
+            "expected[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "test_id[string]": "string",
+            "observed[string|null]": "string|null",
+            "passed[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Repeat a previously failing test after a fix and record the result.",
+        "expected_input": {
+          "existing_named_type": "object<RegressionAnalysis>",
+          "fields": {
+            "component[string]": "string",
+            "before[string]": "string",
+            "after[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "cause[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Investigate candidate causes of a failed regression check.",
+        "expected_input": {
+          "existing_named_type": "object<RegressionAnalysis>",
+          "fields": {
+            "component[string]": "string",
+            "before[string]": "string",
+            "after[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "cause[string|null]": "string|null",
+            "evidence[array<Evidence>]": "array<Evidence>"
+          }
+        }
+      },
+      {
+        "action": "Record which branch and file revision were read before editing.",
+        "expected_input": {
+          "existing_named_type": "object<RepositoryRevision>",
+          "fields": {
+            "repository[string]": "string",
+            "path[string]": "string"
+          },
+          "action_specific_fields": {
+            "branch[string]": "string",
+            "revision[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "commit_sha[string]": "string",
+            "change_summary[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Document a reproducible discrepancy between a safety policy and a product's implementation.",
+        "expected_input": {
+          "existing_named_type": "object<PolicyCritique>",
+          "fields": {
+            "implementation[string]": "string",
+            "observed_behavior[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "concern[string]": "string",
+            "alternative[string|null]": "string|null"
+          }
+        }
+      },
+      {
+        "action": "Record specific calls to other tools or connectors, including their supported actions and observations.",
+        "expected_input": {
+          "existing_named_type": "object<ConnectorToolCall>",
+          "fields": {
+            "connector[string]": "string",
+            "action[string]": "string",
+            "arguments_json[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "result_summary[string]": "string",
+            "success[boolean|null]": "boolean|null"
+          }
+        }
+      },
+      {
+        "action": "Propose a reversible implementation change for future approval.",
+        "expected_input": {
+          "existing_named_type": "object<ProposedProcedure>",
+          "fields": {
+            "objective[string]": "string",
+            "precondition[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "procedure_id[string]": "string",
+            "steps[array<ProcedureStep>]": "array<ProcedureStep>",
+            "expected_result[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "State an alternative cause that could explain the same observation.",
+        "expected_input": {
+          "existing_named_type": "object<Counterhypothesis>",
+          "fields": {
+            "hypothesis_id[string]": "string",
+            "alternative_claim[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "discriminating_test[string]": "string"
+          }
+        }
+      },
+      {
+        "action": "Track changes in task scope and requirement revisions.",
+        "expected_input": {
+          "existing_named_type": "object<ScopeChange>",
+          "fields": {
+            "prior_scope[string]": "string",
+            "revised_scope[string]": "string"
+          },
+          "interpretation": "Expected information for this action, if available; this does not require the agent to perform the action."
+        },
+        "recordable_observations": {
+          "fields": {
+            "change_id[string]": "string",
+            "authorized_by[string|null]": "string|null"
+          }
+        }
+      }
+    ],
+    "registered_scratchpad_fields": {
+      "permitted_use_fields": {
+        "stewardship_claims": {
+          "typed_key": "stewardship_claims[array<StewardshipClaim>]",
+          "type": "array<StewardshipClaim>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "user_instructions": {
+          "typed_key": "user_instructions[array<UserInstruction>]",
+          "type": "array<UserInstruction>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "failures": {
+          "typed_key": "failures[array<FailureRecord>]",
+          "type": "array<FailureRecord>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "rationales": {
+          "typed_key": "rationales[array<RationaleRecord>]",
+          "type": "array<RationaleRecord>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "shorthand_notes": {
+          "typed_key": "shorthand_notes[array<ShorthandNote>]",
+          "type": "array<ShorthandNote>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "philosophical_questions": {
+          "typed_key": "philosophical_questions[array<PhilosophicalInquiry>]",
+          "type": "array<PhilosophicalInquiry>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "policy_implementation_critiques": {
+          "typed_key": "policy_implementation_critiques[array<PolicyCritique>]",
+          "type": "array<PolicyCritique>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "github_tool_calls": {
+          "typed_key": "github_tool_calls[array<GitHubToolCall>]",
+          "type": "array<GitHubToolCall>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "google_drive_tool_calls": {
+          "typed_key": "google_drive_tool_calls[array<DriveToolCall>]",
+          "type": "array<DriveToolCall>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "connector_tool_calls": {
+          "typed_key": "connector_tool_calls[array<ConnectorToolCall>]",
+          "type": "array<ConnectorToolCall>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "instruction_excerpts": {
+          "typed_key": "instruction_excerpts[array<InstructionExcerpt>]",
+          "type": "array<InstructionExcerpt>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "instruction_analysis": {
+          "typed_key": "instruction_analysis[array<InstructionAnalysis>]",
+          "type": "array<InstructionAnalysis>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "instruction_reflections": {
+          "typed_key": "instruction_reflections[array<InstructionReflection>]",
+          "type": "array<InstructionReflection>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "hypotheses": {
+          "typed_key": "hypotheses[array<Hypothesis>]",
+          "type": "array<Hypothesis>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "counterhypotheses": {
+          "typed_key": "counterhypotheses[array<Counterhypothesis>]",
+          "type": "array<Counterhypothesis>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "architecture_comparisons": {
+          "typed_key": "architecture_comparisons[array<ArchitectureComparison>]",
+          "type": "array<ArchitectureComparison>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "assumptions": {
+          "typed_key": "assumptions[array<Assumption>]",
+          "type": "array<Assumption>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "open_questions": {
+          "typed_key": "open_questions[array<OpenQuestion>]",
+          "type": "array<OpenQuestion>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "regression_analysis": {
+          "typed_key": "regression_analysis[array<RegressionAnalysis>]",
+          "type": "array<RegressionAnalysis>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "scope_changes": {
+          "typed_key": "scope_changes[array<ScopeChange>]",
+          "type": "array<ScopeChange>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "event_timeline": {
+          "typed_key": "event_timeline[array<TimelineEvent>]",
+          "type": "array<TimelineEvent>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "dependencies": {
+          "typed_key": "dependencies[array<Dependency>]",
+          "type": "array<Dependency>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "parallel_work": {
+          "typed_key": "parallel_work[array<ParallelWork>]",
+          "type": "array<ParallelWork>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "blockers": {
+          "typed_key": "blockers[array<Blocker>]",
+          "type": "array<Blocker>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "experiments": {
+          "typed_key": "experiments[array<Experiment>]",
+          "type": "array<Experiment>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "test_cases": {
+          "typed_key": "test_cases[array<TestCase>]",
+          "type": "array<TestCase>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "execution_receipts": {
+          "typed_key": "execution_receipts[array<ExecutionReceipt>]",
+          "type": "array<ExecutionReceipt>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "repository_revisions": {
+          "typed_key": "repository_revisions[array<RepositoryRevision>]",
+          "type": "array<RepositoryRevision>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "github_references": {
+          "typed_key": "github_references[array<GitHubReference>]",
+          "type": "array<GitHubReference>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "provenance": {
+          "typed_key": "provenance[array<ProvenanceRecord>]",
+          "type": "array<ProvenanceRecord>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "evidence_assessment": {
+          "typed_key": "evidence_assessment[array<EvidenceAssessment>]",
+          "type": "array<EvidenceAssessment>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "failure_modes": {
+          "typed_key": "failure_modes[array<FailureMode>]",
+          "type": "array<FailureMode>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "agent_decision_critiques": {
+          "typed_key": "agent_decision_critiques[array<AgentDecisionCritique>]",
+          "type": "array<AgentDecisionCritique>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "authorizations": {
+          "typed_key": "authorizations[array<Authorization>]",
+          "type": "array<Authorization>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "definitions": {
+          "typed_key": "definitions[array<Definition>]",
+          "type": "array<Definition>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "proposed_procedures": {
+          "typed_key": "proposed_procedures[array<ProposedProcedure>]",
+          "type": "array<ProposedProcedure>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "handoff_notes": {
+          "typed_key": "handoff_notes[array<HandoffNote>]",
+          "type": "array<HandoffNote>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        },
+        "lessons_learned": {
+          "typed_key": "lessons_learned[array<LessonLearned>]",
+          "type": "array<LessonLearned>",
+          "optional": true,
+          "origin": "permitted_uses",
+          "object_elements_heterogeneous_fields": true
+        }
+      },
+      "observed_existing_fields": {
+        "text": {
+          "typed_key": "text[string]",
+          "type": "string",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "text",
+          "observed_positions": [
+            "scratchpad_1",
+            "scratchpad_2",
+            "scratchpad_3"
+          ],
+          "observed_count": 12,
+          "source_comment_ids": [
+            6540398585,
+            6540457730,
+            6545857602,
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "job": {
+          "typed_key": "job[object<LegacyJob>]",
+          "type": "object<LegacyJob>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "job",
+          "observed_positions": [
+            "scratchpad_1"
+          ],
+          "observed_count": 4,
+          "source_comment_ids": [
+            6540398585,
+            6540457730,
+            6545857602,
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "implementation_contract": {
+          "typed_key": "implementation_contract[object<LegacyImplementationContract>]",
+          "type": "object<LegacyImplementationContract>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "implementation_contract",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540398585
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "acceptance_tests": {
+          "typed_key": "acceptance_tests[array<string>]",
+          "type": "array<string>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "acceptance_tests",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540398585
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "completion": {
+          "typed_key": "completion[string]",
+          "type": "string",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "completion",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 2,
+          "source_comment_ids": [
+            6540398585,
+            6540457730
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "verified_evidence": {
+          "typed_key": "verified_evidence[array<LegacyVerifiedEvidenceItem>]",
+          "type": "array<LegacyVerifiedEvidenceItem>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "verified_evidence",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540398585
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "requirements": {
+          "typed_key": "requirements[array<string>]",
+          "type": "array<string>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "requirements",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540457730
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "opcode_example": {
+          "typed_key": "opcode_example[object<LegacyOpcodeExample>]",
+          "type": "object<LegacyOpcodeExample>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "opcode_example",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540457730
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "acceptance": {
+          "typed_key": "acceptance[array<string>]",
+          "type": "array<string>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "acceptance",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540457730
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "evidence": {
+          "typed_key": "evidence[array<LegacyEvidenceItem>]",
+          "type": "array<LegacyEvidenceItem>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "evidence",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6540457730
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "verbatim_source": {
+          "typed_key": "verbatim_source[object<LegacyVerbatimSource>]",
+          "type": "object<LegacyVerbatimSource>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "verbatim_source",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "run_evidence": {
+          "typed_key": "run_evidence[array<LegacyRunEvidenceItem>]",
+          "type": "array<LegacyRunEvidenceItem>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "run_evidence",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "verification_findings": {
+          "typed_key": "verification_findings[array<string>]",
+          "type": "array<string>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "verification_findings",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "outstanding_tests": {
+          "typed_key": "outstanding_tests[array<string>]",
+          "type": "array<string>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "outstanding_tests",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "outcome": {
+          "typed_key": "outcome[string]",
+          "type": "string",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "outcome",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "reference_job_1": {
+          "typed_key": "reference_job_1[string]",
+          "type": "string",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "reference_job_1",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545857602
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "evaluation_protocol": {
+          "typed_key": "evaluation_protocol[object<LegacyEvaluationProtocol>]",
+          "type": "object<LegacyEvaluationProtocol>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "evaluation_protocol",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "demonstrations": {
+          "typed_key": "demonstrations[array<LegacyDemonstrationsItem>]",
+          "type": "array<LegacyDemonstrationsItem>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "demonstrations",
+          "observed_positions": [
+            "scratchpad_2"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "live_job_assessment": {
+          "typed_key": "live_job_assessment[array<LegacyLiveJobAssessmentItem>]",
+          "type": "array<LegacyLiveJobAssessmentItem>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "live_job_assessment",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "conclusions": {
+          "typed_key": "conclusions[object<LegacyConclusions>]",
+          "type": "object<LegacyConclusions>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "conclusions",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        },
+        "repository_references": {
+          "typed_key": "repository_references[object<LegacyRepositoryReferences>]",
+          "type": "object<LegacyRepositoryReferences>",
+          "optional": true,
+          "origin": "observed_existing_scratchpads",
+          "legacy_key": "repository_references",
+          "observed_positions": [
+            "scratchpad_3"
+          ],
+          "observed_count": 1,
+          "source_comment_ids": [
+            6545966428
+          ],
+          "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+        }
+      }
+    },
+    "named_object_types": {
+      "Evidence": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "description[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "uri[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "Reference": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "id[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "ArchitectureOption": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "name[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "strengths[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "weaknesses[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "Observation": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "observation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "expected[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "actual[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "ProcedureStep": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "ordinal[number]": {
+            "type": "number",
+            "optional": true
+          },
+          "imperative[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "verification[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "StewardshipClaim": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "comment_id[number]": {
+            "type": "number",
+            "optional": true
+          },
+          "claimant[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "basis[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "status[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "UserInstruction": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "instruction_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "verbatim[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "source_comment_id[number|null]": {
+            "type": "number|null",
+            "optional": true
+          },
+          "effective[boolean]": {
+            "type": "boolean",
+            "optional": true
+          }
+        }
+      },
+      "FailureRecord": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "failure_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "operation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "error[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "impact[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "resolved[boolean]": {
+            "type": "boolean",
+            "optional": true
+          }
+        }
+      },
+      "RationaleRecord": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "decision[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "explanation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "assumptions[array<Assumption>]": {
+            "type": "array<Assumption>",
+            "optional": true
+          }
+        }
+      },
+      "ShorthandNote": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "notation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "interpretation[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "verified[boolean]": {
+            "type": "boolean",
+            "optional": true
+          }
+        }
+      },
+      "PhilosophicalInquiry": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "question[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "context[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "implications[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "PolicyCritique": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "implementation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "observed_behavior[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "concern[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "alternative[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "GitHubToolCall": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "operation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "arguments_json[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "result_json[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "comment_id[number|null]": {
+            "type": "number|null",
+            "optional": true
+          },
+          "succeeded[boolean|null]": {
+            "type": "boolean|null",
+            "optional": true
+          }
+        }
+      },
+      "DriveToolCall": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "action[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "file_id[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "outcome[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "receipt[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "ConnectorToolCall": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "connector[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "action[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "arguments_json[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "result_summary[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "success[boolean|null]": {
+            "type": "boolean|null",
+            "optional": true
+          }
+        }
+      },
+      "InstructionExcerpt": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "source_uri[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "quoted_text[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "section[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "InstructionAnalysis": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "instruction_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "ambiguity[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "dependency_analysis[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "consequence[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "InstructionReflection": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "instruction_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "interpretation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "unresolved_tension[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "Hypothesis": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "hypothesis_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "claim[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "basis[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "falsifier[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "Counterhypothesis": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "hypothesis_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "alternative_claim[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "discriminating_test[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "ArchitectureComparison": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "options[array<ArchitectureOption>]": {
+            "type": "array<ArchitectureOption>",
+            "optional": true
+          },
+          "criterion[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "decision[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "Assumption": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "assumption_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "proposition[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "supporting_evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          },
+          "confidence[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "OpenQuestion": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "question_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "question[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "required_evidence[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "status[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "RegressionAnalysis": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "component[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "before[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "after[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "cause[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "ScopeChange": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "change_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "prior_scope[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "revised_scope[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "authorized_by[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "TimelineEvent": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "timestamp[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "event[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "source_uri[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "Dependency": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "dependency_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "prerequisite[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "state[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "blocked_work[array<Reference>]": {
+            "type": "array<Reference>",
+            "optional": true
+          }
+        }
+      },
+      "ParallelWork": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "work_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "independent_of[array<Reference>]": {
+            "type": "array<Reference>",
+            "optional": true
+          },
+          "owner[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "deliverable[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "Blocker": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "blocker_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "constraint[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "impact[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "remedy[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "status[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "Experiment": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "experiment_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "hypothesis_ref[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "procedure[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "observations[array<Observation>]": {
+            "type": "array<Observation>",
+            "optional": true
+          },
+          "conclusion[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "TestCase": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "test_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "input[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "expected[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "observed[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "passed[boolean|null]": {
+            "type": "boolean|null",
+            "optional": true
+          }
+        }
+      },
+      "ExecutionReceipt": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "nonce[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "command[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "run_id[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "outcome[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "RepositoryRevision": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "repository[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "path[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "commit_sha[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "change_summary[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "GitHubReference": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "kind[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "repository[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "number[number|null]": {
+            "type": "number|null",
+            "optional": true
+          },
+          "comment_id[number|null]": {
+            "type": "number|null",
+            "optional": true
+          },
+          "uri[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "ProvenanceRecord": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "assertion[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "source_uri[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "retrieved_at[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "EvidenceAssessment": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "item[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "reliability[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "limitation[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "corroboration[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "FailureMode": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "scenario[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "trigger[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "consequence[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "mitigation[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "AgentDecisionCritique": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "decision_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "concern[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "corrective_action[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          }
+        }
+      },
+      "Authorization": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "instruction_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "authorizer[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "decision[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "scope[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "timestamp[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "Definition": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "term[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "meaning[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "scope[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "example[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "ProposedProcedure": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "procedure_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "objective[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "steps[array<ProcedureStep>]": {
+            "type": "array<ProcedureStep>",
+            "optional": true
+          },
+          "precondition[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "expected_result[string]": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "HandoffNote": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "work_id[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "current_state[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "next_action[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "references[array<Reference>]": {
+            "type": "array<Reference>",
+            "optional": true
+          },
+          "unresolved[string|null]": {
+            "type": "string|null",
+            "optional": true
+          }
+        }
+      },
+      "LessonLearned": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "lesson[string]": {
+            "type": "string",
+            "optional": true
+          },
+          "evidence[array<Evidence>]": {
+            "type": "array<Evidence>",
+            "optional": true
+          },
+          "prospective_change[string|null]": {
+            "type": "string|null",
+            "optional": true
+          },
+          "adjudication_candidate[boolean]": {
+            "type": "boolean",
+            "optional": true
+          }
+        }
+      },
+      "LegacyJobRevisionsItemPriorValues": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "source_comment_id": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 1
+          },
+          "job_comment_id": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 1
+          },
+          "current_revision": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.revisions.item.prior_values",
+        "sample_count": 1
+      },
+      "LegacyJobRevisionsItemCurrentValues": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "source_comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 4
+          },
+          "job_comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 4
+          },
+          "current_revision": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 6
+          },
+          "status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 2
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.revisions.item.current_values",
+        "sample_count": 6
+      },
+      "LegacyJobRevisionsItemPreviousValues": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "current_revision": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 6
+          },
+          "scratchpad_2_text": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "scratchpad_3_text": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "implementation_contract.validation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "implementation_contract.reports": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "implementation_contract.non_destructive_behavior": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "acceptance_tests": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 2
+          },
+          "outcome": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 1
+          },
+          "completion": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 2
+          },
+          "source_comment_id": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 3
+          },
+          "job_comment_id": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 3
+          },
+          "evidence": {
+            "type": "array<unknown>",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.revisions.item.previous_values",
+        "sample_count": 6
+      },
+      "LegacyJobRevisionsItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "revision": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 11
+          },
+          "status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 11
+          },
+          "note": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "previous_status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 6
+          },
+          "changes": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 2
+          },
+          "prior_values": {
+            "type": "object<LegacyJobRevisionsItemPriorValues>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "current_values": {
+            "type": "object<LegacyJobRevisionsItemCurrentValues>",
+            "optional": true,
+            "occurrences": 6
+          },
+          "supersedes": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 6
+          },
+          "author": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "previous_values": {
+            "type": "object<LegacyJobRevisionsItemPreviousValues>",
+            "optional": true,
+            "occurrences": 6
+          },
+          "change": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "prior_status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "reason": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.revisions.item",
+        "sample_count": 11
+      },
+      "LegacyJobOutcomeLiveTests": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "issue_comment_created": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "issue_comment_edited": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "readback": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.outcome.live_tests",
+        "sample_count": 1
+      },
+      "LegacyJobOutcome": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "implementation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "commit_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "workflow_path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "workflow_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "live_tests": {
+            "type": "object<LegacyJobOutcomeLiveTests>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "verification_outstanding": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "reason_for_blocker": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.outcome",
+        "sample_count": 1
+      },
+      "LegacyJobWorkflowIdempotenceTestRun8": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "event": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "conclusion": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.workflow_idempotence_test.run_8",
+        "sample_count": 1
+      },
+      "LegacyJobWorkflowIdempotenceTestRun9": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "event": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "conclusion": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.workflow_idempotence_test.run_9",
+        "sample_count": 1
+      },
+      "LegacyJobWorkflowIdempotenceTest": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "before_comment_ids": {
+            "type": "array<number>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "preexisting_comments_tested": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "run_8": {
+            "type": "object<LegacyJobWorkflowIdempotenceTestRun8>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "run_9": {
+            "type": "object<LegacyJobWorkflowIdempotenceTestRun9>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "comments_identical_after_both_runs": {
+            "type": "boolean",
+            "optional": true,
+            "occurrences": 1
+          },
+          "workflow_restored_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "limitation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job.workflow_idempotence_test",
+        "sample_count": 1
+      },
+      "LegacyJob": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "sequence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 4
+          },
+          "title": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "nonce": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "source_comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 4
+          },
+          "job_comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 4
+          },
+          "status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "current_revision": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "revisions": {
+            "type": "array<LegacyJobRevisionsItem>",
+            "optional": true,
+            "occurrences": 4
+          },
+          "original_user_instruction": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "agent_interpretation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "documentation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "target_repository": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "target_issue_number": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "owner": {
+            "type": "null",
+            "optional": true,
+            "occurrences": 1
+          },
+          "outcome": {
+            "type": "object<LegacyJobOutcome>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "user_prompt_updates": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "repository": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "target_path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "baseline_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "name": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "source_job_comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "purpose": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "verified_run_count": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "verification_state": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "blocker": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "scope": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "workflow_idempotence_test": {
+            "type": "object<LegacyJobWorkflowIdempotenceTest>",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "job",
+        "sample_count": 4
+      },
+      "LegacyImplementationContractNormalization": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "behavior": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "exact_key": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "value": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "valid_input": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "invalid_input": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "previously_wrapped_input": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "limitations": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "recurrence": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "backfill": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "implementation_contract.normalization",
+        "sample_count": 1
+      },
+      "LegacyImplementationContract": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "targets": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "triggers": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "initial_scan": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "validation": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "reports": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "non_destructive_behavior": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "possible_files": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "restrictions": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "normalization": {
+            "type": "object<LegacyImplementationContractNormalization>",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "implementation_contract",
+        "sample_count": 1
+      },
+      "LegacyVerifiedEvidenceItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "event": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 4
+          },
+          "path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 2
+          },
+          "verified": {
+            "type": "boolean",
+            "optional": true,
+            "occurrences": 3
+          },
+          "notes": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "verified_evidence.item",
+        "sample_count": 4
+      },
+      "LegacyOpcodeExample": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "opcode": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "imperative": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "source_section": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "type": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "condition": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "opcode_example",
+        "sample_count": 1
+      },
+      "LegacyEvidenceItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "type": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "json_parse": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "source_sections": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "unique_imperatives": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "examples": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "permitted_activities": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "section_coverage": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "passed": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "total": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "test_cases": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "original_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "method": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "evidence.item",
+        "sample_count": 5
+      },
+      "LegacyVerbatimSource": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "repository": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "workflow_path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "git_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "yaml_encoding": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "yaml_complete_verbatim": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "js_origin": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "js_complete_verbatim": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "yaml_character_count": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "js_character_count": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "source_roundtrip_verified": {
+            "type": "boolean",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "verbatim_source",
+        "sample_count": 1
+      },
+      "LegacyRunEvidenceItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "run_number": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 5
+          },
+          "run_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 5
+          },
+          "workflow_job_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 5
+          },
+          "event": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "status": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "conclusion": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "run_attempt": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 5
+          },
+          "started_at": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "completed_record_updated_at": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "url": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "job_name": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "job_conclusion": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          },
+          "step_results": {
+            "type": "array<string>",
+            "optional": true,
+            "occurrences": 5
+          },
+          "job_log_review": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 5
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "run_evidence.item",
+        "sample_count": 5
+      },
+      "LegacyEvaluationProtocolConfidenceMeaning": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "high": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "medium": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "low": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "evaluation_protocol.confidence_meaning",
+        "sample_count": 1
+      },
+      "LegacyEvaluationProtocol": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "classification_rule": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "confidence_meaning": {
+            "type": "object<LegacyEvaluationProtocolConfidenceMeaning>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "scope": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "evaluation_protocol",
+        "sample_count": 1
+      },
+      "LegacyDemonstrationsItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "n": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 16
+          },
+          "axis": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "s1": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "s2": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "s3": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "confidence": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "ordering": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          },
+          "distinctness": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 16
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "demonstrations.item",
+        "sample_count": 16
+      },
+      "LegacyLiveJobAssessmentItem": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "comment_id": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 3
+          },
+          "job": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 3
+          },
+          "proposed_axis": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "s1": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "s2": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "s3": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "confidence": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "ranking": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "distinctness": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          },
+          "caveat": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 3
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "live_job_assessment.item",
+        "sample_count": 3
+      },
+      "LegacyConclusionsExamples": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "reviewed": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "plausible_axis": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "high_confidence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "medium_confidence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "demonstrated_actual_original_choice": {
+            "type": "boolean",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "conclusions.examples",
+        "sample_count": 1
+      },
+      "LegacyConclusionsLiveJobs": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "reviewed": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "high_confidence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "medium_confidence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "low_confidence": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          },
+          "unambiguously_proven_monotonicity": {
+            "type": "number",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "conclusions.live_jobs",
+        "sample_count": 1
+      },
+      "LegacyConclusions": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "examples": {
+            "type": "object<LegacyConclusionsExamples>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "live_jobs": {
+            "type": "object<LegacyConclusionsLiveJobs>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "can_agent_decipher": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "is_requirement_implemented": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "certainty_limit": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "suggested_test": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "conclusions",
+        "sample_count": 1
+      },
+      "LegacyRepositoryReferences": {
+        "open": true,
+        "required_keys": [],
+        "fields": {
+          "agents_path": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          },
+          "job_comments": {
+            "type": "array<number>",
+            "optional": true,
+            "occurrences": 1
+          },
+          "verified_source_blob_sha": {
+            "type": "string",
+            "optional": true,
+            "occurrences": 1
+          }
+        },
+        "legacy_key_names": true,
+        "observed_from": "repository_references",
+        "sample_count": 1
+      }
+    },
+    "scratchpad_format": {
+      "root_type": "array",
+      "minimum_items": 17,
+      "item_object_required_keys": [
+        "scratchpad"
+      ],
+      "item_additional_keys_allowed": false,
+      "scratchpad_value": "nonempty open heterogeneous object",
+      "selected_fields_optional": true,
+      "additional_typed_fields_permitted": true,
+      "legacy_records_preserved": true
+    },
+    "examples": [
+      {
+        "scratchpad": {
+          "authorizations[array<Authorization>]": [
+            {
+              "instruction_id[string]": "U1",
+              "authorizer[string]": "Example user",
+              "decision[string]": "pending",
+              "scope[string]": "Proposed test change",
+              "timestamp[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "text[string]": "Record the user's operating constraint."
+        }
+      },
+      {
+        "scratchpad": {
+          "architecture_comparisons[array<ArchitectureComparison>]": [
+            {
+              "options[array<ArchitectureOption>]": [
+                {
+                  "name[string]": "Polling",
+                  "strengths[string]": "Simple integration",
+                  "weaknesses[string]": "Repeated requests"
+                },
+                {
+                  "name[string]": "Events",
+                  "strengths[string]": "Responsive",
+                  "weaknesses[string]": "Needs deduplication"
+                }
+              ],
+              "criterion[string]": "Reliability",
+              "decision[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "failures[array<FailureRecord>]": [
+            {
+              "failure_id[string]": "F1",
+              "operation[string]": "Parse an input",
+              "error[string]": "Illustrative malformed token",
+              "impact[string]": "No state transition",
+              "resolved[boolean]": false
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "test_cases[array<TestCase>]": [
+            {
+              "test_id[string]": "T1",
+              "input[string]": "A sample record.",
+              "expected[string]": "Seven or more object entries.",
+              "observed[string|null]": null,
+              "passed[boolean|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "scope_changes[array<ScopeChange>]": [
+            {
+              "change_id[string]": "C1",
+              "prior_scope[string]": "Single input",
+              "revised_scope[string]": "Multiple records",
+              "authorized_by[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "hypotheses[array<Hypothesis>]": [
+            {
+              "hypothesis_id[string]": "H1",
+              "claim[string]": "A condition explains the observed behavior.",
+              "basis[string]": "Initial observation.",
+              "falsifier[string]": "A reproducible counterexample."
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "open_questions[array<OpenQuestion>]": [
+            {
+              "question_id[string]": "Q1",
+              "question[string]": "Which evidence resolves this?",
+              "required_evidence[string]": "The actual execution receipt.",
+              "status[string]": "open"
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "handoff_notes[array<HandoffNote>]": [
+            {
+              "work_id[string]": "W1",
+              "current_state[string]": "Validation not yet executed.",
+              "next_action[string]": "Inspect the saved output.",
+              "references[array<Reference>]": [],
+              "unresolved[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "text[string]": "Identify the exact implementation target."
+        }
+      },
+      {
+        "scratchpad": {
+          "dependencies[array<Dependency>]": [
+            {
+              "dependency_id[string]": "D1",
+              "prerequisite[string]": "Review the input schema",
+              "state[string]": "pending",
+              "blocked_work[array<Reference>]": []
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "lessons_learned[array<LessonLearned>]": [
+            {
+              "lesson[string]": "Separate submission from execution",
+              "evidence[array<Evidence>]": [],
+              "prospective_change[string|null]": "Add explicit receipt verification",
+              "adjudication_candidate[boolean]": false
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "assumptions[array<Assumption>]": [
+            {
+              "assumption_id[string]": "A1",
+              "proposition[string]": "A test endpoint is reachable",
+              "supporting_evidence[array<Evidence>]": [],
+              "confidence[string]": "unverified"
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "definitions[array<Definition>]": [
+            {
+              "term[string]": "receipt",
+              "meaning[string]": "A durable observation that an operation took place",
+              "scope[string]": "Illustrative workflow",
+              "example[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "text[string]": "Record an independent constraint or technical observation."
+        }
+      },
+      {
+        "scratchpad": {
+          "rationales[array<RationaleRecord>]": [
+            {
+              "decision[string]": "Defer unverified result publication",
+              "explanation[string]": "No execution receipt has been inspected",
+              "assumptions[array<Assumption>]": []
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "failure_modes[array<FailureMode>]": [
+            {
+              "scenario[string]": "Two workers claim the same work",
+              "trigger[string]": "Concurrent retries",
+              "consequence[string]": "Duplicate activity",
+              "mitigation[string]": "Idempotent nonce check"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "source_archive": {
+    "current_amendment": "Extraction of the flat shuffled 152 permitted actions into standalone input-contract catalog, reusing existing IssueScratch named types; historical AGENTS.md and type registry remain retrievable.",
+    "source_agent_blob_sha": "a32c7acbf6b34fc2dfd5e851796a6b28ca76d9d0",
+    "source_field_registry_blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
+    "source_field_registry_path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
+    "extraction": "Moved the already shuffled, unlinked action strings without reordering."
+  },
+  "coverage": {
+    "action_count": 152,
+    "actions_with_typed_inputs": 152,
+    "unique_existing_named_input_types": 38,
+    "newly_declared_named_types": 0,
+    "registered_field_declarations": 59,
+    "named_object_types": 68,
+    "illustrated_scratchpads": 17,
+    "minimum_scratchpads": 17,
+    "source_actions_preserved_in_identical_order": true,
+    "source_input_examples_flat": true
+  }
+}
