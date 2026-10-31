@@ -118,7 +118,7 @@ function initialState(comment_id) {
     latest_validation:null,history:[]
   };
 }
-function processRevision(previous, body, comment_id, revisionPath, eventName="issue_comment") {
+function processRevision(previous, body, comment_id, revisionPath, eventName="issue_comment", validateEntry=null) {
   const now=analyze(body);
   const state=previous ? JSON.parse(JSON.stringify(previous)) : initialState(comment_id);
   if(state.comment_id!==comment_id ||state.schema!==STATE_SCHEMA)throw Error("Existing state identity/schema mismatch");
@@ -145,12 +145,19 @@ function processRevision(previous, body, comment_id, revisionPath, eventName="is
       transition="historical_snapshot_only";
     } else if(parsed.length===p.accepted_entries+1 && p.accepted_entries<=END_INDEX &&
        sha(compact(parsed.slice(0,p.accepted_entries)))===p.accepted_prefix_sha256){
+      const structuralError=validateEntry ? validateEntry(parsed,p.accepted_entries) : null;
+      if(structuralError){
+        if(!isObject(structuralError)||typeof structuralError.code!=="string")throw Error("Invalid structural validator result");
+        now.error=structuralError;
+        transition=structuralError.code;
+      }else{
       p.accepted_entries++;
       p.last_accepted_index=p.accepted_entries-1;
       p.accepted_prefix_sha256=sha(compact(parsed.slice(0,p.accepted_entries)));
       p.complete=p.accepted_entries===END_INDEX+1;
       p.next_index=p.complete?null:p.accepted_entries;
-      transition=p.complete?"completed_index_16":"accepted_one_entry";
+      transition=p.complete?"completed_index_18":"accepted_one_entry";
+      }
     } else if(parsed.length===p.accepted_entries &&
        sha(compact(parsed))===p.accepted_prefix_sha256){
       transition="same_accepted_array";
