@@ -2,7 +2,7 @@
   "document_type": "IssueScratch agent instructions",
   "format_version": "1.1.0",
   "repository": "BestNameYet/IssueScratch",
-  "interpretation": "Apply authoritative imperative opcodes and the optional, open heterogeneous scratchpad field registry. Archive links are historical references only and do not reactivate superseded instructions.",
+  "interpretation": "Apply authoritative imperative opcodes and the optional open heterogeneous scratchpad field registry. Historical Git revisions do not reactivate superseded instructions.",
   "opcode_format": {
     "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
     "order": "Section hierarchy followed by clause order",
@@ -333,19 +333,6 @@
       ],
       "modality": "require",
       "imperative": "Keep the neutral scratchpad names free of semantic topic assignments.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.04.010",
-      "version": 1,
-      "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not expose private internal deliberation about property selection.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
     },
@@ -2006,7 +1993,7 @@
         ]
       },
       "scratchpad_3": {
-        "verified_evidence[array<LegacyVerifiedEvidenceItem>]": []
+        "text[string]": "Record a separate substantive observation."
       }
     }
   },
@@ -2014,11 +2001,11 @@
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
     "previous_active_document_blob_sha": "b57af6a799b66ae2798b651f77d1208f0f1995af",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "User-authorized replacement of scalar-ordering material with optional typed field selection and heterogeneous object members. Earlier source versions remain accessible through Git history but are not active instructions."
+    "current_amendment": "User-authorized changes adopt optional typed field selection and open heterogeneous object members. Superseded material remains accessible through Git history but is not an active instruction."
   },
   "coverage": {
     "active_section_count": 21,
-    "active_procedure_count": 137,
+    "active_procedure_count": 136,
     "registered_fields": 59,
     "linked_registry_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
     "active_examples": 0,
