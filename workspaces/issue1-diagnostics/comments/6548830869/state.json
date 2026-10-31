@@ -4,22 +4,22 @@
   "comment_id": 6548830869,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 1,
-    "last_accepted_index": 0,
-    "next_index": 1,
-    "accepted_prefix_sha256": "06cce6cfe249e6b976c5c88ca698edb84e1d021aed931216481073968333a543",
+    "accepted_entries": 2,
+    "last_accepted_index": 1,
+    "next_index": 2,
+    "accepted_prefix_sha256": "289e1a420666d262baa9268488f515e10a594f38be9b1a6745299827a73b350e",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548830869,
-      "target_index": 1,
+      "target_index": 2,
       "profile_version": "1.6.0",
       "selected_function": {
-        "opcode": "OP.01.006",
-        "name": "COMPARE",
-        "description": "Contrast two or more subjects with respect to dimensions",
-        "input_contract": "subjects_and_dimensions",
-        "output_contract": "comparison"
+        "opcode": "OP.01.005",
+        "name": "EVALUATE",
+        "description": "Appraise a claim or artifact against declared criteria",
+        "input_contract": "subject_and_criteria",
+        "output_contract": "assessment"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,27 +40,28 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 4,
+        "selected_ordinal": 3,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retries use the persisted choice."
       },
       "opcodes": [
-        "OP.01.006"
+        "OP.01.005"
       ],
       "read_indices": [
-        0
+        0,
+        1
       ],
       "frame_id": "F0",
       "enclosing_frame_id": null,
       "role": "establish_reference",
-      "reference_id": "R-A",
-      "original_anchor_index": 1,
+      "reference_id": "R-B",
+      "original_anchor_index": 2,
       "previous_frame_index": null,
       "requirements": [
-        "Apply COMPARE (OP.01.006) to the designated inputs; an instruction is not an execution receipt.",
-        "Establish identifiable referent R-A in light of the five-part preparation at index 0.",
+        "Apply EVALUATE (OP.01.005) to the designated inputs; an instruction is not an execution receipt.",
+        "Establish identifiable referent R-B in light of the five-part preparation at index 0.",
         "Keep this referent distinct from the other anchor.",
-        "Append exactly one substantive scratchpad at index 1."
+        "Append exactly one substantive scratchpad at index 2."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -68,8 +69,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548832768
   },
-  "last_processed_revision_sha256": "8e3233fcfacc2c4ca29c0d407edf2f222abf5050ae90d1a58ac55f30e1a9aad8",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548830869/revisions/8e3233fcfacc2c4ca29c0d407edf2f222abf5050ae90d1a58ac55f30e1a9aad8.json",
+  "last_processed_revision_sha256": "4113c2416c710ad0ce09c8be119cfa265eaed51a129e74e18de690afaef59234",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548830869/revisions/4113c2416c710ad0ce09c8be119cfa265eaed51a129e74e18de690afaef59234.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -78,6 +79,14 @@
       "json_valid": true,
       "array_length": 1,
       "accepted_entries_after": 1,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "4113c2416c710ad0ce09c8be119cfa265eaed51a129e74e18de690afaef59234",
+      "path": "workspaces/issue1-diagnostics/comments/6548830869/revisions/4113c2416c710ad0ce09c8be119cfa265eaed51a129e74e18de690afaef59234.json",
+      "json_valid": true,
+      "array_length": 2,
+      "accepted_entries_after": 2,
       "transition": "accepted_one_entry"
     }
   ]
