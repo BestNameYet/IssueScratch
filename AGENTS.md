@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.8.3",
+  "format_version": "2.8.4",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2065,11 +2065,11 @@
     },
     {
       "opcode": "IS.10.002",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Treat each accepted array index as an agent-to-workflow event; the handshake is keyed externally by permanent source comment ID and source revision SHA-256 through state.json, immutable instruction JSON and controller reply. The agent source comment must remain free of workflow-specific metadata.",
+      "imperative": "The agent handshake is limited to the existing Issue #1 scratchpad comment: one added entry per edit and readback of the same comment ID. The workflow alone validates, selects, publishes, and persists external state/instruction/diagnostic records; the agent does not write workflow metadata or acknowledgement artifacts.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2095,31 +2095,31 @@
     },
     {
       "opcode": "IS.10.005",
-      "version": 3,
+      "version": 4,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "After appending and readback-verifying the newly authored scratchpad in the permanent GitHub source comment, save its acknowledgement as a separate valid JSON object under workspaces/issue1-diagnostics/comments/<comment_id>/acknowledgements/<zero-padded-index>.json. Include source_comment_id, submitted_index, submitted_source_revision_sha256, prior_instruction_opcode, prior_instruction_source_revision_sha256, controller_comment_id, and verification status. Never write this acknowledgement into the source comment or before the submitted edit exists.",
+      "imperative": "The worker edits only its substantive Issue #1 array comment. After the worker's edit, the workflow must automatically record its acceptance, submitted source revision SHA-256, target index, and previously issued operation as JSON under the per-comment workspace. No agent-written acknowledgement file or scratchpad field is required.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.006",
-      "version": 3,
+      "version": 4,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "First apply the previously delivered function to produce substantive content, then append exactly one new scratchpad wrapper without changing any accepted prefix, and read back the new GitHub comment body. Only after that write the external acknowledgement; any subsequent workflow acceptance/readback is a separate validation step.",
+      "imperative": "Apply the last published operation to create substantive content, append exactly one scratchpad object while preserving prior entries, and read back the edited comment. Poll for workflow confirmation. Do not submit an additional acknowledgement to GitHub or write any repository file.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.007",
-      "version": 1,
+      "version": 2,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Use bounded polling: at most twelve observation cycles per submitted revision, reading GitHub workflow-run conclusion where available and checking persisted state and instruction evidence. A successful run alone is not a successful index; if no progress is verified, record blocked state and stop without speculative edits or unbounded retries.",
+      "imperative": "Observe at most twelve polling cycles for each submitted comment revision, consulting saved comment, controller instruction and workflow-run evidence. Workflow failures or lack of progress stop the agent's comment edits; recording blockers in workspace is a workflow responsibility, not an extra agent action.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2155,31 +2155,31 @@
     },
     {
       "opcode": "IS.10.011",
-      "version": 3,
+      "version": 4,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Persist handshake observations, post-comment acknowledgements, and relevant workflow run IDs as valid JSON objects under the per-comment workspace; distinguish submitted, accepted, function-published, and agent-applied evidence without storing workflow artifacts in the source comment.",
+      "imperative": "The workflow, not the worker, owns all state, acknowledgement, diagnostics, instruction and run-receipt JSON writes under workspaces/. The worker only edits its existing Issue #1 source comment and reads workflow outputs.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.012",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not claim a workflow-driven README experiment complete merely because seventeen entries exist; require sequential accepted revisions, verified external agent acknowledgements, matching controller instruction history, and source-consistent final artifact receipt.",
+      "imperative": "Do not claim the README experiment complete merely because seventeen entries exist; require sequential accepted revisions in workflow-owned JSON state, matching sixteen controller instruction receipts, and a source-consistent final artifact receipt. Never impose a separate agent-written acknowledgement.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.013",
-      "version": 1,
+      "version": 2,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Commit all authorized IssueScratch file changes and workspace acknowledgements directly on the default main branch; use GitHub Issue #1 comments for source submissions and controller replies. Do not create branches or pull requests for this workflow.",
+      "imperative": "Commit implementation and workflow-maintenance changes directly on main, without PRs. During controller-driven job execution, the worker's ONLY write operation is creating or editing its substantive Issue #1 comment. All workspace and diagnostic writes are performed by the workflow itself.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -2512,21 +2512,13 @@
       "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow."
     },
     "agent_workflow_handshake": {
-      "schema": "issuescratch.agent-workflow-handshake.v1.1",
+      "schema": "issuescratch.agent-workflow-handshake.v1.2",
       "job_scope": "Issue #1 source comment",
       "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
       "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
       "index_sequence": "Create index 0, then accept exactly one appended index per edit until index 16.",
-      "ack_keys": [
-        "source_comment_id",
-        "submitted_index",
-        "submitted_source_revision_sha256",
-        "prior_instruction_opcode",
-        "prior_instruction_source_revision_sha256",
-        "controller_comment_id",
-        "status"
-      ],
+      "ack_keys": [],
       "max_poll_cycles_per_revision": 12,
       "poll_checks": [
         "same GitHub comment ID",
@@ -2536,38 +2528,46 @@
         "workflow run conclusion if identifiable"
       ],
       "terminal_acceptance": [
-        "17 separate accepted revisions",
-        "index 16",
-        "progression.complete true",
-        "controller_status completed",
-        "matching final source digest",
-        "readback-verified controlled README candidate and receipt"
+        "17 accepted sequential index transitions",
+        "completion state at index 16",
+        "16 controller published instruction receipts",
+        "matching final comment digest",
+        "workflow-owned README candidate and receipt"
       ],
       "failure": "Stop, report blocked and preserve saved comment, instructions, state and prior README candidates.",
       "old_candidate_preservation": true,
       "comment_echo_requirement": "Existing IS.03.05 obligations unchanged, but full echoes may be limited by the UI; record any inability explicitly.",
-      "acknowledgement_location": "workspaces/issue1-diagnostics/comments/<comment_id>/acknowledgements/<zero-padded-target-index>.json",
-      "acknowledgement_type": "separate JSON-object workspace receipt",
+      "acknowledgement_location": "per-comment revision diagnostic JSON and state.json history",
+      "acknowledgement_type": "automatic workflow-derived acceptance receipt, not worker authored",
       "source_comment_contract": "Only substantive, single-key scratchpad wrappers. No job IDs, controller acknowledgements, hashes, opcodes, metadata fields, or workflow markers required in the comment.",
       "job_registration": "Separate workspace job.json keyed to verified comment ID; never infer jobs by inspecting scratchpad text.",
-      "acknowledgement_timing": "AFTER agent edits source comment and re-fetches the saved new body and comment ID; BEFORE or AFTER workflow diagnosis, but never before comment write and readback.",
+      "acknowledgement_timing": "The workflow records the accepted revision after the comment edit event; no explicit agent acknowledgement.",
       "acknowledgement_protocol": [
-        "receive and validate preceding function from controller state",
-        "author and append one substantive scratchpad",
-        "verify saved GitHub comment body and record new revision SHA-256",
-        "write external acknowledgement JSON object referencing new submitted revision",
-        "poll for matching accepted workflow state and instruction; update external acceptance record only after validation"
+        "agent edits exactly one substantive scratchpad in Issue #1 source comment",
+        "agent re-reads saved comment ID and body",
+        "workflow validates and persists state, revision diagnostics, operation and response",
+        "agent reads state and controller output before next edit"
       ],
       "acceptance_is_separate_from_submission": true,
       "repository_write_branch": "main",
-      "pull_requests_allowed": false
+      "pull_requests_allowed": false,
+      "agent_writable_surfaces": [
+        "Issue #1 source comment only"
+      ],
+      "workflow_writable_surfaces": [
+        "workspaces/",
+        "Issue #1 controller reply",
+        "experiment candidate and receipt files"
+      ],
+      "agent_workspace_writes_allowed": false,
+      "agent_workflow_file_writes_allowed_during_job": false
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "5d12edf7e22f83700b3bc23191f3526f27a70b66",
+    "previous_active_document_blob_sha": "0d2131a1b876587511ed636c8152e9b10b2b6670",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Require direct main-branch commits and no pull-request/branch workflow for IssueScratch.",
+    "current_amendment": "Remove all worker workspace and workflow writes. Workflow owns acknowledgements, state and diagnostics derived from Issue #1 comment events; worker only authors one scratchpad per edit.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
