@@ -60,4 +60,55 @@ function render(body,{commentId,repository="BestNameYet/IssueScratch"}={}){
   ].join("\n");
   return {content:result,record,sha256:hash,comment_url:url};
 }
-module.exports={JOB_ID,inspectComment,render,sha256};
+
+function renderControlled(body,{commentId,registration,repository="BestNameYet/IssueScratch"}={}){
+  if(!Number.isSafeInteger(commentId)||commentId<=0)throw Error("Permanent comment ID required");
+  if(!isObj(registration)||registration.schema!=="issuescratch.readme-controlled-job.v1"||
+    registration.source_comment_id!==commentId||
+    registration.candidate_path!=="experiments/readme-job-001-rerun.candidate.md"||
+    typeof registration.original_instruction!=="string"||!registration.original_instruction.trim()){
+    throw Error("Invalid external job registration");
+  }
+  let parsed;
+  try{parsed=JSON.parse(body);}catch(e){throw Error("Invalid job comment JSON: "+e.message)}
+  if(!Array.isArray(parsed)||parsed.length!==17)throw Error("Controlled README requires exactly 17 entries");
+  parsed.forEach((entry,index)=>{
+    if(!isObj(entry)||Object.keys(entry).length!==1||!own(entry,"scratchpad")||
+       !isObj(entry.scratchpad)||Object.keys(entry.scratchpad).length===0){
+      throw Error("Invalid scratchpad "+index);
+    }
+  });
+  const tick=String.fromCharCode(96);
+  const longest=Math.max(3,...(body.match(new RegExp(tick+"+","g"))||[]).map(x=>x.length+1));
+  const fence=tick.repeat(longest);
+  const url="https://github.com/"+repository+"/issues/1#issuecomment-"+commentId;
+  const hash=sha256(body);
+  const content=[
+    "# IssueScratch — controlled README experiment",
+    "",
+    "## Original instruction",
+    "",
+    registration.original_instruction,
+    "",
+    "## Source",
+    "",
+    "- Job: "+registration.job_id,
+    "- Comment: "+url,
+    "- Scratchpads: "+parsed.length,
+    "- Source SHA-256: "+tick+hash+tick,
+    "",
+    "## Generated manifest data",
+    "",
+    "The following is the **verbatim** agent-produced array. No additional semantic",
+    "rendering, rewriting, or inserted workflow artifacts were applied to its content.",
+    "",
+    fence+"json",
+    body,
+    fence,
+    ""
+  ].join("\n");
+  return {content,source_comment_sha256:hash,source_comment_id:commentId,
+    scratchpad_count:parsed.length,original_instruction:registration.original_instruction};
+}
+
+module.exports={JOB_ID,inspectComment,render,renderControlled,sha256};
