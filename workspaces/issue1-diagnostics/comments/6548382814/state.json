@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 3,
-    "last_accepted_index": 2,
-    "next_index": 3,
-    "accepted_prefix_sha256": "8fc64caca41b67e3e30b38551e2782bc7edc94632b21ab41b30518277b28a108",
+    "accepted_entries": 4,
+    "last_accepted_index": 3,
+    "next_index": 4,
+    "accepted_prefix_sha256": "9f1cdaaf7e89501758260f174daa39617b0b84d31654ae905a960aeed4d6b55e",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 3,
+      "target_index": 4,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.010",
-        "name": "SELECT",
-        "description": "Choose one or more candidates according to a rule",
-        "input_contract": "candidates_and_rule",
-        "output_contract": "selection"
+        "opcode": "OP.01.006",
+        "name": "COMPARE",
+        "description": "Contrast two or more subjects with respect to dimensions",
+        "input_contract": "subjects_and_dimensions",
+        "output_contract": "comparison"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,30 +40,30 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 8,
+        "selected_ordinal": 4,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.010"
+        "OP.01.006"
       ],
       "read_indices": [
-        0,
-        0,
+        1,
+        1,
         2
       ],
       "frame_id": "F1",
       "enclosing_frame_id": "F0",
       "role": "preserve_reference",
-      "reference_id": "R-A",
-      "original_anchor_index": 0,
-      "previous_frame_index": 0,
+      "reference_id": "R-B",
+      "original_anchor_index": 1,
+      "previous_frame_index": 1,
       "requirements": [
-        "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Carry the *same referent identity* R-A from index 0 through this enclosing frame.",
+        "Apply function COMPARE (OP.01.006) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Carry the *same referent identity* R-B from index 1 through this enclosing frame.",
         "Do not convert attributed inner claims into direct factual assertions.",
         "Use textual references freely while maintaining identity and attribution.",
-        "Append exactly one substantive scratchpad at index 3; retain the accepted prefix."
+        "Append exactly one substantive scratchpad at index 4; retain the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -71,8 +71,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b.json",
+  "last_processed_revision_sha256": "76dbebc1dd435cb0d25d99080d86d882bd220c0122ced27b46111778665ac939",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/76dbebc1dd435cb0d25d99080d86d882bd220c0122ced27b46111778665ac939.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -97,6 +97,14 @@
       "json_valid": true,
       "array_length": 3,
       "accepted_entries_after": 3,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "76dbebc1dd435cb0d25d99080d86d882bd220c0122ced27b46111778665ac939",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/76dbebc1dd435cb0d25d99080d86d882bd220c0122ced27b46111778665ac939.json",
+      "json_valid": true,
+      "array_length": 4,
+      "accepted_entries_after": 4,
       "transition": "accepted_one_entry"
     }
   ]
