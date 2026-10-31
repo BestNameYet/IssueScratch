@@ -1,0 +1,141 @@
+{
+  "schema": "issuescratch.frame-instruction-receipt.v1",
+  "source_comment_id": 6548995651,
+  "source_revision_sha256": "733768d5749f3985facc0782bec4bc487bc7e3542ed7d30e732866d2767e77f2",
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548995651,
+    "target_index": 3,
+    "profile_version": "2.1.0",
+    "selected_function": {
+      "opcode": "OP.01.012",
+      "name": "BRANCH",
+      "description": "Select a branch based on an explicit predicate",
+      "input_contract": "condition_and_branches",
+      "output_contract": "selected_branch"
+    },
+    "higher_order_frame": {
+      "schema": "issuescratch.higher-order-frame-selection.v1",
+      "frame_id": "F0",
+      "frame_number": 0,
+      "frame_start_index": 1,
+      "frame_end_index": 3,
+      "enclosing_frame_id": null,
+      "source_indices": [
+        0
+      ],
+      "source_refs": [
+        "/0"
+      ],
+      "level": 1,
+      "operator": {
+        "opcode": "OP.02.002",
+        "name": "ABSTRACT",
+        "description": "Change the subject's representation under an explicitly selected abstraction mode while preserving source traceability and recording intentionally omitted details."
+      },
+      "mode": "IMPLEMENTATION",
+      "selection": {
+        "algorithm": "node:crypto.randomInt",
+        "operator_ordinal": 1,
+        "operator_pool": [
+          "OP.02.001",
+          "OP.02.002"
+        ],
+        "mode_ordinal": 1,
+        "mode_pool": [
+          "CONTRACT",
+          "IMPLEMENTATION",
+          "CONSTRUCT",
+          "GENERAL"
+        ]
+      },
+      "input_contract": {
+        "subject_ref": "string",
+        "context_refs": "string[]",
+        "invariants": "string[]",
+        "mode": "CONTRACT|IMPLEMENTATION|CONSTRUCT|GENERAL",
+        "target": "string"
+      },
+      "output_contract": {
+        "representation": "object",
+        "preserved_properties": "string[]",
+        "suppressed_details": "string[]",
+        "new_assumptions": "object[]",
+        "source_mapping": "object[]",
+        "unresolved_questions": "object[]",
+        "next_solver_input": "object"
+      },
+      "required_output_fields": [
+        "components",
+        "algorithms",
+        "dependencies",
+        "operational_boundaries"
+      ],
+      "invariants": [
+        "Two distinguishable referents across levels",
+        "Traceable ancestry of each enclosing solver",
+        "No promotion of inferred claims to direct user instructions",
+        "Meaningful change of reasoning level or representation"
+      ],
+      "status": "selected_not_executed"
+    },
+    "higher_order_selection_new": false,
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 10,
+      "draws": [
+        {
+          "purpose": "atomic_function",
+          "pool_size": 14,
+          "selected_ordinal": 10
+        }
+      ],
+      "note": "Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
+    },
+    "opcodes": [
+      "OP.02.002",
+      "OP.01.012"
+    ],
+    "read_indices": [
+      0,
+      1,
+      2
+    ],
+    "frame_id": "F0",
+    "enclosing_frame_id": null,
+    "role": "seed_narrative",
+    "reference_id": null,
+    "original_anchor_index": null,
+    "previous_frame_index": null,
+    "requirements": [
+      "Use atomic BRANCH (OP.01.012) inside the fixed higher-order frame ABSTRACT / IMPLEMENTATION. An opcode instruction is not execution evidence.",
+      "Apply the *same* higher-order choice as the other two slots of F0; do not reroll or switch modes.",
+      "Construct an explicit IMPLEMENTATION representation with its specified fields; IMPLEMENTATION describes mechanisms, not execution.",
+      "Supply preserved_properties, suppressed_details, introduced_assumptions, source_mapping, and next_solver_input in substantive output.",
+      "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
+      "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
+      "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction.",
+      "Add substantive development rather than a quotation ladder or paraphrase.",
+      "Append exactly one substantive scratchpad at index 3; retain the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "publication_status": "selected"
+}
