@@ -16,7 +16,7 @@ function fixture(){
   const index=i+1;const fn={comment_id:commentId,target_index:index,selected_function:{opcode:"OP.01.002"},higher_order_frame:index<=15?frames["F"+Math.floor(i/3)]:null};
   return {target_index:index,source_revision_sha256:h.raw_sha256,function:fn};
  })};
- const receipts=control.history.map(h=>({source_comment_id:commentId,source_revision_sha256:h.source_revision_sha256,next_function:h.function}));
+ const receipts=control.history.map(h=>({source_comment_id:commentId,source_revision_sha256:h.source_revision_sha256,next_function:JSON.parse(JSON.stringify(h.function))}));
  const state={comment_id:commentId,last_processed_revision_sha256:digest(body),progression:{mode:"incremental",complete:true,accepted_entries:19,last_accepted_index:18,controller_status:"completed",frame_selections:frames},history};
  return {body,state,controller:control,receipts,commentId,ownerLogin:"BestNameYet",commentAuthor:"BestNameYet"};
 }
