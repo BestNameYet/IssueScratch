@@ -1,6 +1,6 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "purpose": "Nineteen top-level indices: one preparatory five-scratchpad array, five three-index random reframing exercises, and three reconciliation indices.",
   "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
@@ -27,7 +27,9 @@
     "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths.",
     "Opcode rendering is action-granular; each action is mapped to bound OP steps with operands and traceability, not one omnibus opcode.",
     "The adversarial preparation must drive concrete checks for the action decomposition and the final reconciler.",
-    "The preparatory instruction record must include explicit, minimalist, maximalist, inferred beginning/post states, and inferred change as distinct projections."
+    "The preparatory instruction record must include explicit, minimalist, maximalist, inferred beginning/post states, and inferred change as distinct projections.",
+    "Prepare an initial context-aware opcode-step projection in the first of the five nested preparatory scratchpads, with context_elements as an explicitly typed array.",
+    "Keep the first opcode projection provisional and preserve traceability through adversarial review, atomic decomposition, final rendering and reconciliation."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
   "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
@@ -61,30 +63,90 @@
   "preparatory_roles": [
     {
       "index": 0,
-      "role": "instruction_and_intent_projections",
+      "role": "contextual_instruction_and_initial_opcode_projection",
       "requirements": [
-        "Preserve original user wording and source provenance, plus multiple distinct explicit and inferred projections.",
-        "Provide a minimalist user-intent projection: the least expansive outcome unambiguously requested.",
-        "Provide a maximalist user-intent projection: the broadest defensible intended outcome, labeling assumptions and boundaries.",
-        "Provide explicit intent: only demands directly supported by the user wording, with source excerpts or spans.",
-        "Provide inferred beginning state, inferred resulting state, and inferred change between them, distinguishing observation from assumption.",
-        "Do not promote inferred intents or states to direct user instructions or silently resolve ambiguity."
+        "Preserve the full original instruction as text, without replacing the verbatim source.",
+        "Capture relevant surrounding conversation in a context_elements array, with source references, order, excerpt/summary status, and explicit-vs-inferred authority.",
+        "Immediately produce an initial_opcode_projection array after examining the instruction against the context_elements; use separate atomic action steps rather than one omnibus opcode.",
+        "Supply minimalist and maximalist user-intent projections, explicit intent, inferred beginning state, inferred desired post state, and inferred change.",
+        "Flag the initial opcode projection as provisional; later adversarial review and atomistic decomposition may revise it without modifying the source wording.",
+        "Do not treat projected intent as an independently issued user command."
       ],
       "projection_fields": {
-        "verbatim_instruction": "Complete source wording, immutable within the indexed array; preserve attribution.",
+        "verbatim_instruction": "Preserve the source wording exactly without replacing it with the projection.",
+        "context_elements": "Ordered array of relevant surrounding-conversation elements, each linked to an identifiable source and explicitly typed by authority.",
+        "initial_opcode_projection": "Ordered, context-aware, action-granular preliminary OP steps. Every step cites source instruction/context and is flagged provisional.",
         "minimalist_user_intent": "Smallest defensible user goal.",
-        "maximalist_user_intent": "Largest defensible user goal bounded by source, not speculative scope expansion.",
-        "explicit_intent": "Observable stated requirements linked to source spans.",
-        "inferred_beginning_state": "Hypothesized state before the requested work.",
-        "inferred_post_state": "Hypothesized desired state after the requested work.",
-        "inferred_change": "Delta from beginning state to desired state, identified as inferred."
+        "maximalist_user_intent": "Largest defensible user goal bounded by source.",
+        "explicit_intent": "Directly stated requirements grounded in source wording.",
+        "inferred_beginning_state": "Inferred state before work, with basis and uncertainty.",
+        "inferred_post_state": "Inferred desired future state, not an execution claim.",
+        "inferred_change": "Difference between inferred beginning and post states, with provenance."
       },
       "inference_rules": [
         "Explicit intent must have clear grounding in original wording.",
         "All inferred content requires evidence_basis and uncertainty or an explicit unknown marker.",
         "Competing plausible readings may be represented without selecting a winner.",
         "Inferred post state is desired/anticipated, not evidence of actual completion."
-      ]
+      ],
+      "context_element_contract": {
+        "required_fields": [
+          "context_id",
+          "sequence",
+          "source_kind",
+          "source_ref",
+          "content",
+          "representation",
+          "authority",
+          "relevance"
+        ],
+        "source_kind_options": [
+          "user_message",
+          "assistant_message",
+          "repository_rule",
+          "previous_job_record",
+          "other"
+        ],
+        "representation_options": [
+          "verbatim_excerpt",
+          "faithful_summary"
+        ],
+        "authority_options": [
+          "explicit_user",
+          "assistant_interpretation",
+          "repository_instruction",
+          "historical_observation",
+          "inferred"
+        ],
+        "constraints": [
+          "Preserve temporal order and source references; do not confuse assistant proposals with user instructions.",
+          "Only claim an exact quote when representation=verbatim_excerpt and the words actually match source.",
+          "Record omissions or uncertainty instead of manufacturing context.",
+          "The context_elements array is substantive source interpretation, not a workflow handshake or acknowledgement."
+        ]
+      },
+      "initial_opcode_contract": {
+        "required_step_fields": [
+          "step_id",
+          "action_id",
+          "opcode",
+          "operands",
+          "depends_on",
+          "result_ref",
+          "source_refs",
+          "context_refs",
+          "status"
+        ],
+        "status": "provisional",
+        "minimum_steps": 2,
+        "mapping": "Each step maps a bounded action to exactly one registered OP opcode. The source_refs and context_refs must resolve to the original instruction or entries of context_elements.",
+        "prohibits": [
+          "Single OP code for the entire instruction",
+          "Substituting CAPTURE or EMIT for substantive actions",
+          "Claiming a projection has already been executed"
+        ],
+        "revision_path": "Nested preparatory scratchpads 2 (adversarial review), 3 (atomistic decomposition), and 4 (revised opcode rendering)."
+      }
     },
     {
       "index": 1,
@@ -98,7 +160,8 @@
       "role": "adversarial_review",
       "requirements": [
         "Challenge assumptions, identify contradictory or underdetermined requirements, test failure cases, and identify unauthorized interpretations.",
-        "Present counterarguments and discriminating checks rather than merely restating the requirements."
+        "Present counterarguments and discriminating checks rather than merely restating the requirements.",
+        "Challenge contextual assumptions and the initial opcode projection, distinguishing explicit user instructions from assistant-originated or inferred context."
       ]
     },
     {
@@ -108,7 +171,8 @@
         "Break the instruction into independently identifiable executable actions; each action has a stable action_id, source span or quote, typed inputs, expected output, dependencies, and explicit completion predicate.",
         "Avoid a single omnibus action or one operator standing for the entire instruction.",
         "Use adversarial findings to identify missing actions or failure paths.",
-        "Tag each atomic action with its source projection, distinguishing explicitly requested actions from inferred supporting actions."
+        "Tag each atomic action with its source projection, distinguishing explicitly requested actions from inferred supporting actions.",
+        "Compare atomic actions with the initial contextual opcode projection and trace divergences."
       ]
     },
     {
@@ -119,7 +183,8 @@
         "Maintain a one-to-many or many-to-many mapping between actions and opcode steps where required; do not represent all instructions as one giant command.",
         "Carry forward the source instruction, adversarial checks, and decomposition identifiers.",
         "Do not claim the opcode declaration executes any action.",
-        "Retain links from atomic opcode steps to the instruction projections and record which steps implement explicit versus inferred actions."
+        "Retain links from atomic opcode steps to the instruction projections and record which steps implement explicit versus inferred actions.",
+        "Reconcile the final action-level rendering with the initial contextual projection, including contextual authority, provenance and deviations."
       ]
     }
   ],
@@ -184,6 +249,9 @@
     ],
     "rule": "A rendered step binds exactly one registered OP operator to a bounded action or subaction. Each decomposed action must be mapped; composite instructions require multiple explicit steps. CAPTURE and EMIT may bookend the artifact but are not substitutes for the substantive steps.",
     "adversarial_review_link": "Every review objection must be explicitly resolved, rejected with rationale, or recorded as unresolved before final synthesis.",
-    "instruction_provenance": "The original instruction and all named intent/state projections remain available at nested preparatory index 0; action decomposition at nested index 3 must cite those projections and distinguish explicit versus inferred actions."
+    "instruction_provenance": "The original instruction and all named intent/state projections remain available at nested preparatory index 0; action decomposition at nested index 3 must cite those projections and distinguish explicit versus inferred actions.",
+    "initial_projection_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]",
+    "context_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]",
+    "revision_rule": "Nested index 4 must reconcile each preliminary step with atomistic actions from nested index 3, recording amended, retained, rejected and added step mappings."
   }
 }
