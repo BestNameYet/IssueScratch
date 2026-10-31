@@ -1,0 +1,82 @@
+{
+  "schema": "issuescratch.comment-state.v1",
+  "issue_number": 1,
+  "comment_id": 6548135349,
+  "progression": {
+    "mode": "incremental",
+    "accepted_entries": 1,
+    "last_accepted_index": 0,
+    "next_index": 1,
+    "accepted_prefix_sha256": "cbdd4ae39fe12814adfa597febbc6ded816dceb7c8c766470e7317d65a18d6e2",
+    "complete": false,
+    "next_function": {
+      "schema": "issuescratch.next-framing-function.v1",
+      "comment_id": 6548135349,
+      "target_index": 1,
+      "profile_version": "1.1.0",
+      "selected_function": {
+        "opcode": "OP.01.010",
+        "name": "SELECT",
+        "description": "Choose one or more candidates according to a rule",
+        "input_contract": "candidates_and_rule",
+        "output_contract": "selection"
+      },
+      "random_selection": {
+        "algorithm": "node:crypto.randomInt",
+        "pool_opcodes": [
+          "OP.01.002",
+          "OP.01.003",
+          "OP.01.004",
+          "OP.01.005",
+          "OP.01.006",
+          "OP.01.007",
+          "OP.01.008",
+          "OP.01.009",
+          "OP.01.010",
+          "OP.01.011",
+          "OP.01.012",
+          "OP.01.013",
+          "OP.01.014",
+          "OP.01.015"
+        ],
+        "pool_size": 14,
+        "selected_ordinal": 8,
+        "selection_round": 1,
+        "note": "One fresh draw on an accepted revision; retry uses persisted choice."
+      },
+      "opcodes": [
+        "OP.01.010"
+      ],
+      "read_indices": [],
+      "frame_id": "F0",
+      "enclosing_frame_id": null,
+      "role": "establish_reference",
+      "reference_id": "R-B",
+      "original_anchor_index": 1,
+      "previous_frame_index": null,
+      "requirements": [
+        "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Establish an identifiable referent R-B; its textual form is agent-selected.",
+        "Keep this referent distinct from the other anchor.",
+        "Append exactly one substantive scratchpad at index 1."
+      ],
+      "control_mode": "publish_instruction_not_autonomous_agent"
+    },
+    "function_selection": "issuescratch.framing-controller.v1",
+    "controller_status": "delivered",
+    "controller_comment_id": 6548137149
+  },
+  "last_processed_revision_sha256": "71d5dac32353df9947f3627e35ff11cf10c9276bbba12c528a35c66f62d1620a",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548135349/revisions/71d5dac32353df9947f3627e35ff11cf10c9276bbba12c528a35c66f62d1620a.json",
+  "latest_validation": "valid",
+  "history": [
+    {
+      "raw_sha256": "71d5dac32353df9947f3627e35ff11cf10c9276bbba12c528a35c66f62d1620a",
+      "path": "workspaces/issue1-diagnostics/comments/6548135349/revisions/71d5dac32353df9947f3627e35ff11cf10c9276bbba12c528a35c66f62d1620a.json",
+      "json_valid": true,
+      "array_length": 1,
+      "accepted_entries_after": 1,
+      "transition": "accepted_one_entry"
+    }
+  ]
+}
