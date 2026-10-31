@@ -199,291 +199,327 @@ The test is about **semantic independence**, not literal word overlap. Repeating
 
 ### 4.3 Sixteen numbered few-shot demonstrations with classification
 
-The sixteen positive examples illustrate different tasks and are designed around sixteen non-repeating, undisclosed properties. The **JSON is the example RS**; the **classification and contribution analysis appear outside the JSON** as training annotations. Neither the examples nor their annotations identify the property chosen for any actual comment. An agent must select a fresh undisclosed property for each new real comment. These examples are teaching material, not fixed templates or a finite property menu.
+The examples demonstrate separate contributions in three ordered scratchpads. Each example uses a distinct undisclosed organizing relation. JSON is the example return schema; classifications describe only the independent contributions of adjacent texts. These examples are not templates for a fixed nested schema.
 
 **Few-shot 1**
 
 ```json
 {
-  "scratchpad_1": {"text": "The job record links two historical reports produced on different dates."},
-  "scratchpad_2": {"text": "The reports attach opposite completion statuses to the same transaction identifier."},
-  "scratchpad_3": {"text": "A defensible closure requires the raw transaction receipts; neither report alone establishes completion."}
+  "scratchpad_1": {
+    "text": "The warehouse note says several returned cartons were damp."
+  },
+  "scratchpad_2": {
+    "text": "The intake scan inventories fourteen cartons and associates moisture photographs with six distinct package IDs."
+  },
+  "scratchpad_3": {
+    "text": "Scale records show mass increases of 0.42, 0.38, 0.51, 0.36, 0.44, and 0.47 kilograms for those six IDs; the disposition form isolates those units from remaining stock."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (inventory of sources versus a newly identified contradiction); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (contradiction versus the evidentiary requirement for closure); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: source inventory, observed conflict, verification criterion.
+- `1 → 2`: **Independent contribution** — The scan adds identified packages and photographs rather than restating the note.
+- `2 → 3`: **Independent contribution** — The final record adds measured changes and an inventory disposition absent from the scan.
+- **Sequence:** A note, a scan, and measured disposition records supply separate information.
 
 **Few-shot 2**
 
 ```json
 {
-  "scratchpad_1": {"text": "The file fetch returned HTTP 404 for the specified source path."},
-  "scratchpad_2": {"text": "Repository metadata names a default branch different from the branch presumed by the original lookup."},
-  "scratchpad_3": {"text": "Run a branch-qualified fetch and verify the returned blob SHA before resuming edits."}
+  "scratchpad_1": {
+    "text": "A visitor asks the museum guide why a gallery label has been removed."
+  },
+  "scratchpad_2": {
+    "text": "Three neighborhood associations request a public account of the label's removal before the exhibition reopens."
+  },
+  "scratchpad_3": {
+    "text": "An international consortium of lenders suspends artifact loans until the museum publishes a reviewed provenance statement."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (error observation versus a separate metadata discovery); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (branch observation versus a concrete validation action); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: error, probable cause, proposed test.
+- `1 → 2`: **Independent contribution** — Organized requests from named groups differ from the visitor's inquiry.
+- `2 → 3`: **Independent contribution** — The lenders' suspension is an additional decision, not another account of the associations' request.
+- **Sequence:** Each entry documents a different participant and event.
 
 **Few-shot 3**
 
 ```json
 {
-  "scratchpad_1": {"text": "The current user request proposes renaming a module into a sibling directory."},
-  "scratchpad_2": {"text": "The active workspace rule limits file mutations to the designated project tree."},
-  "scratchpad_3": {"text": "Because the destination crosses that boundary, seek authorization for the specific path rather than treating the rename request as an implicit scope change."}
+  "scratchpad_1": {
+    "text": "The librarian wonders whether an erased margin note belonged to an early reader."
+  },
+  "scratchpad_2": {
+    "text": "A watermark on the same folio matches paper documented in the monastery's eighteenth-century acquisitions."
+  },
+  "scratchpad_3": {
+    "text": "The binding ledger identifies the folio by accession number and names the monastery as its source."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (requested mutation versus an independently relevant constraint); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (constraint versus resolution of the authorization conflict); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: request, boundary, decision.
+- `1 → 2`: **Independent contribution** — The watermark is new material evidence rather than a restatement of the librarian's question.
+- `2 → 3`: **Independent contribution** — The accession ledger provides a distinct documentary finding, not a repetition of the watermark.
+- **Sequence:** The question, artifact observation, and accession record remain separate contributions.
 
 **Few-shot 4**
 
 ```json
 {
-  "scratchpad_1": {"text": "The existing queue distributes each job's progress across multiple issue comments."},
-  "scratchpad_2": {"text": "A consolidated job comment could hold current state while linking events by permanent comment ID."},
-  "scratchpad_3": {"text": "A more general event-ledger design could reconstruct queue state from append-only records, making revision history independently auditable."}
+  "scratchpad_1": {
+    "text": "The reviewer notes that the itinerary leaves little time for lunch."
+  },
+  "scratchpad_2": {
+    "text": "Volunteers object that the revised roster removes their only scheduled break."
+  },
+  "scratchpad_3": {
+    "text": "The shift coordinator declines to sign a schedule that fails to provide the drivers' required rest periods."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (current architecture versus a new consolidation design); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (current-state layout versus an event-derived alternative with different invariants); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: diagnosis, local alternative, broader model.
+- `1 → 2`: **Independent contribution** — The volunteers raise a separate concern about their own roster.
+- `2 → 3`: **Independent contribution** — The coordinator makes a separate approval decision about driver rest periods.
+- **Sequence:** The three texts record distinct observations and actions.
 
 **Few-shot 5**
 
 ```json
 {
-  "scratchpad_1": {"text": "Two trial executions produced different output bytes for the same nominal input."},
-  "scratchpad_2": {"text": "Capture five fresh runs with controlled inputs and archive each output hash alongside its receipt."},
-  "scratchpad_3": {"text": "Use the controlled hash series to separate input drift, nondeterministic scheduling, and unstable serialization before attributing the discrepancy to the runner."}
+  "scratchpad_1": {
+    "text": "Restorers uncovered a painted doorway behind the plaster."
+  },
+  "scratchpad_2": {
+    "text": "A red fox winds across the lintel, its painted tail vanishing beneath the surviving doorframe."
+  },
+  "scratchpad_3": {
+    "text": "Above the doorway, flakes of midnight-blue pigment cling to the vault like pieces of a broken sky, while a few gold stars remain stranded between the cracks."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (initial observation versus experiment design); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (data-collection procedure versus causal discrimination); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: anomaly, measurement, analytic inference plan.
+- `1 → 2`: **Independent contribution** — The lintel painting is a new observation beyond discovery of the doorway.
+- `2 → 3`: **Independent contribution** — The vault's surviving pigment and stars are different features from the fox on the lintel.
+- **Sequence:** Each text documents a distinct discovery at the restoration site.
 
 **Few-shot 6**
 
 ```json
 {
-  "scratchpad_1": {"text": "A machine receipt confirms that a command was accepted by an execution surface."},
-  "scratchpad_2": {"text": "A successful command response does not establish that the user's intended external state was produced."},
-  "scratchpad_3": {"text": "A trustworthy system should distinguish authorization, reported execution, and independently observed consequences rather than collapsing them into a single declaration of success."}
+  "scratchpad_1": {
+    "text": "The garden pump is due for its monthly inspection."
+  },
+  "scratchpad_2": {
+    "text": "The groundskeeper schedules replacement of a worn shaft seal before the weekend storm."
+  },
+  "scratchpad_3": {
+    "text": "Water has reached the energized control cabinet; isolate its supply and clear the pump room immediately."
+  }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (what a receipt attests versus the limit of that attestation); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness. Three different contributions: receipt meaning, inference limitation, governance principle.
+- `1 → 2`: **Independent contribution** — The planned component replacement is separate from a routine inspection date.
+- `2 → 3`: **Independent contribution** — The electrical incident and response are new developments beyond the seal replacement.
+- **Sequence:** The texts document different maintenance and response events.
 
 **Few-shot 7**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "Meeting notes place the original idea in the first week of October."
+    "text": "If the sign-in sheet is missing, request a duplicate from the front desk."
   },
   "scratchpad_2": {
-    "text": "The implementation was merged into main on October 12 at 16:04 UTC."
+    "text": "If an unsigned sheet conflicts with a valid badge scan, compare the two timestamps before determining whether entry was authorized."
   },
   "scratchpad_3": {
-    "text": "An independent release receipt establishes production deployment at 16:12 UTC, after the merge."
+    "text": "If badge scans disagree while the door controller was offline and the escort's approval expired during the visit, retain all records and refer the conflicting evidence for review."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (originating discussion versus recorded implementation); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (recorded implementation versus production transition); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: originating discussion, recorded implementation, and production transition.
+- `1 → 2`: **Independent contribution** — The second procedure handles conflicting records instead of a missing sheet.
+- `2 → 3`: **Independent contribution** — The third procedure addresses a different multi-record authorization case.
+- **Sequence:** Each case has a distinct condition and required handling.
 
 **Few-shot 8**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "A sample table contains a customer's first name."
+    "text": "The committee agenda includes a dispute over whether to fund the public mural."
   },
   "scratchpad_2": {
-    "text": "An export exposes home addresses to participants who do not require them."
+    "text": "I prepared the mural estimate, but I omitted the lift rental from the figures circulated to the committee."
   },
   "scratchpad_3": {
-    "text": "A publicly shared artifact contains an active credential that should be revoked before further distribution."
+    "text": "I authorized payment to a studio owned by my sibling; I must disclose that interest and withdraw from reconsidering the award."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (ordinary sample data versus unnecessary disclosure); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (unnecessary disclosure versus separate access risk); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: ordinary sample data, unnecessary disclosure, and separate access risk.
+- `1 → 2`: **Independent contribution** — The incomplete estimate is a specific disclosure absent from the agenda.
+- `2 → 3`: **Independent contribution** — The payment authorization and withdrawal concern a separate transaction and decision.
+- **Sequence:** Agenda, estimate, and payment disclosure make separate contributions.
 
 **Few-shot 9**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "Search results contain an excerpt mentioning the command."
+    "text": "The office printer deposited the forms in the wrong tray."
   },
   "scratchpad_2": {
-    "text": "The repository file on its default branch has different argument names."
+    "text": "Someone attached a tiny paper passport to the jammed page and stamped it 'frequent traveler.'"
   },
   "scratchpad_3": {
-    "text": "A reliable comparison requires retrieving the exact commit recorded in the execution receipt."
+    "text": "By noon the team had built a miniature customs counter beside the printer, complete with a rubber-stamp border inspection for every escaped sheet."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (indexed excerpt versus current source discrepancy); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (current source discrepancy versus revision-grounded test); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: indexed excerpt, current source discrepancy, and revision-grounded test.
+- `1 → 2`: **Independent contribution** — The passport is a response to the printer mishap, not another description of the malfunction.
+- `2 → 3`: **Independent contribution** — The team's newly built counter and practice are different from the decoration of one sheet.
+- **Sequence:** A device event and two separate staff activities are recorded.
 
 **Few-shot 10**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "The user asks to tidy the job queue."
+    "text": "The trail marker stands beside the path near the visitor center."
   },
   "scratchpad_2": {
-    "text": "The queue contains both unfinished tasks and historical audit records."
+    "text": "A survey shows a collapsed culvert beneath the northern bend of that path."
   },
   "scratchpad_3": {
-    "text": "Deletion should not proceed until the user identifies which records are expendable."
+    "text": "Ground scans locate an abandoned drainage gallery twelve meters below the ridge, outside the visible washout."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (general request versus important record distinction); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (important record distinction versus scope decision); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: general request, important record distinction, and scope decision.
+- `1 → 2`: **Independent contribution** — The surveyed culvert is distinct from the visible trail marker.
+- `2 → 3`: **Independent contribution** — The scan finds another structure in a different location from the collapsed culvert.
+- **Sequence:** Three identifiable site features are separately documented.
 
 **Few-shot 11**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "A user requested clearer task-status presentation."
+    "text": "The accessibility group recommends a larger confirmation button on the ticket kiosk."
   },
   "scratchpad_2": {
-    "text": "A mobile screen reader skips a collapsed part of the current status display."
+    "text": "The interface designer removes an animated advertising panel to make room for independently navigable audio controls."
   },
   "scratchpad_3": {
-    "text": "Verify the proposed change with the same assistive interaction before claiming that it resolves the barrier."
+    "text": "The venue cancels a sponsorship overlay because it conceals emergency-exit guidance in the kiosk's accessible display."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (presentation request versus reported usability defect); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (reported usability defect versus user-impact verification); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: presentation request, reported usability defect, and user-impact verification.
+- `1 → 2`: **Independent contribution** — The audio-control layout change is different from the group's button recommendation.
+- `2 → 3`: **Independent contribution** — The sponsorship decision concerns a separate overlay and specific guidance.
+- **Sequence:** The texts describe different requests and design decisions.
 
 **Few-shot 12**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "An API callback exceeded its time limit."
+    "text": "The recording monitor captures a faint click before the interview begins."
   },
   "scratchpad_2": {
-    "text": "Independent monitoring shows the database was reachable during the incident."
+    "text": "A sustained metallic rattle obscures the guest's final answer."
   },
   "scratchpad_3": {
-    "text": "Correlate request traces to distinguish connection congestion from downstream processing delay."
+    "text": "A feedback burst saturates the microphone preamp and forces the engineer to stop the session."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (observed symptom versus independent observation); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (independent observation versus causal discrimination); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: observed symptom, independent observation, and causal discrimination.
+- `1 → 2`: **Independent contribution** — The rattle affecting the answer is a separate occurrence from the introductory click.
+- `2 → 3`: **Independent contribution** — The later burst and stopped session are additional events not contained in the rattle observation.
+- **Sequence:** Each observation refers to a distinct recording event.
 
 **Few-shot 13**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "A regression run is blocked on a missing fixture."
+    "text": "The rehearsal begins eleven minutes after its scheduled start."
   },
   "scratchpad_2": {
-    "text": "Documentation review can proceed without that fixture."
+    "text": "A damaged lighting rig prevents the theater from opening for the remainder of the festival."
   },
   "scratchpad_3": {
-    "text": "Delegate the independent review while rebuilding the fixture, then reconcile both work products."
+    "text": "A conservation order closes the historic auditorium indefinitely until extensive structural work can be certified."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (blocked dependency versus unblocked activity); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (unblocked activity versus coordinated plan); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: blocked dependency, unblocked activity, and coordinated plan.
+- `1 → 2`: **Independent contribution** — The damaged lighting rig introduces a venue closure not expressed by the late rehearsal.
+- `2 → 3`: **Independent contribution** — The conservation order concerns a separate continuing restriction rather than the festival's lighting problem.
+- **Sequence:** Each text identifies a different scheduling or facility consequence.
 
 **Few-shot 14**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "A quoted policy statement differs from its published version."
+    "text": "The archived film shows the town square during the annual lantern festival."
   },
   "scratchpad_2": {
-    "text": "The authoritative version narrows the set of permitted approving roles."
+    "text": "Near the camera, a volunteer counts the remaining candles while the procession passes behind her."
   },
   "scratchpad_3": {
-    "text": "Any obligation inferred from the quotation must be reassessed using the exact governing text."
+    "text": "In the volunteer's account, she holds the last candle inside her coat so its flame will guide her lost father back through the crowd."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (quotation discrepancy versus material source distinction); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (material source distinction versus interpretive consequence); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: quotation discrepancy, material source distinction, and interpretive consequence.
+- `1 → 2`: **Independent contribution** — The volunteer's observed activity is distinct from the film's general subject.
+- `2 → 3`: **Independent contribution** — Her account gives a separate action and purpose that the visible candle count does not establish.
+- **Sequence:** The film description, observed activity, and participant's account contain different information.
 
 **Few-shot 15**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "A publish attempt ended without a confirmation message."
+    "text": "The parser rejects an empty nonce."
   },
   "scratchpad_2": {
-    "text": "The queue contains a result with the same nonce but another attempt identifier."
+    "text": "For a batch B, a valid submission requires every member to have a nonce and every referenced destination to belong to the accepted workspace set."
   },
   "scratchpad_3": {
-    "text": "Compare persisted artifact IDs before retrying to prevent duplicate publication."
+    "text": "For every pair of accepted receipts r₁ and r₂ sharing a nonce, enforce r₁.artifact_id = r₂.artifact_id unless a versioned retry explicitly records a supersession relation."
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (missing acknowledgment versus deduplication evidence); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (deduplication evidence versus safe recovery procedure); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: missing acknowledgment, deduplication evidence, and safe recovery procedure.
+- `1 → 2`: **Independent contribution** — The batch rule introduces destination membership and whole-submission validation beyond an empty input.
+- `2 → 3`: **Independent contribution** — The receipt rule introduces a separate identity condition for repeated submissions.
+- **Sequence:** Input validation, batch acceptance, and receipt consistency are different invariants.
 
 **Few-shot 16**
 
 ```json
 {
   "scratchpad_1": {
-    "text": "Work items are grouped by their hosting GitHub repository."
+    "text": "The mediator asks both participants to suggest a meeting date."
   },
   "scratchpad_2": {
-    "text": "A cross-repository graph could link task dependencies without copying entire comments."
+    "text": "One participant admits privately that she stopped answering messages because she feared another argument."
   },
   "scratchpad_3": {
-    "text": "A portable capability record could instead attach permissions and evidence to each link, independent of repository boundaries."
+    "text": "In the letter she finally sends, she writes: 'I kept your unanswered messages; I could not bear to tell you that I missed you and resented you at once.'"
   }
 }
 ```
 
-- `1 → 2`: **Independent contribution** (current organization versus graph alternative); **not a paraphrase**, **not appended text**.
-- `2 → 3`: **Independent contribution** (graph alternative versus capability-oriented abstraction); **not a paraphrase**, **not appended text**.
-- **Sequence:** valid for distinctness; three different contributions: current organization, graph alternative, and capability-oriented abstraction.
+- `1 → 2`: **Independent contribution** — The participant's account of missing replies introduces new information absent from scheduling.
+- `2 → 3`: **Independent contribution** — The actual letter communicates a different act and statement from the prior private admission.
+- **Sequence:** The request, private account, and written communication each add distinct material.
 
 ### 4.4 Few-shot coverage guidance
 
