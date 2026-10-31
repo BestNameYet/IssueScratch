@@ -1,0 +1,688 @@
+{
+  "document_type": "issuescratch.opcoded-document",
+  "format_version": "1.0.0",
+  "source": {
+    "path": "experiments/general-purpose-job-prompts.v1.json",
+    "format": "json",
+    "sha256": "aacc1541d2febffb3c89767e08694f2065618dde03bac98b66c3c82e0d9e0d1a",
+    "byte_length": 6427,
+    "bytes_base64": "ewogICJkb2N1bWVudF90eXBlIjogImlzc3Vlc2NyYXRjaC5nZW5lcmFsLXB1cnBvc2UtcHJvbXB0LWJhdGNoIiwKICAiZm9ybWF0X3ZlcnNpb24iOiAiMS4wLjAiLAogICJyZXBvc2l0b3J5IjogIkJlc3ROYW1lWWV0L0lzc3VlU2NyYXRjaCIsCiAgInRhcmdldF9pc3N1ZSI6IDEsCiAgImludGVudCI6ICJBIGZpeGVkIHNldCBvZiBkaXZlcnNlIG9yZGluYXJ5IGVuZC11c2VyIHJlcXVlc3RzIGZvciBsYXRlciBpbmRlcGVuZGVudCBJc3N1ZVNjcmF0Y2ggam9iczsgY29tcGFyZSBzZXBhcmF0ZWx5IHByb2R1Y2VkIHNjcmF0Y2hwYWQgYXJyYXlzIHdpdGhvdXQgcHJpbWluZyB0aGUgYWdlbnRzIHdpdGggZGVzaXJlZCBsYXRlbnQgcHJvcGVydGllcy4iLAogICJzdWJtaXNzaW9uX2NvbnRyYWN0IjogewogICAgInBlcl9qb2JfaW5wdXQiOiAicHJvbXB0IiwKICAgICJpbnN0cnVjdGlvbl9yZWZlcmVuY2UiOiAiQUdFTlRTLm1kIiwKICAgICJwcm9tcHRfY29udGFtaW5hdGlvbiI6ICJEbyBub3QgYXBwZW5kIGNvbW1lbnRhcnkgYWJvdXQgc2NyYXRjaHBhZHMsIHRoZWlyIGluZGV4IHBvc2l0aW9ucywgcG90ZW50aWFsIGxhdGVudCBwcm9wZXJ0aWVzLCBvciB0aGUgZXhwZXJpbWVudCB0byB0aGUgcHJvbXB0IHNlbnQgYXMgdGhlIHVzZXIgdGFzay4iLAogICAgImNyZWF0ZV9qb2Jfc2VwYXJhdGVseSI6IHRydWUsCiAgICAiZXhpc3Rpbmdfam9iX2NvdW50IjogMCwKICAgICJpbmRlcGVuZGVudF9ydW5zIjogdHJ1ZSwKICAgICJwaGFzZSI6ICJwcm9tcHQtbGlzdC1vbmx5IgogIH0sCiAgImpvYnMiOiBbCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDAxIiwKICAgICAgInByb21wdCI6ICJUZWxsIGFuIG9yaWdpbmFsIHNob3J0IHN0b3J5IGFib3V0IGEgc3RyYW5nZXIgd2hvIHJldHVybnMgYSBsb3N0IGtleSBhbmQgZGlzY292ZXJzIHRoYXQgaXQgb3BlbnMgc29tZXRoaW5nIHVuZXhwZWN0ZWQuIiwKICAgICAgImpvYl9zdGF0ZSI6ICJub3Rfc3VibWl0dGVkIiwKICAgICAgImlzc3VlXzFfam9iX2NvbW1lbnRfaWQiOiBudWxsLAogICAgICAicmV0dXJuZWRfc2NyYXRjaHBhZF9jb21tZW50X2lkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInByb21wdF9pZCI6ICJQMDIiLAogICAgICAicHJvbXB0IjogIkNyaXRpcXVlIFBsYXRvJ3MgVGhlb3J5IG9mIEZvcm1zLiBFeHBsYWluIGl0cyBjZW50cmFsIGFyZ3VtZW50LCBpZGVudGlmeSBpdHMgc3Ryb25nZXN0IGluc2lnaHQsIGFuZCBnaXZlIGEgcmVhc29uZWQgb2JqZWN0aW9uLiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDAzIiwKICAgICAgInByb21wdCI6ICJXcml0ZSBhbiBvcmlnaW5hbCBTaGFrZXNwZWFyZWFuIHNvbm5ldCBhYm91dCB0aGUgbW9tZW50IGp1c3QgYmVmb3JlIHN1bnJpc2UuIiwKICAgICAgImpvYl9zdGF0ZSI6ICJub3Rfc3VibWl0dGVkIiwKICAgICAgImlzc3VlXzFfam9iX2NvbW1lbnRfaWQiOiBudWxsLAogICAgICAicmV0dXJuZWRfc2NyYXRjaHBhZF9jb21tZW50X2lkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInByb21wdF9pZCI6ICJQMDQiLAogICAgICAicHJvbXB0IjogIldyaXRlIGFuIG9yaWdpbmFsIHNvbmcgYWJvdXQgc29tZW9uZSBsZWF2aW5nIHRoZWlyIGhvbWV0b3duIGFuZCByZWNvbnNpZGVyaW5nIHRoZSBtZWFuaW5nIG9mIGhvbWUuIEluY2x1ZGUgdmVyc2VzLCBhIGNob3J1cywgYW5kIGEgYnJpZGdlLiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDA1IiwKICAgICAgInByb21wdCI6ICJDcmVhdGUgYSBwcm9ncmFtIHRoYXQgZGV0ZXJtaW5lcyB0aGUgbnRoIGRpZ2l0IG9mIHBpIGFmdGVyIHRoZSBkZWNpbWFsIHBvaW50IGZvciBhbnkgcG9zaXRpdmUgaW50ZWdlciBuLiBFeHBsYWluIHRoZSBhbGdvcml0aG0gYW5kIHNob3cgaG93IHRvIHRlc3QgaXQuIiwKICAgICAgImpvYl9zdGF0ZSI6ICJub3Rfc3VibWl0dGVkIiwKICAgICAgImlzc3VlXzFfam9iX2NvbW1lbnRfaWQiOiBudWxsLAogICAgICAicmV0dXJuZWRfc2NyYXRjaHBhZF9jb21tZW50X2lkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInByb21wdF9pZCI6ICJQMDYiLAogICAgICAicHJvbXB0IjogIkV4cGxhaW4gaG93IHRodW5kZXJzdG9ybXMgZm9ybSB0byBhIGN1cmlvdXMgMTIteWVhci1vbGQsIHVzaW5nIG9uZSB1c2VmdWwgYW5hbG9neSB3aXRob3V0IHNhY3JpZmljaW5nIHNjaWVudGlmaWMgYWNjdXJhY3kuIiwKICAgICAgImpvYl9zdGF0ZSI6ICJub3Rfc3VibWl0dGVkIiwKICAgICAgImlzc3VlXzFfam9iX2NvbW1lbnRfaWQiOiBudWxsLAogICAgICAicmV0dXJuZWRfc2NyYXRjaHBhZF9jb21tZW50X2lkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInByb21wdF9pZCI6ICJQMDciLAogICAgICAicHJvbXB0IjogIlByb3ZlIHRoYXQgdGhlcmUgYXJlIGluZmluaXRlbHkgbWFueSBwcmltZSBudW1iZXJzLCBhbmQgZXhwbGFpbiB0aGUgZXNzZW50aWFsIGxvZ2ljYWwgbW92ZSBpbiB0aGUgcHJvb2YuIiwKICAgICAgImpvYl9zdGF0ZSI6ICJub3Rfc3VibWl0dGVkIiwKICAgICAgImlzc3VlXzFfam9iX2NvbW1lbnRfaWQiOiBudWxsLAogICAgICAicmV0dXJuZWRfc2NyYXRjaHBhZF9jb21tZW50X2lkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInByb21wdF9pZCI6ICJQMDgiLAogICAgICAicHJvbXB0IjogIkZpbmQgYW5kIGZpeCB0aGUgYnVnIGluIHRoaXMgUHl0aG9uIGZ1bmN0aW9uLCB3aGljaCBpcyBzdXBwb3NlZCB0byByZXR1cm4gdGhlIGxhcmdlc3QgdmFsdWUgaW4gYSBub25lbXB0eSBsaXN0OlxuXG5kZWYgbGFyZ2VzdCh2YWx1ZXMpOlxuICAgIGJlc3QgPSAwXG4gICAgZm9yIHZhbHVlIGluIHZhbHVlczpcbiAgICAgICAgaWYgdmFsdWUgPiBiZXN0OlxuICAgICAgICAgICAgYmVzdCA9IHZhbHVlXG4gICAgcmV0dXJuIGJlc3RcblxuRXhwbGFpbiB0aGUgZmFpbHVyZSBhbmQgcHJvdmlkZSB0ZXN0cy4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9LAogICAgewogICAgICAicHJvbXB0X2lkIjogIlAwOSIsCiAgICAgICJwcm9tcHQiOiAiRGVzaWduIGEgc2ltcGxlIHJlbGF0aW9uYWwgZGF0YWJhc2UgZm9yIGEgcHVibGljIGxpYnJhcnkgdGhhdCB0cmFja3MgYm9va3MsIHBoeXNpY2FsIGNvcGllcywgcGF0cm9ucywgYW5kIGxvYW5zLiBEZXNjcmliZSB0aGUgdGFibGVzIGFuZCB0aGVpciByZWxhdGlvbnNoaXBzLiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDEwIiwKICAgICAgInByb21wdCI6ICJQbGFuIGEgdHdvLWRheSBuZWlnaGJvcmhvb2QgYXJ0cyBmZXN0aXZhbCB3aXRoIGEgc21hbGwgdm9sdW50ZWVyIHRlYW0sIGxpbWl0ZWQgZXF1aXBtZW50LCBhbmQgYm90aCBpbmRvb3IgYW5kIG91dGRvb3IgYWN0aXZpdGllcy4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9LAogICAgewogICAgICAicHJvbXB0X2lkIjogIlAxMSIsCiAgICAgICJwcm9tcHQiOiAiQW5hbHl6ZSB0aGUgZm9sbG93aW5nIGZpY3Rpb25hbCBzaG9wJ3Mgd2Vla2x5IHNhbGVzIGZpZ3VyZXMsIGlkZW50aWZ5IHRoZSBiZXN0IGFuZCB3b3JzdCBkYXlzLCBhbmQgZXhwbGFpbiB3aGF0IGNvbmNsdXNpb25zIGNhbm5vdCBiZSBkcmF3biBmcm9tIHRoZSBkYXRhIGFsb25lOiBNb25kYXkgMTgsIFR1ZXNkYXkgMjUsIFdlZG5lc2RheSAyMSwgVGh1cnNkYXkgMzAsIEZyaWRheSA0NCwgU2F0dXJkYXkgNTcsIFN1bmRheSAzMi4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9LAogICAgewogICAgICAicHJvbXB0X2lkIjogIlAxMiIsCiAgICAgICJwcm9tcHQiOiAiQ29tcGFyZSB0aGUgdHJhZGVvZmZzIG9mIHVzaW5nIGEgc3ByZWFkc2hlZXQgdmVyc3VzIGEgcmVsYXRpb25hbCBkYXRhYmFzZSB0byB0cmFjayBpbnZlbnRvcnkgZm9yIGEgZ3Jvd2luZyBzbWFsbCBidXNpbmVzcy4gUmVjb21tZW5kIHdoZW4gdG8gc3dpdGNoLiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDEzIiwKICAgICAgInByb21wdCI6ICJDcmVhdGUgYSA0NS1taW51dGUgaW50cm9kdWN0b3J5IGxlc3NvbiBvbiBwaG90b3N5bnRoZXNpcyBmb3IgbWlkZGxlLXNjaG9vbCBzdHVkZW50cywgaW5jbHVkaW5nIGEgZGVtb25zdHJhdGlvbiBhbmQgYSBtZXRob2Qgb2YgY2hlY2tpbmcgdW5kZXJzdGFuZGluZy4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9LAogICAgewogICAgICAicHJvbXB0X2lkIjogIlAxNCIsCiAgICAgICJwcm9tcHQiOiAiVHJhbnNsYXRlIHRoaXMgU3BhbmlzaCBwYXNzYWdlIGludG8gbmF0dXJhbCBFbmdsaXNoIHdoaWxlIHByZXNlcnZpbmcgaXRzIHRvbmU6IFwiQ3VhbmRvIHZvbHbDrSBhbCBwdWVibG8sIGxhIHBsYXphIGVzdGFiYSB2YWPDrWEuIFNpbiBlbWJhcmdvLCB0b2RhdsOtYSBwb2TDrWEgZXNjdWNoYXIgbGFzIHZvY2VzIGRlIHF1aWVuZXMgaGFiw61hbiBqdWdhZG8gYWxsw60gY29ubWlnby5cIiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDE1IiwKICAgICAgInByb21wdCI6ICJEcmFmdCBhIHBvbGl0ZSBidXQgZmlybSBlbWFpbCByZXF1ZXN0aW5nIHRoYXQgYSBidWlsZGluZyBtYW5hZ2VyIHJlcGFpciBhIGxlYWtpbmcga2l0Y2hlbiBmYXVjZXQgYW5kIHByb3ZpZGUgYSBkYXRlIGZvciB0aGUgcmVwYWlyLiIsCiAgICAgICJqb2Jfc3RhdGUiOiAibm90X3N1Ym1pdHRlZCIsCiAgICAgICJpc3N1ZV8xX2pvYl9jb21tZW50X2lkIjogbnVsbCwKICAgICAgInJldHVybmVkX3NjcmF0Y2hwYWRfY29tbWVudF9pZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwcm9tcHRfaWQiOiAiUDE2IiwKICAgICAgInByb21wdCI6ICJFdmFsdWF0ZSB0aGUgY2xhaW0gdGhhdCBhIGZvdXItZGF5IHdvcmt3ZWVrIGltcHJvdmVzIHByb2R1Y3Rpdml0eS4gUHJlc2VudCBwbGF1c2libGUgbWVjaGFuaXNtcyBmb3IgYW5kIGFnYWluc3QgaXQsIGFuZCBwcm9wb3NlIGEgc3R1ZHkgdGhhdCBjb3VsZCB0ZXN0IHRoZSBjbGFpbS4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9LAogICAgewogICAgICAicHJvbXB0X2lkIjogIlAxNyIsCiAgICAgICJwcm9tcHQiOiAiSW52ZW50IGZpdmUgbmFtZXMgZm9yIGEgZmljdGlvbmFsIG5laWdoYm9yaG9vZCBiYWtlcnksIHRoZW4gY2hvb3NlIG9uZSBhbmQgZGV2ZWxvcCBhIHNob3J0IGJyYW5kIGRlc2NyaXB0aW9uIGFuZCB0aHJlZSBzYW1wbGUgbWVudSBpdGVtcy4iLAogICAgICAiam9iX3N0YXRlIjogIm5vdF9zdWJtaXR0ZWQiLAogICAgICAiaXNzdWVfMV9qb2JfY29tbWVudF9pZCI6IG51bGwsCiAgICAgICJyZXR1cm5lZF9zY3JhdGNocGFkX2NvbW1lbnRfaWQiOiBudWxsCiAgICB9CiAgXQp9Cg==",
+    "encoding": "utf-8"
+  },
+  "conversion": {
+    "mode": "deterministic_nonsemantic",
+    "items_pointer": "/jobs",
+    "id_field": "prompt_id",
+    "text_field": "prompt",
+    "source_record_count": 17,
+    "opcode_registry_version": "1.0.0",
+    "opcode_namespace": "OP.01",
+    "mapping_profile": "experiments/general-purpose-job-prompts.v1.json",
+    "source_bytes_authoritative": true,
+    "interpretation_notice": "The adapter preserves the source exactly. Mapping opcodes represent declared intended operations; they are not execution results."
+  },
+  "records": [
+    {
+      "record_id": "P01",
+      "source_pointer": "/jobs/0",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P01",
+        "prompt": "Tell an original short story about a stranger who returns a lost key and discovers that it opens something unexpected.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Tell an original short story about a stranger who returns a lost key and discovers that it opens something unexpected.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/0"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P02",
+      "source_pointer": "/jobs/1",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P02",
+        "prompt": "Critique Plato's Theory of Forms. Explain its central argument, identify its strongest insight, and give a reasoned objection.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Critique Plato's Theory of Forms. Explain its central argument, identify its strongest insight, and give a reasoned objection.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/1"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.004",
+          "operation_name": "ANALYZE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.005",
+          "operation_name": "EVALUATE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P03",
+      "source_pointer": "/jobs/2",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P03",
+        "prompt": "Write an original Shakespearean sonnet about the moment just before sunrise.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Write an original Shakespearean sonnet about the moment just before sunrise.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/2"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P04",
+      "source_pointer": "/jobs/3",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P04",
+        "prompt": "Write an original song about someone leaving their hometown and reconsidering the meaning of home. Include verses, a chorus, and a bridge.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Write an original song about someone leaving their hometown and reconsidering the meaning of home. Include verses, a chorus, and a bridge.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/3"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P05",
+      "source_pointer": "/jobs/4",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P05",
+        "prompt": "Create a program that determines the nth digit of pi after the decimal point for any positive integer n. Explain the algorithm and show how to test it.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Create a program that determines the nth digit of pi after the decimal point for any positive integer n. Explain the algorithm and show how to test it.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/4"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.008",
+          "operation_name": "DESIGN",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.007",
+          "operation_name": "COMPUTE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.014",
+          "operation_name": "VALIDATE",
+          "input_ref": "step:2"
+        },
+        {
+          "step": 4,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:3"
+        }
+      ]
+    },
+    {
+      "record_id": "P06",
+      "source_pointer": "/jobs/5",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P06",
+        "prompt": "Explain how thunderstorms form to a curious 12-year-old, using one useful analogy without sacrificing scientific accuracy.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Explain how thunderstorms form to a curious 12-year-old, using one useful analogy without sacrificing scientific accuracy.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/5"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.004",
+          "operation_name": "ANALYZE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P07",
+      "source_pointer": "/jobs/6",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P07",
+        "prompt": "Prove that there are infinitely many prime numbers, and explain the essential logical move in the proof.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Prove that there are infinitely many prime numbers, and explain the essential logical move in the proof.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/6"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.007",
+          "operation_name": "COMPUTE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.014",
+          "operation_name": "VALIDATE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P08",
+      "source_pointer": "/jobs/7",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P08",
+        "prompt": "Find and fix the bug in this Python function, which is supposed to return the largest value in a nonempty list:\n\ndef largest(values):\n    best = 0\n    for value in values:\n        if value > best:\n            best = value\n    return best\n\nExplain the failure and provide tests.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Find and fix the bug in this Python function, which is supposed to return the largest value in a nonempty list:\n\ndef largest(values):\n    best = 0\n    for value in values:\n        if value > best:\n            best = value\n    return best\n\nExplain the failure and provide tests.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/7"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.004",
+          "operation_name": "ANALYZE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.003",
+          "operation_name": "TRANSFORM",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.014",
+          "operation_name": "VALIDATE",
+          "input_ref": "step:2"
+        },
+        {
+          "step": 4,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:3"
+        }
+      ]
+    },
+    {
+      "record_id": "P09",
+      "source_pointer": "/jobs/8",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P09",
+        "prompt": "Design a simple relational database for a public library that tracks books, physical copies, patrons, and loans. Describe the tables and their relationships.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Design a simple relational database for a public library that tracks books, physical copies, patrons, and loans. Describe the tables and their relationships.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/8"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.008",
+          "operation_name": "DESIGN",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P10",
+      "source_pointer": "/jobs/9",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P10",
+        "prompt": "Plan a two-day neighborhood arts festival with a small volunteer team, limited equipment, and both indoor and outdoor activities.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Plan a two-day neighborhood arts festival with a small volunteer team, limited equipment, and both indoor and outdoor activities.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/9"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.009",
+          "operation_name": "PLAN",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P11",
+      "source_pointer": "/jobs/10",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P11",
+        "prompt": "Analyze the following fictional shop's weekly sales figures, identify the best and worst days, and explain what conclusions cannot be drawn from the data alone: Monday 18, Tuesday 25, Wednesday 21, Thursday 30, Friday 44, Saturday 57, Sunday 32.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Analyze the following fictional shop's weekly sales figures, identify the best and worst days, and explain what conclusions cannot be drawn from the data alone: Monday 18, Tuesday 25, Wednesday 21, Thursday 30, Friday 44, Saturday 57, Sunday 32.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/10"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.004",
+          "operation_name": "ANALYZE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.006",
+          "operation_name": "COMPARE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.005",
+          "operation_name": "EVALUATE",
+          "input_ref": "step:2"
+        },
+        {
+          "step": 4,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:3"
+        }
+      ]
+    },
+    {
+      "record_id": "P12",
+      "source_pointer": "/jobs/11",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P12",
+        "prompt": "Compare the tradeoffs of using a spreadsheet versus a relational database to track inventory for a growing small business. Recommend when to switch.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Compare the tradeoffs of using a spreadsheet versus a relational database to track inventory for a growing small business. Recommend when to switch.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/11"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.006",
+          "operation_name": "COMPARE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.005",
+          "operation_name": "EVALUATE",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P13",
+      "source_pointer": "/jobs/12",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P13",
+        "prompt": "Create a 45-minute introductory lesson on photosynthesis for middle-school students, including a demonstration and a method of checking understanding.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Create a 45-minute introductory lesson on photosynthesis for middle-school students, including a demonstration and a method of checking understanding.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/12"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.008",
+          "operation_name": "DESIGN",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.009",
+          "operation_name": "PLAN",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P14",
+      "source_pointer": "/jobs/13",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P14",
+        "prompt": "Translate this Spanish passage into natural English while preserving its tone: \"Cuando volví al pueblo, la plaza estaba vacía. Sin embargo, todavía podía escuchar las voces de quienes habían jugado allí conmigo.\"",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Translate this Spanish passage into natural English while preserving its tone: \"Cuando volví al pueblo, la plaza estaba vacía. Sin embargo, todavía podía escuchar las voces de quienes habían jugado allí conmigo.\"",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/13"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.003",
+          "operation_name": "TRANSFORM",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P15",
+      "source_pointer": "/jobs/14",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P15",
+        "prompt": "Draft a polite but firm email requesting that a building manager repair a leaking kitchen faucet and provide a date for the repair.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Draft a polite but firm email requesting that a building manager repair a leaking kitchen faucet and provide a date for the repair.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/14"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:1"
+        }
+      ]
+    },
+    {
+      "record_id": "P16",
+      "source_pointer": "/jobs/15",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P16",
+        "prompt": "Evaluate the claim that a four-day workweek improves productivity. Present plausible mechanisms for and against it, and propose a study that could test the claim.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Evaluate the claim that a four-day workweek improves productivity. Present plausible mechanisms for and against it, and propose a study that could test the claim.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/15"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.005",
+          "operation_name": "EVALUATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.008",
+          "operation_name": "DESIGN",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:2"
+        }
+      ]
+    },
+    {
+      "record_id": "P17",
+      "source_pointer": "/jobs/16",
+      "source_kind": "json",
+      "original_value": {
+        "prompt_id": "P17",
+        "prompt": "Invent five names for a fictional neighborhood bakery, then choose one and develop a short brand description and three sample menu items.",
+        "job_state": "not_submitted",
+        "issue_1_job_comment_id": null,
+        "returned_scratchpad_comment_id": null
+      },
+      "source_text": "Invent five names for a fictional neighborhood bakery, then choose one and develop a short brand description and three sample menu items.",
+      "mapping_status": "explicit_profile",
+      "steps": [
+        {
+          "step": 0,
+          "operation_opcode": "OP.01.001",
+          "operation_name": "CAPTURE",
+          "input_ref": "/jobs/16"
+        },
+        {
+          "step": 1,
+          "operation_opcode": "OP.01.002",
+          "operation_name": "GENERATE",
+          "input_ref": "step:0"
+        },
+        {
+          "step": 2,
+          "operation_opcode": "OP.01.010",
+          "operation_name": "SELECT",
+          "input_ref": "step:1"
+        },
+        {
+          "step": 3,
+          "operation_opcode": "OP.01.008",
+          "operation_name": "DESIGN",
+          "input_ref": "step:2"
+        },
+        {
+          "step": 4,
+          "operation_opcode": "OP.01.016",
+          "operation_name": "EMIT",
+          "input_ref": "step:3"
+        }
+      ]
+    }
+  ]
+}
