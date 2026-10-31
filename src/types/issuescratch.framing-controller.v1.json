@@ -1,24 +1,23 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "1.1.0",
-  "purpose": "After each accepted new scratchpad entry, use cryptographic random selection from the listed reusable functions to supply the next framing transformation.",
-  "source": "User's four-frame, two-reference, narrative-expansion design with five unrestricted positions.",
+  "version": "1.2.0",
+  "purpose": "Select one random function for each next index in a nineteen-entry array: five three-index reframing exercises plus four unrestricted entries.",
+  "source": "Five recursive framing exercises preserve two references and add narrative expansion; four remaining entries unrestricted.",
   "first_index": 0,
-  "last_tracked_index": 16,
-  "frame_count": 4,
+  "last_tracked_index": 18,
+  "frame_count": 5,
   "slots_per_frame": 3,
   "reference_ids": [
     "R-A",
     "R-B"
   ],
   "free_indices": [
-    12,
-    13,
-    14,
     15,
-    16
+    16,
+    17,
+    18
   ],
-  "layout": "Indices 3*d, 3*d+1 and 3*d+2 respectively anchor/transfer R-A, anchor/transfer R-B, and expand the enclosing narrative for frame d. Indices 12 through 16 remain freely authored.",
+  "layout": "For frames d=0..4, indices 3*d represent reference R-A, 3*d+1 reference R-B, and 3*d+2 narrative expansion; indices 15 through 18 are unrestricted.",
   "selection_method": "For each accepted incremental index, draw one uniformly random pool index with Node.js crypto.randomInt; never derive the choice from comment ID or an agent's judgment. Persist the chosen function as an immutable instruction and in state. Retries recover the stored choice and MUST NOT draw again.",
   "constraints": [
     "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
@@ -26,11 +25,11 @@
     "An enclosing statement about an inner claim must not silently become a direct assertion that the inner claim is true.",
     "Each narrative expansion adds new substantive content rather than merely paraphrasing the preceding frame.",
     "No semantic compliance checker is asserted: the workflow checks structural validity and retains complete diagnostic evidence.",
-    "After index 16, freeze progression and keep JSON validation active.",
+    "After index 18, freeze progression while continuing JSON validation.",
     "At each eligible accepted transition select exactly one OP function uniformly using crypto.randomInt and persist choice, index, pool size and source revision; never regenerate a choice on retries."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
-  "candidate_status": "controller_dispatch_implemented_pending_independent_end_to_end_test",
+  "candidate_status": "19-index revised design, pending integrated execution verification",
   "random_function_pool": [
     "OP.01.002",
     "OP.01.003",
