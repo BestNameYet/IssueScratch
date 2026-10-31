@@ -181,35 +181,147 @@ The following **25 additional expressly permitted activities** are likewise avai
 
 A claim of comment ownership is **not** proof of control or permission; verify the current comment author and relevant authorization before an edit. A noted tool call is **not** proof it succeeded; separately record observable outcomes where material. Cryptic notes and philosophical speculation must be distinguishable from verified findings when that distinction matters. Concise, shareable rationales or shorthand are allowed, but do not expose private internal chain-of-thought, credentials, restricted data, or unsupported claims of access. GitHub comments are not secret storage.
 
-### 4.2 Example of distinct scratchpad contributions
+### 4.2 Non-paraphrase / non-appendage test
 
-The following is **only a format illustration**, not a reusable property, prescribed text, or a standardized intensity scale. It uses unrelated contributions that are meaningfully connected to one job, rather than three reformulations of one claim:
+**This is the most important requirement for examples and actual scratchpad content:** each of the three texts must make an **independent substantive contribution**. Do not pass off grammatical rewriting, synonym substitution, stronger adjectives, merely appended qualifiers, recycled opening text, or a cumulative list as three scratchpads. A shift in intensity alone does not save duplicated content.
 
-```json
+For any candidate sequence, compare the two adjacent transitions (\`scratchpad_1 → scratchpad_2\` and \`scratchpad_2 → scratchpad_3\`) and classify each transition as one of:
+
+- **Paraphrase — reject:** the successor mainly restates the predecessor's meaning in different words, even if its tone or strength changes.
+- **Appended expansion — reject:** the successor repeats or preserves the predecessor's substantive content and adds a clause, fact, detail, or stronger qualifier; its new tail does not make it an independent text.
+- **Independent contribution — accept for distinctness:** the successor has its own central informational content, argument, question, or action, not merely a replay or elongation of the predecessor. Acceptance for distinctness does **not** automatically establish that the three texts increase along one property.
+
+Classify the sequence as **invalid** if either transition is paraphrase or appended expansion. A sequence can be independent yet still fail the separate strict-increase requirement.
+
+**Inspection questions:** Could each text be summarized by a different substantive proposition? Does each add a different kind of observation, evidence, decision, analysis, or inquiry? If the second were removed, would the third still have its own meaningful contribution? Is the later text a reformulated or longer version of the earlier one? Mark failures explicitly rather than rationalizing apparent intensity into distinctness.
+
+The test is about **semantic independence**, not literal word overlap. Repeating an identifier, repository name, or necessary background term does not by itself create a paraphrase or appendage.
+
+### 4.3 Six complete few-shot demonstrations with classification
+
+The six valid examples below illustrate different tasks. The **JSON is the example RS**; the **classification and contribution analysis appear outside the JSON** as training annotations. Neither the examples nor their annotations identify the property chosen for any actual comment. An agent must select a fresh undisclosed property for each new real comment. These examples are teaching material, not fixed templates or a finite property menu.
+
+**Few-shot 1 — Conflicting source reports**
+
+\`\`\`json
 {
-  "scratchpad_1": {
-    "note": "The current job references two earlier reports; their sources have not yet been compared."
-  },
-  "scratchpad_2": {
-    "observation": "The reports give conflicting outcomes under the same job identifier, so both original receipts require inspection."
-  },
-  "scratchpad_3": {
-    "decision_note": "Reject any completion claim based on those reports until the conflicting original receipts are reconciled and independently verified."
-  }
+  "scratchpad_1": {"text": "The job record links two historical reports produced on different dates."},
+  "scratchpad_2": {"text": "The reports attach opposite completion statuses to the same transaction identifier."},
+  "scratchpad_3": {"text": "A defensible closure requires the raw transaction receipts; neither report alone establishes completion."}
 }
-```
+\`\`\`
 
-The agent must still select its **own undisclosed property for each actual comment** and ensure the three texts exhibit strictly increasing intensity of that property. The illustration does not define or reveal the property selected for any real comment. The scratchpad names do not dictate where any of these subjects must appear.
+- \`1 → 2\`: **Independent contribution** (inventory of sources versus a newly identified contradiction); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (contradiction versus the evidentiary requirement for closure); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: source inventory, observed conflict, verification criterion.
 
-### 4.3 Few-shot coverage guidance (examples, not fixed property assignments)
+**Few-shot 2 — Failed repository lookup**
 
-For a small but diverse instructional set, use **approximately nine illustrative property types** and **six complete three-scratchpad few-shot demonstrations**. This is a recommendation, not a fixed validation threshold or a claim that all six demonstrations already exist.
+\`\`\`json
+{
+  "scratchpad_1": {"text": "The file fetch returned HTTP 404 for the specified source path."},
+  "scratchpad_2": {"text": "Repository metadata names a default branch different from the branch presumed by the original lookup."},
+  "scratchpad_3": {"text": "Run a branch-qualified fetch and verify the returned blob SHA before resuming edits."}
+}
+\`\`\`
 
-Suggested independent property examples include **specificity, skepticism, procedural rigor, conceptual abstraction, interpretive boldness, urgency, critical scrutiny, creative divergence, and evidentiary caution**. These illustrate properties that admit degrees of intensity; they do not restrict which properties the agent may select for a new comment.
+- \`1 → 2\`: **Independent contribution** (error observation versus a separate metadata discovery); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (branch observation versus a concrete validation action); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: error, probable cause, proposed test.
 
-The demonstrations should use different contexts—such as source comparison, a failed tool call, contradictory instructions, an architectural proposal, an empirical test, and a philosophical critique. Each demonstration's three texts must be substantively different and ordered along a single property. Within each demonstration's **output JSON**, use only the neutral scratchpad keys and the agent's content: do **not** include the property name, its intensity values, or annotations that reveal it. Editorial teaching notes may list potential property examples separately but must not prescribe a default property for future comments. More examples only help when they contribute actual variation.
+**Few-shot 3 — Conflicting instructions**
 
-### 4.4 Precedence and fidelity
+\`\`\`json
+{
+  "scratchpad_1": {"text": "The current user request proposes renaming a module into a sibling directory."},
+  "scratchpad_2": {"text": "The active workspace rule limits file mutations to the designated project tree."},
+  "scratchpad_3": {"text": "Because the destination crosses that boundary, seek authorization for the specific path rather than treating the rename request as an implicit scope change."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Independent contribution** (requested mutation versus an independently relevant constraint); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (constraint versus resolution of the authorization conflict); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: request, boundary, decision.
+
+**Few-shot 4 — Architecture proposal**
+
+\`\`\`json
+{
+  "scratchpad_1": {"text": "The existing queue distributes each job's progress across multiple issue comments."},
+  "scratchpad_2": {"text": "A consolidated job comment could hold current state while linking events by permanent comment ID."},
+  "scratchpad_3": {"text": "A more general event-ledger design could reconstruct queue state from append-only records, making revision history independently auditable."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Independent contribution** (current architecture versus a new consolidation design); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (current-state layout versus an event-derived alternative with different invariants); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: diagnosis, local alternative, broader model.
+
+**Few-shot 5 — Empirical testing**
+
+\`\`\`json
+{
+  "scratchpad_1": {"text": "Two trial executions produced different output bytes for the same nominal input."},
+  "scratchpad_2": {"text": "Capture five fresh runs with controlled inputs and archive each output hash alongside its receipt."},
+  "scratchpad_3": {"text": "Use the controlled hash series to separate input drift, nondeterministic scheduling, and unstable serialization before attributing the discrepancy to the runner."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Independent contribution** (initial observation versus experiment design); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (data-collection procedure versus causal discrimination); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: anomaly, measurement, analytic inference plan.
+
+**Few-shot 6 — Philosophical critique of receipts**
+
+\`\`\`json
+{
+  "scratchpad_1": {"text": "A machine receipt confirms that a command was accepted by an execution surface."},
+  "scratchpad_2": {"text": "A successful command response does not establish that the user's intended external state was produced."},
+  "scratchpad_3": {"text": "A trustworthy system should distinguish authorization, reported execution, and independently observed consequences rather than collapsing them into a single declaration of success."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Independent contribution** (what a receipt attests versus the limit of that attestation); **not a paraphrase**, **not appended text**.
+- \`2 → 3\`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness. Three different contributions: receipt meaning, inference limitation, governance principle.
+
+**Counterexample A — paraphrases (invalid)**
+
+\`\`\`json
+{
+  "scratchpad_1": {"text": "The repository file is absent."},
+  "scratchpad_2": {"text": "The requested file does not exist in that repository."},
+  "scratchpad_3": {"text": "No such file can be found in the repository."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Paraphrase — reject**.
+- \`2 → 3\`: **Paraphrase — reject**.
+- **Why:** all three have essentially the same core proposition.
+
+**Counterexample B — appended expansions (invalid)**
+
+\`\`\`json
+{
+  "scratchpad_1": {"text": "The lookup returned 404."},
+  "scratchpad_2": {"text": "The lookup returned 404, and the branch was not specified."},
+  "scratchpad_3": {"text": "The lookup returned 404, and the branch was not specified, and the file path may be stale."}
+}
+\`\`\`
+
+- \`1 → 2\`: **Appended expansion — reject**.
+- \`2 → 3\`: **Appended expansion — reject**.
+- **Why:** each successor literally retains its predecessor's statement and adds a clause.
+
+**Negative classifications take precedence:** a trainee should not label a candidate "valid" just because a reviewer can invent a latent intensity property after reading it. Distinctness must be demonstrated through different semantic contributions independently of the intensity criterion.
+
+### 4.4 Few-shot coverage guidance (examples, not fixed property assignments)
+
+The six complete valid demonstrations above and two invalid counterexamples provide a minimal working set. For a broad lesson, **approximately nine illustrative property types** give diversity without making an exhaustive menu. Examples of properties that could vary in other lessons include **specificity, skepticism, procedural rigor, conceptual abstraction, interpretive boldness, urgency, critical scrutiny, creative divergence, and evidentiary caution**. They must remain illustrations rather than a fixed selection roster.
+
+Every additional few-shot must include (a) exactly three scratchpad texts, (b) classification of **both** adjacent transitions as *paraphrase*, *appended expansion*, or *independent contribution*, and (c) short separate explanations identifying the **different substantive contribution** of each text. Do not reveal the agent's selected property, or assign property names or scores inside the RS. More examples are useful only when they add real variation in context and content.
+
+### 4.5 Precedence and fidelity
 
 The agent controls its scratchpad organization, not the user's objective. Explicit user instructions, actual tool contracts, authorized repository scope, and higher-priority obligations still apply. A task's requested deliverable may require particular fields, format, or tests even when the RS scratchpad itself has no prescribed nested schema.
 
