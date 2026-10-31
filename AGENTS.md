@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.7.0",
+  "format_version": "2.8.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2052,6 +2052,126 @@
       "imperative": "Keep opcode classification separate from execution and semantic assessment; never claim that output instructions have been performed.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.001",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For controller-driven Issue #1 jobs, create a fresh source comment with exactly one valid scratchpad entry and verify its immutable GitHub comment ID by reading back the entire body.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.002",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Treat each accepted array index as one agent-to-workflow request and the resulting state.json, immutable instruction JSON, and controller Issue #1 reply as the workflow-to-agent response; bind every handshake to source comment ID, index, opcode and source revision SHA-256.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.003",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "After creating or editing a source comment, poll its actual saved body and the matching per-comment state until the submitted revision is diagnosed and exactly one additional index is accepted; reject stale state, different comment ID, or a superseded source revision.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.004",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For each accepted index below 16, poll and read the published next-function receipt and controller comment; verify target_index, selected_function opcode, source revision, controller comment ID, and delivered state before authoring the next scratchpad.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.005",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Include a controller_ack[object] in each agent-authored index 1 through 16 containing source_comment_id, target_index, selected_opcode, instruction_source_revision_sha256, and controller_comment_id from the previous verified workflow instruction.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.006",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Append only one new scratchpad wrapper per edit without changing the accepted prefix, preserve prior referent identities and frame attribution, and apply the selected function as an authored transformation rather than merely copying its name.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.007",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Use bounded polling: at most twelve observation cycles per submitted revision, reading GitHub workflow-run conclusion where available and checking persisted state and instruction evidence. A successful run alone is not a successful index; if no progress is verified, record blocked state and stop without speculative edits or unbounded retries.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.008",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not advance to the next index until the previous revision and its next function have been independently read back and cross-checked; never create a second job comment as a recovery for a verified existing one.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.009",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "At index 16, verify progression.complete, accepted_entries=17, last_accepted_index=16, current source revision hash, and the terminal controller state, then verify a README candidate and receipt generated from that exact source comment; otherwise mark the job blocked or incomplete.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.010",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Preserve the previous imported-complete README candidate and README.md. Produce a distinct controlled-run README candidate, leaving user selection of the final root README outstanding.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.011",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Record all handshake observations and relevant GitHub run IDs in valid JSON objects under the per-comment workspaces; distinguish controller-selected, published, agent-applied, and verified-complete statuses.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.012",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not claim a workflow-driven README experiment complete merely because seventeen entries exist; require sequential accepted revisions, verified agent acknowledgement, matching controller instruction history, and a source-consistent final artifact receipt.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -2206,6 +2326,13 @@
       {
         "id": "9",
         "title": "Document-to-JSON procedural opcode adapter",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_normative_extension"
+      },
+      {
+        "id": "10",
+        "title": "Agent–workflow framing handshake and bounded indexed polling",
         "start_line": null,
         "end_line": null,
         "kind": "current_normative_extension"
@@ -2373,13 +2500,48 @@
         41234726263
       ],
       "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow."
+    },
+    "agent_workflow_handshake": {
+      "schema": "issuescratch.agent-workflow-handshake.v1",
+      "job_scope": "Issue #1 source comment",
+      "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
+      "workflow_path": ".github/workflows/issue1-json-validator.yml",
+      "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
+      "index_sequence": "Create index 0, then accept exactly one appended index per edit until index 16.",
+      "ack_field": "controller_ack[object]",
+      "ack_keys": [
+        "source_comment_id",
+        "target_index",
+        "selected_opcode",
+        "instruction_source_revision_sha256",
+        "controller_comment_id"
+      ],
+      "max_poll_cycles_per_revision": 12,
+      "poll_checks": [
+        "same GitHub comment ID",
+        "current source revision SHA-256",
+        "progression.accepted_entries incremented by one",
+        "controller status delivered and instruction targets next index",
+        "workflow run conclusion if identifiable"
+      ],
+      "terminal_acceptance": [
+        "17 separate accepted revisions",
+        "index 16",
+        "progression.complete true",
+        "controller_status completed",
+        "matching final source digest",
+        "readback-verified controlled README candidate and receipt"
+      ],
+      "failure": "Stop, report blocked and preserve saved comment, instructions, state and prior README candidates.",
+      "old_candidate_preservation": true,
+      "comment_echo_requirement": "IS.03.05 unchanged; do not silently truncate final verified comment."
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "8512db6de831550f987d1838b819c252b9c84b61",
+    "previous_active_document_blob_sha": "652c9d941b3155977241bc9f5c229cee3f3a6295",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Wire and verify random cryptographic selection of a reusable OP function for each accepted next index; persist and publish controller instructions non-destructively, and distinguish delivery from autonomous execution.",
+    "current_amendment": "Add formal agent/workflow framing handshake with persistent per-index acknowledgements, bounded polling, source-comment and instruction readback, and terminal README receipt checks.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2387,8 +2549,8 @@
     }
   },
   "coverage": {
-    "active_section_count": 22,
-    "active_procedure_count": 172,
+    "active_section_count": 23,
+    "active_procedure_count": 184,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
@@ -2412,6 +2574,7 @@
     "opcode_procedural_sort_valid": true,
     "framing_controller_random_selection": true,
     "framing_controller_issued_live_indices": 2,
-    "framing_controller_agent_semantic_execution": false
+    "framing_controller_agent_semantic_execution": false,
+    "agent_workflow_handshake_defined": true
   }
 }
