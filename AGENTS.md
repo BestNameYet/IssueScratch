@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.10.0",
+  "format_version": "2.10.1",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2734,7 +2734,7 @@
       "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
       "tests_path": "src/framing-controller.test.js",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
-      "workflow_sha": "7c0d45a4cec64dac65491b6a11b52c196cf29d95",
+      "workflow_sha": "9650443020e22dcf094f6ab16f14c21bdff8e67d",
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
@@ -2772,24 +2772,30 @@
         1
       ],
       "prior_17_entry_experiment": "historical; retained without modification",
-      "latest_live_probe_source_comment": 6548830869,
-      "latest_live_probe_controller_comment": 6548832768,
+      "latest_live_probe_source_comment": 6548995651,
+      "latest_live_probe_controller_comment": 6548997266,
       "latest_live_probe_accepted_indices": [
         0,
-        1
+        1,
+        2,
+        3
       ],
       "latest_live_probe_verified_next_function_indices": [
         1,
-        2
+        2,
+        3,
+        4
       ],
       "latest_live_probe_workflow_run_ids": [
-        41239803917,
-        41239852275
+        41241007593,
+        41241048287,
+        41241090538,
+        41241155327
       ],
-      "latest_live_probe_scope": "Previous two-index probe predates higher-order framing; fresh live verification pending.",
-      "verified_on_main": false,
-      "test_suite_run": 41239683462,
-      "test_count": 36,
+      "latest_live_probe_scope": "One complete three-index first frame, with ABSTRACT / IMPLEMENTATION chosen once and retained, plus new second-frame selection; 19-index completion not claimed.",
+      "verified_on_main": true,
+      "test_suite_run": 41241263066,
+      "test_count": 43,
       "frame_count": 5,
       "higher_order_frame_selection_count": 5,
       "higher_order_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
@@ -2922,9 +2928,9 @@
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "8ef7a142e8c06d753494e343c901daca41be832f",
+    "previous_active_document_blob_sha": "837b72c80bf1fb0a5e2a68ac03532fda0a125642",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Define SOLVER_LIFT and ABSTRACT higher-order framing with four abstraction modes, one persistent selection per frame, atomic supporting operations, source lineage and mode-specific structural validation.",
+    "current_amendment": "Record successful 43-test suite and four accepted live source indices, with one persistent ABSTRACT/IMPLEMENTATION frame, fresh second frame and verified workflow-owned instruction receipts. Full nineteen-index task completion remains unverified.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2963,11 +2969,15 @@
     "reframing_exercises": 5,
     "reconciliation_slots": 3,
     "initial_opcode_projection_required": true,
-    "framing_controller_current_live_probe_accepted": 0,
+    "framing_controller_current_live_probe_accepted": 4,
     "framing_controller_complete_19_index_run_verified": false,
     "higher_order_operators": 2,
     "higher_order_abstraction_modes": 4,
     "higher_order_framing_selection_count": 5,
-    "higher_order_full_run_verified": false
+    "higher_order_full_run_verified": false,
+    "higher_order_one_frame_live_verified": true,
+    "higher_order_live_accepted_indices": 4,
+    "higher_order_tests_passed": 43,
+    "higher_order_test_run": 41241263066
   }
 }
