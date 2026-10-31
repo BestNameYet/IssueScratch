@@ -1,8 +1,8 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "1.2.0",
-  "purpose": "Select one random function for each next index in a nineteen-entry array: five three-index reframing exercises plus four unrestricted entries.",
-  "source": "Five recursive framing exercises preserve two references and add narrative expansion; four remaining entries unrestricted.",
+  "version": "1.3.0",
+  "purpose": "Nineteen top-level indices: one preparatory five-scratchpad array, five three-index random reframing exercises, and three reconciliation indices.",
+  "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
   "last_tracked_index": 18,
   "frame_count": 5,
@@ -11,25 +11,23 @@
     "R-A",
     "R-B"
   ],
-  "free_indices": [
-    15,
-    16,
-    17,
-    18
-  ],
-  "layout": "For frames d=0..4, indices 3*d represent reference R-A, 3*d+1 reference R-B, and 3*d+2 narrative expansion; indices 15 through 18 are unrestricted.",
+  "free_indices": [],
+  "layout": "0: one preparatory scratchpad holding five nested scratchpads; 1..15: five frames of R-A, R-B, and narrative expansion (3 each); 16: collect/reconcile; 17: opcode project all earlier material; 18: final synthesis/validation.",
   "selection_method": "For each accepted incremental index, draw one uniformly random pool index with Node.js crypto.randomInt; never derive the choice from comment ID or an agent's judgment. Persist the chosen function as an immutable instruction and in state. Retries recover the stored choice and MUST NOT draw again.",
   "constraints": [
     "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
-    "Preserve all previously accepted entries without edits; keep references R-A and R-B distinct through the four frames.",
+    "Preserve all previously accepted entries without edits; keep references R-A and R-B distinct through all five frames.",
     "An enclosing statement about an inner claim must not silently become a direct assertion that the inner claim is true.",
     "Each narrative expansion adds new substantive content rather than merely paraphrasing the preceding frame.",
     "No semantic compliance checker is asserted: the workflow checks structural validity and retains complete diagnostic evidence.",
     "After index 18, freeze progression while continuing JSON validation.",
-    "At each eligible accepted transition select exactly one OP function uniformly using crypto.randomInt and persist choice, index, pool size and source revision; never regenerate a choice on retries."
+    "At each eligible accepted transition select exactly one OP function uniformly using crypto.randomInt and persist choice, index, pool size and source revision; never regenerate a choice on retries.",
+    "The preparatory entry retains the entire original instruction and an explicit opcode rendering as substantive scratchpad content, not workflow metadata.",
+    "The three final entries are explicitly reconciliatory, not unrestricted.",
+    "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
-  "candidate_status": "19-index revised design, pending integrated execution verification",
+  "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
   "random_function_pool": [
     "OP.01.002",
     "OP.01.003",
@@ -52,5 +50,82 @@
     "OP.01.016": "EMIT is serialization, not a substantive operator"
   },
   "operation_application": "The selected operation is applied by the agent to the designated scratchpad/frame inputs, while its fixed structural obligations preserve two referent identities and increase framing depth. OP functions are abstract; the workflow does not itself generate the agent's narrative.",
-  "enclosing_actions_obsolete_at_version": "1.1.0"
+  "enclosing_actions_obsolete_at_version": "1.1.0",
+  "preparatory_index": 0,
+  "preparatory_array_length": 5,
+  "preparatory_field": "preparation[array<object>]",
+  "preparatory_nested_wrapper_key": "scratchpad",
+  "preparatory_roles": [
+    {
+      "index": 0,
+      "role": "verbatim_instruction",
+      "requirements": [
+        "Preserve the complete original instruction without alteration or omission."
+      ]
+    },
+    {
+      "index": 1,
+      "role": "requirement_rumination",
+      "requirements": [
+        "Analyze what the instruction demands, its ambiguities, and implicit success conditions."
+      ]
+    },
+    {
+      "index": 2,
+      "role": "decomposition",
+      "requirements": [
+        "Break the instruction into executable subrequirements and their dependencies."
+      ]
+    },
+    {
+      "index": 3,
+      "role": "constraints_and_evidence",
+      "requirements": [
+        "Record scope, invariants, evidence and verification criteria."
+      ]
+    },
+    {
+      "index": 4,
+      "role": "instruction_opcode_rendering",
+      "requirements": [
+        "Encode the original instruction in reusable registered OP opcodes and typed operands; do not confuse an opcode declaration with execution."
+      ]
+    }
+  ],
+  "frame_start_index": 1,
+  "frame_end_index": 15,
+  "reconciliation_indices": [
+    16,
+    17,
+    18
+  ],
+  "reconciliation_roles": [
+    {
+      "index": 16,
+      "role": "collect_and_reconcile",
+      "read_indices": "0..15",
+      "requirements": [
+        "Inventory all preparatory and framing entries with stable source pointers and relevant provenance.",
+        "Identify what is missing, conflicting or unsupported."
+      ]
+    },
+    {
+      "index": 17,
+      "role": "opcode_reconciliation",
+      "read_indices": "0..16",
+      "requirements": [
+        "Convert all earlier outer scratchpads, including the five nested preparatory scratchpads, into an explicit reusable OP-code projection.",
+        "Preserve the original instruction's distinct opcode rendering, source pointers, and the separation between declared and executed operations."
+      ]
+    },
+    {
+      "index": 18,
+      "role": "final_synthesis_and_validation",
+      "read_indices": "0..17",
+      "requirements": [
+        "Reconcile the full record and produce the final answer or artifact plan for the original instruction.",
+        "Verify structural and opcode coverage, record unresolved constraints, and declare the final reconciliation operation itself without claiming semantic validation by the workflow."
+      ]
+    }
+  ]
 }
