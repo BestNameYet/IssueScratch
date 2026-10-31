@@ -398,7 +398,7 @@ jobs:
               if(old?.body===body)return old.sha;
               await github.rest.repos.createOrUpdateFileContents({
                 owner,repo,path,content:Buffer.from(body,'utf8').toString('base64'),
-                message:'experiment: generate README from controlled 17-index comment '+id,
+                message:'experiment: generate README from controlled 19-index comment '+id,
                 ...(old?{sha:old.sha}:{})
               });
               const saved=await read(path);
@@ -413,29 +413,29 @@ jobs:
             const body=comment.body||'';
             let arr;
             try{arr=JSON.parse(body);}catch{return;}
-            if(!Array.isArray(arr)||arr.length!==17)return;
+            if(!Array.isArray(arr)||arr.length!==19)return;
             const root='workspaces/issue1-diagnostics/comments/'+id;
             const stateFile=await read(root+'/state.json');
             if(!stateFile)throw Error('Missing controller state');
             const state=JSON.parse(stateFile.body);
             const progression=state.progression;
             if(progression?.mode!=='incremental'||!progression.complete||
-               progression.accepted_entries!==17||progression.last_accepted_index!==16||
+               progression.accepted_entries!==19||progression.last_accepted_index!==18||
                progression.controller_status!=='completed'||
                state.last_processed_revision_sha256!==sha(body))throw Error('Controller completion mismatch');
             const accepted=state.history.filter(x=>['accepted_one_entry','completed_index_16'].includes(x.transition));
-            if(accepted.length!==17||
+            if(accepted.length!==19||
                accepted.some((x,i)=>x.array_length!==i+1||x.accepted_entries_after!==i+1)){
-              throw Error('Missing 17 sequential acceptance receipts');
+              throw Error('Missing 19 sequential acceptance receipts');
             }
             const replyId=progression.controller_comment_id;
             if(!Number.isSafeInteger(replyId))throw Error('Missing controller reply ID');
             const {data:reply}=await github.rest.issues.getComment({owner,repo,comment_id:replyId});
             const control=JSON.parse(reply.body);
-            if(control.source_comment_id!==id||control.history.length!==16)throw Error('Controller history is incomplete');
+            if(control.source_comment_id!==id||control.history.length!==18)throw Error('Controller history is incomplete');
             // The workflow's own state and controller history are the handshake.
             // No worker-authored workspace acknowledgements are required.
-            for(let index=1;index<=16;index++){
+            for(let index=1;index<=18;index++){
               const prior=control.history[index-1];
               if(prior.target_index!==index ||
                  prior.function?.target_index!==index ||
@@ -451,8 +451,8 @@ jobs:
             const receipt={
               schema:'issuescratch.readme-controlled-receipt.v1',job_id:reg.job_id,
               source_comment_id:id,source_comment_sha256:sha256(body),
-              accepted_entries:17,accepted_transitions:17,
-              workflow_verified_transitions:17,controller_instruction_count:16,
+              accepted_entries:19,accepted_transitions:19,
+              workflow_verified_transitions:19,controller_instruction_count:18,
               candidate_path:candidatePath,candidate_blob_sha:candidateSha,
               conventional_readme_path:'README.md',
               prior_comparator_path:'experiments/readme-job-001.candidate.md',
