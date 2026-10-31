@@ -71,7 +71,7 @@ function renderControlled(body,{commentId,registration,repository="BestNameYet/I
   }
   let parsed;
   try{parsed=JSON.parse(body);}catch(e){throw Error("Invalid job comment JSON: "+e.message)}
-  if(!Array.isArray(parsed)||parsed.length!==17)throw Error("Controlled README requires exactly 17 entries");
+  if(!Array.isArray(parsed)||parsed.length!==19)throw Error("Controlled README requires exactly 19 entries");
   parsed.forEach((entry,index)=>{
     if(!isObj(entry)||Object.keys(entry).length!==1||!own(entry,"scratchpad")||
        !isObj(entry.scratchpad)||Object.keys(entry.scratchpad).length===0){
