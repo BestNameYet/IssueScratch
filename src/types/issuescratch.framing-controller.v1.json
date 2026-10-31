@@ -1,0 +1,65 @@
+{
+  "schema": "issuescratch.framing-controller-profile.v1",
+  "version": "1.0.0",
+  "purpose": "Choose the next scope-preserving recursive framing operation after every accepted incremental scratchpad index.",
+  "source": "User's four-frame, two-reference, narrative-expansion design with five unrestricted positions.",
+  "first_index": 0,
+  "last_tracked_index": 16,
+  "frame_count": 4,
+  "slots_per_frame": 3,
+  "reference_ids": [
+    "R-A",
+    "R-B"
+  ],
+  "free_indices": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "layout": "Indices 3*d, 3*d+1 and 3*d+2 respectively anchor/transfer R-A, anchor/transfer R-B, and expand the enclosing narrative for frame d. Indices 12 through 16 remain freely authored.",
+  "selection_method": "Deterministic per-comment SHA-256 mapping; no agent-selected operator and no semantic correctness judgment by the workflow.",
+  "enclosing_actions": [
+    {
+      "action_id": "ATTRIBUTION",
+      "action": "an enclosing speaker attributes the inner account to its source"
+    },
+    {
+      "action_id": "RECOLLECTION",
+      "action": "an enclosing speaker recalls the inner account without adopting its claims"
+    },
+    {
+      "action_id": "CHALLENGE",
+      "action": "an enclosing speaker questions the inner account while preserving attribution"
+    },
+    {
+      "action_id": "DOCUMENTATION",
+      "action": "an enclosing author records the inner account as reported"
+    },
+    {
+      "action_id": "INTERPRETATION",
+      "action": "an enclosing speaker interprets the inner account while retaining its original speakers"
+    },
+    {
+      "action_id": "DISCUSSION",
+      "action": "an enclosing speaker discusses the account in a broader setting"
+    }
+  ],
+  "operator_opcodes": {
+    "reference": "OP.01.015",
+    "enclosure": "OP.01.011",
+    "narrative": "OP.01.002",
+    "free": "OP.01.002"
+  },
+  "constraints": [
+    "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
+    "Preserve all previously accepted entries without edits; keep references R-A and R-B distinct through the four frames.",
+    "An enclosing statement about an inner claim must not silently become a direct assertion that the inner claim is true.",
+    "Each narrative expansion adds new substantive content rather than merely paraphrasing the preceding frame.",
+    "No semantic compliance checker is asserted: the workflow checks structural validity and retains complete diagnostic evidence.",
+    "After index 16, freeze progression and keep JSON validation active."
+  ],
+  "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
+  "candidate_status": "experimental_not_an_autonomous_agent_execution_engine"
+}
