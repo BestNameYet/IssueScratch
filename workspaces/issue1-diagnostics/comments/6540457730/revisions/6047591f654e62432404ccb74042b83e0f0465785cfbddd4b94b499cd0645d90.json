@@ -1,0 +1,656 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6540457730,
+  "source_revision_sha256": "6047591f654e62432404ccb74042b83e0f0465785cfbddd4b94b499cd0645d90",
+  "transition": "expected_single_root_array",
+  "progression_before": 0,
+  "progression_after": 0,
+  "next_index": 0,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "object",
+    "json_valid": true,
+    "validation_error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  },
+  "metrics": {
+    "raw_sha256": "6047591f654e62432404ccb74042b83e0f0465785cfbddd4b94b499cd0645d90",
+    "raw_characters": 6258,
+    "raw_utf8_bytes": 6259,
+    "json_valid": true,
+    "root_type": "object",
+    "root_array_count": 0,
+    "nested_array_count": 6,
+    "total_array_count": 6,
+    "array_length": null,
+    "all_wrappers_valid": null,
+    "array_compact_json_characters": null,
+    "indexes": [],
+    "all_keys": [
+      {
+        "path": "/scratchpad_1",
+        "key": "scratchpad_1",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 1669,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 213,
+        "value_text_characters": 211
+      },
+      {
+        "path": "/scratchpad_1/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "object",
+        "value_json_characters": 1440,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/title",
+        "key": "title",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 94,
+        "value_text_characters": 92
+      },
+      {
+        "path": "/scratchpad_1/job/nonce",
+        "key": "nonce",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 47,
+        "value_text_characters": 45
+      },
+      {
+        "path": "/scratchpad_1/job/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_1/job/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/original_user_instruction",
+        "key": "original_user_instruction",
+        "key_characters": 25,
+        "value_type": "string",
+        "value_json_characters": 187,
+        "value_text_characters": 185
+      },
+      {
+        "path": "/scratchpad_1/job/repository",
+        "key": "repository",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/scratchpad_1/job/target_path",
+        "key": "target_path",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_1/job/baseline_blob_sha",
+        "key": "baseline_blob_sha",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/revisions",
+        "key": "revisions",
+        "key_characters": 9,
+        "value_type": "array",
+        "value_json_characters": 805,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/note",
+        "key": "note",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 56,
+        "value_text_characters": 54
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/change",
+        "key": "change",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 68,
+        "value_text_characters": 66
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 72,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 84,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/change",
+        "key": "change",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 86,
+        "value_text_characters": 84
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 81,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/completion",
+        "key": "completion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/evidence",
+        "key": "evidence",
+        "key_characters": 8,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 46,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/current_values/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2",
+        "key": "scratchpad_2",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 1594,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 204,
+        "value_text_characters": 202
+      },
+      {
+        "path": "/scratchpad_2/requirements",
+        "key": "requirements",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 1161,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/opcode_example",
+        "key": "opcode_example",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 186,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/opcode_example/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/opcode_example/imperative",
+        "key": "imperative",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 66,
+        "value_text_characters": 64
+      },
+      {
+        "path": "/scratchpad_2/opcode_example/source_section",
+        "key": "source_section",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 3,
+        "value_text_characters": 1
+      },
+      {
+        "path": "/scratchpad_2/opcode_example/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/opcode_example/condition",
+        "key": "condition",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/scratchpad_3",
+        "key": "scratchpad_3",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 1813,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 218,
+        "value_text_characters": 216
+      },
+      {
+        "path": "/scratchpad_3/acceptance",
+        "key": "acceptance",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 837,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/completion",
+        "key": "completion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_3/evidence",
+        "key": "evidence",
+        "key_characters": 8,
+        "value_type": "array",
+        "value_json_characters": 698,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/0/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_3/evidence/0/sha",
+        "key": "sha",
+        "key_characters": 3,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_3/evidence/0/path",
+        "key": "path",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_3/evidence/1/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_3/evidence/1/blob_sha",
+        "key": "blob_sha",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_3/evidence/1/json_parse",
+        "key": "json_parse",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 23,
+        "value_text_characters": 21
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/source_sections",
+        "key": "source_sections",
+        "key_characters": 15,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/unique_imperatives",
+        "key": "unique_imperatives",
+        "key_characters": 18,
+        "value_type": "number",
+        "value_json_characters": 3,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/examples",
+        "key": "examples",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/permitted_activities",
+        "key": "permitted_activities",
+        "key_characters": 20,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/2/section_coverage",
+        "key": "section_coverage",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/scratchpad_3/evidence/3/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/scratchpad_3/evidence/3/passed",
+        "key": "passed",
+        "key_characters": 6,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/3/total",
+        "key": "total",
+        "key_characters": 5,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/3/test_cases",
+        "key": "test_cases",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 113,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/evidence/4/type",
+        "key": "type",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 21,
+        "value_text_characters": 19
+      },
+      {
+        "path": "/scratchpad_3/evidence/4/original_blob_sha",
+        "key": "original_blob_sha",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_3/evidence/4/method",
+        "key": "method",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 76,
+        "value_text_characters": 74
+      }
+    ],
+    "key_totals": [],
+    "error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  }
+}
