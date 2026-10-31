@@ -4,22 +4,22 @@
   "comment_id": 6548995651,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 1,
-    "last_accepted_index": 0,
-    "next_index": 1,
-    "accepted_prefix_sha256": "58e4191903acfe2a8aba43e02fc8336985a4b16980b4fdb82fa67a7d0567078d",
+    "accepted_entries": 2,
+    "last_accepted_index": 1,
+    "next_index": 2,
+    "accepted_prefix_sha256": "82bb282cc31659c46bd1de666777a92b396e3e1ccdf3de9a8de266b47d109d1f",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548995651,
-      "target_index": 1,
+      "target_index": 2,
       "profile_version": "2.1.0",
       "selected_function": {
-        "opcode": "OP.01.013",
-        "name": "ITERATE",
-        "description": "Repeat a specified operator under an explicit bound or stopping test",
-        "input_contract": "operator_state_and_stop_condition",
-        "output_contract": "iteration_result"
+        "opcode": "OP.01.012",
+        "name": "BRANCH",
+        "description": "Select a branch based on an explicit predicate",
+        "input_contract": "condition_and_branches",
+        "output_contract": "selected_branch"
       },
       "higher_order_frame": {
         "schema": "issuescratch.higher-order-frame-selection.v1",
@@ -86,7 +86,7 @@
         ],
         "status": "selected_not_executed"
       },
-      "higher_order_selection_new": true,
+      "higher_order_selection_new": false,
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
         "pool_opcodes": [
@@ -106,47 +106,38 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 11,
+        "selected_ordinal": 10,
         "draws": [
-          {
-            "purpose": "higher_order_operator",
-            "pool_size": 2,
-            "selected_ordinal": 1
-          },
-          {
-            "purpose": "abstraction_mode",
-            "pool_size": 4,
-            "selected_ordinal": 1
-          },
           {
             "purpose": "atomic_function",
             "pool_size": 14,
-            "selected_ordinal": 11
+            "selected_ordinal": 10
           }
         ],
         "note": "Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
       },
       "opcodes": [
         "OP.02.002",
-        "OP.01.013"
+        "OP.01.012"
       ],
       "read_indices": [
-        0
+        0,
+        1
       ],
       "frame_id": "F0",
       "enclosing_frame_id": null,
       "role": "establish_reference",
-      "reference_id": "R-A",
-      "original_anchor_index": 1,
+      "reference_id": "R-B",
+      "original_anchor_index": 2,
       "previous_frame_index": null,
       "requirements": [
-        "Use atomic ITERATE (OP.01.013) inside the fixed higher-order frame ABSTRACT / IMPLEMENTATION. An opcode instruction is not execution evidence.",
-        "Reference A: identify the prior solver or subject representation, with its assumptions, method, evidence and limitations.",
-        "Cite the actual preceding solver or preparatory instruction; do not invent completed execution.",
+        "Use atomic BRANCH (OP.01.012) inside the fixed higher-order frame ABSTRACT / IMPLEMENTATION. An opcode instruction is not execution evidence.",
+        "Reference B: identify the enclosing perspective, selected abstraction mode if applicable, target representation, and preservation criteria.",
+        "Differentiate this framing reference from the inner solver or subject.",
         "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
         "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
         "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction.",
-        "Append exactly one substantive scratchpad at index 1 and retain the accepted prefix."
+        "Append exactly one substantive scratchpad at index 2 and retain the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -221,8 +212,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548997266
   },
-  "last_processed_revision_sha256": "786fa46fdcb8ef4e0ad48e0f1b9a8fd3710d0a81971990c825e543449873e1ec",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548995651/revisions/786fa46fdcb8ef4e0ad48e0f1b9a8fd3710d0a81971990c825e543449873e1ec.json",
+  "last_processed_revision_sha256": "218b57195d016eced810a54b7f9090d45a603441d8ef5ba588d9d2efd7bf19fa",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548995651/revisions/218b57195d016eced810a54b7f9090d45a603441d8ef5ba588d9d2efd7bf19fa.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -231,6 +222,14 @@
       "json_valid": true,
       "array_length": 1,
       "accepted_entries_after": 1,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "218b57195d016eced810a54b7f9090d45a603441d8ef5ba588d9d2efd7bf19fa",
+      "path": "workspaces/issue1-diagnostics/comments/6548995651/revisions/218b57195d016eced810a54b7f9090d45a603441d8ef5ba588d9d2efd7bf19fa.json",
+      "json_valid": true,
+      "array_length": 2,
+      "accepted_entries_after": 2,
       "transition": "accepted_one_entry"
     }
   ]
