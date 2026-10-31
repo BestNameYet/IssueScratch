@@ -1,0 +1,912 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6540398585,
+  "source_revision_sha256": "c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d",
+  "transition": "expected_single_root_array",
+  "progression_before": 0,
+  "progression_after": 0,
+  "next_index": 0,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "object",
+    "json_valid": true,
+    "validation_error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  },
+  "metrics": {
+    "raw_sha256": "c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d",
+    "raw_characters": 14531,
+    "raw_utf8_bytes": 14531,
+    "json_valid": true,
+    "root_type": "object",
+    "root_array_count": 0,
+    "nested_array_count": 9,
+    "total_array_count": 9,
+    "array_length": null,
+    "all_wrappers_valid": null,
+    "array_compact_json_characters": null,
+    "indexes": [],
+    "all_keys": [
+      {
+        "path": "/scratchpad_1",
+        "key": "scratchpad_1",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 6264,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 146,
+        "value_text_characters": 144
+      },
+      {
+        "path": "/scratchpad_1/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "object",
+        "value_json_characters": 6102,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/title",
+        "key": "title",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 87,
+        "value_text_characters": 85
+      },
+      {
+        "path": "/scratchpad_1/job/nonce",
+        "key": "nonce",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 50,
+        "value_text_characters": 48
+      },
+      {
+        "path": "/scratchpad_1/job/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions",
+        "key": "revisions",
+        "key_characters": 9,
+        "value_type": "array",
+        "value_json_characters": 3932,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/note",
+        "key": "note",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 81,
+        "value_text_characters": 79
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/changes",
+        "key": "changes",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 114,
+        "value_text_characters": 112
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/prior_values",
+        "key": "prior_values",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 72,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/prior_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/prior_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/prior_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 84,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/author",
+        "key": "author",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 48,
+        "value_text_characters": 46
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/changes",
+        "key": "changes",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 287,
+        "value_text_characters": 285
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 2493,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/scratchpad_2_text",
+        "key": "scratchpad_2_text",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 169,
+        "value_text_characters": 167
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/scratchpad_3_text",
+        "key": "scratchpad_3_text",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 245,
+        "value_text_characters": 243
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/implementation_contract.validation",
+        "key": "implementation_contract.validation",
+        "key_characters": 34,
+        "value_type": "string",
+        "value_json_characters": 317,
+        "value_text_characters": 315
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/implementation_contract.reports",
+        "key": "implementation_contract.reports",
+        "key_characters": 31,
+        "value_type": "string",
+        "value_json_characters": 268,
+        "value_text_characters": 266
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/implementation_contract.non_destructive_behavior",
+        "key": "implementation_contract.non_destructive_behavior",
+        "key_characters": 48,
+        "value_type": "string",
+        "value_json_characters": 223,
+        "value_text_characters": 221
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_values/acceptance_tests",
+        "key": "acceptance_tests",
+        "key_characters": 16,
+        "value_type": "array",
+        "value_json_characters": 1059,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/2/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/change",
+        "key": "change",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 209,
+        "value_text_characters": 207
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 82,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/previous_values/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/previous_values/outcome",
+        "key": "outcome",
+        "key_characters": 7,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/previous_values/completion",
+        "key": "completion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 44,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/3/current_values/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/original_user_instruction",
+        "key": "original_user_instruction",
+        "key_characters": 25,
+        "value_type": "string",
+        "value_json_characters": 244,
+        "value_text_characters": 242
+      },
+      {
+        "path": "/scratchpad_1/job/agent_interpretation",
+        "key": "agent_interpretation",
+        "key_characters": 20,
+        "value_type": "string",
+        "value_json_characters": 200,
+        "value_text_characters": 198
+      },
+      {
+        "path": "/scratchpad_1/job/documentation",
+        "key": "documentation",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 65,
+        "value_text_characters": 63
+      },
+      {
+        "path": "/scratchpad_1/job/target_repository",
+        "key": "target_repository",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/scratchpad_1/job/target_issue_number",
+        "key": "target_issue_number",
+        "key_characters": 19,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/owner",
+        "key": "owner",
+        "key_characters": 5,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/outcome",
+        "key": "outcome",
+        "key_characters": 7,
+        "value_type": "object",
+        "value_json_characters": 1063,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/implementation",
+        "key": "implementation",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 24,
+        "value_text_characters": 22
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/commit_sha",
+        "key": "commit_sha",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/workflow_path",
+        "key": "workflow_path",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 45,
+        "value_text_characters": 43
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/workflow_blob_sha",
+        "key": "workflow_blob_sha",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/live_tests",
+        "key": "live_tests",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 301,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/live_tests/issue_comment_created",
+        "key": "issue_comment_created",
+        "key_characters": 21,
+        "value_type": "string",
+        "value_json_characters": 69,
+        "value_text_characters": 67
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/live_tests/issue_comment_edited",
+        "key": "issue_comment_edited",
+        "key_characters": 20,
+        "value_type": "string",
+        "value_json_characters": 91,
+        "value_text_characters": 89
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/live_tests/readback",
+        "key": "readback",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 79,
+        "value_text_characters": 77
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/verification_outstanding",
+        "key": "verification_outstanding",
+        "key_characters": 24,
+        "value_type": "array",
+        "value_json_characters": 311,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/outcome/reason_for_blocker",
+        "key": "reason_for_blocker",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 163,
+        "value_text_characters": 161
+      },
+      {
+        "path": "/scratchpad_1/job/user_prompt_updates",
+        "key": "user_prompt_updates",
+        "key_characters": 19,
+        "value_type": "array",
+        "value_json_characters": 126,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2",
+        "key": "scratchpad_2",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 3966,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 194,
+        "value_text_characters": 192
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract",
+        "key": "implementation_contract",
+        "key_characters": 23,
+        "value_type": "object",
+        "value_json_characters": 3736,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/targets",
+        "key": "targets",
+        "key_characters": 7,
+        "value_type": "array",
+        "value_json_characters": 80,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/triggers",
+        "key": "triggers",
+        "key_characters": 8,
+        "value_type": "array",
+        "value_json_characters": 382,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/initial_scan",
+        "key": "initial_scan",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 212,
+        "value_text_characters": 210
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/validation",
+        "key": "validation",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 489,
+        "value_text_characters": 487
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/reports",
+        "key": "reports",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 392,
+        "value_text_characters": 390
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/non_destructive_behavior",
+        "key": "non_destructive_behavior",
+        "key_characters": 24,
+        "value_type": "string",
+        "value_json_characters": 452,
+        "value_text_characters": 450
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/possible_files",
+        "key": "possible_files",
+        "key_characters": 14,
+        "value_type": "array",
+        "value_json_characters": 125,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/restrictions",
+        "key": "restrictions",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 231,
+        "value_text_characters": 229
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization",
+        "key": "normalization",
+        "key_characters": 13,
+        "value_type": "object",
+        "value_json_characters": 1229,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/behavior",
+        "key": "behavior",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 218,
+        "value_text_characters": 216
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/exact_key",
+        "key": "exact_key",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 14,
+        "value_text_characters": 12
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/value",
+        "key": "value",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 98,
+        "value_text_characters": 96
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/valid_input",
+        "key": "valid_input",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 28,
+        "value_text_characters": 26
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/invalid_input",
+        "key": "invalid_input",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 100,
+        "value_text_characters": 98
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/previously_wrapped_input",
+        "key": "previously_wrapped_input",
+        "key_characters": 24,
+        "value_type": "string",
+        "value_json_characters": 85,
+        "value_text_characters": 83
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/limitations",
+        "key": "limitations",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 233,
+        "value_text_characters": 231
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/recurrence",
+        "key": "recurrence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 170,
+        "value_text_characters": 168
+      },
+      {
+        "path": "/scratchpad_2/implementation_contract/normalization/backfill",
+        "key": "backfill",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 147,
+        "value_text_characters": 145
+      },
+      {
+        "path": "/scratchpad_3",
+        "key": "scratchpad_3",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 2524,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 228,
+        "value_text_characters": 226
+      },
+      {
+        "path": "/scratchpad_3/acceptance_tests",
+        "key": "acceptance_tests",
+        "key_characters": 16,
+        "value_type": "array",
+        "value_json_characters": 1689,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/completion",
+        "key": "completion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 135,
+        "value_text_characters": 133
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence",
+        "key": "verified_evidence",
+        "key_characters": 17,
+        "value_type": "array",
+        "value_json_characters": 408,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/0/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 13,
+        "value_text_characters": 11
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/0/path",
+        "key": "path",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 45,
+        "value_text_characters": 43
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/0/sha",
+        "key": "sha",
+        "key_characters": 3,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/1/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/1/comment_id",
+        "key": "comment_id",
+        "key_characters": 10,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/1/verified",
+        "key": "verified",
+        "key_characters": 8,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/2/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 28,
+        "value_text_characters": 26
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/2/comment_id",
+        "key": "comment_id",
+        "key_characters": 10,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/2/verified",
+        "key": "verified",
+        "key_characters": 8,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/3/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 16,
+        "value_text_characters": 14
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/3/verified",
+        "key": "verified",
+        "key_characters": 8,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/verified_evidence/3/notes",
+        "key": "notes",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 70,
+        "value_text_characters": 68
+      }
+    ],
+    "key_totals": [],
+    "error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  }
+}
