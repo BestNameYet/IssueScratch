@@ -9,7 +9,7 @@ IssueScratch is a lightweight, GitHub-Issue-centered environment for accepting i
 Its primary design choices are:
 
 1. **One operational issue.** Issue **#1** consolidates the functions performed by Issues #1 (instruction intake), #2 (job queue and completion), and #3 (task scratchpads) in `BestNameYet/IssueStack-`.
-2. **Three scratchpad objects.** "RS" means **Return Schema**. Every IssueScratch RS contains exactly three top-level objects—`interpretation`, `execution`, and `result`—but their names are only stable identifiers for three general-purpose scratchpads. They are not mandatory reasoning stages or content categories. The agent freely defines their internal keys and may write any permitted work-related material into any of them.
+2. **Three ordered intensity scratchpads.** "RS" means **Return Schema**. Every IssueScratch RS contains exactly three top-level objects—`interpretation`, `execution`, and `result`—used as general-purpose scratchpads. For **each individual comment**, the agent chooses anew one undisclosed property of its text, then composes distinct content so that its intensity strictly increases from the first scratchpad through the third. The names do not assign topics or reasoning stages; the agent freely defines internal keys.
 3. **Minimal ceremony.** Do not import IssueStack's separate-issue transfer process, fixed input slots, mandatory Issue #5/#7 UI pipeline, rigid task.v3 object structure, or extra approval machinery merely because IssueStack has them.
 4. **Evidence over ceremony.** Maintain enough durable information to identify work, continue it, and verify results without imposing unnecessary serialization or formatting requirements.
 
@@ -67,7 +67,7 @@ Owner: <agent or worker, when assigned>
 <decisions, attempts, progress, dependencies, evidence, handoff notes>
 
 ## Three RS scratchpads
-<exactly three JSON objects, each free-form and available for notes, claims, investigations, tool records, outcomes, or other permitted material>
+<interpretation, execution, result in that order; each contains agent-authored text, with distinct content and strictly increasing intensity along a freshly selected, undisclosed property>
 
 ## Verification and receipt
 <observed outcomes, checks performed, failures, links, remaining work>
@@ -85,7 +85,7 @@ Suggested states are `pending`, `active`, `blocked`, `completed`, `failed`, and 
 4. **Verify:** distinguish command submission from command execution, attempted changes from applied changes, and test invocation from passing tests.
 5. **Conclude or hand off:** record the result, supporting evidence, unfinished items, and terminal/nonterminal state. Read back the final record.
 
-There is no separate Issue #1-to-#2 transfer, Issue #2-to-#3 provisioning, or mandatory scratchpad index. The working record itself connects intake, execution, and scratchpads. **The job administration steps above are not the three RS objects:** no RS object is assigned a lifecycle phase, and agents need not write to those objects in any particular order.
+There is no separate Issue #1-to-#2 transfer, Issue #2-to-#3 provisioning, or mandatory scratchpad index. The working record itself connects intake, execution, and scratchpads. **The job administration steps above are not the three RS objects.** Agents may draft or revise entries in any order, but the final RS for each comment presents its three scratchpads in their fixed order and satisfies the comment-specific increasing-intensity relation.
 
 ### 3.4 Preservation and concurrency
 
@@ -93,28 +93,43 @@ Preserve the user's originating instruction and distinguish it from an agent's i
 
 Public GitHub issues are not private storage. Do not put credentials, secret tokens, private internal reasoning, or sensitive user material in public Issue #1 records. Keep concise decision rationales and reproducible evidence instead.
 
-## 4. Return Schema (RS): three unrestricted-purpose scratchpads
+## 4. Return Schema (RS): three ordered, property-relative scratchpads
 
-An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** with the stable keys `interpretation`, `execution`, and `result`:
+An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** in this presentation order: `interpretation` (first), `execution` (second), `result` (third).
 
 ```json
 {
-  "interpretation": {},
-  "execution": {},
-  "result": {}
+  "interpretation": {"text": "<first, lower-intensity original text>"},
+  "execution": {"text": "<second, higher-intensity distinct text>"},
+  "result": {"text": "<third, highest-intensity distinct text>"}
 }
 ```
 
-**These are three scratchpads, not three prescribed stages of reasoning or execution.** Their names are historical addresses, **not instructions about what belongs where**. In particular, `interpretation` need not contain interpretation, `execution` need not describe execution, and `result` need not contain only final results. Each may contain any permitted activity, note, observation, action, critique, reference, output, or provisional idea.
+The sample `text` keys above are **illustrative only**. An agent chooses all internal keys, types, nesting, and activities. The three object names are permanent **positions**, not categories of meaning: they do not require interpretation, execution, or final-result content.
 
-The agent is free to:
-- Define arbitrary keys and nested data inside each object, including strings, arrays, numbers, booleans, maps, and further objects.
-- Write to any or all scratchpads at any point; revisit them, leave one empty, move or link material across them, and choose its own grouping.
-- Mix exploratory, practical, administrative, evaluative, and completed material in the same object, or use separate nested keys if useful.
-- Change the internal organization between tasks; no fixed inner template, required nested key, semantic allocation, sequence, or per-stage completion gate exists.
-- Produce an external deliverable separately from the RS when necessary; the three-object scratchpad record does not replace that deliverable.
+### Per-comment latent intensity rule (mandatory)
 
-The fixed contract is **only the three top-level object names and their object types**. The ordinary Issue #1 job metadata (source and job comment IDs, status, ownership, timestamps, etc.) can appear outside the RS as part of the Issue #1 record; it must not become an additional top-level RS object. Nested content is agent-defined.
+For **each comment containing an RS**, the agent must independently choose **one property of the agent-authored text that admits a meaningful degree or intensity**. It may be stylistic, epistemic, rhetorical, conceptual, procedural, or another appropriate qualitative dimension. The dimension is **not fixed across comments**, and the agent must select it **afresh for every comment**, not carry forward an axis merely because a previous comment used it.
+
+The agent must **not disclose the selected property**, its name, a proxy label that identifies it, its scale, or a numeric rating, in any of the three objects, Issue #1 job metadata, reviews, or the user-facing presentation. This is a latent organizing rule, not an extra field or a user-visible claim about the text. Do not publish private internal deliberation used to make the selection.
+
+Within the **same comment**, write three substantively distinct sets of agent-authored text so that the chosen property has **strictly ascending intensity**:
+
+- **First — `interpretation`:** the least intense text under the comment's selected, undisclosed property.
+- **Second — `execution`:** text with greater intensity of **that same property**.
+- **Third — `result`:** text with greater intensity than the second, again along **that same property**.
+
+The agent may draft or revise the three texts in any sequence but must present them in this order. **All three objects must contain nonempty, agent-authored textual material** for a complete RS comment. Other permitted nested data, such as tool receipts and identifiers, may accompany that material. Where an object contains multiple text entries, their overall character should accord with its position; do not dilute the ordering with contradictory text.
+
+### Distinctness: not copies, rewrites, or three passes over one statement
+
+The three scratchpads **must not be identical, near-duplicates, incremental paraphrases, increasingly emphatic retellings of the same sentence, or mere expansions padded with extra words**. Each must contribute its own substantive information, perspective, question, observation, action record, criticism, or insight. Related ideas are allowed, but the later scratchpads must make **different contributions**, not simply reproduce earlier material with stronger adjectives.
+
+Greater intensity does **not** inherently mean longer text, more aggressive language, greater certainty, louder tone, or more content. The property is chosen per comment, remains undisclosed, and may vary widely. Its ordering concerns the character of the respective texts, not a requirement to repeat them.
+
+The agent controls which permitted subjects appear in which object. It may mix practical, reflective, critical, administrative, exploratory, and outcome-oriented content across all three; no activity from section 4.1 belongs exclusively to any one object. The **intensity relation**, not topical allocation, is the only cross-object writing constraint.
+
+The fixed RS contract is: **exactly three top-level objects; correct order; original agent-authored text in each; distinct content; one freshly selected, undisclosed property per comment; strictly increasing intensity across the three.** No other fixed nested keys are imposed. Job metadata (comment IDs, status, owner, timestamps, etc.) can remain outside the RS as part of its Issue #1 working record.
 
 ### 4.1 Explicitly permitted scratchpad uses
 
@@ -162,34 +177,29 @@ The following **25 additional expressly permitted activities** are likewise avai
 24. Prepare handoff notes for a succeeding agent or session.
 25. Record lessons learned and candidates for future adjudication.
 
-**This is an illustrative permission catalog, not a closed vocabulary, task checklist, mandatory activity list, or hierarchy.** Agents may use other appropriate scratchpad activities as well, without inventing an additional top-level RS object. They are not obligated to perform any listed activity unless the user or assignment requires it.
+**This is an illustrative permission catalog, not a closed vocabulary, task checklist, mandatory activity list, or hierarchy of topics.** Agents may use other appropriate scratchpad activities without inventing an additional top-level RS object. They are not obligated to perform any listed activity unless the user or assignment requires it. Whatever activities are chosen must still produce substantively different agent-authored texts in the three scratchpads, ordered by the fresh undisclosed intensity property for that comment.
 
 A claim of comment ownership is **not** proof of control or permission; verify the current comment author and relevant authorization before an edit. A noted tool call is **not** proof it succeeded; separately record observable outcomes where material. Cryptic notes and philosophical speculation must be distinguishable from verified findings when that distinction matters. Concise, shareable rationales or shorthand are allowed, but do not expose private internal chain-of-thought, credentials, restricted data, or unsupported claims of access. GitHub comments are not secret storage.
 
-### 4.2 Examples of unconstrained content placement
+### 4.2 Example of distinct scratchpad contributions
 
-This example deliberately puts information under non-obvious headings to show that scratchpad names **do not classify their contents**:
+The following is **only a format illustration**, not a reusable property, prescribed text, or a standardized intensity scale. It uses unrelated contributions that are meaningfully connected to one job, rather than three reformulations of one claim:
 
 ```json
 {
   "interpretation": {
-    "github_calls": [
-      {"action": "fetch_file", "path": "AGENTS.md", "observation": "read succeeded"}
-    ],
-    "failure_notes": ["A prior lookup returned 404"]
+    "note": "The current job references two earlier reports; their sources have not yet been compared."
   },
   "execution": {
-    "philosophical_question": "What makes a validation receipt authoritative?",
-    "user_instruction_contestation": ["Compare literal wording to inferred intent"]
+    "observation": "The reports give conflicting outcomes under the same job identifier, so both original receipts require inspection."
   },
   "result": {
-    "ownership_claim": "Agent proposes stewardship of its working comment; verify permissions",
-    "cryptic_memo": "H1 != H2; test before choosing"
+    "decision_note": "Reject any completion claim based on those reports until the conflicting original receipts are reconciled and independently verified."
   }
 }
 ```
 
-All inner names and examples are optional. The same content could appear under another one of the three keys with no RS violation. Hypotheses and examples are not evidence of completed actions.
+The agent must still select its **own undisclosed property for each actual comment** and ensure the three texts exhibit strictly increasing intensity of that property. The illustration does not define or reveal the property selected for any real comment. The scratchpad names do not dictate where any of these subjects must appear.
 
 ### 4.3 Precedence and fidelity
 
@@ -205,9 +215,9 @@ IssueScratch's RS definitions **and their actual data** will be adjudicated from
 
 Adjudication examines **the agent's chosen internal organization and the actual data it wrote**. The reviewer may assess whether the organization served the task, whether claims and tool records were properly supported, whether exploratory or cryptic notes were useful for their purpose, whether boundaries and user intent were respected, and whether requested work was genuinely completed.
 
-**Do not penalize a record simply because material appeared in the "wrong" scratchpad or because the agent used an unconventional style.** The object names impose no semantic restrictions, and a philosophical exploration, critical policy discussion, or cryptic memorandum is not a failure by itself. Judge the structure and content relative to the assignment and the legitimate purpose of the notes; distinguish speculation from verified claims.
+**Intensity and distinctness are now explicit assessment criteria.** For each reviewed comment, inspect whether there is a plausible **single qualitative dimension** under which the three texts have strictly increasing intensity and whether each text adds genuinely different substance rather than merely amplifying or paraphrasing the previous one. The reviewer evaluates the observable text only; **neither the agent nor reviewer should disclose or demand disclosure of the agent's selected property**. If that latent relation is not apparent from the text, report the weakness without inventing certainty about the agent's selection. Do not penalize unusual topical placement; the three names do not designate content categories.
 
-The adjudicator assigns **one overall label** to the reviewed output. Optional findings may separately address internal schema choices, note quality, factual correctness, or task outcomes; they do not introduce a fourth RS object.
+The adjudicator assigns **one overall label** to the reviewed output. Optional findings may separately address internal schema choices, the observable ordinal relation, distinctness, note quality, factual correctness, or task outcomes; they do not introduce a fourth RS object.
 
 ### 5.2 Allowed labels
 
@@ -245,7 +255,7 @@ For an IssueScratch job, evaluate the following as applicable:
 - The source instruction and the correct Issue #1 comment references are identifiable.
 - The job state reflects observed progress, not optimistic assumptions.
 - The working scratchpad is sufficiently durable for a different agent to resume.
-- The RS has exactly three top-level scratchpad objects; internal placement is unrestricted, and any separately requested deliverable or consumer contract is satisfied.
+- Each RS comment has exactly three top-level scratchpad objects in order, each containing nonempty, substantively distinct agent-authored text; the agent freshly chooses but does not reveal a property whose intensity strictly increases across the three. Any separately requested deliverable or consumer contract is satisfied.
 - Claimed edits, executions, tests, and outputs have been independently inspected or verified.
 - Remaining work and failures are disclosed rather than marked complete.
 
