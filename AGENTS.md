@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.4.0",
+  "format_version": "2.5.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -1822,6 +1822,76 @@
       "imperative": "Consult the combined canonical catalog for both permitted actions and registered field/named-object definitions; use the older standalone registry only for historical revision comparison.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.020",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.021",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.008",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For each Issue #1 comment creation or edit, save deterministic measurements by comment ID and source revision under workspaces/issue1-diagnostics/comments/<comment_id>/, with index-level character lengths, key occurrences, and nested-array counts.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.009",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Write per-comment state and each unique diagnostic snapshot as independently valid JSON objects; store current state in state.json and immutable content-hash-named diagnostic objects in revisions/.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.010",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Advance progression only when a valid single root array adds exactly one new scratchpad entry without changing the previously accepted prefix; freeze accepted index tracking after index 16 while continuing syntax and diagnostic validation on later edits.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.011",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not rewrite an invalid JSON submission into a valid wrapper merely to normalize syntax; preserve the user comment unchanged and record the failure in the diagnostic JSON and workflow report.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.012",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not treat historical backfill as evidence of seventeen sequential entry events, or claim the next framing function is selected while operator selection remains unconfigured.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -2052,13 +2122,46 @@
       "location_of_named_types": "reference_data.named_object_types",
       "location_of_field_registry": "reference_data.registered_scratchpad_fields",
       "precedence": "Authoritative use and input-type catalog; AGENTS.md remains authoritative on workflow, safeguards, and scratchpad array shape."
+    },
+    "comment_diagnostics": {
+      "schema_state": "issuescratch.comment-state.v1",
+      "schema_revision": "issuescratch.comment-diagnostics.v1",
+      "workspace_root": "workspaces/issue1-diagnostics/comments",
+      "state_path_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
+      "revision_path_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/revisions/<sha256-of-raw-comment>.json",
+      "workflow_path": ".github/workflows/issue1-json-validator.yml",
+      "workflow_blob_sha": "5cc1e0ff10a6f49b52e5e5a9f18fe7ab6f6c9dae",
+      "implementation_path": "src/issue1-diagnostics.js",
+      "implementation_blob_sha": "98371f51c09e56b622ccf9784fd2e1461eaffb90",
+      "source_events": [
+        "issue_comment.created",
+        "issue_comment.edited"
+      ],
+      "acceptance": "Exactly one new wrapped scratchpad entry per accepted update through index 16, with identical previously accepted prefix.",
+      "after_index_16": "Retain accepted count at 17, continue JSON validity and per-revision diagnostic snapshots.",
+      "invalid_json": "Record in saved JSON state and revision object without altering user-authored comment.",
+      "measurements": [
+        "raw source characters",
+        "raw bytes",
+        "root array length",
+        "total nested arrays",
+        "per-index serialized JSON characters",
+        "per-index string-value characters",
+        "per-index keys and recursive key occurrences",
+        "per-key value JSON/text character totals",
+        "per-index contribution in basis points"
+      ],
+      "existing_records": "Workflow dispatch/push scans record preexisting comments as historical snapshots; they are not claimed as sequentially accepted progression.",
+      "function_dispatch_state": "unconfigured; no operator mappings or framing actions are emitted until separately defined and tested.",
+      "root_objects_required": true,
+      "semantic_adjudication": false
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "a32c7acbf6b34fc2dfd5e851796a6b28ca76d9d0",
+    "previous_active_document_blob_sha": "41d6fe7490b1809b0f2fe6f758efa830cb4b1b8b",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Move the shuffled 152 permitted-use statements, the 17 illustrative scratchpad values, the 59 registered fields, and 68 object definitions into a separately stored canonical JSON document. Provide per-action expected input contracts using existing named types and retain the original shuffled use order without parent links.",
+    "current_amendment": "Define per-comment event-driven JSON diagnostics and persistent workspace state, with progressive draft handling, no invalid-comment rewriting, a freeze at index 16, and continued validation thereafter.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2067,7 +2170,7 @@
   },
   "coverage": {
     "active_section_count": 21,
-    "active_procedure_count": 149,
+    "active_procedure_count": 156,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
@@ -2081,6 +2184,10 @@
     "shuffled_illustrative_scratchpads": 17,
     "linked_uses_types_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "externalized_permitted_use_statements": true,
-    "externalized_named_types": true
+    "externalized_named_types": true,
+    "comment_diagnostics_enabled": true,
+    "comment_diagnostics_history_json_objects": true,
+    "comment_tracking_maximum_index": 16,
+    "comment_progression_function_selected": false
   }
 }
