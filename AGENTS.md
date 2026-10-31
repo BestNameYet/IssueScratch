@@ -2734,7 +2734,7 @@
       "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
       "tests_path": "src/framing-controller.test.js",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
-      "workflow_sha": "superseded; consult current workflow blob",
+      "workflow_sha": "11e220634dcabeeb3ebfdfc056f86edff77e899b",
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
