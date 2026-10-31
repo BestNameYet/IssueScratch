@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.2.0",
+  "format_version": "2.3.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "Authoritative procedures define a root JSON array of at least seventeen single-key scratchpad wrappers; each wrapper has the literal key scratchpad holding one nonempty open heterogeneous typed object. Previously saved shapes remain historical.",
   "opcode_format": {
@@ -1775,6 +1775,26 @@
       "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.007",
+      "version": 5,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Treat every permitted-use statement as an independent option in one flat shuffled collection; adjacency implies no shared parent or semantic relationship.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.008",
+      "version": 5,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not infer a mandatory parent-child hierarchy, category, or fixed scratchpad-index assignment from the order of permitted-use examples.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -1928,44 +1948,158 @@
       }
     ],
     "permitted_scratchpad_activities": [
-      "Write claims of ownership or stewardship of particular GitHub comments, including evidence for those claims.",
-      "Track the user's instructions and any changes or clarifications.",
-      "Track failures, failed attempts, diagnostics, and impact.",
-      "Reason openly, by documenting conclusions, assumptions, and concise explanatory rationales intended for review.",
-      "Reason cryptically, by using shorthand, compressed annotations, symbolic notes, or private-to-the-project mnemonics rather than an extended narrative.",
-      "Make philosophical forays, including exploratory questions about methods, meaning, or implications.",
-      "Challenge or critique implementations of OpenAI policy, noting observed behavior, alternative interpretations, concerns, and possible remedies; criticism does not grant authority to override applicable safeguards.",
+      "Preserve the original and revised forms of a reduced requirement.",
+      "Record a GitHub fetch's repository path and returned blob identifier.",
       "Record specific GitHub tool calls, their arguments where appropriate, returned IDs, receipts, and errors.",
-      "Record specific Google Drive tool calls, document references, outcomes, and errors.",
-      "Record specific calls to other tools or connectors, including their supported actions and observations.",
-      "Examine user instructions, such as quoting or cross-referencing relevant passages when permissible.",
-      "Analyze user instructions, including ambiguities, dependencies, and operational consequences.",
-      "Contemplate user instructions, including possible interpretations and reflective commentary.",
-      "Formulate hypotheses about how a system works.",
-      "Record counterhypotheses and competing explanations.",
-      "Compare alternative architectures or implementation approaches.",
-      "Document assumptions and their evidentiary basis.",
-      "Note unresolved questions and information gaps.",
-      "Investigate regressions and compare before/after behavior.",
-      "Track changes in task scope and requirement revisions.",
+      "Write claims of ownership or stewardship of particular GitHub comments, including evidence for those claims.",
+      "Describe the tradeoff behind choosing one authorized approach over another.",
+      "Preserve before-and-after test behavior at known revisions.",
+      "Include verified references and IDs in a handoff record.",
       "Maintain a chronology of important events and observations.",
-      "Record dependencies and prerequisites.",
-      "Identify opportunities to perform independent work in parallel.",
-      "Track blockers and proposed means of resolution.",
-      "Record experiments, inputs, observations, and outcomes.",
-      "Link test cases, expected results, and observed results.",
-      "Capture command output excerpts or exact execution receipts.",
-      "Record repository paths, revisions, commit IDs, and branch names.",
-      "Track issue, pull-request, comment, and review identifiers.",
+      "Record a failed update, new blob SHA, retry, and confirmed result in order.",
       "Maintain provenance for external claims, sources, and artifacts.",
-      "Assess reliability and limitations of retrieved evidence.",
-      "Explore possible failure modes and edge cases.",
-      "Critique earlier agent decisions and propose corrections.",
-      "Record explicit user approvals, rejections, and authorization boundaries.",
-      "Develop naming conventions, definitions, and conceptual taxonomies.",
+      "Examine an assumption implicit in an earlier instruction interpretation.",
+      "Record what evidence supports a critical precondition.",
       "Sketch future procedures, migrations, or workstreams.",
+      "Contrast JSON syntax checks with structural and semantic validation.",
+      "Attribute an external claim to a precise retrieved source.",
+      "Reason openly, by documenting conclusions, assumptions, and concise explanatory rationales intended for review.",
+      "Evaluate an earlier agent choice against the actual authorized scope.",
+      "Record an explicit rejection without treating silence as approval.",
+      "Record a source's revision and retrieval date where relevant.",
+      "Investigate regressions and compare before/after behavior.",
+      "Distinguish an earlier agent's mistaken inference from a verified defect.",
+      "Compare competing naming conventions and their consequences.",
+      "Document a lesson learned from an actual failed or successful test.",
+      "Examine user instructions, such as quoting or cross-referencing relevant passages when permissible.",
+      "Identify which actions an external connector actually supports.",
+      "Capture command output excerpts or exact execution receipts.",
+      "Distinguish denied Drive access from a nonexistent document.",
+      "Preserve an earlier stewardship claim when recording a competing claimant's reason.",
+      "Identify missing logs that limit a verification conclusion.",
+      "Store exact issue, pull-request, comment, and review identifiers.",
+      "Identify the exact missing requirement that prevents a design choice.",
+      "Make philosophical forays, including exploratory questions about methods, meaning, or implications.",
+      "Preserve unresolved blockers alongside the evidence required to continue.",
+      "Record repository paths, revisions, commit IDs, and branch names.",
+      "Explore a pagination or error-path edge case and a controlled mitigation.",
+      "Analyze concurrent file updates using stale version information.",
+      "Explore possible failure modes and edge cases.",
+      "Explore what distinguishes actual authority from a claim of authority.",
+      "Identify an unrequested implementation change for separate review.",
       "Prepare handoff notes for a succeeding agent or session.",
-      "Record lessons learned and candidates for future adjudication."
+      "Trace the practical effect of a schema amendment without expanding its scope.",
+      "Explain a decision in concise language grounded in observations.",
+      "Quote a user's original directive exactly before interpreting it.",
+      "Record specific Google Drive tool calls, document references, outcomes, and errors.",
+      "Design a test that discriminates between rival explanations.",
+      "Preserve an exact output excerpt with its invocation and run ID.",
+      "Record counterhypotheses and competing explanations.",
+      "Record a workflow trigger, run identifier, and observed job conclusion.",
+      "Preserve permanent record IDs rather than inferring their sequence.",
+      "Track failures, failed attempts, diagnostics, and impact.",
+      "Repeat controlled tests under altered conditions to check reproducibility.",
+      "Record an authorization question separately from an answerable technical question.",
+      "Compare actual and expected outputs for a negative test.",
+      "Distinguish the time of an event from the time its evidence was retrieved.",
+      "Describe a procedure's prerequisites and expected evidence.",
+      "Document an authorized increase in requested deliverables.",
+      "Preserve the exact boundaries of an approval decision.",
+      "Compare changed wording across two versions of an instruction.",
+      "Identify a duplicate-execution risk from missing nonce deduplication.",
+      "Record an unavailable tool action without describing it as a system defect.",
+      "Extract prerequisites implied by a requested operation.",
+      "Mark a dependency resolved only after observing its required condition.",
+      "Mark a test passed only after inspecting execution evidence.",
+      "Contemplate user instructions, including possible interpretations and reflective commentary.",
+      "Identify opportunities to perform independent work in parallel.",
+      "Condense a comparison into labeled shorthand without disguising uncertainty.",
+      "Outline a possible migration without declaring it already executed.",
+      "Represent progress through compact symbolic annotations with a legend.",
+      "Classify evidence as direct, corroborated, incomplete, or speculative.",
+      "Record explicit user approvals, rejections, and authorization boundaries.",
+      "Record the revision or text range retrieved from a Drive document.",
+      "Track whether a specific repository change is still awaiting authorization.",
+      "Document assumptions and their evidentiary basis.",
+      "Suggest a falsifiable cause of an observed software defect.",
+      "Formulate hypotheses about how a system works.",
+      "Hypothesize a recurring pattern in agent-generated records and how to test it.",
+      "Track the resulting file blob identifier after an update.",
+      "Predict a measurable outcome of a proposed runtime change.",
+      "Record experiments, inputs, observations, and outcomes.",
+      "Distinguish a comment ID from the ID of an Actions run.",
+      "Record a tool error with its input, output, and observed impact.",
+      "Reflect on a tension between literal wording and the requested result.",
+      "Identify prerequisites that must precede an operation.",
+      "Develop naming conventions, definitions, and conceptual taxonomies.",
+      "Differentiate a queued command acknowledgement from an execution receipt.",
+      "Capture a controlling sentence verbatim with its source revision.",
+      "Recommend a correction for an unsupported implementation assumption.",
+      "Record command stdout, stderr, and exit code when actually observed.",
+      "Use short project mnemonics with enough context to remain interpretable.",
+      "Record dependencies and prerequisites.",
+      "Distinguish a missing permission from an actual failed computation.",
+      "Challenge or critique implementations of OpenAI policy, noting observed behavior, alternative interpretations, concerns, and possible remedies; criticism does not grant authority to override applicable safeguards.",
+      "Compare API-dependent and Node.js execution architectures against explicit criteria.",
+      "State the explicit assumptions supporting an implementation choice.",
+      "Analyze user instructions, including ambiguities, dependencies, and operational consequences.",
+      "Keep connector submission acknowledgements separate from confirmed completion.",
+      "Record a tentative reading of a user's intent without claiming certainty.",
+      "Track corrective attempts separately from evidence of recovery.",
+      "Log an authorized Drive file lookup and the matched document ID.",
+      "Log a file mutation's commit SHA and separate readback evidence.",
+      "List competing interpretations of an ambiguous instruction.",
+      "Describe a counterexample that would disprove a preferred theory.",
+      "Describe a permitted alternate action without claiming the blocked action succeeded.",
+      "Evaluate an alternative interpretation of an observed platform restriction.",
+      "Update an assumption after observing contradictory results.",
+      "Link test cases, expected results, and observed results.",
+      "Track blockers and proposed means of resolution.",
+      "Sequence instructions, commits, and observed workflow outcomes.",
+      "Record experiment inputs and expected measurements before execution.",
+      "Document a scope boundary that an instruction does not authorize crossing.",
+      "Examine whether test success establishes correctness or only completed execution.",
+      "Refine a technical taxonomy without claiming it is mandatory.",
+      "Note unresolved questions and information gaps.",
+      "Mark an environmental premise unverified until inspected.",
+      "Preserve an explicit exception while citing the clause that creates it.",
+      "Detect overlapping writes that could clobber another agent's revisions.",
+      "Reflect on how historical identity persists through non-destructive revisions.",
+      "Partition independent investigations to avoid shared mutable state.",
+      "Explain why a green Actions run alone may not establish semantic correctness.",
+      "Record lessons learned and candidates for future adjudication.",
+      "Evaluate issue comments versus repository files as durable record stores.",
+      "Define a term with a concrete example and counterexample.",
+      "Record the current state and next action for a successor agent.",
+      "Capture raw observations apart from interpretive conclusions.",
+      "Suggest an improvement candidate without treating it as approved.",
+      "Distinguish useful optional inputs from blocking dependencies.",
+      "Compare alternative architectures or implementation approaches.",
+      "State an agent's nonexclusive claim to maintain an identified comment, citing its ID.",
+      "Identify evidence a later retrospective review should inspect.",
+      "Associate a changed repository path with a verified commit SHA.",
+      "Coordinate separate file edits and specify the reconciliation point.",
+      "Track issue, pull-request, comment, and review identifiers.",
+      "Assess reliability and limitations of retrieved evidence.",
+      "Preserve the conditions needed to reproduce an unsuccessful attempt.",
+      "Critique earlier agent decisions and propose corrections.",
+      "Suggest transparent remedies without claiming the right to bypass safeguards.",
+      "Record a later clarification without hiding the superseded wording.",
+      "Track the user's instructions and any changes or clarifications.",
+      "Record a connector timeout and the outcome of a subsequent verification read.",
+      "Distinguish direct tool evidence from another agent's paraphrase.",
+      "Specify the evidence needed to answer an unresolved operational question.",
+      "Separate an asserted stewardship role from verified repository edit permissions.",
+      "Reason cryptically, by using shorthand, compressed annotations, symbolic notes, or private-to-the-project mnemonics rather than an extended narrative.",
+      "State the limits of test coverage even when CI reports success.",
+      "Repeat a previously failing test after a fix and record the result.",
+      "Investigate candidate causes of a failed regression check.",
+      "Record which branch and file revision were read before editing.",
+      "Document a reproducible discrepancy between a safety policy and a product's implementation.",
+      "Record specific calls to other tools or connectors, including their supported actions and observations.",
+      "Propose a reversible implementation change for future approval.",
+      "State an alternative cause that could explain the same observation.",
+      "Track changes in task scope and requirement revisions."
     ],
     "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
     "allowed_RS_transition_classifications": [
@@ -2014,7 +2148,80 @@
     "field_selection_example": [
       {
         "scratchpad": {
+          "authorizations[array<Authorization>]": [
+            {
+              "instruction_id[string]": "U1",
+              "authorizer[string]": "Example user",
+              "decision[string]": "pending",
+              "scope[string]": "Proposed test change",
+              "timestamp[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
           "text[string]": "Record the user's operating constraint."
+        }
+      },
+      {
+        "scratchpad": {
+          "architecture_comparisons[array<ArchitectureComparison>]": [
+            {
+              "options[array<ArchitectureOption>]": [
+                {
+                  "name[string]": "Polling",
+                  "strengths[string]": "Simple integration",
+                  "weaknesses[string]": "Repeated requests"
+                },
+                {
+                  "name[string]": "Events",
+                  "strengths[string]": "Responsive",
+                  "weaknesses[string]": "Needs deduplication"
+                }
+              ],
+              "criterion[string]": "Reliability",
+              "decision[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "failures[array<FailureRecord>]": [
+            {
+              "failure_id[string]": "F1",
+              "operation[string]": "Parse an input",
+              "error[string]": "Illustrative malformed token",
+              "impact[string]": "No state transition",
+              "resolved[boolean]": false
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "test_cases[array<TestCase>]": [
+            {
+              "test_id[string]": "T1",
+              "input[string]": "A sample record.",
+              "expected[string]": "Seven or more object entries.",
+              "observed[string|null]": null,
+              "passed[boolean|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "scope_changes[array<ScopeChange>]": [
+            {
+              "change_id[string]": "C1",
+              "prior_scope[string]": "Single input",
+              "revised_scope[string]": "Multiple records",
+              "authorized_by[string|null]": null
+            }
+          ]
         }
       },
       {
@@ -2043,29 +2250,6 @@
       },
       {
         "scratchpad": {
-          "text[string]": "Identify the exact implementation target."
-        }
-      },
-      {
-        "scratchpad": {
-          "test_cases[array<TestCase>]": [
-            {
-              "test_id[string]": "T1",
-              "input[string]": "A sample record.",
-              "expected[string]": "Seven or more object entries.",
-              "observed[string|null]": null,
-              "passed[boolean|null]": null
-            }
-          ]
-        }
-      },
-      {
-        "scratchpad": {
-          "text[string]": "Record an independent constraint or technical observation."
-        }
-      },
-      {
-        "scratchpad": {
           "handoff_notes[array<HandoffNote>]": [
             {
               "work_id[string]": "W1",
@@ -2079,15 +2263,7 @@
       },
       {
         "scratchpad": {
-          "failures[array<FailureRecord>]": [
-            {
-              "failure_id[string]": "F1",
-              "operation[string]": "Parse an input",
-              "error[string]": "Illustrative malformed token",
-              "impact[string]": "No state transition",
-              "resolved[boolean]": false
-            }
-          ]
+          "text[string]": "Identify the exact implementation target."
         }
       },
       {
@@ -2104,46 +2280,12 @@
       },
       {
         "scratchpad": {
-          "definitions[array<Definition>]": [
+          "lessons_learned[array<LessonLearned>]": [
             {
-              "term[string]": "receipt",
-              "meaning[string]": "A durable observation that an operation took place",
-              "scope[string]": "Illustrative workflow",
-              "example[string|null]": null
-            }
-          ]
-        }
-      },
-      {
-        "scratchpad": {
-          "scope_changes[array<ScopeChange>]": [
-            {
-              "change_id[string]": "C1",
-              "prior_scope[string]": "Single input",
-              "revised_scope[string]": "Multiple records",
-              "authorized_by[string|null]": null
-            }
-          ]
-        }
-      },
-      {
-        "scratchpad": {
-          "architecture_comparisons[array<ArchitectureComparison>]": [
-            {
-              "options[array<ArchitectureOption>]": [
-                {
-                  "name[string]": "Polling",
-                  "strengths[string]": "Simple integration",
-                  "weaknesses[string]": "Repeated requests"
-                },
-                {
-                  "name[string]": "Events",
-                  "strengths[string]": "Responsive",
-                  "weaknesses[string]": "Needs deduplication"
-                }
-              ],
-              "criterion[string]": "Reliability",
-              "decision[string|null]": null
+              "lesson[string]": "Separate submission from execution",
+              "evidence[array<Evidence>]": [],
+              "prospective_change[string|null]": "Add explicit receipt verification",
+              "adjudication_candidate[boolean]": false
             }
           ]
         }
@@ -2162,27 +2304,19 @@
       },
       {
         "scratchpad": {
-          "failure_modes[array<FailureMode>]": [
+          "definitions[array<Definition>]": [
             {
-              "scenario[string]": "Two workers claim the same work",
-              "trigger[string]": "Concurrent retries",
-              "consequence[string]": "Duplicate activity",
-              "mitigation[string]": "Idempotent nonce check"
+              "term[string]": "receipt",
+              "meaning[string]": "A durable observation that an operation took place",
+              "scope[string]": "Illustrative workflow",
+              "example[string|null]": null
             }
           ]
         }
       },
       {
         "scratchpad": {
-          "authorizations[array<Authorization>]": [
-            {
-              "instruction_id[string]": "U1",
-              "authorizer[string]": "Example user",
-              "decision[string]": "pending",
-              "scope[string]": "Proposed test change",
-              "timestamp[string|null]": null
-            }
-          ]
+          "text[string]": "Record an independent constraint or technical observation."
         }
       },
       {
@@ -2198,12 +2332,12 @@
       },
       {
         "scratchpad": {
-          "lessons_learned[array<LessonLearned>]": [
+          "failure_modes[array<FailureMode>]": [
             {
-              "lesson[string]": "Separate submission from execution",
-              "evidence[array<Evidence>]": [],
-              "prospective_change[string|null]": "Add explicit receipt verification",
-              "adjudication_candidate[boolean]": false
+              "scenario[string]": "Two workers claim the same work",
+              "trigger[string]": "Concurrent retries",
+              "consequence[string]": "Duplicate activity",
+              "mitigation[string]": "Idempotent nonce check"
             }
           ]
         }
@@ -2223,17 +2357,19 @@
       "item_required_key": "scratchpad",
       "item_additional_keys_allowed": false,
       "item_value_type": "open_heterogeneous_json_object"
-    }
+    },
+    "activity_examples_description": "Flat shuffled set of standalone permissible scratchpad activities, including concrete action variations. No parent IDs, categories, subtype labels, field mappings, or sequence-based links are defined.",
+    "activity_examples_count": 152
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "c71b8baeaede1f69dc01abaf4fb6bd05e310875f",
+    "previous_active_document_blob_sha": "58a7ae1d8e1829eb5cd7b2f735c22d43d2234428",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "User-authorized increase of the minimum new root scratchpad array length from seven to seventeen. Each element remains exactly a single-key scratchpad wrapper with independently typed heterogeneous content. Historical records are unchanged."
+    "current_amendment": "Expand the permitted-use statements with concrete independent examples and shuffle all statements into one unlinked flat list. Reorder the seventeen illustrative scratchpad values independently; preserve the registered types and seventeen-entry minimum."
   },
   "coverage": {
     "active_section_count": 21,
-    "active_procedure_count": 144,
+    "active_procedure_count": 146,
     "registered_fields": 59,
     "linked_registry_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
     "active_examples": 0,
@@ -2242,6 +2378,8 @@
     "array_root_minimum_items": 17,
     "legacy_RS_objects_preserved": true,
     "array_item_wrapper_key": "scratchpad",
-    "array_item_wrapper_exact_keys": true
+    "array_item_wrapper_exact_keys": true,
+    "expanded_flat_permitted_activities": 152,
+    "shuffled_illustrative_scratchpads": 17
   }
 }
