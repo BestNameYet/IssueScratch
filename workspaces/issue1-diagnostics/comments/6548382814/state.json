@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 7,
-    "last_accepted_index": 6,
-    "next_index": 7,
-    "accepted_prefix_sha256": "2f5f4bc65e23a05da198453e44e112e68fc7f103bd67315e54369c27fff4f20b",
+    "accepted_entries": 8,
+    "last_accepted_index": 7,
+    "next_index": 8,
+    "accepted_prefix_sha256": "b1654102b61d57a285539749ea99b8828c5749d86cb9f3cf5e19f35ac66f76b2",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 7,
+      "target_index": 8,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.006",
-        "name": "COMPARE",
-        "description": "Contrast two or more subjects with respect to dimensions",
-        "input_contract": "subjects_and_dimensions",
-        "output_contract": "comparison"
+        "opcode": "OP.01.004",
+        "name": "ANALYZE",
+        "description": "Extract or examine properties and relationships",
+        "input_contract": "subject_and_questions",
+        "output_contract": "observations"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,30 +40,30 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 4,
+        "selected_ordinal": 2,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.006"
+        "OP.01.004"
       ],
       "read_indices": [
-        1,
-        4,
-        5
+        5,
+        6,
+        7
       ],
       "frame_id": "F2",
       "enclosing_frame_id": "F1",
-      "role": "preserve_reference",
-      "reference_id": "R-B",
-      "original_anchor_index": 1,
-      "previous_frame_index": 4,
+      "role": "expand_enclosing_narrative",
+      "reference_id": null,
+      "original_anchor_index": null,
+      "previous_frame_index": 5,
       "requirements": [
-        "Apply function COMPARE (OP.01.006) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Carry the *same referent identity* R-B from index 1 through this enclosing frame.",
-        "Do not convert attributed inner claims into direct factual assertions.",
-        "Use textual references freely while maintaining identity and attribution.",
-        "Append exactly one substantive scratchpad at index 7; retain the accepted prefix."
+        "Apply function ANALYZE (OP.01.004) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Enclose frame F1 inside frame F2 while preserving attribution.",
+        "Preserve the identities R-A and R-B and the attribution of claims in the prior frame.",
+        "Add substantive narrative development, not merely a paraphrase or a quotation ladder.",
+        "Append exactly one substantive scratchpad at index 8; retain the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -71,8 +71,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "64c688649b1476893cc6cf1e13be9d7e263806a2652dc1aba561bc78a32b78f8",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/64c688649b1476893cc6cf1e13be9d7e263806a2652dc1aba561bc78a32b78f8.json",
+  "last_processed_revision_sha256": "7b059e32a9ec16b17fae1b960734f2ed80a44331b16256e15b1116463c9c1c6b",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/7b059e32a9ec16b17fae1b960734f2ed80a44331b16256e15b1116463c9c1c6b.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -129,6 +129,14 @@
       "json_valid": true,
       "array_length": 7,
       "accepted_entries_after": 7,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "7b059e32a9ec16b17fae1b960734f2ed80a44331b16256e15b1116463c9c1c6b",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/7b059e32a9ec16b17fae1b960734f2ed80a44331b16256e15b1116463c9c1c6b.json",
+      "json_valid": true,
+      "array_length": 8,
+      "accepted_entries_after": 8,
       "transition": "accepted_one_entry"
     }
   ]
