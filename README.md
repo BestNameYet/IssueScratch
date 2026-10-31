@@ -22,8 +22,8 @@ IssueScratch/
 │   ├── issue1-diagnostics.test.js
 │   ├── framing-controller.js
 │   ├── framing-controller.test.js
-│   ├── readme-comment-renderer.js
-│   ├── readme-comment-renderer.test.js
+│   ├── artifact-publisher.js
+│   ├── artifact-publisher.test.js
 │   ├── opcode-document-adapter.js
 │   ├── opcode-document-adapter.test.js
 │   └── types/
@@ -70,8 +70,8 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | [`src/issue1-diagnostics.test.js`](src/issue1-diagnostics.test.js) | Tests parsing failures, nested arrays, per-index measurements, unchanged-prefix checks, duplicate events, historical snapshots, and the index-18 progression limit. |
 | [`src/framing-controller.js`](src/framing-controller.js) | Selects and persists one higher-order OP.02 frame operator per three-index exercise, optionally chooses an ABSTRACT mode, independently selects atomic OP.01 actions, and structurally validates substantive solver outputs. |
 | [`src/framing-controller.test.js`](src/framing-controller.test.js) | Tests five frame-level selections, stable operator/mode reuse across three slots, source lineage, four ABSTRACT modes, atomic choices, input/output validation and 19-entry progression. |
-| [`src/readme-comment-renderer.js`](src/readme-comment-renderer.js) | Generates a separate README candidate retaining the exact source-comment JSON (19 entries for new controlled runs); controlled completion is checked in the workflow. |
-| [`src/readme-comment-renderer.test.js`](src/readme-comment-renderer.test.js) | Tests source/comment identity, content preservation, and candidate rendering. |
+| [`src/artifact-publisher.js`](src/artifact-publisher.js) | Generic completed-job artifact verifier: source-authorized destinations, nineteen accepted revisions, five persisted higher-order frames, eighteen matching instructions and final UTF-8 content. No filename-specific rules. |
+| [`src/artifact-publisher.test.js`](src/artifact-publisher.test.js) | Tests the common publication contract, explicit source authorization, path safety, source integrity, controller receipts and destination matching. |
 | [`src/opcode-document-adapter.js`](src/opcode-document-adapter.js) | Command-line and module adapter from document bytes to a JSON-object envelope retaining original bytes, SHA-256, source-linked records, and declared reusable operation steps. Provides `convert` and `verify`. |
 | [`src/opcode-document-adapter.test.js`](src/opcode-document-adapter.test.js) | Tests byte-for-byte preservation, typed JSON/text/binary input handling, operation reuse, invalid profile/opcode rejection, tampering, and command-line round-trip verification. |
 
@@ -104,7 +104,8 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | `workspaces/issue1-diagnostics/comments/<comment-id>/state.json` | Current **JSON object**: progression state, accepted prefix hash, latest revision pointer, validation result, and revision-history entries. |
 | `workspaces/issue1-diagnostics/comments/<comment-id>/revisions/<source-body-sha256>.json` | Immutable-per-content **JSON object**: diagnostics and transition information for an observed source revision, including lengths and keys at each index. |
 | `workspaces/issue1-diagnostics/comments/<comment-id>/instructions/<zero-padded-index>.json` | Per-index selected function, source revision, random draw, and framing requirements stored as a JSON object. |
-| [`workspaces/readme-job-001/receipt.json`](workspaces/readme-job-001/receipt.json) | Original README candidate receipt; evidence of an imported array, not sequential controller execution. |
+| [`workspaces/readme-job-001/receipt.json`](workspaces/readme-job-001/receipt.json) | Historical README experiment receipt, retained for provenance; it is not an active publication procedure. |
+| `workspaces/issue1-diagnostics/comments/<comment-id>/published-artifacts/<source-sha256>.json` | Workflow-owned generic artifact publication receipt; records destination paths, verified blob SHA values and source lineage for any finalized artifact. |
 
 Workspaces contain runtime evidence, not authoritative instructions. Preserve saved records and revision identities; do not rewrite historical diagnostics to make results appear more successful.
 
@@ -174,9 +175,20 @@ Invalid JSON is **not silently repaired or rewritten**. Its failure is recorded 
 
 **Framing controller v2.1:** Index 0 contains five nested preparatory scratchpads. Across five three-slot frames (indices 1–15), the workflow persists one higher-order SOLVER_LIFT or ABSTRACT choice per frame, plus an independently selected atomic OP.01 action per index. Indices 16–18 reconcile source coverage and opcode steps. Invalid/imported-complete arrays do not issue instructions, index 18 terminates progression, and retry recovery preserves the ordered random draws. See the higher-order contracts above.
 
-The controller **selects and publishes** the next instruction; it does **not** autonomously execute the function, produce the next scratchpad, or assess semantic correctness. **Higher-order frame verification:** [Source comment 6548995651](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548995651) was accepted sequentially through indices 0–3; the [controller history](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548997266) demonstrates ABSTRACT/IMPLEMENTATION selected once, retained across all three slots, then a fresh selection for F1. [GitHub Actions run 41241263066](https://github.com/BestNameYet/IssueScratch/actions/runs/41241263066) passed all 43 tests. No full nineteen-index execution or semantic correctness claim follows from this proof. The [new 19-entry schema live probe](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548830869) verified a five-part initial preparation followed by an agent-authored index-1 entry, with randomly chosen instructions persisted in the [controller comment](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548832768) ([first successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239803917), [second successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239852275)). The earlier 17-entry README job is historical; a complete 19-entry controlled README experiment has **not yet** been executed.
+The controller **selects and publishes** the next instruction; it does **not** autonomously execute the function, produce the next scratchpad, or assess semantic correctness. **Higher-order frame verification:** [Source comment 6548995651](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548995651) was accepted sequentially through indices 0–3; the [controller history](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548997266) demonstrates ABSTRACT/IMPLEMENTATION selected once, retained across all three slots, then a fresh selection for F1. [GitHub Actions run 41241263066](https://github.com/BestNameYet/IssueScratch/actions/runs/41241263066) passed all 43 tests. No full nineteen-index execution or semantic correctness claim follows from this proof. The [new 19-entry schema live probe](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548830869) verified a five-part initial preparation followed by an agent-authored index-1 entry, with randomly chosen instructions persisted in the [controller comment](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548832768) ([first successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239803917), [second successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239852275)). The earlier 17-entry README experiment is historical. New README authoring is handled by the same generic artifact publication contract as any other text file; no complete 19-entry artifact publication has yet been verified.
 
-### 3. Document → opcode JSON conversion
+### 3. Generic artifact publication — no special README path
+
+The same procedure applies to **every authorized UTF-8 repository artifact**, including `README.md`. A job may declare one or more destinations in the first nested preparatory scratchpad at outer index 0:
+
+- `artifact_targets[array<object>]`: an array of `{ "path": "repository/relative/path", "source_context_id": "C1" }` records. Each `source_context_id` must resolve to a `context_elements[array<object>]` entry with `authority: "explicit_user"`. The source comment must be authored by the repository owner for automatic repository mutation.
+- `artifacts[array<object>]` at outer index 18: one `{ "path": "...", "content": "complete UTF-8 output" }` for each declared target. Destination names, not file types, are checked for equality.
+
+After verifying all **19 sequentially accepted source revisions**, five retained higher-order frame selections, 18 source-linked instructions and their immutable receipts, and the current source-body digest, [the workflow](.github/workflows/issue1-json-validator.yml) writes each artifact directly to its requested path using the existing blob SHA as an optimistic concurrency guard. If a file exists—including `README.md`—its contents are **replaced in place**, read back, and verified; the workflow stores a source-linked receipt under `workspaces/issue1-diagnostics/comments/<comment-id>/published-artifacts/`. The same rule applies to a new path, which is created.
+
+This is not a semantic review or permission to invent an artifact target. Publication is not automatic for a source without an explicitly user-grounded target, an owner-authored comment, or full verified completion. There is **no README-only candidate generator, promotion step, comparison hold, or filename-specific approval requirement**. Historical experiment candidates and receipts remain in the repository only as records of earlier runs.
+
+### 4. Document → opcode JSON conversion
 
 The [adapter contract](src/types/issuescratch.opcode-adapter-contract.v1.json) distinguishes three identities:
 
@@ -218,8 +230,8 @@ For deployed behavior, check [GitHub Actions](https://github.com/BestNameYet/Iss
 
 ## Present boundaries and maintenance
 
-- **Implemented:** one Issue #1 diagnostic workflow; per-comment JSON-object state and metrics; one persisted higher-order operator per three-index frame, independent atomic choices, typed source-linked input/output validation and Issue #1 instruction publication; a lossless document adapter; 16 atomic and 2 higher-order operation definitions; generated 17-prompt opcode projection; unit tests.
-- **Not implemented:** autonomous agent execution of the published function, creation of the next scratchpad by the workflow, or verified completion of all 19 sequential transitions. The existing README candidate predates the controller.
+- **Implemented:** one Issue #1 diagnostic workflow; per-comment JSON-object state and metrics; persisted higher-order framing and atomic choices; typed source-linked input/output validation and instruction publication; one general artifact publication workflow step with destination replacement and readback; a lossless document adapter; operation registries and automated tests.
+- **Not implemented/verified:** autonomous agent execution of published functions, creation of the next scratchpad by the workflow, or a complete live 19-index artifact publication. Generic publisher code and tests must be verified in a new workflow execution before claiming deployed success. Earlier README candidates remain historical only.
 - **Experiment status:** the 17 prompts are prepared and opcode-mapped, but producing the converted manifest does not mean the 17 agent tasks were run.
 - **Historical compatibility:** preserve older three-object and seven-entry records rather than rewriting them to the current 19-entry RS contract.
 - **On changes:** review `AGENTS.md` and Issue #1 first; update this file manifest when adding, moving, renaming, or changing the responsibilities of major components. Regenerate derived files from their declared sources, validate JSON records, run tests, and verify the GitHub Actions result before claiming operational success.
