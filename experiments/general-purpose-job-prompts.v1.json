@@ -1,0 +1,137 @@
+{
+  "document_type": "issuescratch.general-purpose-prompt-batch",
+  "format_version": "1.0.0",
+  "repository": "BestNameYet/IssueScratch",
+  "target_issue": 1,
+  "intent": "A fixed set of diverse ordinary end-user requests for later independent IssueScratch jobs; compare separately produced scratchpad arrays without priming the agents with desired latent properties.",
+  "submission_contract": {
+    "per_job_input": "prompt",
+    "instruction_reference": "AGENTS.md",
+    "prompt_contamination": "Do not append commentary about scratchpads, their index positions, potential latent properties, or the experiment to the prompt sent as the user task.",
+    "create_job_separately": true,
+    "existing_job_count": 0,
+    "independent_runs": true,
+    "phase": "prompt-list-only"
+  },
+  "jobs": [
+    {
+      "prompt_id": "P01",
+      "prompt": "Tell an original short story about a stranger who returns a lost key and discovers that it opens something unexpected.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P02",
+      "prompt": "Critique Plato's Theory of Forms. Explain its central argument, identify its strongest insight, and give a reasoned objection.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P03",
+      "prompt": "Write an original Shakespearean sonnet about the moment just before sunrise.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P04",
+      "prompt": "Write an original song about someone leaving their hometown and reconsidering the meaning of home. Include verses, a chorus, and a bridge.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P05",
+      "prompt": "Create a program that determines the nth digit of pi after the decimal point for any positive integer n. Explain the algorithm and show how to test it.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P06",
+      "prompt": "Explain how thunderstorms form to a curious 12-year-old, using one useful analogy without sacrificing scientific accuracy.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P07",
+      "prompt": "Prove that there are infinitely many prime numbers, and explain the essential logical move in the proof.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P08",
+      "prompt": "Find and fix the bug in this Python function, which is supposed to return the largest value in a nonempty list:\n\ndef largest(values):\n    best = 0\n    for value in values:\n        if value > best:\n            best = value\n    return best\n\nExplain the failure and provide tests.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P09",
+      "prompt": "Design a simple relational database for a public library that tracks books, physical copies, patrons, and loans. Describe the tables and their relationships.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P10",
+      "prompt": "Plan a two-day neighborhood arts festival with a small volunteer team, limited equipment, and both indoor and outdoor activities.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P11",
+      "prompt": "Analyze the following fictional shop's weekly sales figures, identify the best and worst days, and explain what conclusions cannot be drawn from the data alone: Monday 18, Tuesday 25, Wednesday 21, Thursday 30, Friday 44, Saturday 57, Sunday 32.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P12",
+      "prompt": "Compare the tradeoffs of using a spreadsheet versus a relational database to track inventory for a growing small business. Recommend when to switch.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P13",
+      "prompt": "Create a 45-minute introductory lesson on photosynthesis for middle-school students, including a demonstration and a method of checking understanding.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P14",
+      "prompt": "Translate this Spanish passage into natural English while preserving its tone: \"Cuando volví al pueblo, la plaza estaba vacía. Sin embargo, todavía podía escuchar las voces de quienes habían jugado allí conmigo.\"",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P15",
+      "prompt": "Draft a polite but firm email requesting that a building manager repair a leaking kitchen faucet and provide a date for the repair.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P16",
+      "prompt": "Evaluate the claim that a four-day workweek improves productivity. Present plausible mechanisms for and against it, and propose a study that could test the claim.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    },
+    {
+      "prompt_id": "P17",
+      "prompt": "Invent five names for a fictional neighborhood bakery, then choose one and develop a short brand description and three sample menu items.",
+      "job_state": "not_submitted",
+      "issue_1_job_comment_id": null,
+      "returned_scratchpad_comment_id": null
+    }
+  ]
+}
