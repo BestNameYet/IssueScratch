@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 10,
-    "last_accepted_index": 9,
-    "next_index": 10,
-    "accepted_prefix_sha256": "51b75c099c4b501d2b2ba9f262b968d665841b4a5217b5f5536013d4e48c5181",
+    "accepted_entries": 11,
+    "last_accepted_index": 10,
+    "next_index": 11,
+    "accepted_prefix_sha256": "5f330d0aa72f547ad7761692715edf4cbacf902fde6441e8bf474e22a871c86e",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 10,
+      "target_index": 11,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.014",
-        "name": "VALIDATE",
-        "description": "Check a result against machine-checkable or declared conditions",
-        "input_contract": "result_and_conditions",
-        "output_contract": "validation_result"
+        "opcode": "OP.01.012",
+        "name": "BRANCH",
+        "description": "Select a branch based on an explicit predicate",
+        "input_contract": "condition_and_branches",
+        "output_contract": "selected_branch"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,30 +40,30 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 12,
+        "selected_ordinal": 10,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.014"
+        "OP.01.012"
       ],
       "read_indices": [
-        1,
-        7,
-        8
+        8,
+        9,
+        10
       ],
       "frame_id": "F3",
       "enclosing_frame_id": "F2",
-      "role": "preserve_reference",
-      "reference_id": "R-B",
-      "original_anchor_index": 1,
-      "previous_frame_index": 7,
+      "role": "expand_enclosing_narrative",
+      "reference_id": null,
+      "original_anchor_index": null,
+      "previous_frame_index": 8,
       "requirements": [
-        "Apply function VALIDATE (OP.01.014) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Carry the *same referent identity* R-B from index 1 through this enclosing frame.",
-        "Do not convert attributed inner claims into direct factual assertions.",
-        "Use textual references freely while maintaining identity and attribution.",
-        "Append exactly one substantive scratchpad at index 10; retain the accepted prefix."
+        "Apply function BRANCH (OP.01.012) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Enclose frame F2 inside frame F3 while preserving attribution.",
+        "Preserve the identities R-A and R-B and the attribution of claims in the prior frame.",
+        "Add substantive narrative development, not merely a paraphrase or a quotation ladder.",
+        "Append exactly one substantive scratchpad at index 11; retain the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -71,8 +71,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "f8d515faf4db9de0d2b3efd8c2430a59040c5594a22091db319f5ba73cab3862",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/f8d515faf4db9de0d2b3efd8c2430a59040c5594a22091db319f5ba73cab3862.json",
+  "last_processed_revision_sha256": "14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -153,6 +153,14 @@
       "json_valid": true,
       "array_length": 10,
       "accepted_entries_after": 10,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730.json",
+      "json_valid": true,
+      "array_length": 11,
+      "accepted_entries_after": 11,
       "transition": "accepted_one_entry"
     }
   ]
