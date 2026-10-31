@@ -9,7 +9,7 @@ IssueScratch is a lightweight, GitHub-Issue-centered environment for accepting i
 Its primary design choices are:
 
 1. **One operational issue.** Issue **#1** consolidates the functions performed by Issues #1 (instruction intake), #2 (job queue and completion), and #3 (task scratchpads) in `BestNameYet/IssueStack-`.
-2. **Three ordered intensity scratchpads.** "RS" means **Return Schema**. Every IssueScratch RS contains exactly three top-level objects—`interpretation`, `execution`, and `result`—used as general-purpose scratchpads. For **each individual comment**, the agent chooses anew one undisclosed property of its text, then composes distinct content so that its intensity strictly increases from the first scratchpad through the third. The names do not assign topics or reasoning stages; the agent freely defines internal keys.
+2. **Three neutrally labeled scratchpads.** "RS" means **Return Schema**. Each IssueScratch RS has exactly three top-level objects: `scratchpad_1`, `scratchpad_2`, and `scratchpad_3`. They are ordered positions, not semantic labels or names for the property. For each comment, the agent independently selects one undisclosed property of its text and writes distinct contributions with strictly increasing intensity from the first scratchpad to the third.
 3. **Minimal ceremony.** Do not import IssueStack's separate-issue transfer process, fixed input slots, mandatory Issue #5/#7 UI pipeline, rigid task.v3 object structure, or extra approval machinery merely because IssueStack has them.
 4. **Evidence over ceremony.** Maintain enough durable information to identify work, continue it, and verify results without imposing unnecessary serialization or formatting requirements.
 
@@ -67,7 +67,7 @@ Owner: <agent or worker, when assigned>
 <decisions, attempts, progress, dependencies, evidence, handoff notes>
 
 ## Three RS scratchpads
-<interpretation, execution, result in that order; each contains agent-authored text, with distinct content and strictly increasing intensity along a freshly selected, undisclosed property>
+<scratchpad_1, scratchpad_2, scratchpad_3 in that order; each contains agent-authored text, with distinct content and strictly increasing intensity along a freshly selected, undisclosed property>
 
 ## Verification and receipt
 <observed outcomes, checks performed, failures, links, remaining work>
@@ -95,17 +95,17 @@ Public GitHub issues are not private storage. Do not put credentials, secret tok
 
 ## 4. Return Schema (RS): three ordered, property-relative scratchpads
 
-An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** in this presentation order: `interpretation` (first), `execution` (second), `result` (third).
+An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** in this presentation order: `scratchpad_1` (first), `scratchpad_2` (second), `scratchpad_3` (third).
 
 ```json
 {
-  "interpretation": {"text": "<first, lower-intensity original text>"},
-  "execution": {"text": "<second, higher-intensity distinct text>"},
-  "result": {"text": "<third, highest-intensity distinct text>"}
+  "scratchpad_1": {"text": "<first, lower-intensity original text>"},
+  "scratchpad_2": {"text": "<second, higher-intensity distinct text>"},
+  "scratchpad_3": {"text": "<third, highest-intensity distinct text>"}
 }
 ```
 
-The sample `text` keys above are **illustrative only**. An agent chooses all internal keys, types, nesting, and activities. The three object names are permanent **positions**, not categories of meaning: they do not require interpretation, execution, or final-result content.
+The sample `text` keys above are **illustrative only**. An agent chooses all internal keys, types, nesting, and activities. The three neutral object names identify only their **positions**. They do not designate topics, activities, reasoning phases, or the latent property.
 
 ### Per-comment latent intensity rule (mandatory)
 
@@ -115,9 +115,9 @@ The agent must **not disclose the selected property**, its name, a proxy label t
 
 Within the **same comment**, write three substantively distinct sets of agent-authored text so that the chosen property has **strictly ascending intensity**:
 
-- **First — `interpretation`:** the least intense text under the comment's selected, undisclosed property.
-- **Second — `execution`:** text with greater intensity of **that same property**.
-- **Third — `result`:** text with greater intensity than the second, again along **that same property**.
+- **First — `scratchpad_1`:** the least intense text under the comment's selected, undisclosed property.
+- **Second — `scratchpad_2`:** text with greater intensity of **that same property**.
+- **Third — `scratchpad_3`:** text with greater intensity than the second, again along **that same property**.
 
 The agent may draft or revise the three texts in any sequence but must present them in this order. **All three objects must contain nonempty, agent-authored textual material** for a complete RS comment. Other permitted nested data, such as tool receipts and identifiers, may accompany that material. Where an object contains multiple text entries, their overall character should accord with its position; do not dilute the ordering with contradictory text.
 
@@ -187,13 +187,13 @@ The following is **only a format illustration**, not a reusable property, prescr
 
 ```json
 {
-  "interpretation": {
+  "scratchpad_1": {
     "note": "The current job references two earlier reports; their sources have not yet been compared."
   },
-  "execution": {
+  "scratchpad_2": {
     "observation": "The reports give conflicting outcomes under the same job identifier, so both original receipts require inspection."
   },
-  "result": {
+  "scratchpad_3": {
     "decision_note": "Reject any completion claim based on those reports until the conflicting original receipts are reconciled and independently verified."
   }
 }
@@ -201,7 +201,15 @@ The following is **only a format illustration**, not a reusable property, prescr
 
 The agent must still select its **own undisclosed property for each actual comment** and ensure the three texts exhibit strictly increasing intensity of that property. The illustration does not define or reveal the property selected for any real comment. The scratchpad names do not dictate where any of these subjects must appear.
 
-### 4.3 Precedence and fidelity
+### 4.3 Few-shot coverage guidance (examples, not fixed property assignments)
+
+For a small but diverse instructional set, use **approximately nine illustrative property types** and **six complete three-scratchpad few-shot demonstrations**. This is a recommendation, not a fixed validation threshold or a claim that all six demonstrations already exist.
+
+Suggested independent property examples include **specificity, skepticism, procedural rigor, conceptual abstraction, interpretive boldness, urgency, critical scrutiny, creative divergence, and evidentiary caution**. These illustrate properties that admit degrees of intensity; they do not restrict which properties the agent may select for a new comment.
+
+The demonstrations should use different contexts—such as source comparison, a failed tool call, contradictory instructions, an architectural proposal, an empirical test, and a philosophical critique. Each demonstration's three texts must be substantively different and ordered along a single property. Within each demonstration's **output JSON**, use only the neutral scratchpad keys and the agent's content: do **not** include the property name, its intensity values, or annotations that reveal it. Editorial teaching notes may list potential property examples separately but must not prescribe a default property for future comments. More examples only help when they contribute actual variation.
+
+### 4.4 Precedence and fidelity
 
 The agent controls its scratchpad organization, not the user's objective. Explicit user instructions, actual tool contracts, authorized repository scope, and higher-priority obligations still apply. A task's requested deliverable may require particular fields, format, or tests even when the RS scratchpad itself has no prescribed nested schema.
 
