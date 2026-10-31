@@ -3,7 +3,7 @@ const crypto = require("node:crypto");
 
 const SCHEMA = "issuescratch.comment-diagnostics.v1";
 const STATE_SCHEMA = "issuescratch.comment-state.v1";
-const END_INDEX = 16;
+const END_INDEX = 18;
 const sha = value => crypto.createHash("sha256").update(value, "utf8").digest("hex");
 const chars = value => Array.from(value).length;
 const compact = value => JSON.stringify(value);
