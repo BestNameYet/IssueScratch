@@ -4,7 +4,7 @@ const assert=require("node:assert/strict");
 const p=require("./types/issuescratch.framing-controller.v1.json");
 const registry=require("./types/issuescratch.operation-registry.v1.json");
 const {validateEntryStructure,functionForIndex,processWithController,publicationDocument,publicationEntry,isControlComment}=require("./framing-controller");
-const draw=()=>2;
+const draw=(max)=>max===2?1:max===4?2:2;
 const baseStep=(id,action,opcode="OP.01.002")=>({
  step_id:id,action_id:action,opcode,operands:{source:"instruction"},
  depends_on:[],result_ref:"result:"+id,
@@ -65,7 +65,7 @@ function make(n){
 }
 const run=(s,b)=>processWithController(s,b,777,"workspaces/tests/revision.json","issue_comment",p,registry,draw);
 
-test("first outer element contains five nested preparatory scratchpads",()=>{
+test("five nested preparatory scratchpads retain contextual instruction and atomic mapping",()=>{
  const a=JSON.parse(make(1));
  assert.equal(a[0].scratchpad["preparation[array<object>]"].length,5);
  assert.equal(validateEntryStructure(a,0,p,registry),null);
@@ -73,7 +73,7 @@ test("first outer element contains five nested preparatory scratchpads",()=>{
  assert.equal(intent["context_elements[array<object>]"][0].context_id,"C1");
  assert.equal(intent["initial_opcode_projection[array<object>]"].length,2);
 });
-test("reject missing context, omnibus preliminary opcode or incomplete nested preparations",()=>{
+test("reject missing context, single omnibus preliminary step or incomplete preparation",()=>{
  const a=JSON.parse(make(1));
  const nested=a[0].scratchpad["preparation[array<object>]"];
  nested[0].scratchpad["context_elements[array<object>]"]=[];
@@ -88,58 +88,114 @@ test("reject missing context, omnibus preliminary opcode or incomplete nested pr
  assert.equal(bad.state.progression.accepted_entries,0);
  assert.equal(bad.publication_required,false);
 });
-test("five reframing exercises occupy 1..15 with persistent reference anchors",()=>{
- const selections={};
- const all=Array.from({length:18},(_,i)=>{
-  const next=functionForIndex(777,i+1,p,registry,draw,selections);
-  if(next.higher_order_selection_new)selections[next.higher_order_frame.frame_id]=next.higher_order_frame;
-  return next;
- });
- const expected=Array.from({length:5},(_,f)=>[
-  f===0?"establish_reference":"preserve_reference",
-  f===0?"establish_reference":"preserve_reference",
-  f===0?"seed_narrative":"expand_enclosing_narrative"]).flat();
- assert.deepEqual(all.slice(0,15).map(x=>x.role),expected);
- assert.deepEqual(all.slice(0,15).filter(x=>x.reference_id==="R-A").map(x=>x.original_anchor_index),[1,1,1,1,1]);
- assert.deepEqual(all.slice(0,15).filter(x=>x.reference_id==="R-B").map(x=>x.original_anchor_index),[2,2,2,2,2]);
- assert.deepEqual(all[14].read_indices,[0,12,13,14]);
- assert.deepEqual(all.slice(15).map(x=>x.role),[
-  "collect_and_reconcile","opcode_reconciliation","final_synthesis_and_validation"]);
- assert.deepEqual(all[16].read_indices,Array.from({length:17},(_,i)=>i));
- assert.throws(()=>functionForIndex(777,0,p,registry,draw),/range/);
- assert.throws(()=>functionForIndex(777,19,p,registry,draw),/range/);
+test("SOLVER_LIFT and ABSTRACT are separate higher-order opcodes",()=>{
+ const selectionL=functionForIndex(777,1,p,registry,()=>0,{});
+ assert.equal(selectionL.higher_order_frame.operator.opcode,"OP.02.001");
+ assert.equal(selectionL.higher_order_frame.operator.name,"SOLVER_LIFT");
+ assert.equal(selectionL.higher_order_frame.mode,null);
+ assert.equal(selectionL.random_selection.draws.length,2); // operator, atomic
+ assert.equal(selectionL.random_selection.draws[0].purpose,"higher_order_operator");
+ const selectionA=functionForIndex(777,1,p,registry,n=>n===2?1:n===4?3:1,{});
+ assert.equal(selectionA.higher_order_frame.operator.opcode,"OP.02.002");
+ assert.equal(selectionA.higher_order_frame.operator.name,"ABSTRACT");
+ assert.equal(selectionA.higher_order_frame.mode,"GENERAL");
+ assert.deepEqual(selectionA.random_selection.draws.map(x=>x.purpose),
+   ["higher_order_operator","abstraction_mode","atomic_function"]);
+ assert.ok(selectionA.higher_order_frame.input_contract.subject_ref);
+ assert.equal(selectionA.higher_order_frame.status,"selected_not_executed");
 });
-test("cryptographic random pool maps to registered opcodes and persists selection",()=>{
- const x=functionForIndex(777,7,p,registry,()=>0);
- const y=functionForIndex(777,7,p,registry,n=>n-1);
- assert.equal(x.selected_function.opcode,p.random_function_pool[0]);
- assert.equal(y.selected_function.opcode,p.random_function_pool.at(-1));
- assert.equal(x.random_selection.algorithm,"node:crypto.randomInt");
- assert.equal(x.random_selection.pool_size,14);
- assert.equal(x.higher_order_frame.operator.name,"SOLVER_LIFT");
- assert.equal(y.higher_order_frame.operator.name,"ABSTRACT");
- assert.equal(y.higher_order_frame.mode,"GENERAL");
- assert.throws(()=>functionForIndex(777,7,p,registry,()=>-1),/Random selector/);
+test("all four ABSTRACT modes are selectable, stable and carry different output contracts",()=>{
+ const modes=["CONTRACT","IMPLEMENTATION","CONSTRUCT","GENERAL"];
+ for(let i=0;i<4;i++){
+  const f=functionForIndex(777,1,p,registry,n=>n===2?1:n===4?i:0,{});
+  assert.equal(f.higher_order_frame.mode,modes[i]);
+  assert.ok(f.higher_order_frame.required_output_fields.length>=4);
+  assert.equal(f.higher_order_frame.selection.mode_ordinal,i);
+  assert.ok(f.requirements.some(x=>x.includes(modes[i])));
+ }
 });
-test("reconciler requires all nested preparation and outer source pointers",()=>{
+test("frame operator draws exactly once for each of five three-index exercises",()=>{
+ const selections={},calls=[];
+ const rng=size=>{calls.push(size);return size===2?1:size===4?0:3;};
+ const instructions=[];
+ for(let index=1;index<=18;index++){
+  const x=functionForIndex(777,index,p,registry,rng,selections);
+  instructions.push(x);
+  if(x.higher_order_selection_new){
+   assert.equal((index-1)%3,0);
+   selections[x.frame_id]=x.higher_order_frame;
+  }
+ }
+ assert.equal(Object.keys(selections).length,5);
+ assert.equal(calls.filter(x=>x===2).length,5);
+ assert.equal(calls.filter(x=>x===4).length,5);
+ assert.equal(calls.filter(x=>x===14).length,18);
+ for(let f=0;f<5;f++){
+  const x=instructions.slice(3*f,3*f+3);
+  assert.equal(x[0].frame_id,"F"+f);
+  assert.ok(x.every(y=>y.higher_order_frame===x[0].higher_order_frame));
+  assert.deepEqual(x.map(y=>y.role),f===0
+    ?["establish_reference","establish_reference","seed_narrative"]
+    :["preserve_reference","preserve_reference","expand_enclosing_narrative"]);
+  assert.equal(x[0].higher_order_selection_new,true);
+  assert.ok(x.slice(1).every(y=>!y.higher_order_selection_new));
+  assert.deepEqual(x[0].opcodes,["OP.02.002","OP.01.005"]);
+  assert.ok(x[2].requirements.some(z=>z.includes("preserved_properties")));
+ }
+ assert.deepEqual(instructions.slice(15).map(x=>x.role),
+   ["collect_and_reconcile","opcode_reconciliation","final_synthesis_and_validation"]);
+ assert.ok(instructions.slice(15).every(x=>x.higher_order_frame===null));
+});
+test("cannot reroll within a frame; a stored frame must be reused",()=>{
+ assert.throws(()=>functionForIndex(777,2,p,registry,draw,{}),/Missing higher-order frame/);
+ const one=functionForIndex(777,1,p,registry,draw,{});
+ const stored={F0:one.higher_order_frame};
+ let counts=0;
+ const two=functionForIndex(777,2,p,registry,n=>{counts++;assert.equal(n,14);return 3;},stored);
+ assert.equal(two.higher_order_frame,one.higher_order_frame);
+ assert.equal(two.random_selection.draws.length,1);
+ assert.equal(counts,1);
+ assert.equal(two.higher_order_frame.mode,"CONSTRUCT");
+ assert.deepEqual(two.read_indices,[0,1]);
+});
+test("enclosing frames receive preceding solver, source lineage and five reasoning levels",()=>{
+ const state={},frames=[];
+ for(let index=1;index<=15;index++){
+  const op=functionForIndex(777,index,p,registry,()=>0,state);
+  if(op.higher_order_selection_new){state[op.frame_id]=op.higher_order_frame;frames.push(op.higher_order_frame);}
+ }
+ assert.deepEqual(frames.map(x=>x.level),[1,2,3,4,5]);
+ assert.deepEqual(frames.map(x=>x.enclosing_frame_id),[null,"F0","F1","F2","F3"]);
+ assert.deepEqual(frames.map(x=>x.source_indices),[[0],[0,3],[0,6],[0,9],[0,12]]);
+ assert.ok(frames.every(x=>x.operator.name==="SOLVER_LIFT"));
+ assert.ok(frames.every(x=>x.input_contract.inner_solver));
+ assert.ok(frames.every(x=>x.output_contract.outer_solver_input));
+});
+test("reconciler validates coverage of nested preparation and preceding outer pointers",()=>{
  const a=JSON.parse(make(18));
  assert.equal(validateEntryStructure(a,17,p,registry),null);
  a[17].scratchpad["opcode_steps[array<object>]"].pop();
  assert.ok(validateEntryStructure(a,17,p,registry));
  const c=JSON.parse(make(18));
- c[17].scratchpad["covered_source_pointers[array<string>]"].splice(0,1);
+ c[17].scratchpad["covered_source_pointers[array<string>]"].shift();
  assert.ok(validateEntryStructure(c,17,p,registry));
 });
-test("nineteen successive valid edits complete, with eighteen issued functions",()=>{
+test("nineteen incremental revisions persist five frame choices and eighteen atomic choices",()=>{
  let s=null,issued=0;
  for(let n=1;n<=19;n++){
   const result=run(s,make(n));s=result.state;
-  assert.equal(s.progression.accepted_entries,n,"accepted length "+n);
+  assert.equal(s.progression.accepted_entries,n,"Accepted length "+n);
   if(n<19){
+   issued++;
    assert.equal(result.publication_required,true);
    assert.equal(result.next_instruction.target_index,n);
    assert.equal(result.diagnostic.functions_selected,1);
-   issued++;
+   assert.equal(result.diagnostic.functions_dispatched,0);
+   assert.equal(s.progression.function_selection,"issuescratch.higher-order-framing.v2");
+   if(n<=15){
+    assert.equal(Object.keys(s.progression.frame_selections).length,Math.ceil(n/3));
+    assert.ok(result.next_instruction.higher_order_frame);
+   }
   }else{
    assert.equal(result.action,"completed_index_18");
    assert.equal(result.publication_required,false);
@@ -148,58 +204,37 @@ test("nineteen successive valid edits complete, with eighteen issued functions",
   }
  }
  assert.equal(issued,18);
- const duplicate=run(s,make(19));
- assert.equal(duplicate.duplicate,true);
- const later=run(s,make(20));
- assert.equal(later.action,"complete_validation_only");
+ assert.equal(Object.keys(s.progression.frame_selections).length,5);
+ assert.equal(run(s,make(19)).duplicate,true);
+ assert.equal(run(s,make(20)).action,"complete_validation_only");
 });
-test("invalid JSON, skips and imported complete records never issue a new function",()=>{
- const first=run(null,make(1));
- assert.equal(run(first.state,make(1)).duplicate,true);
+test("duplicate source revision never changes the saved frame choice or atomic function",()=>{
+ const first=run(null,make(1)),then=run(first.state,make(1));
+ assert.equal(then.duplicate,true);
+ assert.deepEqual(then.next_instruction,first.state.progression.next_function);
+ assert.equal(then.publication_required,false);
  assert.equal(run(first.state,"bad JSON").publication_required,false);
  assert.equal(run(first.state,make(3)).publication_required,false);
  assert.equal(run(null,make(19)).action,"complete_import_no_incremental_trace");
 });
-test("published controller comment is one JSON object with instruction history",()=>{
- const a=publicationEntry("a".repeat(64),functionForIndex(777,1,p,registry,draw));
- const first=functionForIndex(777,1,p,registry,draw);
- const b=publicationEntry("b".repeat(64),functionForIndex(777,2,p,registry,draw,{F0:first.higher_order_frame}));
- const pub=publicationDocument(777,[a,b]);
- assert.equal(pub.current.target_index,2);
- assert.equal(pub.history.length,2);
- assert.ok(isControlComment(JSON.stringify(pub)));
- assert.equal(Array.isArray(pub),false);
+test("operator and mode selections reject invalid indices",()=>{
+ assert.throws(()=>functionForIndex(777,1,p,registry,()=>-1,{}),/Random selector/);
+ assert.throws(()=>functionForIndex(777,1,p,registry,n=>n,{}),/Random selector/);
+ assert.throws(()=>functionForIndex(777,0,p,registry,draw,{}),/range/);
+ assert.throws(()=>functionForIndex(777,19,p,registry,draw,{}),/range/);
 });
-
-test("one higher-order choice persists across all three slots and each frame is independently selected",()=>{
- let state=null;
- const selected=[];
- for(let n=1;n<=16;n++){
-   const result=run(state,make(n));state=result.state;
-   if(n===16)break;
-   const f=result.next_instruction.higher_order_frame;
-   assert.ok(f);
-   selected.push({index:n,opcode:f.operator.opcode,mode:f.mode,frame:f.frame_id});
- }
- assert.equal(Object.keys(state.progression.frame_selections).length,5);
- for(let frame=0;frame<5;frame++){
-   const group=selected.slice(frame*3,frame*3+3);
-   assert.equal(group.length,3);
-   assert.ok(group.every(x=>x.opcode===group[0].opcode&&x.mode===group[0].mode&&x.frame==="F"+frame));
- }
- const last=run(state,make(17));
- assert.equal(last.next_instruction.higher_order_frame,null);
- assert.equal(Object.keys(last.state.progression.frame_selections).length,5);
-});
-test("mid-frame instructions require a persisted frame and do not reroll higher-order choice",()=>{
- assert.throws(()=>functionForIndex(777,2,p,registry,draw,{}),/Missing higher-order frame selection/);
- const first=functionForIndex(777,1,p,registry,()=>1);
- const saved={F0:first.higher_order_frame};
- const second=functionForIndex(777,2,p,registry,()=>0,saved);
- assert.equal(second.higher_order_frame.operator.name,"ABSTRACT");
- assert.equal(second.higher_order_frame.mode,"CONTRACT");
- assert.equal(second.random_selection.draws.length,1);
- const third=functionForIndex(777,3,p,registry,()=>0,saved);
- assert.equal(third.higher_order_frame.mode,"CONTRACT");
- assert.equal(third.random_selection.draws.length,1);
+test("published controller body retains the higher-order instruction history",()=>{
+ const a=functionForIndex(777,1,p,registry,draw,{});
+ const state={F0:a.higher_order_frame};
+ const b=functionForIndex(777,2,p,registry,draw,state);
+ const doc=publicationDocument(777,[
+  publicationEntry("a".repeat(64),a),
+  publicationEntry("b".repeat(64),b)
+ ]);
+ assert.equal(doc.history.length,2);
+ assert.equal(doc.current.target_index,2);
+ assert.equal(doc.history[0].function.higher_order_frame.operator.opcode,"OP.02.002");
+ assert.deepEqual(doc.history[0].function.higher_order_frame,doc.history[1].function.higher_order_frame);
+ assert.equal(isControlComment(JSON.stringify(doc)),true);
+ assert.equal(Array.isArray(doc),false);
 });
