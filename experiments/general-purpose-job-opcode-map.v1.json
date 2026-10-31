@@ -1,0 +1,78 @@
+{
+  "document_type": "issuescratch.opcode-mapping-profile",
+  "format_version": "1.0.0",
+  "registry_path": "src/types/issuescratch.operation-registry.v1.json",
+  "source_document": "experiments/general-purpose-job-prompts.v1.json",
+  "selected_pointer": "/jobs",
+  "identity_field": "prompt_id",
+  "text_field": "prompt",
+  "scope": "Author-declared functional decomposition of 17 prompts, not a model-generated semantic discovery or execution receipt.",
+  "mapping_rules": "CAPTURE and EMIT are added by adapter. Each listed opcode is a reusable abstract operation, not a unique identifier for a particular prompt.",
+  "mappings": {
+    "P01": [
+      "OP.01.002"
+    ],
+    "P02": [
+      "OP.01.004",
+      "OP.01.005"
+    ],
+    "P03": [
+      "OP.01.002"
+    ],
+    "P04": [
+      "OP.01.002"
+    ],
+    "P05": [
+      "OP.01.008",
+      "OP.01.007",
+      "OP.01.014"
+    ],
+    "P06": [
+      "OP.01.004",
+      "OP.01.002"
+    ],
+    "P07": [
+      "OP.01.007",
+      "OP.01.014"
+    ],
+    "P08": [
+      "OP.01.004",
+      "OP.01.003",
+      "OP.01.014"
+    ],
+    "P09": [
+      "OP.01.008"
+    ],
+    "P10": [
+      "OP.01.009"
+    ],
+    "P11": [
+      "OP.01.004",
+      "OP.01.006",
+      "OP.01.005"
+    ],
+    "P12": [
+      "OP.01.006",
+      "OP.01.005"
+    ],
+    "P13": [
+      "OP.01.008",
+      "OP.01.009"
+    ],
+    "P14": [
+      "OP.01.003"
+    ],
+    "P15": [
+      "OP.01.002"
+    ],
+    "P16": [
+      "OP.01.005",
+      "OP.01.008"
+    ],
+    "P17": [
+      "OP.01.002",
+      "OP.01.010",
+      "OP.01.008"
+    ]
+  }
+}
