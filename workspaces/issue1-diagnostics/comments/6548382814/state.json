@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 11,
-    "last_accepted_index": 10,
-    "next_index": 11,
-    "accepted_prefix_sha256": "5f330d0aa72f547ad7761692715edf4cbacf902fde6441e8bf474e22a871c86e",
+    "accepted_entries": 12,
+    "last_accepted_index": 11,
+    "next_index": 12,
+    "accepted_prefix_sha256": "8d870bff9439fde6bdaa7a6873e7a97a99bd6dec20f81e57f2e473c568ade4f0",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 11,
+      "target_index": 12,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.012",
-        "name": "BRANCH",
-        "description": "Select a branch based on an explicit predicate",
-        "input_contract": "condition_and_branches",
-        "output_contract": "selected_branch"
+        "opcode": "OP.01.010",
+        "name": "SELECT",
+        "description": "Choose one or more candidates according to a rule",
+        "input_contract": "candidates_and_rule",
+        "output_contract": "selection"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,30 +40,24 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 10,
+        "selected_ordinal": 8,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.012"
+        "OP.01.010"
       ],
-      "read_indices": [
-        8,
-        9,
-        10
-      ],
-      "frame_id": "F3",
-      "enclosing_frame_id": "F2",
-      "role": "expand_enclosing_narrative",
+      "read_indices": [],
+      "frame_id": null,
+      "enclosing_frame_id": null,
+      "role": "unrestricted",
       "reference_id": null,
       "original_anchor_index": null,
-      "previous_frame_index": 8,
+      "previous_frame_index": null,
       "requirements": [
-        "Apply function BRANCH (OP.01.012) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Enclose frame F2 inside frame F3 while preserving attribution.",
-        "Preserve the identities R-A and R-B and the attribution of claims in the prior frame.",
-        "Add substantive narrative development, not merely a paraphrase or a quotation ladder.",
-        "Append exactly one substantive scratchpad at index 11; retain the accepted prefix."
+        "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Choose a substantive contribution without a fixed semantic role.",
+        "Append exactly one scratchpad object at index 12; preserve the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -71,8 +65,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/14ad90af0e22025ac5cc9647fcb2c107d8a910fd33eb0fd674707e200fd42730.json",
+  "last_processed_revision_sha256": "bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -161,6 +155,14 @@
       "json_valid": true,
       "array_length": 11,
       "accepted_entries_after": 11,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d.json",
+      "json_valid": true,
+      "array_length": 12,
+      "accepted_entries_after": 12,
       "transition": "accepted_one_entry"
     }
   ]
