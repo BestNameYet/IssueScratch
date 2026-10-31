@@ -1,0 +1,1328 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6548382814,
+  "source_revision_sha256": "6ca423d11dd77886ee3cf62e3d38a06a18b726aa51db10015c3dfaf1b149e6fd",
+  "transition": "accepted_one_entry",
+  "progression_before": 8,
+  "progression_after": 9,
+  "next_index": 9,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "array",
+    "json_valid": true,
+    "validation_error": null
+  },
+  "metrics": {
+    "raw_sha256": "6ca423d11dd77886ee3cf62e3d38a06a18b726aa51db10015c3dfaf1b149e6fd",
+    "raw_characters": 7809,
+    "raw_utf8_bytes": 7811,
+    "json_valid": true,
+    "root_type": "array",
+    "root_array_count": 1,
+    "nested_array_count": 2,
+    "total_array_count": 3,
+    "array_length": 9,
+    "all_wrappers_valid": true,
+    "array_compact_json_characters": 7111,
+    "indexes": [
+      {
+        "index": 0,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 453,
+        "entry_utf8_bytes": 453,
+        "entry_string_value_characters": 345,
+        "entry_key_occurrences": 5,
+        "entry_keys": [
+          {
+            "path": "/0/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 438,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 159,
+            "value_text_characters": 157
+          },
+          {
+            "path": "/0/scratchpad/subject[string]",
+            "key": "subject[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 102,
+            "value_text_characters": 100
+          },
+          {
+            "path": "/0/scratchpad/reference_label[string]",
+            "key": "reference_label[string]",
+            "key_characters": 23,
+            "value_type": "string",
+            "value_json_characters": 12,
+            "value_text_characters": 10
+          },
+          {
+            "path": "/0/scratchpad/scope[string]",
+            "key": "scope[string]",
+            "key_characters": 13,
+            "value_type": "string",
+            "value_json_characters": 80,
+            "value_text_characters": 78
+          }
+        ],
+        "scratchpad_keys": [
+          "narrative[string]",
+          "subject[string]",
+          "reference_label[string]",
+          "scope[string]"
+        ],
+        "scratchpad_json_characters": 438,
+        "share_of_entries_basis_points": 638
+      },
+      {
+        "index": 1,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 656,
+        "entry_utf8_bytes": 658,
+        "entry_string_value_characters": 541,
+        "entry_key_occurrences": 5,
+        "entry_keys": [
+          {
+            "path": "/1/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 641,
+            "value_text_characters": null
+          },
+          {
+            "path": "/1/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 270,
+            "value_text_characters": 268
+          },
+          {
+            "path": "/1/scratchpad/reference_label[string]",
+            "key": "reference_label[string]",
+            "key_characters": 23,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/1/scratchpad/relationship[string]",
+            "key": "relationship[string]",
+            "key_characters": 20,
+            "value_type": "string",
+            "value_json_characters": 116,
+            "value_text_characters": 114
+          },
+          {
+            "path": "/1/scratchpad/example[string]",
+            "key": "example[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 152,
+            "value_text_characters": 150
+          }
+        ],
+        "scratchpad_keys": [
+          "narrative[string]",
+          "reference_label[string]",
+          "relationship[string]",
+          "example[string]"
+        ],
+        "scratchpad_json_characters": 641,
+        "share_of_entries_basis_points": 924
+      },
+      {
+        "index": 2,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 769,
+        "entry_utf8_bytes": 769,
+        "entry_string_value_characters": 684,
+        "entry_key_occurrences": 4,
+        "entry_keys": [
+          {
+            "path": "/2/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 754,
+            "value_text_characters": null
+          },
+          {
+            "path": "/2/scratchpad/account[string]",
+            "key": "account[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 371,
+            "value_text_characters": 369
+          },
+          {
+            "path": "/2/scratchpad/distinction[string]",
+            "key": "distinction[string]",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 168,
+            "value_text_characters": 166
+          },
+          {
+            "path": "/2/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 151,
+            "value_text_characters": 149
+          }
+        ],
+        "scratchpad_keys": [
+          "account[string]",
+          "distinction[string]",
+          "narrative[string]"
+        ],
+        "scratchpad_json_characters": 754,
+        "share_of_entries_basis_points": 1083
+      },
+      {
+        "index": 3,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 683,
+        "entry_utf8_bytes": 683,
+        "entry_string_value_characters": 594,
+        "entry_key_occurrences": 4,
+        "entry_keys": [
+          {
+            "path": "/3/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 668,
+            "value_text_characters": null
+          },
+          {
+            "path": "/3/scratchpad/recollection[string]",
+            "key": "recollection[string]",
+            "key_characters": 20,
+            "value_type": "string",
+            "value_json_characters": 305,
+            "value_text_characters": 303
+          },
+          {
+            "path": "/3/scratchpad/referent[string]",
+            "key": "referent[string]",
+            "key_characters": 16,
+            "value_type": "string",
+            "value_json_characters": 136,
+            "value_text_characters": 134
+          },
+          {
+            "path": "/3/scratchpad/attribution[string]",
+            "key": "attribution[string]",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 159,
+            "value_text_characters": 157
+          }
+        ],
+        "scratchpad_keys": [
+          "recollection[string]",
+          "referent[string]",
+          "attribution[string]"
+        ],
+        "scratchpad_json_characters": 668,
+        "share_of_entries_basis_points": 962
+      },
+      {
+        "index": 4,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 769,
+        "entry_utf8_bytes": 769,
+        "entry_string_value_characters": 640,
+        "entry_key_occurrences": 7,
+        "entry_keys": [
+          {
+            "path": "/4/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 754,
+            "value_text_characters": null
+          },
+          {
+            "path": "/4/scratchpad/account[string]",
+            "key": "account[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 291,
+            "value_text_characters": 289
+          },
+          {
+            "path": "/4/scratchpad/comparison[object]",
+            "key": "comparison[object]",
+            "key_characters": 18,
+            "value_type": "object",
+            "value_json_characters": 238,
+            "value_text_characters": null
+          },
+          {
+            "path": "/4/scratchpad/comparison[object]/index",
+            "key": "index",
+            "key_characters": 5,
+            "value_type": "string",
+            "value_json_characters": 51,
+            "value_text_characters": 49
+          },
+          {
+            "path": "/4/scratchpad/comparison[object]/ledger",
+            "key": "ledger",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 53,
+            "value_text_characters": 51
+          },
+          {
+            "path": "/4/scratchpad/comparison[object]/shared_boundary",
+            "key": "shared_boundary",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 95,
+            "value_text_characters": 93
+          },
+          {
+            "path": "/4/scratchpad/attribution[string]",
+            "key": "attribution[string]",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 160,
+            "value_text_characters": 158
+          }
+        ],
+        "scratchpad_keys": [
+          "account[string]",
+          "comparison[object]",
+          "attribution[string]"
+        ],
+        "scratchpad_json_characters": 754,
+        "share_of_entries_basis_points": 1083
+      },
+      {
+        "index": 5,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 866,
+        "entry_utf8_bytes": 866,
+        "entry_string_value_characters": 777,
+        "entry_key_occurrences": 4,
+        "entry_keys": [
+          {
+            "path": "/5/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 851,
+            "value_text_characters": null
+          },
+          {
+            "path": "/5/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 418,
+            "value_text_characters": 416
+          },
+          {
+            "path": "/5/scratchpad/transformed_claim[string]",
+            "key": "transformed_claim[string]",
+            "key_characters": 25,
+            "value_type": "string",
+            "value_json_characters": 192,
+            "value_text_characters": 190
+          },
+          {
+            "path": "/5/scratchpad/scope[string]",
+            "key": "scope[string]",
+            "key_characters": 13,
+            "value_type": "string",
+            "value_json_characters": 173,
+            "value_text_characters": 171
+          }
+        ],
+        "scratchpad_keys": [
+          "narrative[string]",
+          "transformed_claim[string]",
+          "scope[string]"
+        ],
+        "scratchpad_json_characters": 851,
+        "share_of_entries_basis_points": 1220
+      },
+      {
+        "index": 6,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 837,
+        "entry_utf8_bytes": 837,
+        "entry_string_value_characters": 739,
+        "entry_key_occurrences": 4,
+        "entry_keys": [
+          {
+            "path": "/6/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 822,
+            "value_text_characters": null
+          },
+          {
+            "path": "/6/scratchpad/account[string]",
+            "key": "account[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 411,
+            "value_text_characters": 409
+          },
+          {
+            "path": "/6/scratchpad/plan[array<string>]",
+            "key": "plan[array<string>]",
+            "key_characters": 19,
+            "value_type": "array",
+            "value_json_characters": 250,
+            "value_text_characters": null
+          },
+          {
+            "path": "/6/scratchpad/attribution[string]",
+            "key": "attribution[string]",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 95,
+            "value_text_characters": 93
+          }
+        ],
+        "scratchpad_keys": [
+          "account[string]",
+          "plan[array<string>]",
+          "attribution[string]"
+        ],
+        "scratchpad_json_characters": 822,
+        "share_of_entries_basis_points": 1179
+      },
+      {
+        "index": 7,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 967,
+        "entry_utf8_bytes": 967,
+        "entry_string_value_characters": 792,
+        "entry_key_occurrences": 9,
+        "entry_keys": [
+          {
+            "path": "/7/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 952,
+            "value_text_characters": null
+          },
+          {
+            "path": "/7/scratchpad/account[string]",
+            "key": "account[string]",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 432,
+            "value_text_characters": 430
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]",
+            "key": "contrast[object]",
+            "key_characters": 16,
+            "value_type": "object",
+            "value_json_characters": 286,
+            "value_text_characters": null
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]/first_locator",
+            "key": "first_locator",
+            "key_characters": 13,
+            "value_type": "string",
+            "value_json_characters": 32,
+            "value_text_characters": 30
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]/first_role",
+            "key": "first_role",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 32,
+            "value_text_characters": 30
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]/second_locator",
+            "key": "second_locator",
+            "key_characters": 14,
+            "value_type": "string",
+            "value_json_characters": 27,
+            "value_text_characters": 25
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]/second_role",
+            "key": "second_role",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 46,
+            "value_text_characters": 44
+          },
+          {
+            "path": "/7/scratchpad/contrast[object]/shared_feature",
+            "key": "shared_feature",
+            "key_characters": 14,
+            "value_type": "string",
+            "value_json_characters": 66,
+            "value_text_characters": 64
+          },
+          {
+            "path": "/7/scratchpad/attribution[string]",
+            "key": "attribution[string]",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 171,
+            "value_text_characters": 169
+          }
+        ],
+        "scratchpad_keys": [
+          "account[string]",
+          "contrast[object]",
+          "attribution[string]"
+        ],
+        "scratchpad_json_characters": 952,
+        "share_of_entries_basis_points": 1362
+      },
+      {
+        "index": 8,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 1101,
+        "entry_utf8_bytes": 1101,
+        "entry_string_value_characters": 914,
+        "entry_key_occurrences": 12,
+        "entry_keys": [
+          {
+            "path": "/8/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 1086,
+            "value_text_characters": null
+          },
+          {
+            "path": "/8/scratchpad/story[string]",
+            "key": "story[string]",
+            "key_characters": 13,
+            "value_type": "string",
+            "value_json_characters": 485,
+            "value_text_characters": 483
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]",
+            "key": "claims[array<object>]",
+            "key_characters": 21,
+            "value_type": "array",
+            "value_json_characters": 383,
+            "value_text_characters": null
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/0/speaker",
+            "key": "speaker",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/0/claim",
+            "key": "claim",
+            "key_characters": 5,
+            "value_type": "string",
+            "value_json_characters": 42,
+            "value_text_characters": 40
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/1/speaker",
+            "key": "speaker",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 9,
+            "value_text_characters": 7
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/1/claim",
+            "key": "claim",
+            "key_characters": 5,
+            "value_type": "string",
+            "value_json_characters": 74,
+            "value_text_characters": 72
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/2/speaker",
+            "key": "speaker",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/2/claim",
+            "key": "claim",
+            "key_characters": 5,
+            "value_type": "string",
+            "value_json_characters": 76,
+            "value_text_characters": 74
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/3/speaker",
+            "key": "speaker",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/8/scratchpad/claims[array<object>]/3/claim",
+            "key": "claim",
+            "key_characters": 5,
+            "value_type": "string",
+            "value_json_characters": 67,
+            "value_text_characters": 65
+          },
+          {
+            "path": "/8/scratchpad/boundary[string]",
+            "key": "boundary[string]",
+            "key_characters": 16,
+            "value_type": "string",
+            "value_json_characters": 155,
+            "value_text_characters": 153
+          }
+        ],
+        "scratchpad_keys": [
+          "story[string]",
+          "claims[array<object>]",
+          "boundary[string]"
+        ],
+        "scratchpad_json_characters": 1086,
+        "share_of_entries_basis_points": 1550
+      }
+    ],
+    "all_keys": [
+      {
+        "path": "/0/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 438,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 159,
+        "value_text_characters": 157
+      },
+      {
+        "path": "/0/scratchpad/subject[string]",
+        "key": "subject[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 102,
+        "value_text_characters": 100
+      },
+      {
+        "path": "/0/scratchpad/reference_label[string]",
+        "key": "reference_label[string]",
+        "key_characters": 23,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/0/scratchpad/scope[string]",
+        "key": "scope[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 80,
+        "value_text_characters": 78
+      },
+      {
+        "path": "/1/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 641,
+        "value_text_characters": null
+      },
+      {
+        "path": "/1/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 270,
+        "value_text_characters": 268
+      },
+      {
+        "path": "/1/scratchpad/reference_label[string]",
+        "key": "reference_label[string]",
+        "key_characters": 23,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/1/scratchpad/relationship[string]",
+        "key": "relationship[string]",
+        "key_characters": 20,
+        "value_type": "string",
+        "value_json_characters": 116,
+        "value_text_characters": 114
+      },
+      {
+        "path": "/1/scratchpad/example[string]",
+        "key": "example[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 152,
+        "value_text_characters": 150
+      },
+      {
+        "path": "/2/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 754,
+        "value_text_characters": null
+      },
+      {
+        "path": "/2/scratchpad/account[string]",
+        "key": "account[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 371,
+        "value_text_characters": 369
+      },
+      {
+        "path": "/2/scratchpad/distinction[string]",
+        "key": "distinction[string]",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 168,
+        "value_text_characters": 166
+      },
+      {
+        "path": "/2/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 151,
+        "value_text_characters": 149
+      },
+      {
+        "path": "/3/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 668,
+        "value_text_characters": null
+      },
+      {
+        "path": "/3/scratchpad/recollection[string]",
+        "key": "recollection[string]",
+        "key_characters": 20,
+        "value_type": "string",
+        "value_json_characters": 305,
+        "value_text_characters": 303
+      },
+      {
+        "path": "/3/scratchpad/referent[string]",
+        "key": "referent[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 136,
+        "value_text_characters": 134
+      },
+      {
+        "path": "/3/scratchpad/attribution[string]",
+        "key": "attribution[string]",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 159,
+        "value_text_characters": 157
+      },
+      {
+        "path": "/4/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 754,
+        "value_text_characters": null
+      },
+      {
+        "path": "/4/scratchpad/account[string]",
+        "key": "account[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 291,
+        "value_text_characters": 289
+      },
+      {
+        "path": "/4/scratchpad/comparison[object]",
+        "key": "comparison[object]",
+        "key_characters": 18,
+        "value_type": "object",
+        "value_json_characters": 238,
+        "value_text_characters": null
+      },
+      {
+        "path": "/4/scratchpad/comparison[object]/index",
+        "key": "index",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 51,
+        "value_text_characters": 49
+      },
+      {
+        "path": "/4/scratchpad/comparison[object]/ledger",
+        "key": "ledger",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 53,
+        "value_text_characters": 51
+      },
+      {
+        "path": "/4/scratchpad/comparison[object]/shared_boundary",
+        "key": "shared_boundary",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 95,
+        "value_text_characters": 93
+      },
+      {
+        "path": "/4/scratchpad/attribution[string]",
+        "key": "attribution[string]",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 160,
+        "value_text_characters": 158
+      },
+      {
+        "path": "/5/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 851,
+        "value_text_characters": null
+      },
+      {
+        "path": "/5/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 418,
+        "value_text_characters": 416
+      },
+      {
+        "path": "/5/scratchpad/transformed_claim[string]",
+        "key": "transformed_claim[string]",
+        "key_characters": 25,
+        "value_type": "string",
+        "value_json_characters": 192,
+        "value_text_characters": 190
+      },
+      {
+        "path": "/5/scratchpad/scope[string]",
+        "key": "scope[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 173,
+        "value_text_characters": 171
+      },
+      {
+        "path": "/6/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 822,
+        "value_text_characters": null
+      },
+      {
+        "path": "/6/scratchpad/account[string]",
+        "key": "account[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 411,
+        "value_text_characters": 409
+      },
+      {
+        "path": "/6/scratchpad/plan[array<string>]",
+        "key": "plan[array<string>]",
+        "key_characters": 19,
+        "value_type": "array",
+        "value_json_characters": 250,
+        "value_text_characters": null
+      },
+      {
+        "path": "/6/scratchpad/attribution[string]",
+        "key": "attribution[string]",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 95,
+        "value_text_characters": 93
+      },
+      {
+        "path": "/7/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 952,
+        "value_text_characters": null
+      },
+      {
+        "path": "/7/scratchpad/account[string]",
+        "key": "account[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 432,
+        "value_text_characters": 430
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]",
+        "key": "contrast[object]",
+        "key_characters": 16,
+        "value_type": "object",
+        "value_json_characters": 286,
+        "value_text_characters": null
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]/first_locator",
+        "key": "first_locator",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 32,
+        "value_text_characters": 30
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]/first_role",
+        "key": "first_role",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 32,
+        "value_text_characters": 30
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]/second_locator",
+        "key": "second_locator",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 27,
+        "value_text_characters": 25
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]/second_role",
+        "key": "second_role",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 46,
+        "value_text_characters": 44
+      },
+      {
+        "path": "/7/scratchpad/contrast[object]/shared_feature",
+        "key": "shared_feature",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 66,
+        "value_text_characters": 64
+      },
+      {
+        "path": "/7/scratchpad/attribution[string]",
+        "key": "attribution[string]",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 171,
+        "value_text_characters": 169
+      },
+      {
+        "path": "/8/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 1086,
+        "value_text_characters": null
+      },
+      {
+        "path": "/8/scratchpad/story[string]",
+        "key": "story[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 485,
+        "value_text_characters": 483
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]",
+        "key": "claims[array<object>]",
+        "key_characters": 21,
+        "value_type": "array",
+        "value_json_characters": 383,
+        "value_text_characters": null
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/0/speaker",
+        "key": "speaker",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/0/claim",
+        "key": "claim",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/1/speaker",
+        "key": "speaker",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/1/claim",
+        "key": "claim",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 74,
+        "value_text_characters": 72
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/2/speaker",
+        "key": "speaker",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/2/claim",
+        "key": "claim",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 76,
+        "value_text_characters": 74
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/3/speaker",
+        "key": "speaker",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/8/scratchpad/claims[array<object>]/3/claim",
+        "key": "claim",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 67,
+        "value_text_characters": 65
+      },
+      {
+        "path": "/8/scratchpad/boundary[string]",
+        "key": "boundary[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 155,
+        "value_text_characters": 153
+      }
+    ],
+    "key_totals": [
+      {
+        "key": "account[string]",
+        "occurrences": 4,
+        "key_characters_total": 60,
+        "value_json_characters_total": 1505,
+        "value_text_characters_total": 1497
+      },
+      {
+        "key": "attribution[string]",
+        "occurrences": 4,
+        "key_characters_total": 76,
+        "value_json_characters_total": 585,
+        "value_text_characters_total": 577
+      },
+      {
+        "key": "boundary[string]",
+        "occurrences": 1,
+        "key_characters_total": 16,
+        "value_json_characters_total": 155,
+        "value_text_characters_total": 153
+      },
+      {
+        "key": "claim",
+        "occurrences": 4,
+        "key_characters_total": 20,
+        "value_json_characters_total": 259,
+        "value_text_characters_total": 251
+      },
+      {
+        "key": "claims[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 21,
+        "value_json_characters_total": 383,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "comparison[object]",
+        "occurrences": 1,
+        "key_characters_total": 18,
+        "value_json_characters_total": 238,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "contrast[object]",
+        "occurrences": 1,
+        "key_characters_total": 16,
+        "value_json_characters_total": 286,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "distinction[string]",
+        "occurrences": 1,
+        "key_characters_total": 19,
+        "value_json_characters_total": 168,
+        "value_text_characters_total": 166
+      },
+      {
+        "key": "example[string]",
+        "occurrences": 1,
+        "key_characters_total": 15,
+        "value_json_characters_total": 152,
+        "value_text_characters_total": 150
+      },
+      {
+        "key": "first_locator",
+        "occurrences": 1,
+        "key_characters_total": 13,
+        "value_json_characters_total": 32,
+        "value_text_characters_total": 30
+      },
+      {
+        "key": "first_role",
+        "occurrences": 1,
+        "key_characters_total": 10,
+        "value_json_characters_total": 32,
+        "value_text_characters_total": 30
+      },
+      {
+        "key": "index",
+        "occurrences": 1,
+        "key_characters_total": 5,
+        "value_json_characters_total": 51,
+        "value_text_characters_total": 49
+      },
+      {
+        "key": "ledger",
+        "occurrences": 1,
+        "key_characters_total": 6,
+        "value_json_characters_total": 53,
+        "value_text_characters_total": 51
+      },
+      {
+        "key": "narrative[string]",
+        "occurrences": 4,
+        "key_characters_total": 68,
+        "value_json_characters_total": 998,
+        "value_text_characters_total": 990
+      },
+      {
+        "key": "plan[array<string>]",
+        "occurrences": 1,
+        "key_characters_total": 19,
+        "value_json_characters_total": 250,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "recollection[string]",
+        "occurrences": 1,
+        "key_characters_total": 20,
+        "value_json_characters_total": 305,
+        "value_text_characters_total": 303
+      },
+      {
+        "key": "reference_label[string]",
+        "occurrences": 2,
+        "key_characters_total": 46,
+        "value_json_characters_total": 23,
+        "value_text_characters_total": 19
+      },
+      {
+        "key": "referent[string]",
+        "occurrences": 1,
+        "key_characters_total": 16,
+        "value_json_characters_total": 136,
+        "value_text_characters_total": 134
+      },
+      {
+        "key": "relationship[string]",
+        "occurrences": 1,
+        "key_characters_total": 20,
+        "value_json_characters_total": 116,
+        "value_text_characters_total": 114
+      },
+      {
+        "key": "scope[string]",
+        "occurrences": 2,
+        "key_characters_total": 26,
+        "value_json_characters_total": 253,
+        "value_text_characters_total": 249
+      },
+      {
+        "key": "scratchpad",
+        "occurrences": 9,
+        "key_characters_total": 90,
+        "value_json_characters_total": 6966,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "second_locator",
+        "occurrences": 1,
+        "key_characters_total": 14,
+        "value_json_characters_total": 27,
+        "value_text_characters_total": 25
+      },
+      {
+        "key": "second_role",
+        "occurrences": 1,
+        "key_characters_total": 11,
+        "value_json_characters_total": 46,
+        "value_text_characters_total": 44
+      },
+      {
+        "key": "shared_boundary",
+        "occurrences": 1,
+        "key_characters_total": 15,
+        "value_json_characters_total": 95,
+        "value_text_characters_total": 93
+      },
+      {
+        "key": "shared_feature",
+        "occurrences": 1,
+        "key_characters_total": 14,
+        "value_json_characters_total": 66,
+        "value_text_characters_total": 64
+      },
+      {
+        "key": "speaker",
+        "occurrences": 4,
+        "key_characters_total": 28,
+        "value_json_characters_total": 35,
+        "value_text_characters_total": 27
+      },
+      {
+        "key": "story[string]",
+        "occurrences": 1,
+        "key_characters_total": 13,
+        "value_json_characters_total": 485,
+        "value_text_characters_total": 483
+      },
+      {
+        "key": "subject[string]",
+        "occurrences": 1,
+        "key_characters_total": 15,
+        "value_json_characters_total": 102,
+        "value_text_characters_total": 100
+      },
+      {
+        "key": "transformed_claim[string]",
+        "occurrences": 1,
+        "key_characters_total": 25,
+        "value_json_characters_total": 192,
+        "value_text_characters_total": 190
+      }
+    ],
+    "error": null
+  },
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548382814,
+    "target_index": 9,
+    "profile_version": "1.1.0",
+    "selected_function": {
+      "opcode": "OP.01.008",
+      "name": "DESIGN",
+      "description": "Specify a structure or mechanism meeting requirements",
+      "input_contract": "requirements",
+      "output_contract": "design"
+    },
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 6,
+      "selection_round": 1,
+      "note": "One fresh draw on an accepted revision; retry uses persisted choice."
+    },
+    "opcodes": [
+      "OP.01.008"
+    ],
+    "read_indices": [
+      0,
+      6,
+      8
+    ],
+    "frame_id": "F3",
+    "enclosing_frame_id": "F2",
+    "role": "preserve_reference",
+    "reference_id": "R-A",
+    "original_anchor_index": 0,
+    "previous_frame_index": 6,
+    "requirements": [
+      "Apply function DESIGN (OP.01.008) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+      "Carry the *same referent identity* R-A from index 0 through this enclosing frame.",
+      "Do not convert attributed inner claims into direct factual assertions.",
+      "Use textual references freely while maintaining identity and attribution.",
+      "Append exactly one substantive scratchpad at index 9; retain the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "functions_selected": 1,
+  "functions_published": 1,
+  "controller_comment_id": 6548393119
+}
