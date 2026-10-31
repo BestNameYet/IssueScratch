@@ -423,7 +423,7 @@ jobs:
                progression.accepted_entries!==19||progression.last_accepted_index!==18||
                progression.controller_status!=='completed'||
                state.last_processed_revision_sha256!==sha(body))throw Error('Controller completion mismatch');
-            const accepted=state.history.filter(x=>['accepted_one_entry','completed_index_16'].includes(x.transition));
+            const accepted=state.history.filter(x=>['accepted_one_entry','completed_index_18'].includes(x.transition));
             if(accepted.length!==19||
                accepted.some((x,i)=>x.array_length!==i+1||x.accepted_entries_after!==i+1)){
               throw Error('Missing 19 sequential acceptance receipts');
