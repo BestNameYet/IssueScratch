@@ -1,0 +1,64 @@
+{
+  "schema": "issuescratch.frame-instruction-receipt.v1",
+  "source_comment_id": 6548382814,
+  "source_revision_sha256": "08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b",
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548382814,
+    "target_index": 3,
+    "profile_version": "1.1.0",
+    "selected_function": {
+      "opcode": "OP.01.010",
+      "name": "SELECT",
+      "description": "Choose one or more candidates according to a rule",
+      "input_contract": "candidates_and_rule",
+      "output_contract": "selection"
+    },
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 8,
+      "selection_round": 1,
+      "note": "One fresh draw on an accepted revision; retry uses persisted choice."
+    },
+    "opcodes": [
+      "OP.01.010"
+    ],
+    "read_indices": [
+      0,
+      0,
+      2
+    ],
+    "frame_id": "F1",
+    "enclosing_frame_id": "F0",
+    "role": "preserve_reference",
+    "reference_id": "R-A",
+    "original_anchor_index": 0,
+    "previous_frame_index": 0,
+    "requirements": [
+      "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+      "Carry the *same referent identity* R-A from index 0 through this enclosing frame.",
+      "Do not convert attributed inner claims into direct factual assertions.",
+      "Use textual references freely while maintaining identity and attribution.",
+      "Append exactly one substantive scratchpad at index 3; retain the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "publication_status": "selected"
+}
