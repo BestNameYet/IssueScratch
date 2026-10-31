@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.8.1",
+  "format_version": "2.8.2",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2095,21 +2095,21 @@
     },
     {
       "opcode": "IS.10.005",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "After verifying the selected next function, write an agent acknowledgment as a separate JSON-object record under workspaces/issue1-diagnostics/comments/<comment_id>/acknowledgements/<zero-padded-index>.json. Include source_comment_id, target_index, selected_opcode, instruction_source_revision_sha256, controller_comment_id, and verification outcome; do not place the acknowledgement in any scratchpad.",
+      "imperative": "After appending and readback-verifying the newly authored scratchpad in the permanent GitHub source comment, save its acknowledgement as a separate valid JSON object under workspaces/issue1-diagnostics/comments/<comment_id>/acknowledgements/<zero-padded-index>.json. Include source_comment_id, submitted_index, submitted_source_revision_sha256, prior_instruction_opcode, prior_instruction_source_revision_sha256, controller_comment_id, and verification status. Never write this acknowledgement into the source comment or before the submitted edit exists.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.006",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Append only one new substantive scratchpad wrapper per edit without changing the previously accepted prefix. Preserve referent identities and attribution, apply the selected function to content, and do not insert workflow instruction fields or reserved metadata in scratchpad values.",
+      "imperative": "First apply the previously delivered function to produce substantive content, then append exactly one new scratchpad wrapper without changing any accepted prefix, and read back the new GitHub comment body. Only after that write the external acknowledgement; any subsequent workflow acceptance/readback is a separate validation step.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2155,11 +2155,11 @@
     },
     {
       "opcode": "IS.10.011",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Record handshake observations, acknowledgement receipts and relevant workflow run IDs as valid JSON objects in per-comment workspace records, separate from the agent-authored array; distinguish selected, published, applied and verified states.",
+      "imperative": "Persist handshake observations, post-comment acknowledgements, and relevant workflow run IDs as valid JSON objects under the per-comment workspace; distinguish submitted, accepted, function-published, and agent-applied evidence without storing workflow artifacts in the source comment.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2510,11 +2510,12 @@
       "index_sequence": "Create index 0, then accept exactly one appended index per edit until index 16.",
       "ack_keys": [
         "source_comment_id",
-        "target_index",
-        "selected_opcode",
-        "instruction_source_revision_sha256",
+        "submitted_index",
+        "submitted_source_revision_sha256",
+        "prior_instruction_opcode",
+        "prior_instruction_source_revision_sha256",
         "controller_comment_id",
-        "verified"
+        "status"
       ],
       "max_poll_cycles_per_revision": 12,
       "poll_checks": [
@@ -2538,14 +2539,23 @@
       "acknowledgement_location": "workspaces/issue1-diagnostics/comments/<comment_id>/acknowledgements/<zero-padded-target-index>.json",
       "acknowledgement_type": "separate JSON-object workspace receipt",
       "source_comment_contract": "Only substantive, single-key scratchpad wrappers. No job IDs, controller acknowledgements, hashes, opcodes, metadata fields, or workflow markers required in the comment.",
-      "job_registration": "Separate workspace job.json keyed to verified comment ID; never infer jobs by inspecting scratchpad text."
+      "job_registration": "Separate workspace job.json keyed to verified comment ID; never infer jobs by inspecting scratchpad text.",
+      "acknowledgement_timing": "AFTER agent edits source comment and re-fetches the saved new body and comment ID; BEFORE or AFTER workflow diagnosis, but never before comment write and readback.",
+      "acknowledgement_protocol": [
+        "receive and validate preceding function from controller state",
+        "author and append one substantive scratchpad",
+        "verify saved GitHub comment body and record new revision SHA-256",
+        "write external acknowledgement JSON object referencing new submitted revision",
+        "poll for matching accepted workflow state and instruction; update external acceptance record only after validation"
+      ],
+      "acceptance_is_separate_from_submission": true
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "869d86de12ceba4a205dc88d8308dac72cd2d45c",
+    "previous_active_document_blob_sha": "06a9fbd3574825340b955110341b37f281cf72cc",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Correct the handshake: no workflow or metadata artifact is required in agent scratchpads; bind by external comment ID, state and instruction receipts, with external JSON acknowledgements.",
+    "current_amendment": "Order workflow handshake as agent comment append, comment readback, then separate workspace acknowledgement; keep controller artifacts out of comments.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
