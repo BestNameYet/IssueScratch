@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.6.0",
+  "format_version": "2.7.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -243,32 +243,6 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
-      "opcode": "IS.03.002",
-      "version": 1,
-      "source_section": "3",
-      "source_line_range": [
-        26,
-        35
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not require Issues #2 and #3 or any mandatory cross-issue transfer.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.03.003",
-      "version": 1,
-      "source_section": "3",
-      "source_line_range": [
-        26,
-        35
-      ],
-      "modality": "require",
-      "imperative": "Keep job references and current state discoverable.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
       "opcode": "IS.03.01.001",
       "version": 1,
       "source_section": "3.1",
@@ -399,6 +373,19 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
+      "opcode": "IS.03.002",
+      "version": 1,
+      "source_section": "3",
+      "source_line_range": [
+        26,
+        35
+      ],
+      "modality": "prohibit",
+      "imperative": "Do not require Issues #2 and #3 or any mandatory cross-issue transfer.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
       "opcode": "IS.03.02.001",
       "version": 1,
       "source_section": "3.2",
@@ -434,6 +421,19 @@
       ],
       "modality": "allow",
       "imperative": "Allow simple jobs to omit empty sections without boilerplate.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.03.003",
+      "version": 1,
+      "source_section": "3",
+      "source_line_range": [
+        26,
+        35
+      ],
+      "modality": "require",
+      "imperative": "Keep job references and current state discoverable.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
     },
@@ -858,156 +858,6 @@
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
-      "opcode": "IS.04.002",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Arrange the single-key scratchpad wrappers by ascending zero-based array index.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.005",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Populate the scratchpad value in every array entry with nonempty substantive agent-authored fields; prohibit empty, primitive, null or array scratchpad values.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.006",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Make the substantive contents of the scratchpad value in each array element distinct from those of other array elements, not paraphrases or appended expansions.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.009",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Keep the zero-based array indices and the identical scratchpad wrapper key free of fixed semantic roles or topic assignments.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.011",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Record job metadata using an optional registered field inside a selected scratchpad value or a separately linked Issue #1 record; never add it as a sibling of the wrapper key.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.012",
-      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
-      "modality": "require",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.013",
-      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
-      "modality": "allow",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.014",
-      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
-      "modality": "require",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.015",
-      "imperative": "Distinguish the root array of wrappers from arrays nested inside a scratchpad's selected typed values.",
-      "modality": "prohibit",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.016",
-      "imperative": "Treat the existing issue-comment JSON normalizer as syntax-only; do not claim it enforces the required scratchpad wrapper or typed content.",
-      "modality": "require",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.017",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Require exactly one own property with the literal name scratchpad on each array element.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.018",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Require each scratchpad property to contain one nonempty open heterogeneous JSON object, whose fields are independently selected and typed.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.019",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.020",
-      "version": 1,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.021",
-      "version": 1,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
       "opcode": "IS.04.01.001",
       "version": 6,
       "source_section": "4.1",
@@ -1116,6 +966,16 @@
       "source_line_range": null,
       "modality": "prohibit",
       "imperative": "Do not require an action's complete input contract to be populated when merely recording a partial observation; validate any present fields according to their declared types.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.002",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Arrange the single-key scratchpad wrappers by ascending zero-based array index.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -1349,6 +1209,16 @@
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
+      "opcode": "IS.04.005",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Populate the scratchpad value in every array entry with nonempty substantive agent-authored fields; prohibit empty, primitive, null or array scratchpad values.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
       "opcode": "IS.04.05.001",
       "version": 1,
       "source_section": "4.5",
@@ -1427,6 +1297,136 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
+      "opcode": "IS.04.006",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Make the substantive contents of the scratchpad value in each array element distinct from those of other array elements, not paraphrases or appended expansions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.009",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Keep the zero-based array indices and the identical scratchpad wrapper key free of fixed semantic roles or topic assignments.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.011",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Record job metadata using an optional registered field inside a selected scratchpad value or a separately linked Issue #1 record; never add it as a sibling of the wrapper key.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.012",
+      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
+      "modality": "require",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.013",
+      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
+      "modality": "allow",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.014",
+      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
+      "modality": "require",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.015",
+      "imperative": "Distinguish the root array of wrappers from arrays nested inside a scratchpad's selected typed values.",
+      "modality": "prohibit",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.016",
+      "imperative": "Treat the existing issue-comment JSON normalizer as syntax-only; do not claim it enforces the required scratchpad wrapper or typed content.",
+      "modality": "require",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.017",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require exactly one own property with the literal name scratchpad on each array element.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.018",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require each scratchpad property to contain one nonempty open heterogeneous JSON object, whose fields are independently selected and typed.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.019",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.020",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.021",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
       "opcode": "IS.05.001",
       "version": 1,
       "source_section": "5",
@@ -1436,19 +1436,6 @@
       ],
       "modality": "require",
       "imperative": "Initiate periodic RS adjudication only when authorized.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.05.002",
-      "version": 1,
-      "source_section": "5",
-      "source_line_range": [
-        549,
-        552
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not invent a fixed review interval, per-task gate, reviewer, or automatic grading process.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
     },
@@ -1520,6 +1507,19 @@
       "imperative": "Keep retrospective adjudication findings separate from the original scratchpad array; do not introduce non-object array elements for review findings.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.05.002",
+      "version": 1,
+      "source_section": "5",
+      "source_line_range": [
+        549,
+        552
+      ],
+      "modality": "prohibit",
+      "imperative": "Do not invent a fixed review interval, per-task gate, reviewer, or automatic grading process.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
       "opcode": "IS.05.02.001",
@@ -1859,11 +1859,91 @@
     },
     {
       "opcode": "IS.07.012",
+      "version": 2,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not treat historical backfill or a complete first-submission array as evidence of sequential index progression; do not treat publication of a framing function as evidence that an external agent executed it.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.013",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Load the current versioned framing-controller profile and registered OP opcode catalog before selecting the next function on any eligible accepted incremental index.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.014",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Select exactly one substantive function at random with node:crypto.randomInt from the explicitly enumerated eligible OP pool on each successful advancement; do not choose functions by agent preference or a deterministic hash.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.015",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Store the selected opcode, name, selected pool ordinal, target array index, source revision hash, and enclosing-frame/reference instructions as JSON objects linked to the permanent comment ID.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.016",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Recover an already-persisted random selection after retries or interrupted execution; never reroll a selection for the same accepted source revision and target index.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.017",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Publish the next function in a separate source-linked Issue #1 controller comment while retaining previous instruction records in its history; validate the saved body and ignore controller-generated comments as input arrays.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.018",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Use four levels of two persistent referents plus narrative expansion (12 slots) and five freely authored slots; keep the referents identifiable across frames without assigning fixed semantic properties to scratchpad indices.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.019",
       "version": 1,
       "source_section": "7",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not treat historical backfill as evidence of seventeen sequential entry events, or claim the next framing function is selected while operator selection remains unconfigured.",
+      "imperative": "Do not issue a new controller operation when JSON is invalid, wrapper shape or one-entry progression fails, the array is imported as a complete first submission, or the seventeenth tracked index has already been accepted.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.07.020",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Keep the existing root README and the first imported README candidate for comparison; only accept a new controller-driven README candidate as experimentally complete when a verified 17-entry incremental progression and controller delivery history supports it.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2239,7 +2319,7 @@
         "per-index contribution in basis points"
       ],
       "existing_records": "Workflow dispatch/push scans record preexisting comments as historical snapshots; they are not claimed as sequentially accepted progression.",
-      "function_dispatch_state": "unconfigured; no operator mappings or framing actions are emitted until separately defined and tested.",
+      "function_dispatch_state": "14-operator random controller v1.1 publishes a next instruction following each eligible accepted index. It does not autonomously execute the function or generate the next scratchpad.",
       "root_objects_required": true,
       "semantic_adjudication": false
     },
@@ -2263,13 +2343,43 @@
       "binary_files_preserved_without_implicit_parsing": true,
       "output_is_json_object_not_scratchpad_array": true,
       "execution_receipt_separate_from_declaration": true
+    },
+    "framing_controller": {
+      "profile_path": "src/types/issuescratch.framing-controller.v1.json",
+      "profile_sha": "671a313ac25be7e628648d306d577f87ac36ff9f",
+      "profile_version": "1.1.0",
+      "implementation_path": "src/framing-controller.js",
+      "implementation_sha": "1a283ac74c0b755eaf996b3e7b8c362f53867b76",
+      "tests_path": "src/framing-controller.test.js",
+      "workflow_path": ".github/workflows/issue1-json-validator.yml",
+      "workflow_sha": "80c0b19913024df98fba3e85996bbc584b79db85",
+      "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
+      "random_pool_size": 14,
+      "random_selection": "node:crypto.randomInt",
+      "reference_slots": 12,
+      "unrestricted_slots": 5,
+      "persistent_instruction_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/instructions/<zero-padded-index>.json",
+      "persistent_state_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
+      "controller_comment_schema": "issuescratch.frame-control-comment.v1",
+      "uncontrolled_readme_source_comment": 6547874447,
+      "live_probe_source_comment": 6548135349,
+      "live_probe_controller_comment": 6548137149,
+      "live_probe_verified_indices": [
+        0,
+        1
+      ],
+      "live_probe_workflow_run_ids": [
+        41234676639,
+        41234726263
+      ],
+      "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow."
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "78e6627fc9c8a210297419a6c7a17031719d7c9d",
+    "previous_active_document_blob_sha": "8512db6de831550f987d1838b819c252b9c84b61",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Define reusable functional OP.* opcodes, a lossless document-to-JSON adapter, deterministic explicit mapping, validation and source-byte recovery, distinct from unique IS.* procedural opcodes. Sort existing procedural opcodes into declared section hierarchy without renumbering.",
+    "current_amendment": "Wire and verify random cryptographic selection of a reusable OP function for each accepted next index; persist and publish controller instructions non-destructively, and distinguish delivery from autonomous execution.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2278,7 +2388,7 @@
   },
   "coverage": {
     "active_section_count": 22,
-    "active_procedure_count": 164,
+    "active_procedure_count": 172,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
@@ -2299,6 +2409,9 @@
     "comment_progression_function_selected": false,
     "document_opcode_adapter": true,
     "operation_registry_entries": 16,
-    "opcode_procedural_sort_valid": true
+    "opcode_procedural_sort_valid": true,
+    "framing_controller_random_selection": true,
+    "framing_controller_issued_live_indices": 2,
+    "framing_controller_agent_semantic_execution": false
   }
 }
