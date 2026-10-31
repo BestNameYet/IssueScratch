@@ -1,6 +1,6 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "purpose": "Nineteen top-level indices: one preparatory five-scratchpad array, five three-index random reframing exercises, and three reconciliation indices.",
   "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
@@ -24,7 +24,9 @@
     "At each eligible accepted transition select exactly one OP function uniformly using crypto.randomInt and persist choice, index, pool size and source revision; never regenerate a choice on retries.",
     "The preparatory entry retains the entire original instruction and an explicit opcode rendering as substantive scratchpad content, not workflow metadata.",
     "The three final entries are explicitly reconciliatory, not unrestricted.",
-    "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths."
+    "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths.",
+    "Opcode rendering is action-granular; each action is mapped to bound OP steps with operands and traceability, not one omnibus opcode.",
+    "The adversarial preparation must drive concrete checks for the action decomposition and the final reconciler."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
   "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
@@ -60,35 +62,41 @@
       "index": 0,
       "role": "verbatim_instruction",
       "requirements": [
-        "Preserve the complete original instruction without alteration or omission."
+        "Preserve the entire original instruction without omissions, with its source attribution and wording intact."
       ]
     },
     {
       "index": 1,
-      "role": "requirement_rumination",
+      "role": "requirements_rumination",
       "requirements": [
-        "Analyze what the instruction demands, its ambiguities, and implicit success conditions."
+        "Examine explicit and implicit demands, ambiguities, boundary cases, and acceptance criteria; reason about the full instruction without replacing the verbatim source."
       ]
     },
     {
       "index": 2,
-      "role": "decomposition",
+      "role": "adversarial_review",
       "requirements": [
-        "Break the instruction into executable subrequirements and their dependencies."
+        "Challenge assumptions, identify contradictory or underdetermined requirements, test failure cases, and identify unauthorized interpretations.",
+        "Present counterarguments and discriminating checks rather than merely restating the requirements."
       ]
     },
     {
       "index": 3,
-      "role": "constraints_and_evidence",
+      "role": "atomistic_action_decomposition",
       "requirements": [
-        "Record scope, invariants, evidence and verification criteria."
+        "Break the instruction into independently identifiable executable actions; each action has a stable action_id, source span or quote, typed inputs, expected output, dependencies, and explicit completion predicate.",
+        "Avoid a single omnibus action or one operator standing for the entire instruction.",
+        "Use adversarial findings to identify missing actions or failure paths."
       ]
     },
     {
       "index": 4,
-      "role": "instruction_opcode_rendering",
+      "role": "atomic_opcode_rendering",
       "requirements": [
-        "Encode the original instruction in reusable registered OP opcodes and typed operands; do not confuse an opcode declaration with execution."
+        "Render every decomposed action as one or more reusable operation opcodes with typed operands, explicit dependencies, and expected result references.",
+        "Maintain a one-to-many or many-to-many mapping between actions and opcode steps where required; do not represent all instructions as one giant command.",
+        "Carry forward the source instruction, adversarial checks, and decomposition identifiers.",
+        "Do not claim the opcode declaration executes any action."
       ]
     }
   ],
@@ -114,8 +122,10 @@
       "role": "opcode_reconciliation",
       "read_indices": "0..16",
       "requirements": [
-        "Convert all earlier outer scratchpads, including the five nested preparatory scratchpads, into an explicit reusable OP-code projection.",
-        "Preserve the original instruction's distinct opcode rendering, source pointers, and the separation between declared and executed operations."
+        "Convert the atomistic actions and all prior scratchpad contributions into individually registered opcode steps with typed operands, dependency edges, result references, and source pointers.",
+        "Account explicitly for all five preparatory scratchpads including the verbatim instruction, adversarial challenges, and atomistic decomposition.",
+        "Check action-to-opcode coverage; do not substitute a single CAPTURE, GENERATE, or TRANSFORM command for the full instruction.",
+        "Retain declared/verified/executed distinctions and do not assert semantic equivalence without review."
       ]
     },
     {
@@ -127,5 +137,29 @@
         "Verify structural and opcode coverage, record unresolved constraints, and declare the final reconciliation operation itself without claiming semantic validation by the workflow."
       ]
     }
-  ]
+  ],
+  "atomistic_mapping_contract": {
+    "minimum_independent_actions": 2,
+    "action_fields": [
+      "action_id",
+      "source_text_or_span",
+      "verb",
+      "inputs",
+      "expected_output",
+      "depends_on",
+      "completion_test"
+    ],
+    "step_fields": [
+      "step_id",
+      "action_id",
+      "opcode",
+      "operands",
+      "depends_on",
+      "result_ref",
+      "validation"
+    ],
+    "rule": "A rendered step binds exactly one registered OP operator to a bounded action or subaction. Each decomposed action must be mapped; composite instructions require multiple explicit steps. CAPTURE and EMIT may bookend the artifact but are not substitutes for the substantive steps.",
+    "adversarial_review_link": "Every review objection must be explicitly resolved, rejected with rationale, or recorded as unresolved before final synthesis.",
+    "instruction_provenance": "A verbatim original instruction remains independently available as nested preparatory index 0, not merely paraphrased by the opcode projection."
+  }
 }
