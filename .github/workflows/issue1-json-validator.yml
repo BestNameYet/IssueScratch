@@ -9,12 +9,12 @@ on:
       - 'src/issue1-diagnostics.test.js'
       - 'src/framing-controller.js'
       - 'src/framing-controller.test.js'
+      - 'src/artifact-publisher.js'
+      - 'src/artifact-publisher.test.js'
       - 'src/types/issuescratch.framing-controller.v1.json'
       - 'src/types/issuescratch.higher-order-operators.v1.json'
       - 'src/opcode-document-adapter.js'
       - 'src/opcode-document-adapter.test.js'
-      - 'src/readme-comment-renderer.js'
-      - 'src/readme-comment-renderer.test.js'
       - 'src/types/issuescratch.operation-registry.v1.json'
       - 'src/types/issuescratch.opcode-adapter-contract.v1.json'
       - 'experiments/general-purpose-job-opcode-map.v1.json'
@@ -300,107 +300,25 @@ jobs:
                 ...rows.map(r=>r.map(data=>({data})))
               ]).write();
             if(failures.length)core.setFailed(failures.join('\n'));
-      - name: Generate README candidate from schema job comment
+      - name: Publish verified completed artifacts through one general path
         if: github.event_name == 'issue_comment'
         uses: actions/github-script@v7
         with:
           script: |
-            const {render}=require('./src/readme-comment-renderer.js');
+            const {inspect,digest}=require('./src/artifact-publisher.js');
             const owner=context.repo.owner,repo=context.repo.repo;
             const id=context.payload.comment.id;
-            const {data:comment}=await github.rest.issues.getComment({owner,repo,comment_id:id});
-            // Intermediate 1..16-entry arrays are drafts, not final README candidates.
-            const body=comment.body||'';
-            if(!body.includes('"RS17-README-001"')){
-              core.info('Comment is not the README experiment job');
+            const {data:source}=await github.rest.issues.getComment({owner,repo,comment_id:id});
+            const body=source.body||'';
+            const author=source.user?.login||'';
+            let array;
+            try{array=JSON.parse(body)}catch{return;}
+            if(!Array.isArray(array)||array.length!==19)return;
+            const initial=array[0]?.scratchpad?.['preparation[array<object>]']?.[0]?.scratchpad;
+            if(!initial||!Object.hasOwn(initial,'artifact_targets[array<object>]')){
+              core.info('No artifact targets declared; no output publication requested');
               return;
             }
-            let parsed;
-            try {parsed=JSON.parse(body);} catch(e) {return;}
-            if(!Array.isArray(parsed)||parsed.length<17){
-              core.info('README experiment comment is not yet a completed 17-entry array');
-              return;
-            }
-            // Completion must be proven by sequential state transitions; an imported
-            // 17-element array does not qualify as a controlled experiment.
-            const statePath='workspaces/issue1-diagnostics/comments/'+id+'/state.json';
-            let saved;
-            try {saved=(await github.rest.repos.getContent({owner,repo,path:statePath})).data;}
-            catch(e){if(e.status===404)return;throw e;}
-            const state=JSON.parse(Buffer.from(saved.content,'base64').toString('utf8'));
-            const {sha}=require('./src/issue1-diagnostics.js');
-            if(state.progression?.mode!=='incremental'||
-               state.progression?.complete!==true||
-               state.last_processed_revision_sha256!==sha(body)||
-               state.progression.controller_status!=='completed'){
-              core.info('README candidate skipped: controlled incremental progression not verified');
-              return;
-            }
-            const rendered=render(body,{commentId:id,repository:owner+'/'+repo});
-            if(!rendered){
-              core.info('Not the registered README schema job. No candidate created.');
-              return;
-            }
-            const path='experiments/readme-job-001.candidate.md';
-            const receiptPath='workspaces/readme-job-001/receipt.json';
-            const currentReadme=await github.rest.repos.getContent({owner,repo,path:'README.md'});
-            async function writeIfChanged(path,body){
-              let existing=null;
-              try{
-                const {data}=await github.rest.repos.getContent({owner,repo,path});
-                if(Array.isArray(data)||data.type!=='file')throw Error('Non-file target '+path);
-                existing=data;
-              }catch(e){if(e.status!==404)throw e;}
-              if(existing && Buffer.from(existing.content,'base64').toString('utf8')===body){
-                return {changed:false,sha:existing.sha};
-              }
-              await github.rest.repos.createOrUpdateFileContents({
-                owner,repo,path,
-                message:'experiment: record schema README candidate from issue comment '+id,
-                content:Buffer.from(body,'utf8').toString('base64'),
-                ...(existing?{sha:existing.sha}:{})
-              });
-              const {data:check}=await github.rest.repos.getContent({owner,repo,path});
-              if(Buffer.from(check.content,'base64').toString('utf8')!==body){
-                throw Error('Readback mismatch at '+path);
-              }
-              return {changed:true,sha:check.sha};
-            }
-            const candidate=await writeIfChanged(path,rendered.content);
-            const receipt={
-              schema:'issuescratch.readme-experiment-receipt.v1',
-              job_id:rendered.record.job_id,
-              source_issue_number:1,
-              source_comment_id:id,
-              source_comment_sha256:rendered.sha256,
-              source_instruction:rendered.record.instruction,
-              scratchpad_entries:rendered.record.comment_entries,
-              source_instruction_index:rendered.record.metadata_index,
-              candidate_path:path,
-              candidate_blob_sha:candidate.sha,
-              conventional_readme_path:'README.md',
-              conventional_readme_blob_sha:currentReadme.data.sha,
-              candidate_status:'generated_and_verified',
-              agent_workspace_writes_required:false,
-              root_readme_replaced:false,
-              selection_status:'awaiting_comparison'
-            };
-            await writeIfChanged(receiptPath,JSON.stringify(receipt,null,2)+'\n');
-            core.info('Candidate generated for comment '+id+' with '+rendered.record.comment_entries+' scratchpads; retained root README.');
-            await core.summary.addHeading('README schema experiment').addRaw(
-              'Comment ID: '+id+'; candidate: '+path+'; source SHA-256: '+rendered.sha256+
-              '; existing README.md preserved for comparison.'
-            ).write();
-      - name: Generate controlled README from external registration
-        if: github.event_name == 'issue_comment'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const {renderControlled,sha256}=require('./src/readme-comment-renderer.js');
-            const {sha}=require('./src/issue1-diagnostics.js');
-            const owner=context.repo.owner,repo=context.repo.repo;
-            const id=context.payload.comment.id;
-            const registrationPath='workspaces/readme-job-001-rerun/job.json';
             async function read(path){
               try{
                 const {data}=await github.rest.repos.getContent({owner,repo,path});
@@ -408,70 +326,66 @@ jobs:
                 return {sha:data.sha,body:Buffer.from(data.content,'base64').toString('utf8')};
               }catch(e){if(e.status===404)return null;throw e;}
             }
-            async function save(path,body,old){
-              if(old?.body===body)return old.sha;
-              await github.rest.repos.createOrUpdateFileContents({
-                owner,repo,path,content:Buffer.from(body,'utf8').toString('base64'),
-                message:'experiment: generate README from controlled 19-index comment '+id,
-                ...(old?{sha:old.sha}:{})
-              });
-              const saved=await read(path);
-              if(saved?.body!==body)throw Error('Controlled README write readback failed: '+path);
-              return saved.sha;
-            }
-            const stored=await read(registrationPath);
-            if(!stored){core.info('No controlled README job registered');return;}
-            const reg=JSON.parse(stored.body);
-            if(reg.source_comment_id!==id){core.info('Different source comment');return;}
-            const {data:comment}=await github.rest.issues.getComment({owner,repo,comment_id:id});
-            const body=comment.body||'';
-            let arr;
-            try{arr=JSON.parse(body);}catch{return;}
-            if(!Array.isArray(arr)||arr.length!==19)return;
             const root='workspaces/issue1-diagnostics/comments/'+id;
             const stateFile=await read(root+'/state.json');
-            if(!stateFile)throw Error('Missing controller state');
+            if(!stateFile)throw Error('Missing generic artifact publisher state');
             const state=JSON.parse(stateFile.body);
-            const progression=state.progression;
-            if(progression?.mode!=='incremental'||!progression.complete||
-               progression.accepted_entries!==19||progression.last_accepted_index!==18||
-               progression.controller_status!=='completed'||
-               state.last_processed_revision_sha256!==sha(body))throw Error('Controller completion mismatch');
-            const accepted=state.history.filter(x=>['accepted_one_entry','completed_index_18'].includes(x.transition));
-            if(accepted.length!==19||
-               accepted.some((x,i)=>x.array_length!==i+1||x.accepted_entries_after!==i+1)){
-              throw Error('Missing 19 sequential acceptance receipts');
-            }
-            const replyId=progression.controller_comment_id;
-            if(!Number.isSafeInteger(replyId))throw Error('Missing controller reply ID');
-            const {data:reply}=await github.rest.issues.getComment({owner,repo,comment_id:replyId});
-            const control=JSON.parse(reply.body);
-            if(control.source_comment_id!==id||control.history.length!==18)throw Error('Controller history is incomplete');
-            // The workflow's own state and controller history are the handshake.
-            // No worker-authored workspace acknowledgements are required.
+            const replyId=state.progression?.controller_comment_id;
+            if(!Number.isSafeInteger(replyId))throw Error('Missing controller comment ID');
+            const {data:controlComment}=await github.rest.issues.getComment({owner,repo,comment_id:replyId});
+            const controller=JSON.parse(controlComment.body);
+            const receipts=[];
             for(let index=1;index<=18;index++){
-              const prior=control.history[index-1];
-              if(prior.target_index!==index ||
-                 prior.function?.target_index!==index ||
-                 prior.function?.comment_id!==id ||
-                 !prior.function?.selected_function?.opcode ||
-                 prior.source_revision_sha256!==accepted[index-1].raw_sha256){
-                throw Error('Controller instruction and accepted revision mismatch at '+index);
-              }
+              const saved=await read(root+'/instructions/'+String(index).padStart(2,'0')+'.json');
+              if(!saved)throw Error('Missing instruction receipt at index '+index);
+              receipts.push(JSON.parse(saved.body));
             }
-            const generated=renderControlled(body,{commentId:id,registration:reg,repository:owner+'/'+repo});
-            const candidatePath=reg.candidate_path,receiptPath='workspaces/readme-job-001-rerun/receipt.json';
-            const candidateSha=await save(candidatePath,generated.content,await read(candidatePath));
-            const receipt={
-              schema:'issuescratch.readme-controlled-receipt.v1',job_id:reg.job_id,
-              source_comment_id:id,source_comment_sha256:sha256(body),
-              accepted_entries:19,accepted_transitions:19,
-              workflow_verified_transitions:19,controller_instruction_count:18,
-              candidate_path:candidatePath,candidate_blob_sha:candidateSha,
-              conventional_readme_path:'README.md',
-              prior_comparator_path:'experiments/readme-job-001.candidate.md',
-              selection_status:'awaiting_user_comparison',
-              root_readme_replaced:false
-            };
-            await save(receiptPath,JSON.stringify(receipt,null,2)+'\n',await read(receiptPath));
-            core.info('Controlled README candidate and receipt verified for '+id);
+            const plan=inspect({body,state,controller,receipts,commentId:id,ownerLogin:owner,commentAuthor:author});
+            if(!plan.ready){core.info('Artifact publication skipped: '+plan.reason);return;}
+            const receiptPath=root+'/published-artifacts/'+plan.source_revision_sha256+'.json';
+            const priorReceipt=await read(receiptPath);
+            if(priorReceipt){
+              const old=JSON.parse(priorReceipt.body);
+              if(old.source_revision_sha256!==plan.source_revision_sha256||
+                 JSON.stringify(old.artifacts.map(x=>[x.path,x.sha256]))!==
+                 JSON.stringify(plan.files.map(x=>[x.path,x.sha256])))
+                throw Error('Historical artifact receipt conflicts with current source revision');
+              core.info('Completed artifact publication already has a matching immutable receipt');
+              return;
+            }
+            const {data:latest}=await github.rest.issues.getComment({owner,repo,comment_id:id});
+            if(digest(latest.body||'')!==plan.source_revision_sha256)
+              throw Error('Source comment changed during artifact publication');
+            const published=[];
+            for(const output of plan.files){
+              const existing=await read(output.path);
+              if(existing?.body!==output.content){
+                await github.rest.repos.createOrUpdateFileContents({
+                  owner,repo,path:output.path,
+                  message:'artifacts: publish verified source comment '+id,
+                  content:Buffer.from(output.content,'utf8').toString('base64'),
+                  ...(existing?{sha:existing.sha}:{})
+                });
+              }
+              const saved=await read(output.path);
+              if(!saved||saved.body!==output.content||digest(saved.body)!==output.sha256)
+                throw Error('Artifact readback failed for '+output.path);
+              published.push({path:output.path,sha256:output.sha256,blob_sha:saved.sha,
+                previous_blob_sha:existing?.sha||null,changed:existing?.body!==output.content});
+            }
+            const receipt={schema:'issuescratch.artifact-publication-receipt.v1',
+              source_comment_id:id,source_revision_sha256:plan.source_revision_sha256,
+              accepted_transitions:19,controller_instruction_count:18,
+              artifacts:published};
+            await github.rest.repos.createOrUpdateFileContents({
+              owner,repo,path:receiptPath,
+              message:'artifacts: record verified publication receipt for '+id,
+              content:Buffer.from(JSON.stringify(receipt,null,2)+'\n','utf8').toString('base64')
+            });
+            const confirmed=await read(receiptPath);
+            if(!confirmed||JSON.stringify(JSON.parse(confirmed.body))!==JSON.stringify(receipt))
+              throw Error('Artifact receipt readback failed');
+            await core.summary.addHeading('General artifact publication')
+              .addRaw('Verified source '+id+' and published '+published.length+
+                ' artifact(s) to their declared paths, replacing existing content in place.')
+              .write();
