@@ -7,16 +7,17 @@ const {functionForIndex,processWithController,publicationDocument,publicationEnt
 const make=n=>JSON.stringify(Array.from({length:n},(_,i)=>({scratchpad:{"text[string]":"distinct entry "+i}})));
 const draw=(n)=>Math.min(n-1,2);
 const run=(s,b)=>processWithController(s,b,777,"workspaces/tests/revision.json","issue_comment",p,registry,draw);
-test("12 structured and five freely selected slots, with consistent two reference anchors",()=>{
- const all=Array.from({length:17},(_,i)=>functionForIndex(777,i,p,registry,draw));
- assert.deepEqual(all.slice(0,12).map(x=>x.role),[
+test("15 structured and four freely selected slots, with consistent two reference anchors",()=>{
+ const all=Array.from({length:19},(_,i)=>functionForIndex(777,i,p,registry,draw));
+ assert.deepEqual(all.slice(0,15).map(x=>x.role),[
   "establish_reference","establish_reference","seed_narrative",
   "preserve_reference","preserve_reference","expand_enclosing_narrative",
   "preserve_reference","preserve_reference","expand_enclosing_narrative",
+  "preserve_reference","preserve_reference","expand_enclosing_narrative",
   "preserve_reference","preserve_reference","expand_enclosing_narrative"]);
- assert.ok(all.slice(12).every(x=>x.role==="unrestricted"));
- assert.deepEqual(all.slice(0,12).filter(x=>x.reference_id==="R-A").map(x=>x.original_anchor_index),[0,0,0,0]);
- assert.deepEqual(all.slice(0,12).filter(x=>x.reference_id==="R-B").map(x=>x.original_anchor_index),[1,1,1,1]);
+ assert.ok(all.slice(15).every(x=>x.role==="unrestricted"));
+ assert.deepEqual(all.slice(0,15).filter(x=>x.reference_id==="R-A").map(x=>x.original_anchor_index),[0,0,0,0,0]);
+ assert.deepEqual(all.slice(0,15).filter(x=>x.reference_id==="R-B").map(x=>x.original_anchor_index),[1,1,1,1,1]);
  assert.deepEqual(all[6].read_indices,[0,3,5]);
  assert.deepEqual(all[8].read_indices,[5,6,7]);
 });
@@ -34,10 +35,10 @@ test("random function drawn from registered pool, recorded and controlled on ret
 });
 test("end-to-end progression selects exactly next function after each valid appended entry",()=>{
  let s=null,issued=0;
- for(let n=1;n<=17;n++){
+ for(let n=1;n<=19;n++){
   const result=run(s,make(n));s=result.state;
   assert.equal(s.progression.accepted_entries,n);
-  if(n<17){
+  if(n<19){
    issued++;
    assert.equal(result.publication_required,true);
    assert.equal(result.next_instruction.target_index,n);
@@ -52,8 +53,8 @@ test("end-to-end progression selects exactly next function after each valid appe
    assert.equal(s.progression.controller_status,"completed");
   }
  }
- assert.equal(issued,16);
- const after=run(s,make(18));
+ assert.equal(issued,18);
+ const after=run(s,make(20));
  assert.equal(after.action,"complete_validation_only");
  assert.equal(after.publication_required,false);
 });
@@ -71,7 +72,7 @@ test("rejected, invalid, and imported complete arrays do not spuriously issue in
  const skip=run(s,make(3));
  assert.equal(skip.action,"out_of_sequence_or_prior_entry_modified");
  assert.equal(skip.publication_required,false);
- const imported=run(null,make(17));
+ const imported=run(null,make(19));
  assert.equal(imported.action,"complete_import_no_incremental_trace");
  assert.equal(imported.publication_required,false);
 });
@@ -84,4 +85,15 @@ test("control comment is one JSON object retaining full instruction history",()=
  assert.equal(isControlComment(JSON.stringify(obj)),true);
  assert.equal(isControlComment(JSON.stringify(make(2))),false);
  assert.equal(Array.isArray(obj),false);
+});
+
+test("fifth frame uses indices 12, 13, 14; unrestricted slots begin at 15",()=>{
+ const a=functionForIndex(777,12,p,registry,draw),b=functionForIndex(777,13,p,registry,draw);
+ const c=functionForIndex(777,14,p,registry,draw),free=functionForIndex(777,15,p,registry,draw);
+ assert.equal(a.frame_id,"F4");assert.equal(b.reference_id,"R-B");
+ assert.equal(c.role,"expand_enclosing_narrative");
+ assert.deepEqual(c.read_indices,[11,12,13]);
+ assert.equal(free.role,"unrestricted");
+ assert.equal(functionForIndex(777,18,p,registry,draw).role,"unrestricted");
+ assert.throws(()=>functionForIndex(777,19,p,registry,draw),/range/);
 });
