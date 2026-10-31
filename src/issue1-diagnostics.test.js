@@ -58,25 +58,25 @@ test("one accepted entry per revision with exact unchanged prefix",()=>{
  assert.equal(bad.action,"out_of_sequence_or_prior_entry_modified");
  assert.equal(bad.state.progression.accepted_entries,2);
 });
-test("once 17 entries accepted, progress freezes but JSON diagnostics continue",()=>{
+test("once 19 entries accepted, progress freezes but JSON diagnostics continue",()=>{
  let s=null;
- for(let n=1;n<=17;n++){
+ for(let n=1;n<=19;n++){
    const r=run(s,make(n));s=r.state;
    assert.equal(s.progression.accepted_entries,n);
  }
  assert.equal(s.progression.complete,true);
  assert.equal(s.progression.next_index,null);
- const r=run(s,make(18));
+ const r=run(s,make(20));
  assert.equal(r.action,"complete_validation_only");
- assert.equal(r.state.progression.accepted_entries,17);
- assert.equal(r.diagnostic.metrics.array_length,18);
- assert.equal(r.state.history.length,18);
+ assert.equal(r.state.progression.accepted_entries,19);
+ assert.equal(r.diagnostic.metrics.array_length,20);
+ assert.equal(r.state.history.length,20);
  const invalid=run(r.state,"not json");
- assert.equal(invalid.state.progression.accepted_entries,17);
- assert.equal(invalid.state.history.length,19);
+ assert.equal(invalid.state.progression.accepted_entries,19);
+ assert.equal(invalid.state.history.length,21);
 });
 test("first complete array is labelled imported, not fabricated incremental history",()=>{
- const result=run(null,make(17));
+ const result=run(null,make(19));
  assert.equal(result.state.progression.mode,"imported_complete");
  assert.equal(result.action,"complete_import_no_incremental_trace");
  assert.equal(result.state.history.length,1);
@@ -93,4 +93,11 @@ test("every persisted diagnostic and state is a JSON object",()=>{
    assert.equal(typeof item,"object");
    assert.deepEqual(JSON.parse(JSON.stringify(item)),item);
  }
+});
+
+test("17 entries are not complete under the 19-entry minimum",()=>{
+ let state=null;
+ for(let n=1;n<=17;n++) state=run(state,make(n)).state;
+ assert.equal(state.progression.complete,false);
+ assert.equal(state.progression.next_index,17);
 });
