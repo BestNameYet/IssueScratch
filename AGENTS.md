@@ -1,8 +1,8 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "1.1.0",
+  "format_version": "2.0.0",
   "repository": "BestNameYet/IssueScratch",
-  "interpretation": "Apply authoritative imperative opcodes and the optional open heterogeneous scratchpad field registry. Historical Git revisions do not reactivate superseded instructions.",
+  "interpretation": "Authoritative procedures define a root JSON array of at least seven substantive scratchpad objects, each permitting optional independently typed keys. Existing three-object comments are preserved as historical records. Archived sources do not reactivate superseded constraints.",
   "opcode_format": {
     "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
     "order": "Section hierarchy followed by clause order",
@@ -39,16 +39,13 @@
     },
     {
       "opcode": "IS.01.002",
-      "version": 1,
+      "version": 3,
       "source_section": "1",
-      "source_line_range": [
-        5,
-        17
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Use exactly three ordered RS scratchpad objects.",
+      "imperative": "Use one JSON array containing at least seven indexed scratchpad objects for every newly authored RS record.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.01.003",
@@ -273,81 +270,63 @@
     },
     {
       "opcode": "IS.04.001",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Return exactly one JSON object with exactly three top-level objects named scratchpad_1, scratchpad_2, and scratchpad_3.",
+      "imperative": "Return every new RS record as one root JSON array of at least seven elements; each element must be exactly one JSON scratchpad object.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.002",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Present scratchpad_1 before scratchpad_2 before scratchpad_3.",
+      "imperative": "Write scratchpad objects in ascending zero-based array-index order, from index 0 through index length minus one.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.005",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Write nonempty original agent-authored material in each scratchpad.",
+      "imperative": "Populate every array element with a nonempty substantive agent-authored scratchpad object rather than an empty object, null, or placeholder.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.006",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Make each scratchpad a substantively distinct contribution rather than a paraphrase or appended expansion.",
+      "imperative": "Make the substantive contributions of each scratchpad object distinct, not paraphrases or appended expansions of another.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.009",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep the neutral scratchpad names free of semantic topic assignments.",
+      "imperative": "Keep array indices semantically neutral; do not assign fixed purposes or activity categories to positions.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.011",
-      "version": 1,
+      "version": 3,
       "source_section": "4",
-      "source_line_range": [
-        109,
-        146
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep job metadata outside the RS objects when necessary.",
+      "imperative": "Record job metadata using a selected registered field inside any indexed scratchpad object or a separately linked Issue #1 record; do not reserve a fixed index for administration.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.05.001",
@@ -871,29 +850,23 @@
     },
     {
       "opcode": "IS.03.03.009",
-      "version": 1,
+      "version": 3,
       "source_section": "3.3",
-      "source_line_range": [
-        78,
-        89
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep job administration metadata separate from the three RS scratchpad objects.",
+      "imperative": "Keep job administration identifiable under a registered job field within a scratchpad object or in a separately linked Issue #1 record; do not require a separate root-level wrapper.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.03.03.010",
-      "version": 1,
+      "version": 3,
       "source_section": "3.3",
-      "source_line_range": [
-        78,
-        89
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Present the RS scratchpads in fixed order regardless of drafting order.",
+      "imperative": "Preserve ascending array index order regardless of drafting order.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.03.03.011",
@@ -1183,16 +1156,13 @@
     },
     {
       "opcode": "IS.04.01.001",
-      "version": 1,
+      "version": 3,
       "source_section": "4.1",
-      "source_line_range": [
-        147,
-        196
-      ],
+      "source_line_range": null,
       "modality": "allow",
-      "imperative": "Permit any explicitly allowed scratchpad activity within any of the three scratchpads.",
+      "imperative": "Permit any explicitly allowed scratchpad activity within any indexed scratchpad object.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.01.002",
@@ -1261,42 +1231,33 @@
     },
     {
       "opcode": "IS.04.02.001",
-      "version": 1,
+      "version": 3,
       "source_section": "4.2",
-      "source_line_range": [
-        197,
-        212
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Test scratchpad_1 to scratchpad_2 and scratchpad_2 to scratchpad_3 separately for semantic independence.",
+      "imperative": "Check each adjacent pair of objects in the scratchpad array for semantic independence.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.02.002",
-      "version": 1,
+      "version": 3,
       "source_section": "4.2",
-      "source_line_range": [
-        197,
-        212
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Classify each transition as paraphrase, appended expansion, or independent contribution.",
+      "imperative": "Classify every adjacent array transition as paraphrase, appended expansion, or independent contribution.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.02.003",
-      "version": 1,
+      "version": 3,
       "source_section": "4.2",
-      "source_line_range": [
-        197,
-        212
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Reject a sequence if either transition is paraphrase or appended expansion.",
+      "imperative": "Reject a new scratchpad array when any adjacent pair is merely a paraphrase or appended expansion.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.02.005",
@@ -1430,16 +1391,13 @@
     },
     {
       "opcode": "IS.05.01.003",
-      "version": 1,
+      "version": 3,
       "source_section": "5.1",
-      "source_line_range": [
-        553,
-        560
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Evaluate whether both adjacent transitions add independent substantive contributions.",
+      "imperative": "Evaluate whether every adjacent array transition contributes independent substantive content.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.05.01.004",
@@ -1469,29 +1427,23 @@
     },
     {
       "opcode": "IS.05.01.008",
-      "version": 1,
+      "version": 3,
       "source_section": "5.1",
-      "source_line_range": [
-        553,
-        560
-      ],
+      "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not penalize unusual topical placement in neutrally labeled scratchpads.",
+      "imperative": "Do not penalize unusual topical placement at any scratchpad array index.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.05.01.009",
-      "version": 1,
+      "version": 3,
       "source_section": "5.1",
-      "source_line_range": [
-        553,
-        560
-      ],
+      "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not add a fourth RS object for review findings.",
+      "imperative": "Keep retrospective adjudication findings separate from the original scratchpad array; do not introduce non-object array elements for review findings.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.05.02.001",
@@ -1560,16 +1512,13 @@
     },
     {
       "opcode": "IS.05.03.003",
-      "version": 1,
+      "version": 3,
       "source_section": "5.3",
-      "source_line_range": [
-        572,
-        579
-      ],
+      "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep findings separate from the original three-object RS.",
+      "imperative": "Keep retrospective review findings separate from the originally reviewed scratchpad array.",
       "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.05.03.004",
@@ -1746,6 +1695,56 @@
       "imperative": "Do not impose a fixed mapping between activity types and scratchpad positions.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.012",
+      "imperative": "Use seven as the minimum scratchpad array length; do not require the total length to be prime when the array contains more than seven objects.",
+      "modality": "require",
+      "version": 3,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.013",
+      "imperative": "Allow any number of additional scratchpad objects beyond the seven required array positions without imposing a maximum length.",
+      "modality": "allow",
+      "version": 3,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.014",
+      "imperative": "Apply the array format to newly authored RS records only; preserve earlier three-named-object comments without rewriting or invalidating them.",
+      "modality": "require",
+      "version": 3,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.015",
+      "imperative": "Do not confuse the root JSON array of scratchpad objects with nested arrays used as optional typed values inside each object.",
+      "modality": "prohibit",
+      "version": 3,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.016",
+      "imperative": "Treat the existing JSON-syntax comment normalizer as syntax-only; do not claim that it enforces the new minimum array length or member types without additional implementation and tests.",
+      "modality": "require",
+      "version": 3,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -1808,10 +1807,10 @@
       },
       {
         "id": "4",
-        "title": "Return Schema (RS): three ordered scratchpads",
-        "start_line": 109,
-        "end_line": 146,
-        "kind": "archived_source_reference"
+        "title": "Return Schema (RS): root array with at least seven scratchpad objects",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_instruction"
       },
       {
         "id": "4.1",
@@ -1822,10 +1821,10 @@
       },
       {
         "id": "4.2",
-        "title": "Non-paraphrase / non-appendage test",
-        "start_line": 197,
-        "end_line": 212,
-        "kind": "archived_source_reference"
+        "title": "Independent contributions across adjacent scratchpad array objects",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_instruction"
       },
       {
         "id": "4.3",
@@ -1938,7 +1937,7 @@
       "Prepare handoff notes for a succeeding agent or session.",
       "Record lessons learned and candidates for future adjudication."
     ],
-    "suggested_record_template": "<!-- issuescratch:job:v1 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\nOwner: <agent or worker, when assigned>\n\n## Instruction and scope\n<faithful interpretation; link to the original instruction>\n\n## Plan and working scratchpad\n<decisions, attempts, progress, dependencies, evidence, handoff notes>\n\n## Three RS scratchpads\n<scratchpad_1, scratchpad_2, scratchpad_3 in that order; use substantive agent-authored content with optional independently typed keys and independent contributions>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
+    "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one JSON array at the root; minimum seven index positions, starting at 0; each index contains one substantive open heterogeneous scratchpad object with independently selected typed keys; no fixed per-index role or requirement to fill unused registered fields>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
     "allowed_RS_transition_classifications": [
       "paraphrase",
       "appended expansion",
@@ -1958,16 +1957,11 @@
       "failed",
       "cancelled"
     ],
-    "scratchpad_order": [
-      "scratchpad_1",
-      "scratchpad_2",
-      "scratchpad_3"
-    ],
     "registered_scratchpad_fields": {
-      "version": "issuescratch.scratchpad-field-registry.v1",
-      "path": "src/types/issuescratch.scratchpad-field-registry.v1.json",
-      "blob_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
-      "git_url": "https://github.com/BestNameYet/IssueScratch/blob/main/src/types/issuescratch.scratchpad-field-registry.v1.json",
+      "version": "issuescratch.scratchpad-field-registry.v2",
+      "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
+      "blob_sha": "fdd7a42a047315b9d940ad88790322e26d31722a",
+      "git_url": "https://github.com/BestNameYet/IssueScratch/blob/main/src/types/issuescratch.scratchpad-field-registry.v2.json",
       "declared_fields": 59,
       "permitted_use_fields": 38,
       "observed_existing_fields": 21,
@@ -1976,40 +1970,95 @@
       "may_omit_any_registered_key": true,
       "object_member_types_independent": true,
       "legacy_records_preserved": true,
-      "enforcement_state": "Registry published; no separate runtime typed-field validator verified."
+      "enforcement_state": "Typed schema declared in registry; existing issue-comment workflow validates only JSON syntax, not array member count or individual field types.",
+      "root_type": "array",
+      "minimum_items": 7,
+      "item_type": "object",
+      "zero_based_indices": true,
+      "no_maximum_items": true,
+      "prime_total_not_required": true
     },
-    "field_selection_example": {
-      "scratchpad_1": {
-        "text[string]": "Record an observation."
+    "field_selection_example": [
+      {
+        "text[string]": "Record the user's operating constraint."
       },
-      "scratchpad_2": {
+      {
+        "hypotheses[array<Hypothesis>]": [
+          {
+            "hypothesis_id[string]": "H1",
+            "claim[string]": "A condition explains the observed behavior.",
+            "basis[string]": "Initial observation.",
+            "falsifier[string]": "A reproducible counterexample."
+          }
+        ]
+      },
+      {
         "open_questions[array<OpenQuestion>]": [
           {
             "question_id[string]": "Q1",
-            "question[string]": "Which source is authoritative?",
-            "required_evidence[string]": "Current repository documentation",
+            "question[string]": "Which evidence resolves this?",
+            "required_evidence[string]": "The actual execution receipt.",
             "status[string]": "open"
           }
         ]
       },
-      "scratchpad_3": {
-        "text[string]": "Record a separate substantive observation."
+      {
+        "text[string]": "Identify the exact implementation target."
+      },
+      {
+        "test_cases[array<TestCase>]": [
+          {
+            "test_id[string]": "T1",
+            "input[string]": "A sample record.",
+            "expected[string]": "Seven or more object entries.",
+            "observed[string|null]": null,
+            "passed[boolean|null]": null
+          }
+        ]
+      },
+      {
+        "text[string]": "Record an independent constraint or technical observation."
+      },
+      {
+        "handoff_notes[array<HandoffNote>]": [
+          {
+            "work_id[string]": "W1",
+            "current_state[string]": "Validation not yet executed.",
+            "next_action[string]": "Inspect the saved output.",
+            "references[array<Reference>]": [],
+            "unresolved[string|null]": null
+          }
+        ]
       }
+    ],
+    "scratchpad_array": {
+      "root_type": "array",
+      "minimum_items": 7,
+      "first_index": 0,
+      "maximum_items": null,
+      "item_type": "open_heterogeneous_json_object",
+      "item_minimum_fields": 1,
+      "item_keys_optional": true,
+      "selection": "Arbitrary subset of registered typed keys or appropriately defined additions; no fixed per-index activity labels.",
+      "array_length_prime_requirement": false,
+      "legacy_record_compatibility": "Existing legacy objects with scratchpad_1, scratchpad_2, scratchpad_3 remain historical records unchanged."
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "b57af6a799b66ae2798b651f77d1208f0f1995af",
+    "previous_active_document_blob_sha": "af3e73d040e75db32f5988f9d0da4a8b80afbe90",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "User-authorized changes adopt optional typed field selection and open heterogeneous object members. Superseded material remains accessible through Git history but is not an active instruction."
+    "current_amendment": "User-authorized transition from a root object containing three named scratchpads to a root array with at least seven indexed, independently typed, open heterogeneous scratchpad objects. Legacy comments and all prior Git revisions remain intact."
   },
   "coverage": {
     "active_section_count": 21,
-    "active_procedure_count": 136,
+    "active_procedure_count": 141,
     "registered_fields": 59,
-    "linked_registry_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
+    "linked_registry_sha": "fdd7a42a047315b9d940ad88790322e26d31722a",
     "active_examples": 0,
     "source_traceability": "Historical procedures reference their original blob SHA and source section; new procedures reference the current amendment. Deleted historical text remains in Git history, not in this active document.",
-    "all_active_sections_mapped": true
+    "all_active_sections_mapped": true,
+    "array_root_minimum_items": 7,
+    "legacy_RS_objects_preserved": true
   }
 }
