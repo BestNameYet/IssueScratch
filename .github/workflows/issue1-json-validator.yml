@@ -1,0 +1,75 @@
+name: Issue 1 JSON comment normalizer
+on:
+  issue_comment:
+    types: [created, edited]
+  push:
+    paths:
+      - '.github/workflows/issue1-json-validator.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  normalize:
+    if: github.event_name != 'issue_comment' || github.event.issue.number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Normalize and verify comments
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const scan = context.eventName !== 'issue_comment';
+            const issue_number = 1;
+            const comments = scan
+              ? await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number, per_page: 100})
+              : [context.payload.comment];
+            const results = [];
+            let repaired = 0;
+            let valid = 0;
+            let failed = 0;
+            const failures = [];
+            for (const item of comments) {
+              const comment_id = item.id;
+              const url = item.html_url || `https://github.com/${owner}/${repo}/issues/1#issuecomment-${comment_id}`;
+              try {
+                const { data: current } = await github.rest.issues.getComment({owner, repo, comment_id});
+                const original = current.body ?? '';
+                let isValid = true;
+                try { JSON.parse(original); } catch (_) { isValid = false; }
+                if (isValid) {
+                  valid += 1;
+                  results.push([String(comment_id), 'valid', 'unchanged', url]);
+                  continue;
+                }
+                const wrapped = JSON.stringify({'invalid json': original}, null, 2);
+                await github.rest.issues.updateComment({owner, repo, comment_id, body: wrapped});
+                const {data: saved} = await github.rest.issues.getComment({owner, repo, comment_id});
+                const parsed = JSON.parse(saved.body);
+                if (Object.keys(parsed).length !== 1 ||
+                    !Object.prototype.hasOwnProperty.call(parsed, 'invalid json') ||
+                    parsed['invalid json'] !== original) {
+                  throw new Error('Saved wrapper did not preserve the complete original body');
+                }
+                repaired += 1;
+                results.push([String(comment_id), 'invalid', 'wrapped and verified', url]);
+              } catch (error) {
+                failed += 1;
+                const reason = `comment ${comment_id}: ${error.message}`;
+                failures.push(reason);
+                core.error(reason);
+                results.push([String(comment_id), 'error', reason, url]);
+              }
+            }
+            await core.summary
+              .addHeading('Issue #1 comment JSON validation')
+              .addRaw(`Trigger: ${context.eventName}; scan: ${scan}; comments: ${comments.length}; valid: ${valid}; repaired: ${repaired}; failed: ${failed}`)
+              .addTable([
+                [{data: 'Comment ID', header: true}, {data: 'Input', header: true}, {data: 'Outcome', header: true}, {data: 'URL', header: true}],
+                ...results.map(row => row.map(data => ({data})))
+              ])
+              .write();
+            if (failed > 0) core.setFailed(failures.join('\n'));
