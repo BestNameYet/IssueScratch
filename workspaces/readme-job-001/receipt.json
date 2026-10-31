@@ -1,0 +1,17 @@
+{
+  "schema": "issuescratch.readme-experiment-receipt.v1",
+  "job_id": "RS17-README-001",
+  "source_issue_number": 1,
+  "source_comment_id": 6547874447,
+  "source_comment_sha256": "c56f822a69397e0646566ea09fa653c13d9810273e2da1957b8a402b3f48c0e6",
+  "source_instruction": "Create the readme that basically is a manifest and description of the major file components of this repo",
+  "scratchpad_entries": 17,
+  "source_instruction_index": 11,
+  "candidate_path": "experiments/readme-job-001.candidate.md",
+  "candidate_blob_sha": "a37bfb34b171f4baee6dc6c9a31a7f626afe6600",
+  "conventional_readme_path": "README.md",
+  "conventional_readme_blob_sha": "270d715c3f39ec1fc16d41a064f953eaa5c84eb4",
+  "candidate_status": "generated_and_verified",
+  "root_readme_replaced": false,
+  "selection_status": "awaiting_comparison"
+}
