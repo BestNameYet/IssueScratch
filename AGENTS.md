@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.9.1",
+  "format_version": "2.9.2",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2617,7 +2617,7 @@
       "implementation_sha": "eccec894d576dad35873c829a2d08c7a7e2c65fc",
       "tests_path": "src/framing-controller.test.js",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
-      "workflow_sha": "1a9ef5c5f8292c6ac7a518057e4f424d49bb9e4a",
+      "workflow_sha": "7277829d569c3f92056f37099476677389f21ff9",
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
@@ -2654,7 +2654,25 @@
         0,
         1
       ],
-      "prior_17_entry_experiment": "historical; retained without modification"
+      "prior_17_entry_experiment": "historical; retained without modification",
+      "latest_live_probe_source_comment": 6548830869,
+      "latest_live_probe_controller_comment": 6548832768,
+      "latest_live_probe_accepted_indices": [
+        0,
+        1
+      ],
+      "latest_live_probe_verified_next_function_indices": [
+        1,
+        2
+      ],
+      "latest_live_probe_workflow_run_ids": [
+        41239803917,
+        41239852275
+      ],
+      "latest_live_probe_scope": "Live event tests verify the first two accepted revisions, not full nineteen-index completion.",
+      "verified_on_main": true,
+      "test_suite_run": 41239683462,
+      "test_count": 36
     },
     "agent_workflow_handshake": {
       "schema": "issuescratch.agent-workflow-handshake.v1.2",
@@ -2741,9 +2759,9 @@
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "9756235f8bcb800c7856200ecbdf25d67dd37053",
+    "previous_active_document_blob_sha": "cea3528e2ee0bbb78d943888214ce09abeb222aa",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Refresh exact readback SHA references after canonical schema, framing controller, and workflow updates; preserve 19-index design and historical records.",
+    "current_amendment": "Synchronize GitHub Actions workflow blob SHA and record successful 36-test suite plus first two live 19-index framing handshake transitions; full 19-index execution remains unverified.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2770,7 +2788,7 @@
     "comment_diagnostics_enabled": true,
     "comment_diagnostics_history_json_objects": true,
     "comment_tracking_maximum_index": 18,
-    "comment_progression_function_selected": false,
+    "comment_progression_function_selected": true,
     "document_opcode_adapter": true,
     "operation_registry_entries": 16,
     "opcode_procedural_sort_valid": true,
@@ -2781,6 +2799,8 @@
     "preparation_nested_count": 5,
     "reframing_exercises": 5,
     "reconciliation_slots": 3,
-    "initial_opcode_projection_required": true
+    "initial_opcode_projection_required": true,
+    "framing_controller_current_live_probe_accepted": 2,
+    "framing_controller_complete_19_index_run_verified": false
   }
 }
