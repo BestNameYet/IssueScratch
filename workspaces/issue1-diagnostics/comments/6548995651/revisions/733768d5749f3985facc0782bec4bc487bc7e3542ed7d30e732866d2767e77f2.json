@@ -1,0 +1,3293 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6548995651,
+  "source_revision_sha256": "733768d5749f3985facc0782bec4bc487bc7e3542ed7d30e732866d2767e77f2",
+  "transition": "accepted_one_entry",
+  "progression_before": 2,
+  "progression_after": 3,
+  "next_index": 3,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "array",
+    "json_valid": true,
+    "validation_error": null
+  },
+  "metrics": {
+    "raw_sha256": "733768d5749f3985facc0782bec4bc487bc7e3542ed7d30e732866d2767e77f2",
+    "raw_characters": 11748,
+    "raw_utf8_bytes": 11752,
+    "json_valid": true,
+    "root_type": "array",
+    "root_array_count": 1,
+    "nested_array_count": 34,
+    "total_array_count": 35,
+    "array_length": 3,
+    "all_wrappers_valid": true,
+    "array_compact_json_characters": 7043,
+    "indexes": [
+      {
+        "index": 0,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 5054,
+        "entry_utf8_bytes": 5054,
+        "entry_string_value_characters": 2401,
+        "entry_key_occurrences": 150,
+        "entry_keys": [
+          {
+            "path": "/0/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 5039,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]",
+            "key": "preparation[array<object>]",
+            "key_characters": 26,
+            "value_type": "array",
+            "value_json_characters": 5008,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 2712,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/verbatim_instruction[string]",
+            "key": "verbatim_instruction[string]",
+            "key_characters": 28,
+            "value_type": "string",
+            "value_json_characters": 43,
+            "value_text_characters": 41
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/minimalist_user_intent[string]",
+            "key": "minimalist_user_intent[string]",
+            "key_characters": 30,
+            "value_type": "string",
+            "value_json_characters": 63,
+            "value_text_characters": 61
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/maximalist_user_intent[string]",
+            "key": "maximalist_user_intent[string]",
+            "key_characters": 30,
+            "value_type": "string",
+            "value_json_characters": 161,
+            "value_text_characters": 159
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]",
+            "key": "explicit_intent[array<object>]",
+            "key_characters": 30,
+            "value_type": "array",
+            "value_json_characters": 105,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]/0/requirement",
+            "key": "requirement",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 42,
+            "value_text_characters": 40
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]/0/source_ref",
+            "key": "source_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 31,
+            "value_text_characters": 29
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]",
+            "key": "inferred_beginning_state[object]",
+            "key_characters": 32,
+            "value_type": "object",
+            "value_json_characters": 67,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]/description",
+            "key": "description",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 31,
+            "value_text_characters": 29
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]/uncertainty",
+            "key": "uncertainty",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 5,
+            "value_text_characters": 3
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]",
+            "key": "inferred_post_state[object]",
+            "key_characters": 27,
+            "value_type": "object",
+            "value_json_characters": 85,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]/description",
+            "key": "description",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 49,
+            "value_text_characters": 47
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]/uncertainty",
+            "key": "uncertainty",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 5,
+            "value_text_characters": 3
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]",
+            "key": "inferred_change[object]",
+            "key_characters": 23,
+            "value_type": "object",
+            "value_json_characters": 90,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]/description",
+            "key": "description",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 51,
+            "value_text_characters": 49
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]/uncertainty",
+            "key": "uncertainty",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]",
+            "key": "context_elements[array<object>]",
+            "key_characters": 31,
+            "value_type": "array",
+            "value_json_characters": 998,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/context_id",
+            "key": "context_id",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/sequence",
+            "key": "sequence",
+            "key_characters": 8,
+            "value_type": "number",
+            "value_json_characters": 1,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/source_kind",
+            "key": "source_kind",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 14,
+            "value_text_characters": 12
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/source_ref",
+            "key": "source_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 48,
+            "value_text_characters": 46
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/content",
+            "key": "content",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 68,
+            "value_text_characters": 66
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/representation",
+            "key": "representation",
+            "key_characters": 14,
+            "value_type": "string",
+            "value_json_characters": 18,
+            "value_text_characters": 16
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/authority",
+            "key": "authority",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 15,
+            "value_text_characters": 13
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/relevance",
+            "key": "relevance",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 22,
+            "value_text_characters": 20
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/context_id",
+            "key": "context_id",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/sequence",
+            "key": "sequence",
+            "key_characters": 8,
+            "value_type": "number",
+            "value_json_characters": 1,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/source_kind",
+            "key": "source_kind",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 14,
+            "value_text_characters": 12
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/source_ref",
+            "key": "source_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 35,
+            "value_text_characters": 33
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/content",
+            "key": "content",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 103,
+            "value_text_characters": 101
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/representation",
+            "key": "representation",
+            "key_characters": 14,
+            "value_type": "string",
+            "value_json_characters": 18,
+            "value_text_characters": 16
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/authority",
+            "key": "authority",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 15,
+            "value_text_characters": 13
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/relevance",
+            "key": "relevance",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 16,
+            "value_text_characters": 14
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/context_id",
+            "key": "context_id",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/sequence",
+            "key": "sequence",
+            "key_characters": 8,
+            "value_type": "number",
+            "value_json_characters": 1,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/source_kind",
+            "key": "source_kind",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 19,
+            "value_text_characters": 17
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/source_ref",
+            "key": "source_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 50,
+            "value_text_characters": 48
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/content",
+            "key": "content",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 118,
+            "value_text_characters": 116
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/representation",
+            "key": "representation",
+            "key_characters": 14,
+            "value_type": "string",
+            "value_json_characters": 18,
+            "value_text_characters": 16
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/authority",
+            "key": "authority",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 26,
+            "value_text_characters": 24
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/relevance",
+            "key": "relevance",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 29,
+            "value_text_characters": 27
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]",
+            "key": "initial_opcode_projection[array<object>]",
+            "key_characters": 40,
+            "value_type": "array",
+            "value_json_characters": 792,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 60,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 13,
+            "value_text_characters": 11
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 63,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 13,
+            "value_text_characters": 11
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 62,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 13,
+            "value_text_characters": 11
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 372,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/rumination[string]",
+            "key": "rumination[string]",
+            "key_characters": 18,
+            "value_type": "string",
+            "value_json_characters": 164,
+            "value_text_characters": 162
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]",
+            "key": "requirements[array<object>]",
+            "key_characters": 27,
+            "value_type": "array",
+            "value_json_characters": 154,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/0/requirement",
+            "key": "requirement",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 38,
+            "value_text_characters": 36
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/1/requirement",
+            "key": "requirement",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 28,
+            "value_text_characters": 26
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/2/requirement",
+            "key": "requirement",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 36,
+            "value_text_characters": 34
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 256,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]",
+            "key": "adversarial_findings[array<object>]",
+            "key_characters": 35,
+            "value_type": "array",
+            "value_json_characters": 216,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/0/challenge",
+            "key": "challenge",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 58,
+            "value_text_characters": 56
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/0/test",
+            "key": "test",
+            "key_characters": 4,
+            "value_type": "string",
+            "value_json_characters": 23,
+            "value_text_characters": 21
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/1/challenge",
+            "key": "challenge",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 50,
+            "value_text_characters": 48
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/1/test",
+            "key": "test",
+            "key_characters": 4,
+            "value_type": "string",
+            "value_json_characters": 38,
+            "value_text_characters": 36
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 772,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]",
+            "key": "actions[array<object>]",
+            "key_characters": 22,
+            "value_type": "array",
+            "value_json_characters": 745,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/source_text_or_span",
+            "key": "source_text_or_span",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 42,
+            "value_text_characters": 40
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/verb",
+            "key": "verb",
+            "key_characters": 4,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/inputs",
+            "key": "inputs",
+            "key_characters": 6,
+            "value_type": "object",
+            "value_json_characters": 34,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/inputs/pool",
+            "key": "pool",
+            "key_characters": 4,
+            "value_type": "array",
+            "value_json_characters": 25,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/expected_output",
+            "key": "expected_output",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 23,
+            "value_text_characters": 21
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/completion_test",
+            "key": "completion_test",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 28,
+            "value_text_characters": 26
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/source_text_or_span",
+            "key": "source_text_or_span",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 47,
+            "value_text_characters": 45
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/verb",
+            "key": "verb",
+            "key_characters": 4,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/inputs",
+            "key": "inputs",
+            "key_characters": 6,
+            "value_type": "object",
+            "value_json_characters": 11,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/inputs/slots",
+            "key": "slots",
+            "key_characters": 5,
+            "value_type": "number",
+            "value_json_characters": 1,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/expected_output",
+            "key": "expected_output",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 27,
+            "value_text_characters": 25
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 6,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/completion_test",
+            "key": "completion_test",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 21,
+            "value_text_characters": 19
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/source_text_or_span",
+            "key": "source_text_or_span",
+            "key_characters": 19,
+            "value_type": "string",
+            "value_json_characters": 61,
+            "value_text_characters": 59
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/verb",
+            "key": "verb",
+            "key_characters": 4,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/inputs",
+            "key": "inputs",
+            "key_characters": 6,
+            "value_type": "object",
+            "value_json_characters": 15,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/inputs/source",
+            "key": "source",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/expected_output",
+            "key": "expected_output",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 27,
+            "value_text_characters": 25
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 6,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/completion_test",
+            "key": "completion_test",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 29,
+            "value_text_characters": 27
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 815,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]",
+            "key": "opcode_steps[array<object>]",
+            "key_characters": 27,
+            "value_type": "array",
+            "value_json_characters": 783,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 60,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 8,
+            "value_text_characters": 6
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 63,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/step_id",
+            "key": "step_id",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/action_id",
+            "key": "action_id",
+            "key_characters": 9,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/opcode",
+            "key": "opcode",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands",
+            "key": "operands",
+            "key_characters": 8,
+            "value_type": "object",
+            "value_json_characters": 62,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands/action",
+            "key": "action",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands/subject",
+            "key": "subject",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 30,
+            "value_text_characters": 28
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/depends_on",
+            "key": "depends_on",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 2,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/result_ref",
+            "key": "result_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 11,
+            "value_text_characters": 9
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 24,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 16,
+            "value_text_characters": null
+          },
+          {
+            "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/status",
+            "key": "status",
+            "key_characters": 6,
+            "value_type": "string",
+            "value_json_characters": 10,
+            "value_text_characters": 8
+          }
+        ],
+        "scratchpad_keys": [
+          "preparation[array<object>]"
+        ],
+        "scratchpad_json_characters": 5039,
+        "share_of_entries_basis_points": 7180
+      },
+      {
+        "index": 1,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 1026,
+        "entry_utf8_bytes": 1026,
+        "entry_string_value_characters": 828,
+        "entry_key_occurrences": 9,
+        "entry_keys": [
+          {
+            "path": "/1/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 1011,
+            "value_text_characters": null
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]",
+            "key": "solver_or_subject[object]",
+            "key_characters": 25,
+            "value_type": "object",
+            "value_json_characters": 610,
+            "value_text_characters": null
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/problem_ref",
+            "key": "problem_ref",
+            "key_characters": 11,
+            "value_type": "string",
+            "value_json_characters": 4,
+            "value_text_characters": 2
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/method_ref",
+            "key": "method_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 133,
+            "value_text_characters": 131
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/assumptions_ref",
+            "key": "assumptions_ref",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 151,
+            "value_text_characters": 149
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/intermediate_result_refs",
+            "key": "intermediate_result_refs",
+            "key_characters": 24,
+            "value_type": "array",
+            "value_json_characters": 91,
+            "value_text_characters": null
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/limitations_ref",
+            "key": "limitations_ref",
+            "key_characters": 15,
+            "value_type": "string",
+            "value_json_characters": 114,
+            "value_text_characters": 112
+          },
+          {
+            "path": "/1/scratchpad/solver_or_subject[object]/source_refs",
+            "key": "source_refs",
+            "key_characters": 11,
+            "value_type": "array",
+            "value_json_characters": 6,
+            "value_text_characters": null
+          },
+          {
+            "path": "/1/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 350,
+            "value_text_characters": 348
+          }
+        ],
+        "scratchpad_keys": [
+          "solver_or_subject[object]",
+          "narrative[string]"
+        ],
+        "scratchpad_json_characters": 1011,
+        "share_of_entries_basis_points": 1458
+      },
+      {
+        "index": 2,
+        "entry_type": "object",
+        "valid_scratchpad_wrapper": true,
+        "entry_json_characters": 959,
+        "entry_utf8_bytes": 963,
+        "entry_string_value_characters": 812,
+        "entry_key_occurrences": 7,
+        "entry_keys": [
+          {
+            "path": "/2/scratchpad",
+            "key": "scratchpad",
+            "key_characters": 10,
+            "value_type": "object",
+            "value_json_characters": 944,
+            "value_text_characters": null
+          },
+          {
+            "path": "/2/scratchpad/enclosing_target[object]",
+            "key": "enclosing_target[object]",
+            "key_characters": 24,
+            "value_type": "object",
+            "value_json_characters": 509,
+            "value_text_characters": null
+          },
+          {
+            "path": "/2/scratchpad/enclosing_target[object]/target_ref",
+            "key": "target_ref",
+            "key_characters": 10,
+            "value_type": "string",
+            "value_json_characters": 44,
+            "value_text_characters": 42
+          },
+          {
+            "path": "/2/scratchpad/enclosing_target[object]/context_refs",
+            "key": "context_refs",
+            "key_characters": 12,
+            "value_type": "array",
+            "value_json_characters": 11,
+            "value_text_characters": null
+          },
+          {
+            "path": "/2/scratchpad/enclosing_target[object]/invariants",
+            "key": "invariants",
+            "key_characters": 10,
+            "value_type": "array",
+            "value_json_characters": 199,
+            "value_text_characters": null
+          },
+          {
+            "path": "/2/scratchpad/enclosing_target[object]/purpose",
+            "key": "purpose",
+            "key_characters": 7,
+            "value_type": "string",
+            "value_json_characters": 199,
+            "value_text_characters": 197
+          },
+          {
+            "path": "/2/scratchpad/narrative[string]",
+            "key": "narrative[string]",
+            "key_characters": 17,
+            "value_type": "string",
+            "value_json_characters": 385,
+            "value_text_characters": 383
+          }
+        ],
+        "scratchpad_keys": [
+          "enclosing_target[object]",
+          "narrative[string]"
+        ],
+        "scratchpad_json_characters": 944,
+        "share_of_entries_basis_points": 1362
+      }
+    ],
+    "all_keys": [
+      {
+        "path": "/0/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 5039,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]",
+        "key": "preparation[array<object>]",
+        "key_characters": 26,
+        "value_type": "array",
+        "value_json_characters": 5008,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 2712,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/verbatim_instruction[string]",
+        "key": "verbatim_instruction[string]",
+        "key_characters": 28,
+        "value_type": "string",
+        "value_json_characters": 43,
+        "value_text_characters": 41
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/minimalist_user_intent[string]",
+        "key": "minimalist_user_intent[string]",
+        "key_characters": 30,
+        "value_type": "string",
+        "value_json_characters": 63,
+        "value_text_characters": 61
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/maximalist_user_intent[string]",
+        "key": "maximalist_user_intent[string]",
+        "key_characters": 30,
+        "value_type": "string",
+        "value_json_characters": 161,
+        "value_text_characters": 159
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]",
+        "key": "explicit_intent[array<object>]",
+        "key_characters": 30,
+        "value_type": "array",
+        "value_json_characters": 105,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]/0/requirement",
+        "key": "requirement",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/explicit_intent[array<object>]/0/source_ref",
+        "key": "source_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]",
+        "key": "inferred_beginning_state[object]",
+        "key_characters": 32,
+        "value_type": "object",
+        "value_json_characters": 67,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]/description",
+        "key": "description",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_beginning_state[object]/uncertainty",
+        "key": "uncertainty",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]",
+        "key": "inferred_post_state[object]",
+        "key_characters": 27,
+        "value_type": "object",
+        "value_json_characters": 85,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]/description",
+        "key": "description",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 49,
+        "value_text_characters": 47
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_post_state[object]/uncertainty",
+        "key": "uncertainty",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]",
+        "key": "inferred_change[object]",
+        "key_characters": 23,
+        "value_type": "object",
+        "value_json_characters": 90,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]/description",
+        "key": "description",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 51,
+        "value_text_characters": 49
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/inferred_change[object]/uncertainty",
+        "key": "uncertainty",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]",
+        "key": "context_elements[array<object>]",
+        "key_characters": 31,
+        "value_type": "array",
+        "value_json_characters": 998,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/context_id",
+        "key": "context_id",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/source_kind",
+        "key": "source_kind",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 14,
+        "value_text_characters": 12
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/source_ref",
+        "key": "source_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 48,
+        "value_text_characters": 46
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/content",
+        "key": "content",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 68,
+        "value_text_characters": 66
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/representation",
+        "key": "representation",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 18,
+        "value_text_characters": 16
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/authority",
+        "key": "authority",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 15,
+        "value_text_characters": 13
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/0/relevance",
+        "key": "relevance",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 22,
+        "value_text_characters": 20
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/context_id",
+        "key": "context_id",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/source_kind",
+        "key": "source_kind",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 14,
+        "value_text_characters": 12
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/source_ref",
+        "key": "source_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 35,
+        "value_text_characters": 33
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/content",
+        "key": "content",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 103,
+        "value_text_characters": 101
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/representation",
+        "key": "representation",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 18,
+        "value_text_characters": 16
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/authority",
+        "key": "authority",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 15,
+        "value_text_characters": 13
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/1/relevance",
+        "key": "relevance",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 16,
+        "value_text_characters": 14
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/context_id",
+        "key": "context_id",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/source_kind",
+        "key": "source_kind",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 19,
+        "value_text_characters": 17
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/source_ref",
+        "key": "source_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 50,
+        "value_text_characters": 48
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/content",
+        "key": "content",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 118,
+        "value_text_characters": 116
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/representation",
+        "key": "representation",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 18,
+        "value_text_characters": 16
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/authority",
+        "key": "authority",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]/2/relevance",
+        "key": "relevance",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]",
+        "key": "initial_opcode_projection[array<object>]",
+        "key_characters": 40,
+        "value_type": "array",
+        "value_json_characters": 792,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 60,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 13,
+        "value_text_characters": 11
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 63,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 13,
+        "value_text_characters": 11
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 62,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]/2/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 13,
+        "value_text_characters": 11
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 372,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/rumination[string]",
+        "key": "rumination[string]",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 164,
+        "value_text_characters": 162
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]",
+        "key": "requirements[array<object>]",
+        "key_characters": 27,
+        "value_type": "array",
+        "value_json_characters": 154,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/0/requirement",
+        "key": "requirement",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 38,
+        "value_text_characters": 36
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/1/requirement",
+        "key": "requirement",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 28,
+        "value_text_characters": 26
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/1/scratchpad/requirements[array<object>]/2/requirement",
+        "key": "requirement",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 256,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]",
+        "key": "adversarial_findings[array<object>]",
+        "key_characters": 35,
+        "value_type": "array",
+        "value_json_characters": 216,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/0/challenge",
+        "key": "challenge",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 58,
+        "value_text_characters": 56
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/0/test",
+        "key": "test",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 23,
+        "value_text_characters": 21
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/1/challenge",
+        "key": "challenge",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 50,
+        "value_text_characters": 48
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/2/scratchpad/adversarial_findings[array<object>]/1/test",
+        "key": "test",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 38,
+        "value_text_characters": 36
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 772,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]",
+        "key": "actions[array<object>]",
+        "key_characters": 22,
+        "value_type": "array",
+        "value_json_characters": 745,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/source_text_or_span",
+        "key": "source_text_or_span",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/verb",
+        "key": "verb",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/inputs",
+        "key": "inputs",
+        "key_characters": 6,
+        "value_type": "object",
+        "value_json_characters": 34,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/inputs/pool",
+        "key": "pool",
+        "key_characters": 4,
+        "value_type": "array",
+        "value_json_characters": 25,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/expected_output",
+        "key": "expected_output",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 23,
+        "value_text_characters": 21
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/0/completion_test",
+        "key": "completion_test",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 28,
+        "value_text_characters": 26
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/source_text_or_span",
+        "key": "source_text_or_span",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 47,
+        "value_text_characters": 45
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/verb",
+        "key": "verb",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/inputs",
+        "key": "inputs",
+        "key_characters": 6,
+        "value_type": "object",
+        "value_json_characters": 11,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/inputs/slots",
+        "key": "slots",
+        "key_characters": 5,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/expected_output",
+        "key": "expected_output",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 27,
+        "value_text_characters": 25
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 6,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/1/completion_test",
+        "key": "completion_test",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 21,
+        "value_text_characters": 19
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/source_text_or_span",
+        "key": "source_text_or_span",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 61,
+        "value_text_characters": 59
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/verb",
+        "key": "verb",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/inputs",
+        "key": "inputs",
+        "key_characters": 6,
+        "value_type": "object",
+        "value_json_characters": 15,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/inputs/source",
+        "key": "source",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/expected_output",
+        "key": "expected_output",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 27,
+        "value_text_characters": 25
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 6,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/3/scratchpad/actions[array<object>]/2/completion_test",
+        "key": "completion_test",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 815,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]",
+        "key": "opcode_steps[array<object>]",
+        "key_characters": 27,
+        "value_type": "array",
+        "value_json_characters": 783,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 60,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 63,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/step_id",
+        "key": "step_id",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/action_id",
+        "key": "action_id",
+        "key_characters": 9,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/opcode",
+        "key": "opcode",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands",
+        "key": "operands",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 62,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands/action",
+        "key": "action",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/operands/subject",
+        "key": "subject",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/depends_on",
+        "key": "depends_on",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/result_ref",
+        "key": "result_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 24,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 16,
+        "value_text_characters": null
+      },
+      {
+        "path": "/0/scratchpad/preparation[array<object>]/4/scratchpad/opcode_steps[array<object>]/2/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 10,
+        "value_text_characters": 8
+      },
+      {
+        "path": "/1/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 1011,
+        "value_text_characters": null
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]",
+        "key": "solver_or_subject[object]",
+        "key_characters": 25,
+        "value_type": "object",
+        "value_json_characters": 610,
+        "value_text_characters": null
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/problem_ref",
+        "key": "problem_ref",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/method_ref",
+        "key": "method_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 133,
+        "value_text_characters": 131
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/assumptions_ref",
+        "key": "assumptions_ref",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 151,
+        "value_text_characters": 149
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/intermediate_result_refs",
+        "key": "intermediate_result_refs",
+        "key_characters": 24,
+        "value_type": "array",
+        "value_json_characters": 91,
+        "value_text_characters": null
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/limitations_ref",
+        "key": "limitations_ref",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 114,
+        "value_text_characters": 112
+      },
+      {
+        "path": "/1/scratchpad/solver_or_subject[object]/source_refs",
+        "key": "source_refs",
+        "key_characters": 11,
+        "value_type": "array",
+        "value_json_characters": 6,
+        "value_text_characters": null
+      },
+      {
+        "path": "/1/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 350,
+        "value_text_characters": 348
+      },
+      {
+        "path": "/2/scratchpad",
+        "key": "scratchpad",
+        "key_characters": 10,
+        "value_type": "object",
+        "value_json_characters": 944,
+        "value_text_characters": null
+      },
+      {
+        "path": "/2/scratchpad/enclosing_target[object]",
+        "key": "enclosing_target[object]",
+        "key_characters": 24,
+        "value_type": "object",
+        "value_json_characters": 509,
+        "value_text_characters": null
+      },
+      {
+        "path": "/2/scratchpad/enclosing_target[object]/target_ref",
+        "key": "target_ref",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 44,
+        "value_text_characters": 42
+      },
+      {
+        "path": "/2/scratchpad/enclosing_target[object]/context_refs",
+        "key": "context_refs",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 11,
+        "value_text_characters": null
+      },
+      {
+        "path": "/2/scratchpad/enclosing_target[object]/invariants",
+        "key": "invariants",
+        "key_characters": 10,
+        "value_type": "array",
+        "value_json_characters": 199,
+        "value_text_characters": null
+      },
+      {
+        "path": "/2/scratchpad/enclosing_target[object]/purpose",
+        "key": "purpose",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 199,
+        "value_text_characters": 197
+      },
+      {
+        "path": "/2/scratchpad/narrative[string]",
+        "key": "narrative[string]",
+        "key_characters": 17,
+        "value_type": "string",
+        "value_json_characters": 385,
+        "value_text_characters": 383
+      }
+    ],
+    "key_totals": [
+      {
+        "key": "action",
+        "occurrences": 6,
+        "key_characters_total": 36,
+        "value_json_characters_total": 58,
+        "value_text_characters_total": 46
+      },
+      {
+        "key": "action_id",
+        "occurrences": 9,
+        "key_characters_total": 81,
+        "value_json_characters_total": 36,
+        "value_text_characters_total": 18
+      },
+      {
+        "key": "actions[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 22,
+        "value_json_characters_total": 745,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "adversarial_findings[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 35,
+        "value_json_characters_total": 216,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "assumptions_ref",
+        "occurrences": 1,
+        "key_characters_total": 15,
+        "value_json_characters_total": 151,
+        "value_text_characters_total": 149
+      },
+      {
+        "key": "authority",
+        "occurrences": 3,
+        "key_characters_total": 27,
+        "value_json_characters_total": 56,
+        "value_text_characters_total": 50
+      },
+      {
+        "key": "challenge",
+        "occurrences": 2,
+        "key_characters_total": 18,
+        "value_json_characters_total": 108,
+        "value_text_characters_total": 104
+      },
+      {
+        "key": "completion_test",
+        "occurrences": 3,
+        "key_characters_total": 45,
+        "value_json_characters_total": 78,
+        "value_text_characters_total": 72
+      },
+      {
+        "key": "content",
+        "occurrences": 3,
+        "key_characters_total": 21,
+        "value_json_characters_total": 289,
+        "value_text_characters_total": 283
+      },
+      {
+        "key": "context_elements[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 31,
+        "value_json_characters_total": 998,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "context_id",
+        "occurrences": 3,
+        "key_characters_total": 30,
+        "value_json_characters_total": 12,
+        "value_text_characters_total": 6
+      },
+      {
+        "key": "context_refs",
+        "occurrences": 7,
+        "key_characters_total": 84,
+        "value_json_characters_total": 107,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "depends_on",
+        "occurrences": 9,
+        "key_characters_total": 90,
+        "value_json_characters_total": 26,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "description",
+        "occurrences": 3,
+        "key_characters_total": 33,
+        "value_json_characters_total": 131,
+        "value_text_characters_total": 125
+      },
+      {
+        "key": "enclosing_target[object]",
+        "occurrences": 1,
+        "key_characters_total": 24,
+        "value_json_characters_total": 509,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "expected_output",
+        "occurrences": 3,
+        "key_characters_total": 45,
+        "value_json_characters_total": 77,
+        "value_text_characters_total": 71
+      },
+      {
+        "key": "explicit_intent[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 30,
+        "value_json_characters_total": 105,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "inferred_beginning_state[object]",
+        "occurrences": 1,
+        "key_characters_total": 32,
+        "value_json_characters_total": 67,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "inferred_change[object]",
+        "occurrences": 1,
+        "key_characters_total": 23,
+        "value_json_characters_total": 90,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "inferred_post_state[object]",
+        "occurrences": 1,
+        "key_characters_total": 27,
+        "value_json_characters_total": 85,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "initial_opcode_projection[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 40,
+        "value_json_characters_total": 792,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "inputs",
+        "occurrences": 3,
+        "key_characters_total": 18,
+        "value_json_characters_total": 60,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "intermediate_result_refs",
+        "occurrences": 1,
+        "key_characters_total": 24,
+        "value_json_characters_total": 91,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "invariants",
+        "occurrences": 1,
+        "key_characters_total": 10,
+        "value_json_characters_total": 199,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "limitations_ref",
+        "occurrences": 1,
+        "key_characters_total": 15,
+        "value_json_characters_total": 114,
+        "value_text_characters_total": 112
+      },
+      {
+        "key": "maximalist_user_intent[string]",
+        "occurrences": 1,
+        "key_characters_total": 30,
+        "value_json_characters_total": 161,
+        "value_text_characters_total": 159
+      },
+      {
+        "key": "method_ref",
+        "occurrences": 1,
+        "key_characters_total": 10,
+        "value_json_characters_total": 133,
+        "value_text_characters_total": 131
+      },
+      {
+        "key": "minimalist_user_intent[string]",
+        "occurrences": 1,
+        "key_characters_total": 30,
+        "value_json_characters_total": 63,
+        "value_text_characters_total": 61
+      },
+      {
+        "key": "narrative[string]",
+        "occurrences": 2,
+        "key_characters_total": 34,
+        "value_json_characters_total": 735,
+        "value_text_characters_total": 731
+      },
+      {
+        "key": "opcode",
+        "occurrences": 6,
+        "key_characters_total": 36,
+        "value_json_characters_total": 66,
+        "value_text_characters_total": 54
+      },
+      {
+        "key": "opcode_steps[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 27,
+        "value_json_characters_total": 783,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "operands",
+        "occurrences": 6,
+        "key_characters_total": 48,
+        "value_json_characters_total": 370,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "pool",
+        "occurrences": 1,
+        "key_characters_total": 4,
+        "value_json_characters_total": 25,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "preparation[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 26,
+        "value_json_characters_total": 5008,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "problem_ref",
+        "occurrences": 1,
+        "key_characters_total": 11,
+        "value_json_characters_total": 4,
+        "value_text_characters_total": 2
+      },
+      {
+        "key": "purpose",
+        "occurrences": 1,
+        "key_characters_total": 7,
+        "value_json_characters_total": 199,
+        "value_text_characters_total": 197
+      },
+      {
+        "key": "relevance",
+        "occurrences": 3,
+        "key_characters_total": 27,
+        "value_json_characters_total": 67,
+        "value_text_characters_total": 61
+      },
+      {
+        "key": "representation",
+        "occurrences": 3,
+        "key_characters_total": 42,
+        "value_json_characters_total": 54,
+        "value_text_characters_total": 48
+      },
+      {
+        "key": "requirement",
+        "occurrences": 4,
+        "key_characters_total": 44,
+        "value_json_characters_total": 144,
+        "value_text_characters_total": 136
+      },
+      {
+        "key": "requirements[array<object>]",
+        "occurrences": 1,
+        "key_characters_total": 27,
+        "value_json_characters_total": 154,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "result_ref",
+        "occurrences": 6,
+        "key_characters_total": 60,
+        "value_json_characters_total": 66,
+        "value_text_characters_total": 54
+      },
+      {
+        "key": "rumination[string]",
+        "occurrences": 1,
+        "key_characters_total": 18,
+        "value_json_characters_total": 164,
+        "value_text_characters_total": 162
+      },
+      {
+        "key": "scratchpad",
+        "occurrences": 8,
+        "key_characters_total": 80,
+        "value_json_characters_total": 11921,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "sequence",
+        "occurrences": 3,
+        "key_characters_total": 24,
+        "value_json_characters_total": 3,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "slots",
+        "occurrences": 1,
+        "key_characters_total": 5,
+        "value_json_characters_total": 1,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "solver_or_subject[object]",
+        "occurrences": 1,
+        "key_characters_total": 25,
+        "value_json_characters_total": 610,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "source",
+        "occurrences": 1,
+        "key_characters_total": 6,
+        "value_json_characters_total": 4,
+        "value_text_characters_total": 2
+      },
+      {
+        "key": "source_kind",
+        "occurrences": 3,
+        "key_characters_total": 33,
+        "value_json_characters_total": 47,
+        "value_text_characters_total": 41
+      },
+      {
+        "key": "source_ref",
+        "occurrences": 4,
+        "key_characters_total": 40,
+        "value_json_characters_total": 164,
+        "value_text_characters_total": 156
+      },
+      {
+        "key": "source_refs",
+        "occurrences": 7,
+        "key_characters_total": 77,
+        "value_json_characters_total": 150,
+        "value_text_characters_total": 0
+      },
+      {
+        "key": "source_text_or_span",
+        "occurrences": 3,
+        "key_characters_total": 57,
+        "value_json_characters_total": 150,
+        "value_text_characters_total": 144
+      },
+      {
+        "key": "status",
+        "occurrences": 6,
+        "key_characters_total": 36,
+        "value_json_characters_total": 69,
+        "value_text_characters_total": 57
+      },
+      {
+        "key": "step_id",
+        "occurrences": 6,
+        "key_characters_total": 42,
+        "value_json_characters_total": 24,
+        "value_text_characters_total": 12
+      },
+      {
+        "key": "subject",
+        "occurrences": 6,
+        "key_characters_total": 42,
+        "value_json_characters_total": 180,
+        "value_text_characters_total": 168
+      },
+      {
+        "key": "target_ref",
+        "occurrences": 1,
+        "key_characters_total": 10,
+        "value_json_characters_total": 44,
+        "value_text_characters_total": 42
+      },
+      {
+        "key": "test",
+        "occurrences": 2,
+        "key_characters_total": 8,
+        "value_json_characters_total": 61,
+        "value_text_characters_total": 57
+      },
+      {
+        "key": "uncertainty",
+        "occurrences": 3,
+        "key_characters_total": 33,
+        "value_json_characters_total": 18,
+        "value_text_characters_total": 12
+      },
+      {
+        "key": "verb",
+        "occurrences": 3,
+        "key_characters_total": 12,
+        "value_json_characters_total": 29,
+        "value_text_characters_total": 23
+      },
+      {
+        "key": "verbatim_instruction[string]",
+        "occurrences": 1,
+        "key_characters_total": 28,
+        "value_json_characters_total": 43,
+        "value_text_characters_total": 41
+      }
+    ],
+    "error": null
+  },
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548995651,
+    "target_index": 3,
+    "profile_version": "2.1.0",
+    "selected_function": {
+      "opcode": "OP.01.012",
+      "name": "BRANCH",
+      "description": "Select a branch based on an explicit predicate",
+      "input_contract": "condition_and_branches",
+      "output_contract": "selected_branch"
+    },
+    "higher_order_frame": {
+      "schema": "issuescratch.higher-order-frame-selection.v1",
+      "frame_id": "F0",
+      "frame_number": 0,
+      "frame_start_index": 1,
+      "frame_end_index": 3,
+      "enclosing_frame_id": null,
+      "source_indices": [
+        0
+      ],
+      "source_refs": [
+        "/0"
+      ],
+      "level": 1,
+      "operator": {
+        "opcode": "OP.02.002",
+        "name": "ABSTRACT",
+        "description": "Change the subject's representation under an explicitly selected abstraction mode while preserving source traceability and recording intentionally omitted details."
+      },
+      "mode": "IMPLEMENTATION",
+      "selection": {
+        "algorithm": "node:crypto.randomInt",
+        "operator_ordinal": 1,
+        "operator_pool": [
+          "OP.02.001",
+          "OP.02.002"
+        ],
+        "mode_ordinal": 1,
+        "mode_pool": [
+          "CONTRACT",
+          "IMPLEMENTATION",
+          "CONSTRUCT",
+          "GENERAL"
+        ]
+      },
+      "input_contract": {
+        "subject_ref": "string",
+        "context_refs": "string[]",
+        "invariants": "string[]",
+        "mode": "CONTRACT|IMPLEMENTATION|CONSTRUCT|GENERAL",
+        "target": "string"
+      },
+      "output_contract": {
+        "representation": "object",
+        "preserved_properties": "string[]",
+        "suppressed_details": "string[]",
+        "new_assumptions": "object[]",
+        "source_mapping": "object[]",
+        "unresolved_questions": "object[]",
+        "next_solver_input": "object"
+      },
+      "required_output_fields": [
+        "components",
+        "algorithms",
+        "dependencies",
+        "operational_boundaries"
+      ],
+      "invariants": [
+        "Two distinguishable referents across levels",
+        "Traceable ancestry of each enclosing solver",
+        "No promotion of inferred claims to direct user instructions",
+        "Meaningful change of reasoning level or representation"
+      ],
+      "status": "selected_not_executed"
+    },
+    "higher_order_selection_new": false,
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 10,
+      "draws": [
+        {
+          "purpose": "atomic_function",
+          "pool_size": 14,
+          "selected_ordinal": 10
+        }
+      ],
+      "note": "Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
+    },
+    "opcodes": [
+      "OP.02.002",
+      "OP.01.012"
+    ],
+    "read_indices": [
+      0,
+      1,
+      2
+    ],
+    "frame_id": "F0",
+    "enclosing_frame_id": null,
+    "role": "seed_narrative",
+    "reference_id": null,
+    "original_anchor_index": null,
+    "previous_frame_index": null,
+    "requirements": [
+      "Use atomic BRANCH (OP.01.012) inside the fixed higher-order frame ABSTRACT / IMPLEMENTATION. An opcode instruction is not execution evidence.",
+      "Apply the *same* higher-order choice as the other two slots of F0; do not reroll or switch modes.",
+      "Construct an explicit IMPLEMENTATION representation with its specified fields; IMPLEMENTATION describes mechanisms, not execution.",
+      "Supply preserved_properties, suppressed_details, introduced_assumptions, source_mapping, and next_solver_input in substantive output.",
+      "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
+      "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
+      "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction.",
+      "Add substantive development rather than a quotation ladder or paraphrase.",
+      "Append exactly one substantive scratchpad at index 3; retain the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "functions_selected": 1,
+  "functions_published": 1,
+  "controller_comment_id": 6548997266
+}
