@@ -69,8 +69,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548137149
   },
-  "last_processed_revision_sha256": "f6b42798d4f0f965248fa1d84ceda85824b4c54567aff37f3e95c0e4bbe9c4b1",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548135349/revisions/f6b42798d4f0f965248fa1d84ceda85824b4c54567aff37f3e95c0e4bbe9c4b1.json",
+  "last_processed_revision_sha256": "ad0423fbf2fbb9f34b0cbe023dece4e22354c1eb0a0056f8fc7cab09be866610",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548135349/revisions/ad0423fbf2fbb9f34b0cbe023dece4e22354c1eb0a0056f8fc7cab09be866610.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -88,6 +88,14 @@
       "array_length": 2,
       "accepted_entries_after": 2,
       "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "ad0423fbf2fbb9f34b0cbe023dece4e22354c1eb0a0056f8fc7cab09be866610",
+      "path": "workspaces/issue1-diagnostics/comments/6548135349/revisions/ad0423fbf2fbb9f34b0cbe023dece4e22354c1eb0a0056f8fc7cab09be866610.json",
+      "json_valid": true,
+      "array_length": 2,
+      "accepted_entries_after": 2,
+      "transition": "same_accepted_array"
     }
   ]
 }
