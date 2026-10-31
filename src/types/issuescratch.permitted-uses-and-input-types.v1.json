@@ -1,6 +1,6 @@
 {
   "document_type": "issuescratch.scratchpad-permitted-uses-and-input-types",
-  "format_version": "1.0.0",
+  "format_version": "1.1.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "Normative standalone use catalog with expected typed action inputs, observed output fields, existing scratchpad-field declarations and named type definitions. Every activity remains an independent entry in the existing shuffled order. No action inheritance or parent-child relationships.",
   "opcode_format": {
@@ -70,7 +70,7 @@
       "source_section": "4.1",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep the AGENTS.md root array, minimum seventeen items, and literal scratchpad wrapper contract in effect; this catalog refines activities and input types but does not supersede the structural requirements.",
+      "imperative": "Keep the current AGENTS.md root array with a nineteen-item minimum and the literal scratchpad wrapper contract; this catalog refines permitted activities and input types without superseding current structure.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -5522,7 +5522,7 @@
     },
     "scratchpad_format": {
       "root_type": "array",
-      "minimum_items": 17,
+      "minimum_items": 19,
       "item_object_required_keys": [
         "scratchpad"
       ],
@@ -5530,7 +5530,29 @@
       "scratchpad_value": "nonempty open heterogeneous object",
       "selected_fields_optional": true,
       "additional_typed_fields_permitted": true,
-      "legacy_records_preserved": true
+      "legacy_records_preserved": true,
+      "nineteen_index_layout": {
+        "preparation": {
+          "outer_index": 0,
+          "nested_scratchpads": 5,
+          "context_elements_required": true,
+          "initial_atomic_opcode_projection_required": true
+        },
+        "framing": {
+          "start_index": 1,
+          "end_index": 15,
+          "count": 5,
+          "indexes_per_frame": 3
+        },
+        "reconciliation": {
+          "indices": [
+            16,
+            17,
+            18
+          ],
+          "atomistic_opcode_reconciliation": true
+        }
+      }
     },
     "examples": [
       {
@@ -5732,7 +5754,7 @@
     ]
   },
   "source_archive": {
-    "current_amendment": "Extraction of the flat shuffled 152 permitted actions into standalone input-contract catalog, reusing existing IssueScratch named types; historical AGENTS.md and type registry remain retrievable.",
+    "current_amendment": "Update current minimum to 19 with five nested preparatory scratchpads, five reframing exercises and three reconciliation slots; preserve 17 historical examples.",
     "source_agent_blob_sha": "a32c7acbf6b34fc2dfd5e851796a6b28ca76d9d0",
     "source_field_registry_blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
     "source_field_registry_path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
@@ -5746,8 +5768,9 @@
     "registered_field_declarations": 59,
     "named_object_types": 68,
     "illustrated_scratchpads": 17,
-    "minimum_scratchpads": 17,
+    "minimum_scratchpads": 19,
     "source_actions_preserved_in_identical_order": true,
-    "source_input_examples_flat": true
+    "source_input_examples_flat": true,
+    "example_status": "Seventeen historical illustrative scratchpads; illustrative examples do not constitute a complete current nineteen-entry RS."
   }
 }
