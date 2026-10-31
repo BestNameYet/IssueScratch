@@ -1,8 +1,8 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.8.4",
+  "format_version": "2.9.0",
   "repository": "BestNameYet/IssueScratch",
-  "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
+  "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
     "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
     "order": "Numeric section hierarchy followed by numeric clause order (section before subsections), without changing opcode identities",
@@ -849,11 +849,11 @@
     },
     {
       "opcode": "IS.04.001",
-      "version": 5,
+      "version": 6,
       "source_section": "4",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Return every new RS record as one root JSON array of at least seventeen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
+      "imperative": "Return every new RS record as one root JSON array of at least nineteen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -1328,9 +1328,9 @@
     },
     {
       "opcode": "IS.04.012",
-      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
+      "imperative": "Require a minimum of nineteen scratchpad-wrapped array entries; do not require array lengths greater than nineteen to be prime.",
       "modality": "require",
-      "version": 5,
+      "version": 6,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1338,9 +1338,9 @@
     },
     {
       "opcode": "IS.04.013",
-      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
+      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond nineteen entries without a maximum length.",
       "modality": "allow",
-      "version": 5,
+      "version": 6,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1348,9 +1348,9 @@
     },
     {
       "opcode": "IS.04.014",
-      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
+      "imperative": "Apply the nineteen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
       "modality": "require",
-      "version": 5,
+      "version": 6,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1408,11 +1408,11 @@
     },
     {
       "opcode": "IS.04.020",
-      "version": 1,
+      "version": 2,
       "source_section": "4",
       "source_line_range": null,
       "modality": "allow",
-      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
+      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 18 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the nineteen-entry minimum is an RS under the standing contract.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -1839,11 +1839,11 @@
     },
     {
       "opcode": "IS.07.010",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Advance progression only when a valid single root array adds exactly one new scratchpad entry without changing the previously accepted prefix; freeze accepted index tracking after index 16 while continuing syntax and diagnostic validation on later edits.",
+      "imperative": "Advance progression only when a valid single root array adds exactly one new scratchpad entry without changing the previously accepted prefix; freeze accepted index tracking after index 18 while continuing syntax and diagnostic validation on later edits.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2135,11 +2135,11 @@
     },
     {
       "opcode": "IS.10.009",
-      "version": 1,
+      "version": 2,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "At index 16, verify progression.complete, accepted_entries=17, last_accepted_index=16, current source revision hash, and the terminal controller state, then verify a README candidate and receipt generated from that exact source comment; otherwise mark the job blocked or incomplete.",
+      "imperative": "At index 16, verify progression.complete, accepted_entries=19, last_accepted_index=18, current source revision hash, and the terminal controller state, then verify a README candidate and receipt generated from that exact source comment; otherwise mark the job blocked or incomplete.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2165,11 +2165,11 @@
     },
     {
       "opcode": "IS.10.012",
-      "version": 3,
+      "version": 4,
       "source_section": "10",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not claim the README experiment complete merely because seventeen entries exist; require sequential accepted revisions in workflow-owned JSON state, matching sixteen controller instruction receipts, and a source-consistent final artifact receipt. Never impose a separate agent-written acknowledgement.",
+      "imperative": "Do not claim the README experiment complete merely because seventeen entries exist; require sequential accepted revisions in workflow-owned JSON state, matching eighteen controller instruction receipts, and a source-consistent final artifact receipt. Never impose a separate agent-written acknowledgement.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2180,6 +2180,126 @@
       "source_line_range": null,
       "modality": "require",
       "imperative": "Commit implementation and workflow-maintenance changes directly on main, without PRs. During controller-driven job execution, the worker's ONLY write operation is creating or editing its substantive Issue #1 comment. All workspace and diagnostic writes are performed by the workflow itself.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.001",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For new 19-index runs, place one preparatory outer scratchpad at index 0 containing a nested array of exactly five separately wrapped nonempty scratchpad objects.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.002",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "In nested preparatory scratchpad 0, preserve the original instruction and explicitly separate context_elements, initial action-level opcode projection, minimalist and maximalist user intent, explicit intent, inferred beginning state, inferred desired post state and inferred change.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.003",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Represent surrounding conversation as an ordered context_elements array with stable IDs, source references, representation type, authority type, provenance and relevance. Distinguish explicit user statements, assistant statements, repository rules and inference.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.004",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Construct an immediate provisional initial_opcode_projection from the verbatim instruction and context_elements. Its steps must map bounded actions, not the whole instruction as one oversized command, to registered reusable OP opcodes with typed operands, source/context references, result IDs and dependencies.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.005",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Use nested preparatory scratchpad 1 to examine requirements and uncertainties, nested scratchpad 2 for adversarial review, nested scratchpad 3 for independently identifiable atomic actions and their dependencies, and nested scratchpad 4 for revised step-by-step opcode rendering with action coverage.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.006",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Map the preliminary opcode projection to the later atomistic decomposition, retaining explicit provenance and recording additions, deletions and revisions without altering the original instruction or confusing inference with authorization.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.007",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Perform five sequential reframing exercises at outer indices 1–15; each exercise consumes three scratchpads for reference A, reference B and a substantive enclosing narrative expansion. Maintain identity and attribution across frames.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.008",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Reserve outer indices 16, 17 and 18 for reconciliation: inventory and conflict analysis, atomic opcode projection of all preceding content including all five nested preparatory scratchpads, and final synthesis with validation and identified limitations.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.009",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not treat CAPTURE/EMIT or one GENERATE/TRANSFORM opcode as sufficient decomposition of a multi-action instruction. Require separately traceable action IDs, individually bound opcode steps, operands, source pointers and explicit coverage.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.010",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Structurally validate the preparatory nested array and all reconciliation artifacts before accepting the corresponding index. Structural acceptance is not proof of the semantic accuracy of inferred intent or the faithful execution of opcode steps.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.011",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not insert controller acknowledgements, workflow metadata or status markers into the substantive scratchpad array; agent writes are confined to the existing Issue #1 source comment and all workflow state/output writes are workflow-owned.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.11.012",
+      "version": 1,
+      "source_section": "11",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Preserve all earlier 17-entry completed jobs, candidate READMEs, and related receipts as historical outputs; the 19-entry format applies prospectively to new runs, never retroactively upgrades those historical records.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -2346,6 +2466,13 @@
         "start_line": null,
         "end_line": null,
         "kind": "current_normative_extension"
+      },
+      {
+        "id": "11",
+        "title": "Contextual preparation, five reframings, and atomic opcode reconciliation",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_normative_extension"
       }
     ],
     "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
@@ -2383,7 +2510,7 @@
       "legacy_records_preserved": true,
       "enforcement_state": "The type registry and AGENTS.md specify a required wrapper, but the deployed comment-normalization workflow verifies JSON syntax only.",
       "root_type": "array",
-      "minimum_items": 17,
+      "minimum_items": 19,
       "item_type": "single_key_wrapper_object",
       "zero_based_indices": true,
       "no_maximum_items": true,
@@ -2397,7 +2524,7 @@
     },
     "scratchpad_array": {
       "root_type": "array",
-      "minimum_items": 17,
+      "minimum_items": 19,
       "first_index": 0,
       "maximum_items": null,
       "item_type": "single_key_object_wrapper",
@@ -2441,8 +2568,8 @@
         "issue_comment.created",
         "issue_comment.edited"
       ],
-      "acceptance": "Exactly one new wrapped scratchpad entry per accepted update through index 16, with identical previously accepted prefix.",
-      "after_index_16": "Retain accepted count at 17, continue JSON validity and per-revision diagnostic snapshots.",
+      "acceptance": "Exactly one new wrapped scratchpad entry per accepted edit, from index 0 through index 18, without changing earlier accepted content.",
+      "after_index_16": "Historical 17-entry runs remain unchanged. New runs freeze at index 18 after 19 accepted entries, while JSON and diagnostics continue.",
       "invalid_json": "Record in saved JSON state and revision object without altering user-authored comment.",
       "measurements": [
         "raw source characters",
@@ -2456,9 +2583,10 @@
         "per-index contribution in basis points"
       ],
       "existing_records": "Workflow dispatch/push scans record preexisting comments as historical snapshots; they are not claimed as sequentially accepted progression.",
-      "function_dispatch_state": "14-operator random controller v1.1 publishes a next instruction following each eligible accepted index. It does not autonomously execute the function or generate the next scratchpad.",
+      "function_dispatch_state": "Use the versioned 1+15+3 framing-controller profile and randomly select a substantive registered opcode for next indices 1 through 18; publishing does not constitute autonomous agent execution.",
       "root_objects_required": true,
-      "semantic_adjudication": false
+      "semantic_adjudication": false,
+      "after_index_18": "Freeze accepted entries at 19; continue structural JSON validation and revision diagnostics."
     },
     "document_opcode_adapter": {
       "contract_path": "src/types/issuescratch.opcode-adapter-contract.v1.json",
@@ -2484,7 +2612,7 @@
     "framing_controller": {
       "profile_path": "src/types/issuescratch.framing-controller.v1.json",
       "profile_sha": "671a313ac25be7e628648d306d577f87ac36ff9f",
-      "profile_version": "1.1.0",
+      "profile_version": "1.6.0",
       "implementation_path": "src/framing-controller.js",
       "implementation_sha": "1a283ac74c0b755eaf996b3e7b8c362f53867b76",
       "tests_path": "src/framing-controller.test.js",
@@ -2493,8 +2621,8 @@
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
-      "reference_slots": 12,
-      "unrestricted_slots": 5,
+      "reference_slots": 15,
+      "unrestricted_slots": 0,
       "persistent_instruction_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/instructions/<zero-padded-index>.json",
       "persistent_state_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
       "controller_comment_schema": "issuescratch.frame-control-comment.v1",
@@ -2509,7 +2637,24 @@
         41234676639,
         41234726263
       ],
-      "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow."
+      "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow.",
+      "preparatory_outer_index": 0,
+      "preparatory_nested_scratchpads": 5,
+      "framing_outer_indices": "1–15 (five sets of three)",
+      "reconciliation_outer_indices": [
+        16,
+        17,
+        18
+      ],
+      "initial_contextual_opcode_projection": true,
+      "atomic_opcode_steps": true,
+      "terminal_index": 18,
+      "expected_instruction_count": 18,
+      "historical_live_probe_verified_indices": [
+        0,
+        1
+      ],
+      "prior_17_entry_experiment": "historical; retained without modification"
     },
     "agent_workflow_handshake": {
       "schema": "issuescratch.agent-workflow-handshake.v1.2",
@@ -2517,7 +2662,7 @@
       "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
       "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
-      "index_sequence": "Create index 0, then accept exactly one appended index per edit until index 16.",
+      "index_sequence": "Create outer index 0 with five preparatory scratchpads; append one entry per edit through index 18.",
       "ack_keys": [],
       "max_poll_cycles_per_revision": 12,
       "poll_checks": [
@@ -2528,11 +2673,11 @@
         "workflow run conclusion if identifiable"
       ],
       "terminal_acceptance": [
-        "17 accepted sequential index transitions",
-        "completion state at index 16",
-        "16 controller published instruction receipts",
-        "matching final comment digest",
-        "workflow-owned README candidate and receipt"
+        "19 sequential accepted revisions",
+        "completion at index 18",
+        "18 controller instructions",
+        "matching source revision and external workflow receipt",
+        "historical 17-entry candidate kept unchanged"
       ],
       "failure": "Stop, report blocked and preserve saved comment, instructions, state and prior README candidates.",
       "old_candidate_preservation": true,
@@ -2561,13 +2706,44 @@
       ],
       "agent_workspace_writes_allowed": false,
       "agent_workflow_file_writes_allowed_during_job": false
+    },
+    "preparation_and_reconciliation": {
+      "profile_path": "src/types/issuescratch.framing-controller.v1.json",
+      "profile_version": "1.6.0",
+      "outer_minimum_items": 19,
+      "outer_preparation_index": 0,
+      "nested_preparation_count": 5,
+      "nested_preparation_roles": [
+        "contextual_instruction_and_initial_opcode_projection",
+        "requirements_rumination",
+        "adversarial_review",
+        "atomistic_action_decomposition",
+        "atomic_opcode_rendering"
+      ],
+      "context_field": "context_elements[array<object>]",
+      "initial_opcode_field": "initial_opcode_projection[array<object>]",
+      "framing_indices": {
+        "start": 1,
+        "end": 15,
+        "exercises": 5,
+        "entries_per_exercise": 3
+      },
+      "reconciliation_indices": [
+        16,
+        17,
+        18
+      ],
+      "terminal_index": 18,
+      "minimum_atomic_op_steps": 2,
+      "historical_runs_preserved": true,
+      "workflow_artifacts_in_agent_comment": false
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "0d2131a1b876587511ed636c8152e9b10b2b6670",
+    "previous_active_document_blob_sha": "c51296bd0099baab343164341531392e50b54ee3",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Remove all worker workspace and workflow writes. Workflow owns acknowledgements, state and diagnostics derived from Issue #1 comment events; worker only authors one scratchpad per edit.",
+    "current_amendment": "Require minimum 19 outer scratchpads: one five-part contextual instruction and provisional action opcode projection, five reframing exercises, and three atomistic reconcilers; historical 17-entry jobs preserved.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2575,14 +2751,14 @@
     }
   },
   "coverage": {
-    "active_section_count": 23,
-    "active_procedure_count": 185,
+    "active_section_count": 24,
+    "active_procedure_count": 197,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
     "source_traceability": "Historical procedures reference their original blob SHA and source section; new procedures reference the current amendment. Deleted historical text remains in Git history, not in this active document.",
     "all_active_sections_mapped": true,
-    "array_root_minimum_items": 17,
+    "array_root_minimum_items": 19,
     "legacy_RS_objects_preserved": true,
     "array_item_wrapper_key": "scratchpad",
     "array_item_wrapper_exact_keys": true,
@@ -2593,7 +2769,7 @@
     "externalized_named_types": true,
     "comment_diagnostics_enabled": true,
     "comment_diagnostics_history_json_objects": true,
-    "comment_tracking_maximum_index": 16,
+    "comment_tracking_maximum_index": 18,
     "comment_progression_function_selected": false,
     "document_opcode_adapter": true,
     "operation_registry_entries": 16,
@@ -2601,6 +2777,10 @@
     "framing_controller_random_selection": true,
     "framing_controller_issued_live_indices": 2,
     "framing_controller_agent_semantic_execution": false,
-    "agent_workflow_handshake_defined": true
+    "agent_workflow_handshake_defined": true,
+    "preparation_nested_count": 5,
+    "reframing_exercises": 5,
+    "reconciliation_slots": 3,
+    "initial_opcode_projection_required": true
   }
 }
