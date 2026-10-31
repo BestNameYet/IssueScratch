@@ -9,7 +9,7 @@ IssueScratch is a lightweight, GitHub-Issue-centered environment for accepting i
 Its primary design choices are:
 
 1. **One operational issue.** Issue **#1** consolidates the functions performed by Issues #1 (instruction intake), #2 (job queue and completion), and #3 (task scratchpads) in `BestNameYet/IssueStack-`.
-2. **Three-object RS.** "RS" means **Return Schema**. Every IssueScratch RS has exactly three top-level objects: `interpretation`, `execution`, and `result`. The agent designs the keys and data inside each object according to the task; user instructions govern the content and any stricter external format.
+2. **Three scratchpad objects.** "RS" means **Return Schema**. Every IssueScratch RS contains exactly three top-level objects—`interpretation`, `execution`, and `result`—but their names are only stable identifiers for three general-purpose scratchpads. They are not mandatory reasoning stages or content categories. The agent freely defines their internal keys and may write any permitted work-related material into any of them.
 3. **Minimal ceremony.** Do not import IssueStack's separate-issue transfer process, fixed input slots, mandatory Issue #5/#7 UI pipeline, rigid task.v3 object structure, or extra approval machinery merely because IssueStack has them.
 4. **Evidence over ceremony.** Maintain enough durable information to identify work, continue it, and verify results without imposing unnecessary serialization or formatting requirements.
 
@@ -66,8 +66,8 @@ Owner: <agent or worker, when assigned>
 ## Plan and working scratchpad
 <decisions, attempts, progress, dependencies, evidence, handoff notes>
 
-## Result / RS
-<task-appropriate answer or artifact, chosen under section 4>
+## Three RS scratchpads
+<exactly three JSON objects, each free-form and available for notes, claims, investigations, tool records, outcomes, or other permitted material>
 
 ## Verification and receipt
 <observed outcomes, checks performed, failures, links, remaining work>
@@ -85,7 +85,7 @@ Suggested states are `pending`, `active`, `blocked`, `completed`, `failed`, and 
 4. **Verify:** distinguish command submission from command execution, attempted changes from applied changes, and test invocation from passing tests.
 5. **Conclude or hand off:** record the result, supporting evidence, unfinished items, and terminal/nonterminal state. Read back the final record.
 
-There is no separate Issue #1-to-#2 transfer, Issue #2-to-#3 provisioning, or mandatory scratchpad index. The working record itself is the connection among intake, execution, and scratchpad.
+There is no separate Issue #1-to-#2 transfer, Issue #2-to-#3 provisioning, or mandatory scratchpad index. The working record itself connects intake, execution, and scratchpads. **The job administration steps above are not the three RS objects:** no RS object is assigned a lifecycle phase, and agents need not write to those objects in any particular order.
 
 ### 3.4 Preservation and concurrency
 
@@ -93,9 +93,9 @@ Preserve the user's originating instruction and distinguish it from an agent's i
 
 Public GitHub issues are not private storage. Do not put credentials, secret tokens, private internal reasoning, or sensitive user material in public Issue #1 records. Keep concise decision rationales and reproducible evidence instead.
 
-## 4. Return Schema (RS): three objects, agent-defined interiors
+## 4. Return Schema (RS): three unrestricted-purpose scratchpads
 
-**An IssueScratch RS consists of exactly three top-level JSON objects, named `interpretation`, `execution`, and `result`.** All three must be present; no fourth top-level field or wrapper is part of the RS. They are containers, not rigid nested templates. An agent has broad discretion to define, omit, rename, nest, and type keys *within* these three objects to serve the particular task.
+An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** with the stable keys `interpretation`, `execution`, and `result`:
 
 ```json
 {
@@ -105,44 +105,97 @@ Public GitHub issues are not private storage. Do not put credentials, secret tok
 }
 ```
 
-These names and object types are the **entire fixed RS contract**. The objects may be empty where appropriate, but substantive results should include the information necessary to understand and verify the work. An agent may use a concise structure for a simple task or a detailed one for a complex job. Do not impose IssueStack's `task.v3`, required named-object subtypes, eight-field prompt analysis, or fixed nested properties here.
+**These are three scratchpads, not three prescribed stages of reasoning or execution.** Their names are historical addresses, **not instructions about what belongs where**. In particular, `interpretation` need not contain interpretation, `execution` need not describe execution, and `result` need not contain only final results. Each may contain any permitted activity, note, observation, action, critique, reference, output, or provisional idea.
 
-### 4.1 Meaning of the three objects
+The agent is free to:
+- Define arbitrary keys and nested data inside each object, including strings, arrays, numbers, booleans, maps, and further objects.
+- Write to any or all scratchpads at any point; revisit them, leave one empty, move or link material across them, and choose its own grouping.
+- Mix exploratory, practical, administrative, evaluative, and completed material in the same object, or use separate nested keys if useful.
+- Change the internal organization between tasks; no fixed inner template, required nested key, semantic allocation, sequence, or per-stage completion gate exists.
+- Produce an external deliverable separately from the RS when necessary; the three-object scratchpad record does not replace that deliverable.
 
-- **`interpretation`:** the agent's understanding of the instruction, objective, context, constraints, or success criteria. The agent chooses which of these concepts warrant keys.
-- **`execution`:** the agent's actions, plan, progress, decisions, evidence, tests, or blockers, as applicable. The agent chooses their representation and granularity.
-- **`result`:** the agent's answer, produced outputs, artifact references, validation, unfinished work, or failures, as applicable. The agent chooses the output fields.
+The fixed contract is **only the three top-level object names and their object types**. The ordinary Issue #1 job metadata (source and job comment IDs, status, ownership, timestamps, etc.) can appear outside the RS as part of the Issue #1 record; it must not become an additional top-level RS object. Nested content is agent-defined.
 
-The objects are logical responsibilities, not exhaustive field inventories. Do not invent activities or validations simply to populate an object. A field may contain strings, numbers, booleans, arrays, or nested objects chosen by the agent. Use valid JSON when publishing a machine-readable RS. If the requested deliverable is Markdown, source code, a file, or another presentation form, it may be rendered or attached separately, while its IssueScratch RS record retains these three objects.
+### 4.1 Explicitly permitted scratchpad uses
 
-### 4.2 Agent discretion and precedence
+Subject to the agent's actual permissions, the user's scope, truthfulness, and applicable platform safety/privacy obligations, **any of the three scratchpads** may be used to:
 
-The agent is normally responsible for the *internal schema*: the key names, types, nesting, level of detail, and task-specific evidence within the three objects. A formal nested JSON Schema is optional unless a consumer requires one. The agent may revise its chosen internal structure to improve usefulness, while retaining identifiable versions or snapshots for material changes that will be adjudicated.
+1. Write **claims of ownership or stewardship** of particular GitHub comments, including evidence for those claims.
+2. Track the user's **instructions** and any changes or clarifications.
+3. Track **failures**, failed attempts, diagnostics, and impact.
+4. **Reason openly**, by documenting conclusions, assumptions, and concise explanatory rationales intended for review.
+5. **Reason cryptically**, by using shorthand, compressed annotations, symbolic notes, or private-to-the-project mnemonics rather than an extended narrative.
+6. Make **philosophical forays**, including exploratory questions about methods, meaning, or implications.
+7. **Challenge or critique implementations of OpenAI policy**, noting observed behavior, alternative interpretations, concerns, and possible remedies; criticism does not grant authority to override applicable safeguards.
+8. Record **specific GitHub tool calls**, their arguments where appropriate, returned IDs, receipts, and errors.
+9. Record **specific Google Drive tool calls**, document references, outcomes, and errors.
+10. Record **specific calls to other tools or connectors**, including their supported actions and observations.
+11. **Examine user instructions**, such as quoting or cross-referencing relevant passages when permissible.
+12. **Analyze user instructions**, including ambiguities, dependencies, and operational consequences.
+13. **Contemplate user instructions**, including possible interpretations and reflective commentary.
 
-The user's explicit requirements govern what must be accomplished and returned. RS discretion cannot excuse missing requirements, substitute explanation for authorized execution, conceal errors, impose unsolicited restrictions, or alter the user's intended scope. If a separately documented external interface demands a different exact payload shape, honor that interface at its boundary; keep IssueScratch's three-object record as the internal return, rather than silently pretending the external format is an IssueScratch RS.
+The following **25 additional expressly permitted activities** are likewise available in **any** scratchpad:
 
-Agent-defined structure does **not** mean agent-defined truth: label uncertainty and distinguish observed results from assertions. Completion reports must be faithful to verified outcomes, proportionate to the task, without unnecessary boilerplate.
+1. Formulate hypotheses about how a system works.
+2. Record counterhypotheses and competing explanations.
+3. Compare alternative architectures or implementation approaches.
+4. Document assumptions and their evidentiary basis.
+5. Note unresolved questions and information gaps.
+6. Investigate regressions and compare before/after behavior.
+7. Track changes in task scope and requirement revisions.
+8. Maintain a chronology of important events and observations.
+9. Record dependencies and prerequisites.
+10. Identify opportunities to perform independent work in parallel.
+11. Track blockers and proposed means of resolution.
+12. Record experiments, inputs, observations, and outcomes.
+13. Link test cases, expected results, and observed results.
+14. Capture command output excerpts or exact execution receipts.
+15. Record repository paths, revisions, commit IDs, and branch names.
+16. Track issue, pull-request, comment, and review identifiers.
+17. Maintain provenance for external claims, sources, and artifacts.
+18. Assess reliability and limitations of retrieved evidence.
+19. Explore possible failure modes and edge cases.
+20. Critique earlier agent decisions and propose corrections.
+21. Record explicit user approvals, rejections, and authorization boundaries.
+22. Develop naming conventions, definitions, and conceptual taxonomies.
+23. Sketch future procedures, migrations, or workstreams.
+24. Prepare handoff notes for a succeeding agent or session.
+25. Record lessons learned and candidates for future adjudication.
 
-### 4.3 Illustrative RS, not a prescribed nested schema
+**This is an illustrative permission catalog, not a closed vocabulary, task checklist, mandatory activity list, or hierarchy.** Agents may use other appropriate scratchpad activities as well, without inventing an additional top-level RS object. They are not obligated to perform any listed activity unless the user or assignment requires it.
+
+A claim of comment ownership is **not** proof of control or permission; verify the current comment author and relevant authorization before an edit. A noted tool call is **not** proof it succeeded; separately record observable outcomes where material. Cryptic notes and philosophical speculation must be distinguishable from verified findings when that distinction matters. Concise, shareable rationales or shorthand are allowed, but do not expose private internal chain-of-thought, credentials, restricted data, or unsupported claims of access. GitHub comments are not secret storage.
+
+### 4.2 Examples of unconstrained content placement
+
+This example deliberately puts information under non-obvious headings to show that scratchpad names **do not classify their contents**:
 
 ```json
 {
   "interpretation": {
-    "goal": "Inspect the requested repository",
-    "scope": "Read-only"
+    "github_calls": [
+      {"action": "fetch_file", "path": "AGENTS.md", "observation": "read succeeded"}
+    ],
+    "failure_notes": ["A prior lookup returned 404"]
   },
   "execution": {
-    "files_checked": ["AGENTS.md"],
-    "observations": ["Read succeeded"]
+    "philosophical_question": "What makes a validation receipt authoritative?",
+    "user_instruction_contestation": ["Compare literal wording to inferred intent"]
   },
   "result": {
-    "summary": "Inspection completed",
-    "verified": true
+    "ownership_claim": "Agent proposes stewardship of its working comment; verify permissions",
+    "cryptic_memo": "H1 != H2; test before choosing"
   }
 }
 ```
 
-The keys inside these objects are **examples only**. An agent may use entirely different nested keys and data structures on the next task. The top-level three-object contract remains stable unless the user explicitly changes it.
+All inner names and examples are optional. The same content could appear under another one of the three keys with no RS violation. Hypotheses and examples are not evidence of completed actions.
+
+### 4.3 Precedence and fidelity
+
+The agent controls its scratchpad organization, not the user's objective. Explicit user instructions, actual tool contracts, authorized repository scope, and higher-priority obligations still apply. A task's requested deliverable may require particular fields, format, or tests even when the RS scratchpad itself has no prescribed nested schema.
+
+When material is presented as a verified fact or completed operation, it must be grounded in evidence. Do not treat exploratory notes as execution receipts, and do not use a three-object RS to hide missing deliverables, deviations, or failures. Preserve significant version changes or links to earlier snapshots when those versions will later be adjudicated.
 
 ## 5. Periodic adjudication of RS designs and populated outputs
 
@@ -150,12 +203,11 @@ IssueScratch's RS definitions **and their actual data** will be adjudicated from
 
 ### 5.1 What is reviewed
 
-Adjudication examines both:
+Adjudication examines **the agent's chosen internal organization and the actual data it wrote**. The reviewer may assess whether the organization served the task, whether claims and tool records were properly supported, whether exploratory or cryptic notes were useful for their purpose, whether boundaries and user intent were respected, and whether requested work was genuinely completed.
 
-- **Schema design:** Did the agent choose suitable nested keys, data types, scope, granularity, and organization within the three required objects? Does the shape support the assigned work without needless omissions or ceremony?
-- **Populated data and outcome:** Is the agent's interpretation faithful? Are claims, actions, evidence, and results accurate, complete relative to the instruction, and consistent with observed execution? Were failures, uncertainty, or unauthorized deviations disclosed?
+**Do not penalize a record simply because material appeared in the "wrong" scratchpad or because the agent used an unconventional style.** The object names impose no semantic restrictions, and a philosophical exploration, critical policy discussion, or cryptic memorandum is not a failure by itself. Judge the structure and content relative to the assignment and the legitimate purpose of the notes; distinguish speculation from verified claims.
 
-An adjudicator should assess those dimensions and assign **one overall label** to the reviewed output. An adjudicator may additionally describe distinct schema-design and data-quality findings; these do not introduce new top-level RS objects.
+The adjudicator assigns **one overall label** to the reviewed output. Optional findings may separately address internal schema choices, note quality, factual correctness, or task outcomes; they do not introduce a fourth RS object.
 
 ### 5.2 Allowed labels
 
@@ -193,7 +245,7 @@ For an IssueScratch job, evaluate the following as applicable:
 - The source instruction and the correct Issue #1 comment references are identifiable.
 - The job state reflects observed progress, not optimistic assumptions.
 - The working scratchpad is sufficiently durable for a different agent to resume.
-- The RS has exactly the three required top-level objects and agent-selected internal keys; its content satisfies the user's requested deliverable and any actual consumer contract.
+- The RS has exactly three top-level scratchpad objects; internal placement is unrestricted, and any separately requested deliverable or consumer contract is satisfied.
 - Claimed edits, executions, tests, and outputs have been independently inspected or verified.
 - Remaining work and failures are disclosed rather than marked complete.
 
