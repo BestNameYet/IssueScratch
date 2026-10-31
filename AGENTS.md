@@ -93,6 +93,19 @@ Preserve the user's originating instruction and distinguish it from an agent's i
 
 Public GitHub issues are not private storage. Do not put credentials, secret tokens, private internal reasoning, or sensitive user material in public Issue #1 records. Keep concise decision rationales and reproducible evidence instead.
 
+### 3.5 Mandatory closing step after creating or editing a comment: full ChatGPT echo
+
+Whenever an agent creates a new GitHub Issue comment or edits an existing GitHub Issue comment during IssueScratch work, the **mandatory closing step of that comment operation** is to post the **entire, current, saved comment body, untruncated**, along with its **verified, permanent GitHub comment ID**, into the user-facing **ChatGPT conversation/UI**. This is required for both newly created comments and edited comments, regardless of length, content format, or whether a brief summary would otherwise be sufficient.
+
+1. **Read back first.** After the write, retrieve the comment from GitHub, verify its permanent comment ID and the complete final body, and distinguish the saved result from any draft or intended edit. Use the read-back content for the ChatGPT echo, not merely the text submitted to the write operation.
+2. **Post every character.** In the ChatGPT response, identify the comment ID and reproduce the **complete, unabridged, untruncated final comment body**. Preserve its text, including all keys, values, whitespace, line breaks, old revisions, and current revision markers. A link may accompany the body, but a link, summary, excerpt, ellipsis, character count, file attachment, or reference to GitHub is **not a substitute** for reproducing the full comment in the ChatGPT UI.
+3. **For edits, show the resulting version.** After a comment edit, post the entire current comment as saved, not merely the changed fields, a diff, the previous version, or a proposed replacement. Preserve historical values in GitHub as required by Issue #1.
+4. **Multiple comments mean multiple full echoes.** If an operation creates or edits more than one comment, show each saved comment in full and associate each with its own verified comment ID. Do not collapse them into a single summary.
+5. **No silent truncation.** If a single ChatGPT response cannot accommodate the entire comment, split the presentation into clearly ordered, contiguous parts in the ChatGPT conversation, without dropping or abbreviating any text. Do not report the mandatory closing step as completed unless the entire body was actually displayed. If platform limits make a complete display impossible, explicitly report that limitation and the unfulfilled closing step rather than pretending that a shortened version is complete.
+6. **Failed writes or reads are not success.** If the comment was not saved, or its current content could not be read back and verified, report that outcome accurately; do not present a draft as verified posted content.
+
+This is an **additional required final step** following the existing read-back and verification obligations, not an authorization to truncate or rewrite the GitHub comment to make the echo shorter. All existing permissions, confidentiality requirements, and platform obligations remain applicable.
+
 ## 4. Return Schema (RS): three ordered, property-relative scratchpads
 
 An IssueScratch RS is **exactly one JSON object containing exactly three top-level objects** in this presentation order: `scratchpad_1` (first), `scratchpad_2` (second), `scratchpad_3` (third).
