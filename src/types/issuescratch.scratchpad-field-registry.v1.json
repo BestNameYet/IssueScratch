@@ -1,0 +1,2788 @@
+{
+  "schema": "issuescratch.scratchpad-field-registry.v1",
+  "source": {
+    "repo": "BestNameYet/IssueScratch",
+    "issue_number": 1,
+    "inspected_comment_ids": [
+      6540398585,
+      6540457730,
+      6545857602,
+      6545966428
+    ],
+    "convention": "IssueStack field[type] syntax for suggested typed forms; historical unannotated keys preserved."
+  },
+  "semantics": {
+    "top_level_scratchpads": [
+      "scratchpad_1",
+      "scratchpad_2",
+      "scratchpad_3"
+    ],
+    "scratchpad_key_selection": "open and optional",
+    "must_contain_all_registered_types": false,
+    "required_registry_fields_per_scratchpad": [],
+    "object_type": "open heterogeneous object",
+    "object_members": "An object may contain any combination of keys with independently declared value types; no sibling keys are required.",
+    "object_member_allowed_values": [
+      "string",
+      "number",
+      "boolean",
+      "null",
+      "object",
+      "array"
+    ],
+    "nested_fields": "All listed nested keys are optional examples of observed shapes; additional typed keys allowed.",
+    "arrays": "Historical arrays retain their observed element types; no forced migration to IssueStack named-object arrays.",
+    "backwards_compatibility": "Existing Issue #1 job comments remain unchanged and valid under this registry; no historical rewrite or coerced fields.",
+    "extension": "Future types and keys may be added to the registry without obligating their inclusion in any scratchpad.",
+    "separate_content_rules": "Any applicable AGENTS.md content and three-scratchpad requirements continue independently of type selection."
+  },
+  "permitted_use_fields": {
+    "stewardship_claims": {
+      "typed_key": "stewardship_claims[array<StewardshipClaim>]",
+      "type": "array<StewardshipClaim>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "user_instructions": {
+      "typed_key": "user_instructions[array<UserInstruction>]",
+      "type": "array<UserInstruction>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "failures": {
+      "typed_key": "failures[array<FailureRecord>]",
+      "type": "array<FailureRecord>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "rationales": {
+      "typed_key": "rationales[array<RationaleRecord>]",
+      "type": "array<RationaleRecord>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "shorthand_notes": {
+      "typed_key": "shorthand_notes[array<ShorthandNote>]",
+      "type": "array<ShorthandNote>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "philosophical_questions": {
+      "typed_key": "philosophical_questions[array<PhilosophicalInquiry>]",
+      "type": "array<PhilosophicalInquiry>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "policy_implementation_critiques": {
+      "typed_key": "policy_implementation_critiques[array<PolicyCritique>]",
+      "type": "array<PolicyCritique>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "github_tool_calls": {
+      "typed_key": "github_tool_calls[array<GitHubToolCall>]",
+      "type": "array<GitHubToolCall>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "google_drive_tool_calls": {
+      "typed_key": "google_drive_tool_calls[array<DriveToolCall>]",
+      "type": "array<DriveToolCall>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "connector_tool_calls": {
+      "typed_key": "connector_tool_calls[array<ConnectorToolCall>]",
+      "type": "array<ConnectorToolCall>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "instruction_excerpts": {
+      "typed_key": "instruction_excerpts[array<InstructionExcerpt>]",
+      "type": "array<InstructionExcerpt>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "instruction_analysis": {
+      "typed_key": "instruction_analysis[array<InstructionAnalysis>]",
+      "type": "array<InstructionAnalysis>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "instruction_reflections": {
+      "typed_key": "instruction_reflections[array<InstructionReflection>]",
+      "type": "array<InstructionReflection>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "hypotheses": {
+      "typed_key": "hypotheses[array<Hypothesis>]",
+      "type": "array<Hypothesis>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "counterhypotheses": {
+      "typed_key": "counterhypotheses[array<Counterhypothesis>]",
+      "type": "array<Counterhypothesis>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "architecture_comparisons": {
+      "typed_key": "architecture_comparisons[array<ArchitectureComparison>]",
+      "type": "array<ArchitectureComparison>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "assumptions": {
+      "typed_key": "assumptions[array<Assumption>]",
+      "type": "array<Assumption>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "open_questions": {
+      "typed_key": "open_questions[array<OpenQuestion>]",
+      "type": "array<OpenQuestion>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "regression_analysis": {
+      "typed_key": "regression_analysis[array<RegressionAnalysis>]",
+      "type": "array<RegressionAnalysis>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "scope_changes": {
+      "typed_key": "scope_changes[array<ScopeChange>]",
+      "type": "array<ScopeChange>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "event_timeline": {
+      "typed_key": "event_timeline[array<TimelineEvent>]",
+      "type": "array<TimelineEvent>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "dependencies": {
+      "typed_key": "dependencies[array<Dependency>]",
+      "type": "array<Dependency>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "parallel_work": {
+      "typed_key": "parallel_work[array<ParallelWork>]",
+      "type": "array<ParallelWork>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "blockers": {
+      "typed_key": "blockers[array<Blocker>]",
+      "type": "array<Blocker>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "experiments": {
+      "typed_key": "experiments[array<Experiment>]",
+      "type": "array<Experiment>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "test_cases": {
+      "typed_key": "test_cases[array<TestCase>]",
+      "type": "array<TestCase>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "execution_receipts": {
+      "typed_key": "execution_receipts[array<ExecutionReceipt>]",
+      "type": "array<ExecutionReceipt>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "repository_revisions": {
+      "typed_key": "repository_revisions[array<RepositoryRevision>]",
+      "type": "array<RepositoryRevision>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "github_references": {
+      "typed_key": "github_references[array<GitHubReference>]",
+      "type": "array<GitHubReference>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "provenance": {
+      "typed_key": "provenance[array<ProvenanceRecord>]",
+      "type": "array<ProvenanceRecord>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "evidence_assessment": {
+      "typed_key": "evidence_assessment[array<EvidenceAssessment>]",
+      "type": "array<EvidenceAssessment>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "failure_modes": {
+      "typed_key": "failure_modes[array<FailureMode>]",
+      "type": "array<FailureMode>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "agent_decision_critiques": {
+      "typed_key": "agent_decision_critiques[array<AgentDecisionCritique>]",
+      "type": "array<AgentDecisionCritique>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "authorizations": {
+      "typed_key": "authorizations[array<Authorization>]",
+      "type": "array<Authorization>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "definitions": {
+      "typed_key": "definitions[array<Definition>]",
+      "type": "array<Definition>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "proposed_procedures": {
+      "typed_key": "proposed_procedures[array<ProposedProcedure>]",
+      "type": "array<ProposedProcedure>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "handoff_notes": {
+      "typed_key": "handoff_notes[array<HandoffNote>]",
+      "type": "array<HandoffNote>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    },
+    "lessons_learned": {
+      "typed_key": "lessons_learned[array<LessonLearned>]",
+      "type": "array<LessonLearned>",
+      "optional": true,
+      "origin": "permitted_uses",
+      "object_elements_heterogeneous_fields": true
+    }
+  },
+  "observed_existing_fields": {
+    "text": {
+      "typed_key": "text[string]",
+      "type": "string",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "text",
+      "observed_positions": [
+        "scratchpad_1",
+        "scratchpad_2",
+        "scratchpad_3"
+      ],
+      "observed_count": 12,
+      "source_comment_ids": [
+        6540398585,
+        6540457730,
+        6545857602,
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "job": {
+      "typed_key": "job[object<LegacyJob>]",
+      "type": "object<LegacyJob>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "job",
+      "observed_positions": [
+        "scratchpad_1"
+      ],
+      "observed_count": 4,
+      "source_comment_ids": [
+        6540398585,
+        6540457730,
+        6545857602,
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "implementation_contract": {
+      "typed_key": "implementation_contract[object<LegacyImplementationContract>]",
+      "type": "object<LegacyImplementationContract>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "implementation_contract",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540398585
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "acceptance_tests": {
+      "typed_key": "acceptance_tests[array<string>]",
+      "type": "array<string>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "acceptance_tests",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540398585
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "completion": {
+      "typed_key": "completion[string]",
+      "type": "string",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "completion",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 2,
+      "source_comment_ids": [
+        6540398585,
+        6540457730
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "verified_evidence": {
+      "typed_key": "verified_evidence[array<LegacyVerifiedEvidenceItem>]",
+      "type": "array<LegacyVerifiedEvidenceItem>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "verified_evidence",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540398585
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "requirements": {
+      "typed_key": "requirements[array<string>]",
+      "type": "array<string>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "requirements",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540457730
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "opcode_example": {
+      "typed_key": "opcode_example[object<LegacyOpcodeExample>]",
+      "type": "object<LegacyOpcodeExample>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "opcode_example",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540457730
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "acceptance": {
+      "typed_key": "acceptance[array<string>]",
+      "type": "array<string>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "acceptance",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540457730
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "evidence": {
+      "typed_key": "evidence[array<LegacyEvidenceItem>]",
+      "type": "array<LegacyEvidenceItem>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "evidence",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6540457730
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "verbatim_source": {
+      "typed_key": "verbatim_source[object<LegacyVerbatimSource>]",
+      "type": "object<LegacyVerbatimSource>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "verbatim_source",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "run_evidence": {
+      "typed_key": "run_evidence[array<LegacyRunEvidenceItem>]",
+      "type": "array<LegacyRunEvidenceItem>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "run_evidence",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "verification_findings": {
+      "typed_key": "verification_findings[array<string>]",
+      "type": "array<string>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "verification_findings",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "outstanding_tests": {
+      "typed_key": "outstanding_tests[array<string>]",
+      "type": "array<string>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "outstanding_tests",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "outcome": {
+      "typed_key": "outcome[string]",
+      "type": "string",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "outcome",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "reference_job_1": {
+      "typed_key": "reference_job_1[string]",
+      "type": "string",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "reference_job_1",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545857602
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "evaluation_protocol": {
+      "typed_key": "evaluation_protocol[object<LegacyEvaluationProtocol>]",
+      "type": "object<LegacyEvaluationProtocol>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "evaluation_protocol",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "demonstrations": {
+      "typed_key": "demonstrations[array<LegacyDemonstrationsItem>]",
+      "type": "array<LegacyDemonstrationsItem>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "demonstrations",
+      "observed_positions": [
+        "scratchpad_2"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "live_job_assessment": {
+      "typed_key": "live_job_assessment[array<LegacyLiveJobAssessmentItem>]",
+      "type": "array<LegacyLiveJobAssessmentItem>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "live_job_assessment",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "conclusions": {
+      "typed_key": "conclusions[object<LegacyConclusions>]",
+      "type": "object<LegacyConclusions>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "conclusions",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    },
+    "repository_references": {
+      "typed_key": "repository_references[object<LegacyRepositoryReferences>]",
+      "type": "object<LegacyRepositoryReferences>",
+      "optional": true,
+      "origin": "observed_existing_scratchpads",
+      "legacy_key": "repository_references",
+      "observed_positions": [
+        "scratchpad_3"
+      ],
+      "observed_count": 1,
+      "source_comment_ids": [
+        6545966428
+      ],
+      "legacy_compatibility": "Preserve the exact historical key names and value forms. New type annotations are optional for future records."
+    }
+  },
+  "named_object_types": {
+    "Evidence": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "description[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "uri[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "Reference": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "id[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "ArchitectureOption": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "name[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "strengths[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "weaknesses[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "Observation": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "observation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "expected[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "actual[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "ProcedureStep": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "ordinal[number]": {
+          "type": "number",
+          "optional": true
+        },
+        "imperative[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "verification[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "StewardshipClaim": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "comment_id[number]": {
+          "type": "number",
+          "optional": true
+        },
+        "claimant[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "basis[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "status[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "UserInstruction": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "instruction_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "verbatim[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "source_comment_id[number|null]": {
+          "type": "number|null",
+          "optional": true
+        },
+        "effective[boolean]": {
+          "type": "boolean",
+          "optional": true
+        }
+      }
+    },
+    "FailureRecord": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "failure_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "operation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "error[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "impact[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "resolved[boolean]": {
+          "type": "boolean",
+          "optional": true
+        }
+      }
+    },
+    "RationaleRecord": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "decision[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "explanation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "assumptions[array<Assumption>]": {
+          "type": "array<Assumption>",
+          "optional": true
+        }
+      }
+    },
+    "ShorthandNote": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "notation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "interpretation[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "verified[boolean]": {
+          "type": "boolean",
+          "optional": true
+        }
+      }
+    },
+    "PhilosophicalInquiry": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "question[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "context[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "implications[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "PolicyCritique": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "implementation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "observed_behavior[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "concern[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "alternative[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "GitHubToolCall": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "operation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "arguments_json[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "result_json[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "comment_id[number|null]": {
+          "type": "number|null",
+          "optional": true
+        },
+        "succeeded[boolean|null]": {
+          "type": "boolean|null",
+          "optional": true
+        }
+      }
+    },
+    "DriveToolCall": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "action[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "file_id[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "outcome[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "receipt[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "ConnectorToolCall": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "connector[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "action[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "arguments_json[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "result_summary[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "success[boolean|null]": {
+          "type": "boolean|null",
+          "optional": true
+        }
+      }
+    },
+    "InstructionExcerpt": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "source_uri[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "quoted_text[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "section[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "InstructionAnalysis": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "instruction_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "ambiguity[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "dependency_analysis[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "consequence[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "InstructionReflection": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "instruction_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "interpretation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "unresolved_tension[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "Hypothesis": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "hypothesis_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "claim[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "basis[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "falsifier[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "Counterhypothesis": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "hypothesis_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "alternative_claim[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "discriminating_test[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "ArchitectureComparison": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "options[array<ArchitectureOption>]": {
+          "type": "array<ArchitectureOption>",
+          "optional": true
+        },
+        "criterion[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "decision[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "Assumption": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "assumption_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "proposition[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "supporting_evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        },
+        "confidence[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "OpenQuestion": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "question_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "question[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "required_evidence[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "status[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "RegressionAnalysis": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "component[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "before[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "after[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "cause[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "ScopeChange": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "change_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "prior_scope[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "revised_scope[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "authorized_by[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "TimelineEvent": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "timestamp[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "event[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "source_uri[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "Dependency": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "dependency_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "prerequisite[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "state[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "blocked_work[array<Reference>]": {
+          "type": "array<Reference>",
+          "optional": true
+        }
+      }
+    },
+    "ParallelWork": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "work_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "independent_of[array<Reference>]": {
+          "type": "array<Reference>",
+          "optional": true
+        },
+        "owner[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "deliverable[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "Blocker": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "blocker_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "constraint[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "impact[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "remedy[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "status[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "Experiment": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "experiment_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "hypothesis_ref[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "procedure[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "observations[array<Observation>]": {
+          "type": "array<Observation>",
+          "optional": true
+        },
+        "conclusion[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "TestCase": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "test_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "input[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "expected[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "observed[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "passed[boolean|null]": {
+          "type": "boolean|null",
+          "optional": true
+        }
+      }
+    },
+    "ExecutionReceipt": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "nonce[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "command[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "run_id[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "outcome[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "RepositoryRevision": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "repository[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "path[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "commit_sha[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "change_summary[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "GitHubReference": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "kind[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "repository[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "number[number|null]": {
+          "type": "number|null",
+          "optional": true
+        },
+        "comment_id[number|null]": {
+          "type": "number|null",
+          "optional": true
+        },
+        "uri[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "ProvenanceRecord": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "assertion[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "source_uri[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "retrieved_at[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "EvidenceAssessment": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "item[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "reliability[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "limitation[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "corroboration[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "FailureMode": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "scenario[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "trigger[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "consequence[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "mitigation[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "AgentDecisionCritique": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "decision_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "concern[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "corrective_action[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        }
+      }
+    },
+    "Authorization": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "instruction_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "authorizer[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "decision[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "scope[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "timestamp[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "Definition": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "term[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "meaning[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "scope[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "example[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "ProposedProcedure": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "procedure_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "objective[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "steps[array<ProcedureStep>]": {
+          "type": "array<ProcedureStep>",
+          "optional": true
+        },
+        "precondition[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "expected_result[string]": {
+          "type": "string",
+          "optional": true
+        }
+      }
+    },
+    "HandoffNote": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "work_id[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "current_state[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "next_action[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "references[array<Reference>]": {
+          "type": "array<Reference>",
+          "optional": true
+        },
+        "unresolved[string|null]": {
+          "type": "string|null",
+          "optional": true
+        }
+      }
+    },
+    "LessonLearned": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "lesson[string]": {
+          "type": "string",
+          "optional": true
+        },
+        "evidence[array<Evidence>]": {
+          "type": "array<Evidence>",
+          "optional": true
+        },
+        "prospective_change[string|null]": {
+          "type": "string|null",
+          "optional": true
+        },
+        "adjudication_candidate[boolean]": {
+          "type": "boolean",
+          "optional": true
+        }
+      }
+    },
+    "LegacyJobRevisionsItemPriorValues": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "source_comment_id": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 1
+        },
+        "job_comment_id": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 1
+        },
+        "current_revision": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.revisions.item.prior_values",
+      "sample_count": 1
+    },
+    "LegacyJobRevisionsItemCurrentValues": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "source_comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 4
+        },
+        "job_comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 4
+        },
+        "current_revision": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 6
+        },
+        "status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 2
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.revisions.item.current_values",
+      "sample_count": 6
+    },
+    "LegacyJobRevisionsItemPreviousValues": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "current_revision": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 6
+        },
+        "scratchpad_2_text": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "scratchpad_3_text": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "implementation_contract.validation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "implementation_contract.reports": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "implementation_contract.non_destructive_behavior": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "acceptance_tests": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 2
+        },
+        "outcome": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 1
+        },
+        "completion": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 2
+        },
+        "source_comment_id": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 3
+        },
+        "job_comment_id": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 3
+        },
+        "evidence": {
+          "type": "array<unknown>",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.revisions.item.previous_values",
+      "sample_count": 6
+    },
+    "LegacyJobRevisionsItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "revision": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 11
+        },
+        "status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 11
+        },
+        "note": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "previous_status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 6
+        },
+        "changes": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 2
+        },
+        "prior_values": {
+          "type": "object<LegacyJobRevisionsItemPriorValues>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "current_values": {
+          "type": "object<LegacyJobRevisionsItemCurrentValues>",
+          "optional": true,
+          "occurrences": 6
+        },
+        "supersedes": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 6
+        },
+        "author": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "previous_values": {
+          "type": "object<LegacyJobRevisionsItemPreviousValues>",
+          "optional": true,
+          "occurrences": 6
+        },
+        "change": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "prior_status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "reason": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.revisions.item",
+      "sample_count": 11
+    },
+    "LegacyJobOutcomeLiveTests": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "issue_comment_created": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "issue_comment_edited": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "readback": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.outcome.live_tests",
+      "sample_count": 1
+    },
+    "LegacyJobOutcome": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "implementation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "commit_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "workflow_path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "workflow_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "live_tests": {
+          "type": "object<LegacyJobOutcomeLiveTests>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "verification_outstanding": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "reason_for_blocker": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.outcome",
+      "sample_count": 1
+    },
+    "LegacyJobWorkflowIdempotenceTestRun8": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "event": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "conclusion": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.workflow_idempotence_test.run_8",
+      "sample_count": 1
+    },
+    "LegacyJobWorkflowIdempotenceTestRun9": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "event": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "conclusion": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.workflow_idempotence_test.run_9",
+      "sample_count": 1
+    },
+    "LegacyJobWorkflowIdempotenceTest": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "before_comment_ids": {
+          "type": "array<number>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "preexisting_comments_tested": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "run_8": {
+          "type": "object<LegacyJobWorkflowIdempotenceTestRun8>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "run_9": {
+          "type": "object<LegacyJobWorkflowIdempotenceTestRun9>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "comments_identical_after_both_runs": {
+          "type": "boolean",
+          "optional": true,
+          "occurrences": 1
+        },
+        "workflow_restored_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "limitation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job.workflow_idempotence_test",
+      "sample_count": 1
+    },
+    "LegacyJob": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "sequence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 4
+        },
+        "title": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "nonce": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "source_comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 4
+        },
+        "job_comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 4
+        },
+        "status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "current_revision": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "revisions": {
+          "type": "array<LegacyJobRevisionsItem>",
+          "optional": true,
+          "occurrences": 4
+        },
+        "original_user_instruction": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "agent_interpretation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "documentation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "target_repository": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "target_issue_number": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "owner": {
+          "type": "null",
+          "optional": true,
+          "occurrences": 1
+        },
+        "outcome": {
+          "type": "object<LegacyJobOutcome>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "user_prompt_updates": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "repository": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "target_path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "baseline_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "name": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "source_job_comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "purpose": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "verified_run_count": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "verification_state": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "blocker": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "scope": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "workflow_idempotence_test": {
+          "type": "object<LegacyJobWorkflowIdempotenceTest>",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "job",
+      "sample_count": 4
+    },
+    "LegacyImplementationContractNormalization": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "behavior": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "exact_key": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "value": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "valid_input": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "invalid_input": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "previously_wrapped_input": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "limitations": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "recurrence": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "backfill": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "implementation_contract.normalization",
+      "sample_count": 1
+    },
+    "LegacyImplementationContract": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "targets": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "triggers": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "initial_scan": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "validation": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "reports": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "non_destructive_behavior": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "possible_files": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "restrictions": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "normalization": {
+          "type": "object<LegacyImplementationContractNormalization>",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "implementation_contract",
+      "sample_count": 1
+    },
+    "LegacyVerifiedEvidenceItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "event": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 4
+        },
+        "path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 2
+        },
+        "verified": {
+          "type": "boolean",
+          "optional": true,
+          "occurrences": 3
+        },
+        "notes": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "verified_evidence.item",
+      "sample_count": 4
+    },
+    "LegacyOpcodeExample": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "opcode": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "imperative": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "source_section": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "type": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "condition": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "opcode_example",
+      "sample_count": 1
+    },
+    "LegacyEvidenceItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "type": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "json_parse": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "source_sections": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "unique_imperatives": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "examples": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "permitted_activities": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "section_coverage": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "passed": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "total": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "test_cases": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "original_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "method": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "evidence.item",
+      "sample_count": 5
+    },
+    "LegacyVerbatimSource": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "repository": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "workflow_path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "git_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "yaml_encoding": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "yaml_complete_verbatim": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "js_origin": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "js_complete_verbatim": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "yaml_character_count": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "js_character_count": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "source_roundtrip_verified": {
+          "type": "boolean",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "verbatim_source",
+      "sample_count": 1
+    },
+    "LegacyRunEvidenceItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "run_number": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 5
+        },
+        "run_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 5
+        },
+        "workflow_job_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 5
+        },
+        "event": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "status": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "conclusion": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "run_attempt": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 5
+        },
+        "started_at": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "completed_record_updated_at": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "url": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "job_name": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "job_conclusion": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        },
+        "step_results": {
+          "type": "array<string>",
+          "optional": true,
+          "occurrences": 5
+        },
+        "job_log_review": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 5
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "run_evidence.item",
+      "sample_count": 5
+    },
+    "LegacyEvaluationProtocolConfidenceMeaning": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "high": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "medium": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "low": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "evaluation_protocol.confidence_meaning",
+      "sample_count": 1
+    },
+    "LegacyEvaluationProtocol": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "classification_rule": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "confidence_meaning": {
+          "type": "object<LegacyEvaluationProtocolConfidenceMeaning>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "scope": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "evaluation_protocol",
+      "sample_count": 1
+    },
+    "LegacyDemonstrationsItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "n": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 16
+        },
+        "axis": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "s1": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "s2": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "s3": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "confidence": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "ordering": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        },
+        "distinctness": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 16
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "demonstrations.item",
+      "sample_count": 16
+    },
+    "LegacyLiveJobAssessmentItem": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "comment_id": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 3
+        },
+        "job": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 3
+        },
+        "proposed_axis": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "s1": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "s2": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "s3": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "confidence": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "ranking": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "distinctness": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        },
+        "caveat": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 3
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "live_job_assessment.item",
+      "sample_count": 3
+    },
+    "LegacyConclusionsExamples": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "reviewed": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "plausible_axis": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "high_confidence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "medium_confidence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "demonstrated_actual_original_choice": {
+          "type": "boolean",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "conclusions.examples",
+      "sample_count": 1
+    },
+    "LegacyConclusionsLiveJobs": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "reviewed": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "high_confidence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "medium_confidence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "low_confidence": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        },
+        "unambiguously_proven_monotonicity": {
+          "type": "number",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "conclusions.live_jobs",
+      "sample_count": 1
+    },
+    "LegacyConclusions": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "examples": {
+          "type": "object<LegacyConclusionsExamples>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "live_jobs": {
+          "type": "object<LegacyConclusionsLiveJobs>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "can_agent_decipher": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "is_requirement_implemented": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "certainty_limit": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "suggested_test": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "conclusions",
+      "sample_count": 1
+    },
+    "LegacyRepositoryReferences": {
+      "open": true,
+      "required_keys": [],
+      "fields": {
+        "agents_path": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        },
+        "job_comments": {
+          "type": "array<number>",
+          "optional": true,
+          "occurrences": 1
+        },
+        "verified_source_blob_sha": {
+          "type": "string",
+          "optional": true,
+          "occurrences": 1
+        }
+      },
+      "legacy_key_names": true,
+      "observed_from": "repository_references",
+      "sample_count": 1
+    }
+  },
+  "inference_notes": [
+    {
+      "path": "job.revisions.item.previous_values.evidence",
+      "issue": "empty arrays only; element type unknown"
+    }
+  ],
+  "counts": {
+    "permitted_use_keys": 38,
+    "existing_direct_keys": 21,
+    "total_registered_direct_keys": 59,
+    "named_object_types": 68,
+    "sampled_job_comments": 4,
+    "observed_direct_key_occurrences": 36
+  }
+}
