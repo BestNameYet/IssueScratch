@@ -59,7 +59,42 @@ function make(n){
   }
   if(i===18)return {scratchpad:{"final_reconciliation[object]":{unresolved:[]},
    "final_output[string]":"Complete coherent README plan","coverage[object]":{source_count:18}}};
-  return {scratchpad:{"narrative[string]":"A substantial new perspective at outer index "+i}};
+  if(i>=1&&i<=15){
+    const frame=Math.floor((i-1)/3),slot=(i-1)%3;
+    const parent=frame===0?"/0":"/"+(frame*3);
+    if(slot===0)return {scratchpad:{
+      "solver_or_subject[object]":{
+        problem_ref:parent,method_ref:"method at "+parent,
+        assumptions_ref:"assumptions at "+parent,intermediate_result_refs:[],
+        limitations_ref:"incomplete verified solution",source_refs:[parent]
+      },
+      "narrative[string]":"A substantive description of inner solver at index "+i
+    }};
+    if(slot===1)return {scratchpad:{
+      "enclosing_target[object]":{
+        target_ref:"framing-target-"+frame,context_refs:[parent],
+        invariants:["retained source identity","attribution"],
+        purpose:"Construct a new higher-level perspective and preserve the predecessor"
+      }
+    }};
+    return {scratchpad:{
+      "higher_order_result[object]":{
+        preserved_properties:["source identity","original instruction"],
+        suppressed_details:["irrelevant display formatting"],
+        introduced_assumptions:[{assumption:"the prior solver is unfinished",uncertainty:"explicit"}],
+        source_mapping:[{source_ref:parent,target_ref:"construct-"+frame}],
+        next_solver_input:{problem_ref:"construct-"+frame,source_refs:[parent]},
+        representation:{
+          elements:["the nested prior solver","an enclosing construct"],
+          relationships:[{from:"prior",to:"enclosing",kind:"object-of"}],
+          construction_rules:["preserve source lineage","describe distinct conceptual structure"],
+          invariants:["original instruction cannot be silently reinterpreted"]
+        }
+      },
+      "narrative[string]":"A new construct whose input is the preceding solver and its limitations"
+    }};
+  }
+  return {scratchpad:{"narrative[string]":"A substantive new reconciliation at outer index "+i}};
  });
  return JSON.stringify(a);
 }
@@ -170,6 +205,41 @@ test("enclosing frames receive preceding solver, source lineage and five reasoni
  assert.ok(frames.every(x=>x.operator.name==="SOLVER_LIFT"));
  assert.ok(frames.every(x=>x.input_contract.inner_solver));
  assert.ok(frames.every(x=>x.output_contract.outer_solver_input));
+});
+test("structural validation rejects frame inputs without solver provenance",()=>{
+ const start=run(null,make(1));
+ const two=JSON.parse(make(2));
+ assert.equal(validateEntryStructure(two,1,p,registry,start.state.progression.frame_selections),null);
+ delete two[1].scratchpad["solver_or_subject[object]"].source_refs;
+ assert.ok(validateEntryStructure(two,1,p,registry,start.state.progression.frame_selections));
+ const rejected=run(start.state,JSON.stringify(two));
+ assert.equal(rejected.state.progression.accepted_entries,1);
+ assert.equal(rejected.publication_required,false);
+});
+test("ABSTRACT result must contain mode-specific representation and source mappings",()=>{
+ const one=run(null,make(1)),two=run(one.state,make(2)),three=run(two.state,make(3));
+ assert.equal(three.state.progression.accepted_entries,3);
+ const fourth=JSON.parse(make(4));
+ const frames=three.state.progression.frame_selections;
+ assert.equal(frames.F0.mode,"CONSTRUCT");
+ assert.equal(validateEntryStructure(fourth,3,p,registry,frames),null);
+ delete fourth[3].scratchpad["higher_order_result[object]"].representation.construction_rules;
+ assert.ok(validateEntryStructure(fourth,3,p,registry,frames));
+ const missing=JSON.parse(make(4));
+ missing[3].scratchpad["higher_order_result[object]"].source_mapping=[];
+ assert.ok(validateEntryStructure(missing,3,p,registry,frames));
+});
+test("SOLVER_LIFT result must target the inner solver itself",()=>{
+ const op=functionForIndex(777,1,p,registry,()=>0,{});
+ const frames={F0:op.higher_order_frame};
+ const value=JSON.parse(make(4));
+ value[3].scratchpad["higher_order_result[object]"].outer_solver_input={
+   subject_solver_ref:"/0",question_about_solver:"Which assumptions can the inner solver justify?",
+   problem_ref:"/0",source_refs:["/0"]
+ };
+ assert.equal(validateEntryStructure(value,3,p,registry,frames),null);
+ value[3].scratchpad["higher_order_result[object]"].outer_solver_input.subject_solver_ref="";
+ assert.ok(validateEntryStructure(value,3,p,registry,frames));
 });
 test("reconciler validates coverage of nested preparation and preceding outer pointers",()=>{
  const a=JSON.parse(make(18));
