@@ -1,75 +1,127 @@
-name: Issue 1 JSON comment normalizer
+name: Issue 1 JSON validation and diagnostic state
 on:
   issue_comment:
     types: [created, edited]
   push:
     paths:
       - '.github/workflows/issue1-json-validator.yml'
+      - 'src/issue1-diagnostics.js'
+      - 'src/issue1-diagnostics.test.js'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  issues: write
+  contents: write
+  issues: read
+
+# Serialize writes into the same git branch, including different comment IDs.
+concurrency:
+  group: issuescratch-issue1-state
+  cancel-in-progress: false
 
 jobs:
-  normalize:
+  diagnose:
     if: github.event_name != 'issue_comment' || github.event.issue.number == 1
     runs-on: ubuntu-latest
     steps:
-      - name: Normalize and verify comments
+      - uses: actions/checkout@v4
+      - name: Test deterministic analyzer and state machine
+        run: node --test src/issue1-diagnostics.test.js
+      - name: Validate, measure, and persist comment state
         uses: actions/github-script@v7
         with:
           script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const scan = context.eventName !== 'issue_comment';
-            const issue_number = 1;
+            const { processRevision, sha } = require('./src/issue1-diagnostics.js');
+            const owner = context.repo.owner, repo = context.repo.repo;
+            const eventName = context.eventName;
+            const scan = eventName !== 'issue_comment';
             const comments = scan
-              ? await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number, per_page: 100})
+              ? await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: 1, per_page: 100 })
               : [context.payload.comment];
-            const results = [];
-            let repaired = 0;
-            let valid = 0;
-            let failed = 0;
+            const folder = 'workspaces/issue1-diagnostics/comments';
+            const stats = { inspected: 0, recorded: 0, duplicates: 0, malformed: 0, errored: 0 };
+            const rows = [];
             const failures = [];
-            for (const item of comments) {
-              const comment_id = item.id;
-              const url = item.html_url || `https://github.com/${owner}/${repo}/issues/1#issuecomment-${comment_id}`;
+
+            async function readFile(path) {
               try {
-                const { data: current } = await github.rest.issues.getComment({owner, repo, comment_id});
-                const original = current.body ?? '';
-                let isValid = true;
-                try { JSON.parse(original); } catch (_) { isValid = false; }
-                if (isValid) {
-                  valid += 1;
-                  results.push([String(comment_id), 'valid', 'unchanged', url]);
+                const { data } = await github.rest.repos.getContent({owner,repo,path});
+                if (Array.isArray(data) || data.type !== 'file' || data.encoding !== 'base64') {
+                  throw new Error('Expected base64 JSON file at ' + path);
+                }
+                return { sha: data.sha, value: JSON.parse(Buffer.from(data.content,'base64').toString('utf8')) };
+              } catch (e) {
+                if (e.status === 404) return null;
+                throw e;
+              }
+            }
+            async function writeObject(path, value, previous) {
+              if (!value || typeof value !== 'object' || Array.isArray(value)) {
+                throw new Error('Diagnostic and state roots must be JSON objects');
+              }
+              const body = JSON.stringify(value,null,2) + '\n';
+              const args = {
+                owner,repo,path,
+                message: 'diagnostics: capture Issue #1 comment revision state',
+                content: Buffer.from(body,'utf8').toString('base64'),
+                ...(previous ? {sha:previous.sha} : {})
+              };
+              await github.rest.repos.createOrUpdateFileContents(args);
+              const verified = await readFile(path);
+              if (!verified || JSON.stringify(verified.value) !== JSON.stringify(value)) {
+                throw new Error('Persistent JSON readback mismatch: '+path);
+              }
+            }
+            for (const item of comments) {
+              const id = item.id;
+              const url = item.html_url || ('https://github.com/'+owner+'/'+repo+'/issues/1#issuecomment-'+id);
+              stats.inspected++;
+              try {
+                // Re-fetch current source: an event payload may represent a superseded edit.
+                const {data:current} = await github.rest.issues.getComment({owner,repo,comment_id:id});
+                const body = current.body ?? '';
+                const revisionSha = sha(body);
+                const root = folder+'/'+id;
+                const statePath = root+'/state.json';
+                const revisionPath = root+'/revisions/'+revisionSha+'.json';
+                const existingState = await readFile(statePath);
+                const priorState = existingState?.value ?? null;
+                const result = processRevision(priorState,body,id,revisionPath,eventName);
+                if (result.duplicate) {
+                  stats.duplicates++;
+                  rows.push([String(id),'unchanged',String(priorState?.progression?.accepted_entries??0),url]);
                   continue;
                 }
-                const wrapped = JSON.stringify({'invalid json': original}, null, 2);
-                await github.rest.issues.updateComment({owner, repo, comment_id, body: wrapped});
-                const {data: saved} = await github.rest.issues.getComment({owner, repo, comment_id});
-                const parsed = JSON.parse(saved.body);
-                if (Object.keys(parsed).length !== 1 ||
-                    !Object.prototype.hasOwnProperty.call(parsed, 'invalid json') ||
-                    parsed['invalid json'] !== original) {
-                  throw new Error('Saved wrapper did not preserve the complete original body');
+                // Immutable diagnostic snapshots. Persist before advancing the state pointer.
+                const previousDiagnostic = await readFile(revisionPath);
+                if (previousDiagnostic) {
+                  if (JSON.stringify(previousDiagnostic.value)!==JSON.stringify(result.diagnostic)) {
+                    throw new Error('Immutable revision hash conflicts with stored diagnostics');
+                  }
+                } else {
+                  await writeObject(revisionPath,result.diagnostic,null);
                 }
-                repaired += 1;
-                results.push([String(comment_id), 'invalid', 'wrapped and verified', url]);
-              } catch (error) {
-                failed += 1;
-                const reason = `comment ${comment_id}: ${error.message}`;
-                failures.push(reason);
-                core.error(reason);
-                results.push([String(comment_id), 'error', reason, url]);
+                await writeObject(statePath,result.state,existingState);
+                stats.recorded++;
+                if (!result.diagnostic.source.json_valid) {
+                  stats.malformed++;
+                  core.warning('Comment '+id+': invalid JSON; state unchanged; diagnostic saved at '+revisionPath);
+                } else if (result.diagnostic.source.validation_error) {
+                  core.warning('Comment '+id+': '+result.diagnostic.source.validation_error.message+'; diagnostic saved');
+                }
+                rows.push([String(id),result.action,
+                  String(result.state.progression.accepted_entries),url]);
+              } catch (e) {
+                stats.errored++;
+                failures.push('comment '+id+': '+e.message);
+                core.error('comment '+id+': '+e.message);
+                rows.push([String(id),'persistence error','—',url]);
               }
             }
             await core.summary
-              .addHeading('Issue #1 comment JSON validation')
-              .addRaw(`Trigger: ${context.eventName}; scan: ${scan}; comments: ${comments.length}; valid: ${valid}; repaired: ${repaired}; failed: ${failed}`)
+              .addHeading('Issue #1 deterministic JSON diagnostics')
+              .addRaw('Event: '+eventName+'; inspected: '+stats.inspected+'; recorded: '+stats.recorded+'; repeated: '+stats.duplicates+'; invalid JSON: '+stats.malformed+'; persistence failures: '+stats.errored+'. Stored state and immutable revisions are JSON objects under '+folder+'/.' )
               .addTable([
-                [{data: 'Comment ID', header: true}, {data: 'Input', header: true}, {data: 'Outcome', header: true}, {data: 'URL', header: true}],
-                ...results.map(row => row.map(data => ({data})))
-              ])
-              .write();
-            if (failed > 0) core.setFailed(failures.join('\n'));
+                [{data:'Comment',header:true},{data:'Transition',header:true},{data:'Accepted entries',header:true},{data:'URL',header:true}],
+                ...rows.map(r=>r.map(data=>({data})))
+              ]).write();
+            if(failures.length)core.setFailed(failures.join('\n'));
