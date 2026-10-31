@@ -1,8 +1,8 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.1.0",
+  "format_version": "2.2.0",
   "repository": "BestNameYet/IssueScratch",
-  "interpretation": "Authoritative procedures define a root JSON array of at least seven single-key scratchpad wrappers; each wrapper has the literal key scratchpad holding one nonempty open heterogeneous typed object. Previously saved shapes remain historical.",
+  "interpretation": "Authoritative procedures define a root JSON array of at least seventeen single-key scratchpad wrappers; each wrapper has the literal key scratchpad holding one nonempty open heterogeneous typed object. Previously saved shapes remain historical.",
   "opcode_format": {
     "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
     "order": "Section hierarchy followed by clause order",
@@ -39,11 +39,11 @@
     },
     {
       "opcode": "IS.01.002",
-      "version": 4,
+      "version": 5,
       "source_section": "1",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Use one root JSON array with at least seven entries; every entry is an object containing exactly one key named scratchpad, whose value is one substantive scratchpad object.",
+      "imperative": "Use one root JSON array with at least seventeen entries; every entry is an object containing exactly one key named scratchpad, whose value is one substantive scratchpad object.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -270,11 +270,11 @@
     },
     {
       "opcode": "IS.04.001",
-      "version": 4,
+      "version": 5,
       "source_section": "4",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Return every new RS record as one root JSON array of at least seven entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
+      "imperative": "Return every new RS record as one root JSON array of at least seventeen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -1698,9 +1698,9 @@
     },
     {
       "opcode": "IS.04.012",
-      "imperative": "Require a minimum of seven scratchpad-wrapped array entries; do not require array lengths greater than seven to be prime.",
+      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
       "modality": "require",
-      "version": 4,
+      "version": 5,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1708,9 +1708,9 @@
     },
     {
       "opcode": "IS.04.013",
-      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seven entries without a maximum length.",
+      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
       "modality": "allow",
-      "version": 4,
+      "version": 5,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1718,9 +1718,9 @@
     },
     {
       "opcode": "IS.04.014",
-      "imperative": "Apply the single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records and the previous unwrapped-array Job #6 comment unchanged.",
+      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
       "modality": "require",
-      "version": 4,
+      "version": 5,
       "source_section": "4",
       "source_line_range": null,
       "condition": null,
@@ -1837,7 +1837,7 @@
       },
       {
         "id": "4",
-        "title": "Return Schema (RS): root array with at least seven scratchpad objects",
+        "title": "Return Schema (RS): root array with at least seventeen scratchpad-wrapped objects",
         "start_line": null,
         "end_line": null,
         "kind": "current_instruction"
@@ -1967,7 +1967,7 @@
       "Prepare handoff notes for a succeeding agent or session.",
       "Record lessons learned and candidates for future adjudication."
     ],
-    "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seven entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
+    "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
     "allowed_RS_transition_classifications": [
       "paraphrase",
       "appended expansion",
@@ -1990,7 +1990,7 @@
     "registered_scratchpad_fields": {
       "version": "issuescratch.scratchpad-field-registry.v2",
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
-      "blob_sha": "fe5f45a5ed020e8bd58302cbba700f00937bafad",
+      "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
       "git_url": "https://github.com/BestNameYet/IssueScratch/blob/main/src/types/issuescratch.scratchpad-field-registry.v2.json",
       "declared_fields": 59,
       "permitted_use_fields": 38,
@@ -2002,7 +2002,7 @@
       "legacy_records_preserved": true,
       "enforcement_state": "The type registry and AGENTS.md specify a required wrapper, but the deployed comment-normalization workflow verifies JSON syntax only.",
       "root_type": "array",
-      "minimum_items": 7,
+      "minimum_items": 17,
       "item_type": "single_key_wrapper_object",
       "zero_based_indices": true,
       "no_maximum_items": true,
@@ -2076,11 +2076,142 @@
             }
           ]
         }
+      },
+      {
+        "scratchpad": {
+          "failures[array<FailureRecord>]": [
+            {
+              "failure_id[string]": "F1",
+              "operation[string]": "Parse an input",
+              "error[string]": "Illustrative malformed token",
+              "impact[string]": "No state transition",
+              "resolved[boolean]": false
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "dependencies[array<Dependency>]": [
+            {
+              "dependency_id[string]": "D1",
+              "prerequisite[string]": "Review the input schema",
+              "state[string]": "pending",
+              "blocked_work[array<Reference>]": []
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "definitions[array<Definition>]": [
+            {
+              "term[string]": "receipt",
+              "meaning[string]": "A durable observation that an operation took place",
+              "scope[string]": "Illustrative workflow",
+              "example[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "scope_changes[array<ScopeChange>]": [
+            {
+              "change_id[string]": "C1",
+              "prior_scope[string]": "Single input",
+              "revised_scope[string]": "Multiple records",
+              "authorized_by[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "architecture_comparisons[array<ArchitectureComparison>]": [
+            {
+              "options[array<ArchitectureOption>]": [
+                {
+                  "name[string]": "Polling",
+                  "strengths[string]": "Simple integration",
+                  "weaknesses[string]": "Repeated requests"
+                },
+                {
+                  "name[string]": "Events",
+                  "strengths[string]": "Responsive",
+                  "weaknesses[string]": "Needs deduplication"
+                }
+              ],
+              "criterion[string]": "Reliability",
+              "decision[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "assumptions[array<Assumption>]": [
+            {
+              "assumption_id[string]": "A1",
+              "proposition[string]": "A test endpoint is reachable",
+              "supporting_evidence[array<Evidence>]": [],
+              "confidence[string]": "unverified"
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "failure_modes[array<FailureMode>]": [
+            {
+              "scenario[string]": "Two workers claim the same work",
+              "trigger[string]": "Concurrent retries",
+              "consequence[string]": "Duplicate activity",
+              "mitigation[string]": "Idempotent nonce check"
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "authorizations[array<Authorization>]": [
+            {
+              "instruction_id[string]": "U1",
+              "authorizer[string]": "Example user",
+              "decision[string]": "pending",
+              "scope[string]": "Proposed test change",
+              "timestamp[string|null]": null
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "rationales[array<RationaleRecord>]": [
+            {
+              "decision[string]": "Defer unverified result publication",
+              "explanation[string]": "No execution receipt has been inspected",
+              "assumptions[array<Assumption>]": []
+            }
+          ]
+        }
+      },
+      {
+        "scratchpad": {
+          "lessons_learned[array<LessonLearned>]": [
+            {
+              "lesson[string]": "Separate submission from execution",
+              "evidence[array<Evidence>]": [],
+              "prospective_change[string|null]": "Add explicit receipt verification",
+              "adjudication_candidate[boolean]": false
+            }
+          ]
+        }
       }
     ],
     "scratchpad_array": {
       "root_type": "array",
-      "minimum_items": 7,
+      "minimum_items": 17,
       "first_index": 0,
       "maximum_items": null,
       "item_type": "single_key_object_wrapper",
@@ -2088,7 +2219,7 @@
       "item_keys_optional": false,
       "selection": "Choose any applicable registered typed fields inside each scratchpad value. The outer wrapper must have exactly the literal key scratchpad.",
       "array_length_prime_requirement": false,
-      "legacy_record_compatibility": "Earlier three-named-object comments and unwrapped seven-element Job #6 remain unchanged as historical records.",
+      "legacy_record_compatibility": "Earlier three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 remain unchanged as historical records.",
       "item_required_key": "scratchpad",
       "item_additional_keys_allowed": false,
       "item_value_type": "open_heterogeneous_json_object"
@@ -2096,19 +2227,19 @@
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "8b3562dbea789e32a3dbeebb322eb2494e9a3493",
+    "previous_active_document_blob_sha": "c71b8baeaede1f69dc01abaf4fb6bd05e310875f",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "User correction: require each new scratchpad array element to be an object explicitly keyed scratchpad, with independently typed fields inside that key. Retain the seven-item minimum and preserve legacy comments without rewriting."
+    "current_amendment": "User-authorized increase of the minimum new root scratchpad array length from seven to seventeen. Each element remains exactly a single-key scratchpad wrapper with independently typed heterogeneous content. Historical records are unchanged."
   },
   "coverage": {
     "active_section_count": 21,
     "active_procedure_count": 144,
     "registered_fields": 59,
-    "linked_registry_sha": "fe5f45a5ed020e8bd58302cbba700f00937bafad",
+    "linked_registry_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
     "active_examples": 0,
     "source_traceability": "Historical procedures reference their original blob SHA and source section; new procedures reference the current amendment. Deleted historical text remains in Git history, not in this active document.",
     "all_active_sections_mapped": true,
-    "array_root_minimum_items": 7,
+    "array_root_minimum_items": 17,
     "legacy_RS_objects_preserved": true,
     "array_item_wrapper_key": "scratchpad",
     "array_item_wrapper_exact_keys": true
