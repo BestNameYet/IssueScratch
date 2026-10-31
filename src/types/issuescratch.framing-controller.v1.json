@@ -1,7 +1,7 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "1.6.0",
-  "purpose": "Nineteen top-level indices: one preparatory five-scratchpad array, five three-index random reframing exercises, and three reconciliation indices.",
+  "version": "2.0.0",
+  "purpose": "One preparation entry; five three-slot recursive frames, each governed by one randomly selected higher-order operator (SOLVER_LIFT or ABSTRACT); three reconciliation entries. Atomic OP.01 operators may also be selected per index.",
   "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
   "last_tracked_index": 18,
@@ -13,7 +13,7 @@
   ],
   "free_indices": [],
   "layout": "0: one preparatory scratchpad holding five nested scratchpads; 1..15: five frames of R-A, R-B, and narrative expansion (3 each); 16: collect/reconcile; 17: opcode project all earlier material; 18: final synthesis/validation.",
-  "selection_method": "For each accepted incremental index, draw one uniformly random pool index with Node.js crypto.randomInt; never derive the choice from comment ID or an agent's judgment. Persist the chosen function as an immutable instruction and in state. Retries recover the stored choice and MUST NOT draw again.",
+  "selection_method": "On the first slot of each three-index frame, draw SOLVER_LIFT or ABSTRACT uniformly using crypto.randomInt(2). If ABSTRACT is chosen, draw one mode from CONTRACT, IMPLEMENTATION, CONSTRUCT, GENERAL using crypto.randomInt(4). Retain that single higher-order choice across the frame's three indices. Independently draw an eligible OP.01 atomic function for each new index, including reconciliation. Persist every draw and never reroll after interruption.",
   "constraints": [
     "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
     "Preserve all previously accepted entries without edits; keep references R-A and R-B distinct through all five frames.",
@@ -21,7 +21,6 @@
     "Each narrative expansion adds new substantive content rather than merely paraphrasing the preceding frame.",
     "No semantic compliance checker is asserted: the workflow checks structural validity and retains complete diagnostic evidence.",
     "After index 18, freeze progression while continuing JSON validation.",
-    "At each eligible accepted transition select exactly one OP function uniformly using crypto.randomInt and persist choice, index, pool size and source revision; never regenerate a choice on retries.",
     "The preparatory entry retains the entire original instruction and an explicit opcode rendering as substantive scratchpad content, not workflow metadata.",
     "The three final entries are explicitly reconciliatory, not unrestricted.",
     "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths.",
@@ -29,7 +28,13 @@
     "The adversarial preparation must drive concrete checks for the action decomposition and the final reconciler.",
     "The preparatory instruction record must include explicit, minimalist, maximalist, inferred beginning/post states, and inferred change as distinct projections.",
     "Prepare an initial context-aware opcode-step projection in the first of the five nested preparatory scratchpads, with context_elements as an explicitly typed array.",
-    "Keep the first opcode projection provisional and preserve traceability through adversarial review, atomic decomposition, final rendering and reconciliation."
+    "Keep the first opcode projection provisional and preserve traceability through adversarial review, atomic decomposition, final rendering and reconciliation.",
+    "Select exactly one OP.02 higher-order framing operator for each of the five three-index exercises; never choose a separate higher-order operator for each slot.",
+    "SOLVER_LIFT takes the preceding solver, its assumptions/method/limitations and its provenance as input to an enclosing solver; it must not simply paraphrase the original problem.",
+    "ABSTRACT changes representation under one of four explicit modes; IMPLEMENTATION represents a mechanism without executing code.",
+    "Retain the same higher-order mode/operator through all three slots, and preserve identity, attribution, invariants, suppression lists and source mapping across frames.",
+    "Retain independently selected atomic OP.01 steps per index where useful; atomic and higher-order choices have different semantics and must not be conflated.",
+    "No claim of semantic correctness or actual solver execution follows from structural validation or opcode publication."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
   "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
@@ -253,5 +258,57 @@
     "initial_projection_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]",
     "context_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]",
     "revision_rule": "Nested index 4 must reconcile each preliminary step with atomistic actions from nested index 3, recording amended, retained, rejected and added step mappings."
+  },
+  "higher_order_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+  "higher_order_operator_pool": [
+    "OP.02.001",
+    "OP.02.002"
+  ],
+  "higher_order_abstract_modes": [
+    "CONTRACT",
+    "IMPLEMENTATION",
+    "CONSTRUCT",
+    "GENERAL"
+  ],
+  "higher_order_frame_selection": "one new higher-order selection per frame, at indices 1,4,7,10,13; reuse at every later index inside the same frame",
+  "higher_order_randomness": "50/50 operator class; four modes equiprobable conditional on ABSTRACT; atomic operator is independently selected from fourteen OP.01 codes at each index",
+  "frame_input_contract": {
+    "inner_solver_fields": [
+      "problem_ref",
+      "method_ref",
+      "assumptions_ref",
+      "intermediate_result_refs",
+      "limitations_ref",
+      "source_refs"
+    ],
+    "abstraction_fields": [
+      "subject_ref",
+      "context_refs",
+      "invariants",
+      "mode",
+      "target"
+    ],
+    "frame_lineage_fields": [
+      "frame_id",
+      "enclosing_frame_id",
+      "source_indices",
+      "source_refs",
+      "invariants"
+    ],
+    "frame_output_fields": [
+      "preserved_properties",
+      "suppressed_details",
+      "introduced_assumptions",
+      "source_mapping",
+      "next_solver_input"
+    ],
+    "note": "At framing slot 0 identify the inner solver/subject; slot 1 identify enclosing perspective and invariants; slot 2 construct transformed output plus source mappings. No autonomous solver execution is implied."
+  },
+  "frame_selection_persistence": {
+    "state_field": "progression.frame_selections",
+    "instruction_field": "higher_order_frame",
+    "choice_receipt": "Same per-index immutable instruction JSON and controller comment used by OP.01 selections",
+    "replay": "Upon retry, re-read the saved per-index draw sequence (operator, optional mode, atomic), and use the existing frame selection for the other two slots.",
+    "compatibility": "Prior issued instructions remain immutable; this operator profile applies to newly initiated frames and new comments."
   }
 }
