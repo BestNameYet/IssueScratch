@@ -1,0 +1,58 @@
+{
+  "schema": "issuescratch.frame-instruction-receipt.v1",
+  "source_comment_id": 6548382814,
+  "source_revision_sha256": "1c49a55e7badf85d489115b5e9c765534f153d36d2d505df1cc567713ee4c59b",
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548382814,
+    "target_index": 14,
+    "profile_version": "1.1.0",
+    "selected_function": {
+      "opcode": "OP.01.002",
+      "name": "GENERATE",
+      "description": "Produce new content under given constraints",
+      "input_contract": "input_and_constraints",
+      "output_contract": "candidate"
+    },
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 0,
+      "selection_round": 1,
+      "note": "One fresh draw on an accepted revision; retry uses persisted choice."
+    },
+    "opcodes": [
+      "OP.01.002"
+    ],
+    "read_indices": [],
+    "frame_id": null,
+    "enclosing_frame_id": null,
+    "role": "unrestricted",
+    "reference_id": null,
+    "original_anchor_index": null,
+    "previous_frame_index": null,
+    "requirements": [
+      "Apply function GENERATE (OP.01.002) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+      "Choose a substantive contribution without a fixed semantic role.",
+      "Append exactly one scratchpad object at index 14; preserve the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "publication_status": "selected"
+}
