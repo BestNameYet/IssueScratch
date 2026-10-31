@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.8.2",
+  "format_version": "2.8.3",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2172,6 +2172,16 @@
       "imperative": "Do not claim a workflow-driven README experiment complete merely because seventeen entries exist; require sequential accepted revisions, verified external agent acknowledgements, matching controller instruction history, and source-consistent final artifact receipt.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.10.013",
+      "version": 1,
+      "source_section": "10",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Commit all authorized IssueScratch file changes and workspace acknowledgements directly on the default main branch; use GitHub Issue #1 comments for source submissions and controller replies. Do not create branches or pull requests for this workflow.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -2548,14 +2558,16 @@
         "write external acknowledgement JSON object referencing new submitted revision",
         "poll for matching accepted workflow state and instruction; update external acceptance record only after validation"
       ],
-      "acceptance_is_separate_from_submission": true
+      "acceptance_is_separate_from_submission": true,
+      "repository_write_branch": "main",
+      "pull_requests_allowed": false
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "06a9fbd3574825340b955110341b37f281cf72cc",
+    "previous_active_document_blob_sha": "5d12edf7e22f83700b3bc23191f3526f27a70b66",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Order workflow handshake as agent comment append, comment readback, then separate workspace acknowledgement; keep controller artifacts out of comments.",
+    "current_amendment": "Require direct main-branch commits and no pull-request/branch workflow for IssueScratch.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2564,7 +2576,7 @@
   },
   "coverage": {
     "active_section_count": 23,
-    "active_procedure_count": 184,
+    "active_procedure_count": 185,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
