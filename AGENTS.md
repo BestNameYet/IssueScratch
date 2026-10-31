@@ -1,11 +1,11 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.5.0",
+  "format_version": "2.6.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the seventeen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
     "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
-    "order": "Section hierarchy followed by clause order",
+    "order": "Numeric section hierarchy followed by numeric clause order (section before subsections), without changing opcode identities",
     "unique": true,
     "required_fields": [
       "opcode",
@@ -265,313 +265,6 @@
       ],
       "modality": "require",
       "imperative": "Keep job references and current state discoverable.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.04.001",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Return every new RS record as one root JSON array of at least seventeen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.002",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Arrange the single-key scratchpad wrappers by ascending zero-based array index.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.005",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Populate the scratchpad value in every array entry with nonempty substantive agent-authored fields; prohibit empty, primitive, null or array scratchpad values.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.006",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Make the substantive contents of the scratchpad value in each array element distinct from those of other array elements, not paraphrases or appended expansions.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.009",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Keep the zero-based array indices and the identical scratchpad wrapper key free of fixed semantic roles or topic assignments.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.011",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Record job metadata using an optional registered field inside a selected scratchpad value or a separately linked Issue #1 record; never add it as a sibling of the wrapper key.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.05.001",
-      "version": 1,
-      "source_section": "5",
-      "source_line_range": [
-        549,
-        552
-      ],
-      "modality": "require",
-      "imperative": "Initiate periodic RS adjudication only when authorized.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.05.002",
-      "version": 1,
-      "source_section": "5",
-      "source_line_range": [
-        549,
-        552
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not invent a fixed review interval, per-task gate, reviewer, or automatic grading process.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.001",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Work from the user's objective and verified repository ground truth.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.002",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Preserve the user's intended scope and abstraction level.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.003",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not impose unsolicited restrictions or architectural substitutions.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.004",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Parallelize independent tasks where practical and retain their links to the parent Issue #1 job.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.005",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Document consequential deviations, unresolved decisions, and failures.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.006",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Stop all work immediately on a halt request without housekeeping writes.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.007",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Seek authorization before making out-of-scope changes.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.008",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "require",
-      "imperative": "Report unavailable tools and missing permissions accurately.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.06.009",
-      "version": 1,
-      "source_section": "6",
-      "source_line_range": [
-        580,
-        589
-      ],
-      "modality": "prohibit",
-      "imperative": "Do not claim asynchronous workflows are operational without proof.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.001",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Verify source instructions and durable Issue #1 comment IDs.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.002",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Record actual rather than optimistic job states.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.003",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Keep enough scratchpad evidence for continuation by another agent.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.005",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Verify claimed edits, tests, executions, and outputs against real evidence.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.006",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Disclose remaining work and failures.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.07.007",
-      "version": 1,
-      "source_section": "7",
-      "source_line_range": [
-        590,
-        602
-      ],
-      "modality": "require",
-      "imperative": "Use stronger verification for repository mutations and multi-step jobs.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.08.001",
-      "version": 1,
-      "source_section": "8",
-      "source_line_range": [
-        603,
-        608
-      ],
-      "modality": "require",
-      "imperative": "Inspect the current repository and Issue #1 rather than trusting historical bootstrap statements.",
-      "condition": null,
-      "source_archive_ref": "source_archive.original_blob_sha"
-    },
-    {
-      "opcode": "IS.08.002",
-      "version": 1,
-      "source_section": "8",
-      "source_line_range": [
-        603,
-        608
-      ],
-      "modality": "require",
-      "imperative": "Verify the actual intake-to-completion cycle before declaring it functional.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
     },
@@ -1155,6 +848,166 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
+      "opcode": "IS.04.001",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Return every new RS record as one root JSON array of at least seventeen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.002",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Arrange the single-key scratchpad wrappers by ascending zero-based array index.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.005",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Populate the scratchpad value in every array entry with nonempty substantive agent-authored fields; prohibit empty, primitive, null or array scratchpad values.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.006",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Make the substantive contents of the scratchpad value in each array element distinct from those of other array elements, not paraphrases or appended expansions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.009",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Keep the zero-based array indices and the identical scratchpad wrapper key free of fixed semantic roles or topic assignments.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.011",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Record job metadata using an optional registered field inside a selected scratchpad value or a separately linked Issue #1 record; never add it as a sibling of the wrapper key.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.012",
+      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
+      "modality": "require",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.013",
+      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
+      "modality": "allow",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.014",
+      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
+      "modality": "require",
+      "version": 5,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.015",
+      "imperative": "Distinguish the root array of wrappers from arrays nested inside a scratchpad's selected typed values.",
+      "modality": "prohibit",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.016",
+      "imperative": "Treat the existing issue-comment JSON normalizer as syntax-only; do not claim it enforces the required scratchpad wrapper or typed content.",
+      "modality": "require",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.017",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require exactly one own property with the literal name scratchpad on each array element.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.018",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require each scratchpad property to contain one nonempty open heterogeneous JSON object, whose fields are independently selected and typed.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.019",
+      "version": 4,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.020",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.021",
+      "version": 1,
+      "source_section": "4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
       "opcode": "IS.04.01.001",
       "version": 6,
       "source_section": "4.1",
@@ -1227,6 +1080,46 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
+      "opcode": "IS.04.01.007",
+      "version": 6,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Treat the permitted-use statements in the linked canonical document as one flat shuffled collection; their adjacency conveys no semantic relationship.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.008",
+      "version": 6,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not infer parent actions, subtype hierarchy, category, or fixed scratchpad-index assignment from the order of the linked catalog.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.014",
+      "version": 6,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require the external catalog to specify expected action inputs using typed fields and preexisting named object types rather than assigning a data type to the action-description string.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.01.015",
+      "version": 6,
+      "source_section": "4.1",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not require an action's complete input contract to be populated when merely recording a partial observation; validate any present fields according to their declared types.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
       "opcode": "IS.04.02.001",
       "version": 4,
       "source_section": "4.2",
@@ -1294,6 +1187,166 @@
       "imperative": "Do not reject independent contributions merely because identifiers or necessary terms recur.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.04.03.001",
+      "version": 6,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Read the linked canonical permitted-uses-and-input-types document and its named object type definitions before selecting typed fields in a new scratchpad record.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.002",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Allow the agent to choose any subset of registered keys independently within each scratchpad.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.003",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not require an unused registered key, an empty array, or a null placeholder merely because that key is registered.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.004",
+      "version": 6,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Accept all 38 previously permitted-use field declarations and 21 observed legacy field declarations as available optional types from the linked canonical catalog.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.005",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Use the registered field type for each chosen key; validate the value of that key independently of all absent keys.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.006",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Allow additional suitable scratchpad keys when their types are appropriately defined without converting the catalog into a closed vocabulary.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.007",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Preserve all existing unannotated historical keys and value forms without migrating or invalidating earlier Issue #1 comments.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.008",
+      "version": 2,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not describe registry declaration as deployed runtime enforcement unless the relevant validator is implemented and tested.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.03.009",
+      "version": 6,
+      "source_section": "4.3",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Consult the combined canonical catalog for both permitted actions and registered field/named-object definitions; use the older standalone registry only for historical revision comparison.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.001",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Treat each JSON object as an open heterogeneous container whose keys may each have different value types.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.002",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Allow any selection of independently typed keys in an object without requiring its other registered fields.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.003",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Permit string, number, boolean, null, object, and array values where their individual declarations allow them.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.004",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "allow",
+      "imperative": "Allow nested objects with additional appropriately typed keys and with omitted optional keys.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.005",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Respect named object declarations and nested value types for fields that are actually present.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.006",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Retain legacy primitive arrays without requiring conversion to named-object arrays.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.04.04.007",
+      "version": 2,
+      "source_section": "4.4",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not impose a fixed mapping between activity types and scratchpad positions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.04.05.001",
@@ -1370,6 +1423,32 @@
       ],
       "modality": "prohibit",
       "imperative": "Do not hide missing deliverables, unauthorized changes, or failures behind RS structure.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.05.001",
+      "version": 1,
+      "source_section": "5",
+      "source_line_range": [
+        549,
+        552
+      ],
+      "modality": "require",
+      "imperative": "Initiate periodic RS adjudication only when authorized.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.05.002",
+      "version": 1,
+      "source_section": "5",
+      "source_line_range": [
+        549,
+        552
+      ],
+      "modality": "prohibit",
+      "imperative": "Do not invent a fixed review interval, per-task gate, reviewer, or automatic grading process.",
       "condition": null,
       "source_archive_ref": "source_archive.original_blob_sha"
     },
@@ -1544,304 +1623,199 @@
       "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
-      "opcode": "IS.04.03.001",
-      "version": 6,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Read the linked canonical permitted-uses-and-input-types document and its named object type definitions before selecting typed fields in a new scratchpad record.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.002",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Allow the agent to choose any subset of registered keys independently within each scratchpad.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.003",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not require an unused registered key, an empty array, or a null placeholder merely because that key is registered.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.004",
-      "version": 6,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Accept all 38 previously permitted-use field declarations and 21 observed legacy field declarations as available optional types from the linked canonical catalog.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.005",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Use the registered field type for each chosen key; validate the value of that key independently of all absent keys.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.006",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Allow additional suitable scratchpad keys when their types are appropriately defined without converting the catalog into a closed vocabulary.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.007",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Preserve all existing unannotated historical keys and value forms without migrating or invalidating earlier Issue #1 comments.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.008",
-      "version": 2,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not describe registry declaration as deployed runtime enforcement unless the relevant validator is implemented and tested.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.001",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Treat each JSON object as an open heterogeneous container whose keys may each have different value types.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.002",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Allow any selection of independently typed keys in an object without requiring its other registered fields.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.003",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Permit string, number, boolean, null, object, and array values where their individual declarations allow them.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.004",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Allow nested objects with additional appropriately typed keys and with omitted optional keys.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.005",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Respect named object declarations and nested value types for fields that are actually present.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.006",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Retain legacy primitive arrays without requiring conversion to named-object arrays.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.04.007",
-      "version": 2,
-      "source_section": "4.4",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not impose a fixed mapping between activity types and scratchpad positions.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.012",
-      "imperative": "Require a minimum of seventeen scratchpad-wrapped array entries; do not require array lengths greater than seventeen to be prime.",
-      "modality": "require",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.013",
-      "imperative": "Allow additional single-key scratchpad-wrapped objects beyond seventeen entries without a maximum length.",
-      "modality": "allow",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.014",
-      "imperative": "Apply the seventeen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
-      "modality": "require",
-      "version": 5,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.015",
-      "imperative": "Distinguish the root array of wrappers from arrays nested inside a scratchpad's selected typed values.",
-      "modality": "prohibit",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.016",
-      "imperative": "Treat the existing issue-comment JSON normalizer as syntax-only; do not claim it enforces the required scratchpad wrapper or typed content.",
-      "modality": "require",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.017",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Require exactly one own property with the literal name scratchpad on each array element.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.018",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Require each scratchpad property to contain one nonempty open heterogeneous JSON object, whose fields are independently selected and typed.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.019",
-      "version": 4,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.01.007",
-      "version": 6,
-      "source_section": "4.1",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Treat the permitted-use statements in the linked canonical document as one flat shuffled collection; their adjacency conveys no semantic relationship.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.01.008",
-      "version": 6,
-      "source_section": "4.1",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not infer parent actions, subtype hierarchy, category, or fixed scratchpad-index assignment from the order of the linked catalog.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.01.014",
-      "version": 6,
-      "source_section": "4.1",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Require the external catalog to specify expected action inputs using typed fields and preexisting named object types rather than assigning a data type to the action-description string.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.01.015",
-      "version": 6,
-      "source_section": "4.1",
-      "source_line_range": null,
-      "modality": "prohibit",
-      "imperative": "Do not require an action's complete input contract to be populated when merely recording a partial observation; validate any present fields according to their declared types.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.03.009",
-      "version": 6,
-      "source_section": "4.3",
-      "source_line_range": null,
-      "modality": "require",
-      "imperative": "Consult the combined canonical catalog for both permitted actions and registered field/named-object definitions; use the older standalone registry only for historical revision comparison.",
-      "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
-    },
-    {
-      "opcode": "IS.04.020",
+      "opcode": "IS.06.001",
       "version": 1,
-      "source_section": "4",
-      "source_line_range": null,
-      "modality": "allow",
-      "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 16 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the seventeen-entry minimum is an RS under the standing contract.",
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Work from the user's objective and verified repository ground truth.",
       "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
+      "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
-      "opcode": "IS.04.021",
+      "opcode": "IS.06.002",
       "version": 1,
-      "source_section": "4",
-      "source_line_range": null,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
       "modality": "require",
-      "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
+      "imperative": "Preserve the user's intended scope and abstraction level.",
       "condition": null,
-      "source_archive_ref": "source_archive.current_amendment"
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.003",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "prohibit",
+      "imperative": "Do not impose unsolicited restrictions or architectural substitutions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.004",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Parallelize independent tasks where practical and retain their links to the parent Issue #1 job.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.005",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Document consequential deviations, unresolved decisions, and failures.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.006",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Stop all work immediately on a halt request without housekeeping writes.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.007",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Seek authorization before making out-of-scope changes.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.008",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "require",
+      "imperative": "Report unavailable tools and missing permissions accurately.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.06.009",
+      "version": 1,
+      "source_section": "6",
+      "source_line_range": [
+        580,
+        589
+      ],
+      "modality": "prohibit",
+      "imperative": "Do not claim asynchronous workflows are operational without proof.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.001",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Verify source instructions and durable Issue #1 comment IDs.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.002",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Record actual rather than optimistic job states.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.003",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Keep enough scratchpad evidence for continuation by another agent.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.005",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Verify claimed edits, tests, executions, and outputs against real evidence.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.006",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Disclose remaining work and failures.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.07.007",
+      "version": 1,
+      "source_section": "7",
+      "source_line_range": [
+        590,
+        602
+      ],
+      "modality": "require",
+      "imperative": "Use stronger verification for repository mutations and multi-step jobs.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
     },
     {
       "opcode": "IS.07.008",
@@ -1890,6 +1864,112 @@
       "source_line_range": null,
       "modality": "prohibit",
       "imperative": "Do not treat historical backfill as evidence of seventeen sequential entry events, or claim the next framing function is selected while operator selection remains unconfigured.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.08.001",
+      "version": 1,
+      "source_section": "8",
+      "source_line_range": [
+        603,
+        608
+      ],
+      "modality": "require",
+      "imperative": "Inspect the current repository and Issue #1 rather than trusting historical bootstrap statements.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.08.002",
+      "version": 1,
+      "source_section": "8",
+      "source_line_range": [
+        603,
+        608
+      ],
+      "modality": "require",
+      "imperative": "Verify the actual intake-to-completion cycle before declaring it functional.",
+      "condition": null,
+      "source_archive_ref": "source_archive.original_blob_sha"
+    },
+    {
+      "opcode": "IS.09.001",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Load original bytes and select the appropriate source extractor; default to opaque preservation for unsupported formats.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.002",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Compute canonical byte length and SHA-256, and retain exact original bytes in base64 before any transformation.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.003",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Extract source-linked records and assign record identities separately from functional opcodes.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.004",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Assign CAPTURE and EMIT; add only explicitly mapped, registry-valid intermediate operator opcodes.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.005",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Output one valid JSON object holding source, conversion metadata, and operation-coded records. Never replace or mutate the original document.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.006",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Verify byte-for-byte restoration, source digest, record coverage, pointers, original values, text fields, opcode validity, and step ordering.",
+      "condition": "before claiming success",
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.007",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Refuse unrecognized opcodes, duplicated identities, invalid mappings, and loss of source provenance; report errors instead of silently dropping source material.",
+      "condition": "on any conflict",
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.09.008",
+      "version": 1,
+      "source_section": "9",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Keep opcode classification separate from execution and semantic assessment; never claim that output instructions have been performed.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -2042,6 +2122,13 @@
         "start_line": 603,
         "end_line": 608,
         "kind": "archived_source_reference"
+      },
+      {
+        "id": "9",
+        "title": "Document-to-JSON procedural opcode adapter",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_normative_extension"
       }
     ],
     "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
@@ -2155,13 +2242,34 @@
       "function_dispatch_state": "unconfigured; no operator mappings or framing actions are emitted until separately defined and tested.",
       "root_objects_required": true,
       "semantic_adjudication": false
+    },
+    "document_opcode_adapter": {
+      "contract_path": "src/types/issuescratch.opcode-adapter-contract.v1.json",
+      "registry_path": "src/types/issuescratch.operation-registry.v1.json",
+      "registry_blob_sha": "233406589704b8b8a6ad8d1a749606867a2856c3",
+      "adapter_path": "src/opcode-document-adapter.js",
+      "tests_path": "src/opcode-document-adapter.test.js",
+      "first_source": "experiments/general-purpose-job-prompts.v1.json",
+      "first_mapping_profile": "experiments/general-purpose-job-opcode-map.v1.json",
+      "first_converted_output": "experiments/general-purpose-job-prompts.opcoded.v1.json",
+      "converted_output_sha": "6ded15c09b8959e15280e5abcf184072f4099e63",
+      "operation_opcode_namespace": "OP.01",
+      "procedure_opcode_namespace": "IS",
+      "operation_count": 16,
+      "record_identity_separate_from_opcode": true,
+      "lossless_exact_source_bytes": true,
+      "semantic_inference_by_default": false,
+      "specialized_operations_require_explicit_mapping": true,
+      "binary_files_preserved_without_implicit_parsing": true,
+      "output_is_json_object_not_scratchpad_array": true,
+      "execution_receipt_separate_from_declaration": true
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "41d6fe7490b1809b0f2fe6f758efa830cb4b1b8b",
+    "previous_active_document_blob_sha": "78e6627fc9c8a210297419a6c7a17031719d7c9d",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Define per-comment event-driven JSON diagnostics and persistent workspace state, with progressive draft handling, no invalid-comment rewriting, a freeze at index 16, and continued validation thereafter.",
+    "current_amendment": "Define reusable functional OP.* opcodes, a lossless document-to-JSON adapter, deterministic explicit mapping, validation and source-byte recovery, distinct from unique IS.* procedural opcodes. Sort existing procedural opcodes into declared section hierarchy without renumbering.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2169,8 +2277,8 @@
     }
   },
   "coverage": {
-    "active_section_count": 21,
-    "active_procedure_count": 156,
+    "active_section_count": 22,
+    "active_procedure_count": 164,
     "registered_fields": 59,
     "linked_registry_sha": "a335225df90e356832cdc0aacabad564899245d9",
     "active_examples": 0,
@@ -2188,6 +2296,9 @@
     "comment_diagnostics_enabled": true,
     "comment_diagnostics_history_json_objects": true,
     "comment_tracking_maximum_index": 16,
-    "comment_progression_function_selected": false
+    "comment_progression_function_selected": false,
+    "document_opcode_adapter": true,
+    "operation_registry_entries": 16,
+    "opcode_procedural_sort_valid": true
   }
 }
