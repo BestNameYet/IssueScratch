@@ -1,0 +1,28 @@
+{
+  "schema": "issuescratch.comment-state.v1",
+  "issue_number": 1,
+  "comment_id": 6540398585,
+  "progression": {
+    "mode": "incremental",
+    "accepted_entries": 0,
+    "last_accepted_index": null,
+    "next_index": 0,
+    "accepted_prefix_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "complete": false,
+    "next_function": null,
+    "function_selection": "unconfigured"
+  },
+  "last_processed_revision_sha256": "c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6540398585/revisions/c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d.json",
+  "latest_validation": "expected_single_root_array",
+  "history": [
+    {
+      "raw_sha256": "c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d",
+      "path": "workspaces/issue1-diagnostics/comments/6540398585/revisions/c272b44f3320c80c3023ea7e8bc00462b15cffea584120aa04588a80e8b36b0d.json",
+      "json_valid": true,
+      "array_length": null,
+      "accepted_entries_after": 0,
+      "transition": "expected_single_root_array"
+    }
+  ]
+}
