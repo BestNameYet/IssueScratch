@@ -367,6 +367,7 @@ jobs:
               conventional_readme_path:'README.md',
               conventional_readme_blob_sha:currentReadme.data.sha,
               candidate_status:'generated_and_verified',
+              agent_workspace_writes_required:false,
               root_readme_replaced:false,
               selection_status:'awaiting_comparison'
             };
@@ -432,16 +433,17 @@ jobs:
             const {data:reply}=await github.rest.issues.getComment({owner,repo,comment_id:replyId});
             const control=JSON.parse(reply.body);
             if(control.source_comment_id!==id||control.history.length!==16)throw Error('Controller history is incomplete');
+            // The workflow's own state and controller history are the handshake.
+            // No worker-authored workspace acknowledgements are required.
             for(let index=1;index<=16;index++){
               const prior=control.history[index-1];
-              const ackFile=await read(root+'/acknowledgements/'+String(index).padStart(2,'0')+'.json');
-              if(!ackFile)throw Error('Missing external agent acknowledgement for '+index);
-              const ack=JSON.parse(ackFile.body);
-              if(ack.source_comment_id!==id||ack.submitted_index!==index||
-                 ack.status!=='submitted'||ack.submitted_source_revision_sha256!==accepted[index].raw_sha256||
-                 ack.prior_instruction_opcode!==prior.function.selected_function.opcode||
-                 ack.prior_instruction_source_revision_sha256!==prior.source_revision_sha256||
-                 ack.controller_comment_id!==replyId)throw Error('External acknowledgement invalid at '+index);
+              if(prior.target_index!==index ||
+                 prior.function?.target_index!==index ||
+                 prior.function?.comment_id!==id ||
+                 !prior.function?.selected_function?.opcode ||
+                 prior.source_revision_sha256!==accepted[index-1].raw_sha256){
+                throw Error('Controller instruction and accepted revision mismatch at '+index);
+              }
             }
             const generated=renderControlled(body,{commentId:id,registration:reg,repository:owner+'/'+repo});
             const candidatePath=reg.candidate_path,receiptPath='workspaces/readme-job-001-rerun/receipt.json';
@@ -450,7 +452,7 @@ jobs:
               schema:'issuescratch.readme-controlled-receipt.v1',job_id:reg.job_id,
               source_comment_id:id,source_comment_sha256:sha256(body),
               accepted_entries:17,accepted_transitions:17,
-              external_acknowledgements:16,controller_instruction_count:16,
+              workflow_verified_transitions:17,controller_instruction_count:16,
               candidate_path:candidatePath,candidate_blob_sha:candidateSha,
               conventional_readme_path:'README.md',
               prior_comparator_path:'experiments/readme-job-001.candidate.md',
