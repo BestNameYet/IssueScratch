@@ -73,5 +73,3 @@ jobs:
               ])
               .write();
             if (failed > 0) core.setFailed(failures.join('\n'));
-
-# Safe no-op: trigger the already-configured full-scan path for idempotence verification.
