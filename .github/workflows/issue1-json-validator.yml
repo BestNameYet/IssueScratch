@@ -10,6 +10,7 @@ on:
       - 'src/framing-controller.js'
       - 'src/framing-controller.test.js'
       - 'src/types/issuescratch.framing-controller.v1.json'
+      - 'src/types/issuescratch.higher-order-operators.v1.json'
       - 'src/opcode-document-adapter.js'
       - 'src/opcode-document-adapter.test.js'
       - 'src/readme-comment-renderer.js'
