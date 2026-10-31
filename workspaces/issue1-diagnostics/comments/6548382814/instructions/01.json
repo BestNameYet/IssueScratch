@@ -1,0 +1,59 @@
+{
+  "schema": "issuescratch.frame-instruction-receipt.v1",
+  "source_comment_id": 6548382814,
+  "source_revision_sha256": "b8b6f17c9264d9461a5957f08a897d4574611f8bda1eb924cb83678bdb164e9e",
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6548382814,
+    "target_index": 1,
+    "profile_version": "1.1.0",
+    "selected_function": {
+      "opcode": "OP.01.011",
+      "name": "APPLY",
+      "description": "Apply a named, separately defined function to arguments",
+      "input_contract": "function_ref_and_arguments",
+      "output_contract": "result"
+    },
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 9,
+      "selection_round": 1,
+      "note": "One fresh draw on an accepted revision; retry uses persisted choice."
+    },
+    "opcodes": [
+      "OP.01.011"
+    ],
+    "read_indices": [],
+    "frame_id": "F0",
+    "enclosing_frame_id": null,
+    "role": "establish_reference",
+    "reference_id": "R-B",
+    "original_anchor_index": 1,
+    "previous_frame_index": null,
+    "requirements": [
+      "Apply function APPLY (OP.01.011) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+      "Establish an identifiable referent R-B; its textual form is agent-selected.",
+      "Keep this referent distinct from the other anchor.",
+      "Append exactly one substantive scratchpad at index 1."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "publication_status": "selected"
+}
