@@ -32,7 +32,8 @@ IssueScratch/
 │       ├── issuescratch.scratchpad-field-registry.v2.json
 │       ├── issuescratch.operation-registry.v1.json
 │       ├── issuescratch.opcode-adapter-contract.v1.json
-│       └── issuescratch.framing-controller.v1.json
+│       ├── issuescratch.framing-controller.v1.json
+│       └── issuescratch.higher-order-operators.v1.json
 ├── experiments/
 │   ├── general-purpose-job-prompts.v1.json
 │   ├── general-purpose-job-opcode-map.v1.json
@@ -67,8 +68,8 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | --- | --- |
 | [`src/issue1-diagnostics.js`](src/issue1-diagnostics.js) | Parses comment bodies; measures Unicode code-point characters, serialized JSON lengths, keys, nested arrays, and per-index distributions; validates root-array/wrapper shape; advances per-comment accepted-index state. |
 | [`src/issue1-diagnostics.test.js`](src/issue1-diagnostics.test.js) | Tests parsing failures, nested arrays, per-index measurements, unchanged-prefix checks, duplicate events, historical snapshots, and the index-18 progression limit. |
-| [`src/framing-controller.js`](src/framing-controller.js) | Selects one random functional OP opcode using `node:crypto.randomInt` and constructs the next framing instruction for a source comment. |
-| [`src/framing-controller.test.js`](src/framing-controller.test.js) | Tests the random function pool, five-frame 1+15+3 allocation, five-part preparation, atomic opcode reconciler, rejection, progression, and controller history. |
+| [`src/framing-controller.js`](src/framing-controller.js) | Selects and persists one higher-order OP.02 frame operator per three-index exercise, optionally chooses an ABSTRACT mode, independently selects atomic OP.01 actions, and structurally validates substantive solver outputs. |
+| [`src/framing-controller.test.js`](src/framing-controller.test.js) | Tests five frame-level selections, stable operator/mode reuse across three slots, source lineage, four ABSTRACT modes, atomic choices, input/output validation and 19-entry progression. |
 | [`src/readme-comment-renderer.js`](src/readme-comment-renderer.js) | Generates a separate README candidate retaining the exact source-comment JSON (19 entries for new controlled runs); controlled completion is checked in the workflow. |
 | [`src/readme-comment-renderer.test.js`](src/readme-comment-renderer.test.js) | Tests source/comment identity, content preservation, and candidate rendering. |
 | [`src/opcode-document-adapter.js`](src/opcode-document-adapter.js) | Command-line and module adapter from document bytes to a JSON-object envelope retaining original bytes, SHA-256, source-linked records, and declared reusable operation steps. Provides `convert` and `verify`. |
@@ -83,7 +84,8 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | [`src/types/issuescratch.scratchpad-field-registry.v2.json`](src/types/issuescratch.scratchpad-field-registry.v2.json) | Later standalone field/type registry, retained as a legacy reference; superseded for active use by the combined canonical catalog above. |
 | [`src/types/issuescratch.operation-registry.v1.json`](src/types/issuescratch.operation-registry.v1.json) | Declares 16 reusable functional operations under `OP.01.*`, their descriptions, and abstract input/output contracts. These are *not* record IDs or execution receipts. |
 | [`src/types/issuescratch.opcode-adapter-contract.v1.json`](src/types/issuescratch.opcode-adapter-contract.v1.json) | Formal lossless conversion procedure and envelope contract, including `IS.09.001`–`IS.09.008`, source/projection separation, supported formats, and limitations. |
-| [`src/types/issuescratch.framing-controller.v1.json`](src/types/issuescratch.framing-controller.v1.json) | Versioned random-controller profile listing 14 eligible functions, four frames, two reference identities, and five unrestricted slots. |
+| [`src/types/issuescratch.framing-controller.v1.json`](src/types/issuescratch.framing-controller.v1.json) | Versioned 19-index controller profile: five nested preparation roles, five three-index higher-order frames, two stable referents per frame, three reconciler indices, atomic operation pool and structural frame-output rules. |
+| [`src/types/issuescratch.higher-order-operators.v1.json`](src/types/issuescratch.higher-order-operators.v1.json) | Formal OP.02 contracts for SOLVER_LIFT and ABSTRACT, including typed inputs/outputs, CONTRACT/IMPLEMENTATION/CONSTRUCT/GENERAL modes and lineage-preservation invariants. |
 
 ### Experimental inputs and converted outputs
 
@@ -139,6 +141,23 @@ Nested preparatory scratchpad 0 contains a **`context_elements[array<object>]`**
 
 This layout is structurally checked by the controller and remains separate from the semantic question of whether the worker interpreted or executed a selected function faithfully. The previously completed 17-entry README experiment and its output remain historical records; they do not satisfy the new nineteen-entry contract.
 
+### Higher-order framing operators (profile v2.1)
+
+Five **three-index exercises** occupy outer indices 1–15. The controller chooses **one** higher-order operation at the start of each exercise (when the preceding index is accepted), rather than selecting a different framing operation for each of the exercise's three slots.
+
+| Higher-order opcode | Operation | Required transformation |
+| --- | --- | --- |
+| `OP.02.001 — SOLVER_LIFT` | Treat the previous solver—its problem, method, assumptions, interim results, limitations and source references—as the **input and subject of an enclosing solver**. | Construct a genuinely different, next-level solver input rather than merely rephrasing the original instruction. |
+| `OP.02.002 — ABSTRACT` | Transform the subject's representation under one explicitly selected mode. | Preserve source mapping, explain retained properties and suppressed details, and produce the typed output specified by the mode. |
+
+**ABSTRACT modes:** `CONTRACT` models interfaces/obligations/preconditions/postconditions; `IMPLEMENTATION` models components/algorithms/dependencies **without writing or executing code**; `CONSTRUCT` models structural elements/relationships; `GENERAL` extracts cross-instance properties and limits. All four are declared in the [higher-order registry](src/types/issuescratch.higher-order-operators.v1.json).
+
+**Selection and persistence:** At each frame's first slot (outer indices **1, 4, 7, 10, 13**), `node:crypto.randomInt(2)` selects SOLVER_LIFT or ABSTRACT equally. Conditional on ABSTRACT, `node:crypto.randomInt(4)` selects one mode. The workflow saves that selection in `progression.frame_selections` and retains it for the entire three-slot frame; retries replay saved choices without new draws. Separately, one of 14 registered atomic `OP.01.*` actions is selected per next index and may support the enclosing transformation. The atomic action is **not** the frame operator.
+
+**Substantive scratchpad contract:** Slot A supplies `solver_or_subject[object]` with source references and inner-solver details; slot B supplies `enclosing_target[object]` with criteria and invariants; slot C supplies `higher_order_result[object]` with `preserved_properties`, `suppressed_details`, `introduced_assumptions`, `source_mapping`, `next_solver_input`, and either a SOLVER_LIFT `outer_solver_input` or mode-specific ABSTRACT `representation`. These are **task content fields**, not workflow metadata or agent acknowledgements. The validator checks their shape, but cannot establish that the authored abstraction is substantively correct.
+
+Each new frame may choose another higher-order operation. The five frame outputs form a traceable hierarchy leading into the reconciliation stages at indices 16–18. The controller **selects and publishes instructions**; an external agent remains responsible for authoring solver transformations.
+
 ### 2. Event-driven diagnostics
 
 The single workflow responds to `issue_comment.created` and `issue_comment.edited` events **on Issue #1**. On `push` to selected implementation/input paths or manual `workflow_dispatch`, it also scans existing Issue #1 comments. It runs automated tests first.
@@ -153,7 +172,7 @@ For each observed comment revision it deterministically records:
 
 Invalid JSON is **not silently repaired or rewritten**. Its failure is recorded as a JSON object and it cannot advance accepted progression. Duplicate observations of the same content hash do not advance state twice. State files and diagnostic snapshots remain separate from the user-authored issue comment.
 
-**Framing controller v1.6:** after each valid one-entry append, GitHub Actions selects one operation uniformly with `node:crypto.randomInt` from the 14-code registered pool, persists it under the comment ID, and publishes it to a source-linked controller comment in Issue #1 while retaining prior function history. Index 0 contains five nested preparatory scratchpads. Five 3-slot frames (indices 1–15) retain two distinct reference identities and expand the enclosing narrative. Indices 16–18 are reconciliation stages, including action-by-action opcode mapping of preceding content. Invalid or imported-complete arrays receive no next instruction, and index 18 terminates progression. Retries recover previous draws rather than rerolling.
+**Framing controller v2.1:** Index 0 contains five nested preparatory scratchpads. Across five three-slot frames (indices 1–15), the workflow persists one higher-order SOLVER_LIFT or ABSTRACT choice per frame, plus an independently selected atomic OP.01 action per index. Indices 16–18 reconcile source coverage and opcode steps. Invalid/imported-complete arrays do not issue instructions, index 18 terminates progression, and retry recovery preserves the ordered random draws. See the higher-order contracts above.
 
 The controller **selects and publishes** the next instruction; it does **not** autonomously execute the function, produce the next scratchpad, or assess semantic correctness. The [new 19-entry schema live probe](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548830869) verified a five-part initial preparation followed by an agent-authored index-1 entry, with randomly chosen instructions persisted in the [controller comment](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548832768) ([first successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239803917), [second successful run](https://github.com/BestNameYet/IssueScratch/actions/runs/41239852275)). The earlier 17-entry README job is historical; a complete 19-entry controlled README experiment has **not yet** been executed.
 
@@ -199,7 +218,7 @@ For deployed behavior, check [GitHub Actions](https://github.com/BestNameYet/Iss
 
 ## Present boundaries and maintenance
 
-- **Implemented:** one Issue #1 validator/diagnostic workflow; per-comment JSON-object state and metrics; random framing-function selection with saved instructions and Issue #1 publication; deterministic document adapter; 16-operation registry; generated 17-prompt opcode projection; unit tests.
+- **Implemented:** one Issue #1 diagnostic workflow; per-comment JSON-object state and metrics; one persisted higher-order operator per three-index frame, independent atomic choices, typed source-linked input/output validation and Issue #1 instruction publication; a lossless document adapter; 16 atomic and 2 higher-order operation definitions; generated 17-prompt opcode projection; unit tests.
 - **Not implemented:** autonomous agent execution of the published function, creation of the next scratchpad by the workflow, or verified completion of all 19 sequential transitions. The existing README candidate predates the controller.
 - **Experiment status:** the 17 prompts are prepared and opcode-mapped, but producing the converted manifest does not mean the 17 agent tasks were run.
 - **Historical compatibility:** preserve older three-object and seven-entry records rather than rewriting them to the current 19-entry RS contract.
