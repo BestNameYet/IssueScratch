@@ -1,0 +1,48 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6540495284,
+  "source_revision_sha256": "9b7743f4f2e4f339413b44e169661e4375b305c3d0cba4bb875ee126f857bb7d",
+  "transition": "expected_single_root_array",
+  "progression_before": 0,
+  "progression_after": 0,
+  "next_index": 0,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "object",
+    "json_valid": true,
+    "validation_error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  },
+  "metrics": {
+    "raw_sha256": "9b7743f4f2e4f339413b44e169661e4375b305c3d0cba4bb875ee126f857bb7d",
+    "raw_characters": 298,
+    "raw_utf8_bytes": 300,
+    "json_valid": true,
+    "root_type": "object",
+    "root_array_count": 0,
+    "nested_array_count": 0,
+    "total_array_count": 0,
+    "array_length": null,
+    "all_wrappers_valid": null,
+    "array_compact_json_characters": null,
+    "indexes": [],
+    "all_keys": [
+      {
+        "path": "/invalid json",
+        "key": "invalid json",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 276,
+        "value_text_characters": 259
+      }
+    ],
+    "key_totals": [],
+    "error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  }
+}
