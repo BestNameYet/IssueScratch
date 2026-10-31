@@ -1,0 +1,16 @@
+{
+  "schema": "issuescratch.readme-controlled-receipt.v1",
+  "job_id": "RS17-README-001-RERUN",
+  "source_comment_id": 6548382814,
+  "source_comment_sha256": "c17907aeffc7b9b7a1ff485d218746af54c9ea4418598d108f2db4117ae3ade6",
+  "accepted_entries": 17,
+  "accepted_transitions": 17,
+  "workflow_verified_transitions": 17,
+  "controller_instruction_count": 16,
+  "candidate_path": "experiments/readme-job-001-rerun.candidate.md",
+  "candidate_blob_sha": "c4da9166f29c447ea22304ebced611ee5acc68e9",
+  "conventional_readme_path": "README.md",
+  "prior_comparator_path": "experiments/readme-job-001.candidate.md",
+  "selection_status": "awaiting_user_comparison",
+  "root_readme_replaced": false
+}
