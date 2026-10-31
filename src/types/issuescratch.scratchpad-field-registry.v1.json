@@ -1,5 +1,5 @@
 {
-  "schema": "issuescratch.scratchpad-field-registry.v2",
+  "schema": "issuescratch.scratchpad-field-registry.v1",
   "source": {
     "repo": "BestNameYet/IssueScratch",
     "issue_number": 1,
@@ -9,11 +9,14 @@
       6545857602,
       6545966428
     ],
-    "convention": "IssueStack field[type] syntax for suggested typed forms; historical unannotated keys preserved.",
-    "previous_registry_blob_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
-    "amendment": "Change new RS records to root arrays of at least seven independently typed open objects; legacy three-property JSON records remain readable and untouched."
+    "convention": "IssueStack field[type] syntax for suggested typed forms; historical unannotated keys preserved."
   },
   "semantics": {
+    "top_level_scratchpads": [
+      "scratchpad_1",
+      "scratchpad_2",
+      "scratchpad_3"
+    ],
     "scratchpad_key_selection": "open and optional",
     "must_contain_all_registered_types": false,
     "required_registry_fields_per_scratchpad": [],
@@ -29,28 +32,9 @@
     ],
     "nested_fields": "All listed nested keys are optional examples of observed shapes; additional typed keys allowed.",
     "arrays": "Historical arrays retain their observed element types; no forced migration to IssueStack named-object arrays.",
-    "backwards_compatibility": "The five existing three-object Issue #1 jobs remain preserved, readable and valid as historical versions. Apply the new array shape to newly authored RS records only.",
+    "backwards_compatibility": "Existing Issue #1 job comments remain unchanged and valid under this registry; no historical rewrite or coerced fields.",
     "extension": "Future types and keys may be added to the registry without obligating their inclusion in any scratchpad.",
-    "separate_content_rules": "AGENTS.md governs independent substantive contributions, source verification, job tracking and history. The registry specifies the new array structure and per-field types, but does not impose all registered fields on an item.",
-    "root_type": "array",
-    "minimum_items": 7,
-    "item_type": "object",
-    "array_index_base": 0,
-    "array_order": "Index 0 through last; no named scratchpad positions or semantic role allocation.",
-    "length_above_minimum": "Any integer length greater than or equal to seven; the total length itself need not be prime.",
-    "each_item": "One independently authored open heterogeneous scratchpad object; no array nesting or primitive/null at an index.",
-    "minimum_object_content": "Each item should contain at least one meaningful agent-authored field value; no mandated field name or filler value.",
-    "legacy_record_shape": {
-      "root_type": "object",
-      "keys": [
-        "scratchpad_1",
-        "scratchpad_2",
-        "scratchpad_3"
-      ],
-      "acceptance": "Preserved as previously saved; do not coerce or rewrite old comments."
-    },
-    "job_metadata": "Use any selected registered job metadata key inside a scratchpad object if the job record requires it, without reserving a fixed array index; alternatively reference a separately linked job record.",
-    "typed_array_validation_runtime": "Not implemented; declaration of the array shape is not proof of enforcement by the JSON-syntax normalization workflow."
+    "separate_content_rules": "Any applicable AGENTS.md content and three-scratchpad requirements continue independently of type selection."
   },
   "permitted_use_fields": {
     "stewardship_claims": {
@@ -2800,10 +2784,5 @@
     "named_object_types": 68,
     "sampled_job_comments": 4,
     "observed_direct_key_occurrences": 36
-  },
-  "provenance": {
-    "previous_registry_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
-    "record_shape_intent": "new RS only; legacy unchanged",
-    "minimum_length_selection": 7
   }
 }
