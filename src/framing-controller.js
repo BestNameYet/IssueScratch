@@ -1,6 +1,7 @@
 "use strict";
 const crypto=require("node:crypto");
 const {processRevision,sha}=require("./issue1-diagnostics");
+const higherRegistry=require("./types/issuescratch.higher-order-operators.v1.json");
 const isObject=x=>!!x&&typeof x==="object"&&!Array.isArray(x);
 const digest=x=>crypto.createHash("sha256").update(x).digest("hex");
 function assert(condition,message){if(!condition)throw Error(message)}
@@ -14,6 +15,9 @@ function validateProfile(p){
   assert(Array.isArray(p.random_function_pool)&&p.random_function_pool.length>0&&
          new Set(p.random_function_pool).size===p.random_function_pool.length,"Invalid random function pool");
   assert(Array.isArray(p.preparatory_roles)&&p.preparatory_roles.length===5,"Missing preparatory roles");
+  assert(p.higher_order_registry_path==="src/types/issuescratch.higher-order-operators.v1.json","Unknown higher-order registry");
+  assert(Array.isArray(p.higher_order_operator_pool)&&p.higher_order_operator_pool.join(",")==="OP.02.001,OP.02.002","Invalid higher-order operator pool");
+  assert(Array.isArray(p.higher_order_abstract_modes)&&p.higher_order_abstract_modes.join(",")==="CONTRACT,IMPLEMENTATION,CONSTRUCT,GENERAL","Invalid abstraction modes");
   return p;
 }
 function structuralError(message){
@@ -123,75 +127,159 @@ function validateEntryStructure(parsed,index,profile,registry){
   }
   return null;
 }
-function functionForIndex(commentId,index,profile,registry,randomInt=crypto.randomInt){
+function functionForIndex(commentId,index,profile,registry,randomInt=crypto.randomInt,frameSelections={}){
   const p=validateProfile(profile);
   assert(Number.isSafeInteger(commentId)&&commentId>0,"Invalid comment identity");
   assert(Number.isInteger(index)&&index>=1&&index<=18,"Index outside controller range");
-  assert(isObject(registry)&&Array.isArray(registry.primitives),"Missing operation registry");
+  assert(isObject(registry)&&Array.isArray(registry.primitives),"Missing atomic operation registry");
+  assert(isObject(frameSelections),"Frame selections must be a JSON object");
   const lookup=new Map(registry.primitives.map(op=>[op.opcode,op]));
   const pool=p.random_function_pool.map(code=>{
     const op=lookup.get(code);
     assert(op&&op.name!=="CAPTURE"&&op.name!=="EMIT","Unknown or non-functional opcode in pool: "+code);
     return op;
   });
-  const selected=randomInt(pool.length);
-  assert(Number.isInteger(selected)&&selected>=0&&selected<pool.length,"Random selector returned invalid ordinal");
-  const operation=pool[selected];
+  const draws=[];
+  function draw(size,purpose){
+    const selected=randomInt(size);
+    assert(Number.isInteger(selected)&&selected>=0&&selected<size,
+      "Random selector returned invalid ordinal for "+purpose);
+    draws.push({purpose,pool_size:size,selected_ordinal:selected});
+    return selected;
+  }
   const base={
     schema:"issuescratch.next-framing-function.v1",
     comment_id:commentId,target_index:index,profile_version:p.version,
-    selected_function:{
-      opcode:operation.opcode,name:operation.name,description:operation.description,
-      input_contract:operation.input_contract,output_contract:operation.output_contract
-    },
-    random_selection:{
-      algorithm:"node:crypto.randomInt",pool_opcodes:[...p.random_function_pool],
-      pool_size:pool.length,selected_ordinal:selected,selection_round:1,
-      note:"One fresh draw on an accepted revision; retries use the persisted choice."
-    },
-    opcodes:[operation.opcode],
+    selected_function:null, // atomic OP.01 function, distinct from the higher-order frame
+    higher_order_frame:null,
+    higher_order_selection_new:false,
+    random_selection:null,
+    opcodes:[],
     read_indices:[],frame_id:null,enclosing_frame_id:null,role:null,reference_id:null,
     original_anchor_index:null,previous_frame_index:null,requirements:[],
     control_mode:"publish_instruction_not_autonomous_agent"
   };
-  const apply="Apply "+operation.name+" ("+operation.opcode+") to the designated inputs; an instruction is not an execution receipt.";
+  let frame=null,slot=null,frameNumber=null,frameId=null,enclosingFrameId=null,newFrame=false;
+  if(index>=1&&index<=15){
+    frameNumber=Math.floor((index-1)/3);
+    slot=(index-1)%3;
+    frameId="F"+frameNumber;
+    enclosingFrameId=frameNumber===0?null:"F"+(frameNumber-1);
+    frame=frameSelections[frameId]||null;
+    if(frame){
+      assert(isObject(frame)&&frame.frame_id===frameId&&frame.frame_start_index===1+3*frameNumber,
+        "Persisted frame identity mismatch");
+      const op=higherRegistry.operators.find(x=>x.opcode===frame.operator?.opcode);
+      assert(op&&frame.operator.name===op.name,"Persisted higher-order opcode mismatch");
+      assert(op.name==="SOLVER_LIFT"?frame.mode===null:p.higher_order_abstract_modes.includes(frame.mode),
+        "Persisted abstraction mode invalid");
+    }else{
+      assert(slot===0,"Missing higher-order frame selection for "+frameId+"; cannot reroll mid-frame");
+      const operatorOrdinal=draw(p.higher_order_operator_pool.length,"higher_order_operator");
+      const operatorCode=p.higher_order_operator_pool[operatorOrdinal];
+      const op=higherRegistry.operators.find(x=>x.opcode===operatorCode);
+      assert(op,"Unknown higher-order operator "+operatorCode);
+      const modeOrdinal=op.name==="ABSTRACT"?draw(p.higher_order_abstract_modes.length,"abstraction_mode"):null;
+      const mode=modeOrdinal===null?null:p.higher_order_abstract_modes[modeOrdinal];
+      const previousIndex=frameNumber===0?0:frameNumber*3;
+      frame={
+        schema:"issuescratch.higher-order-frame-selection.v1",
+        frame_id:frameId,
+        frame_number:frameNumber,
+        frame_start_index:1+3*frameNumber,
+        frame_end_index:3+3*frameNumber,
+        enclosing_frame_id:enclosingFrameId,
+        source_indices:frameNumber===0?[0]:[0,previousIndex],
+        source_refs:frameNumber===0?["/0"]:["/0","/"+previousIndex],
+        level:frameNumber+1,
+        operator:{opcode:op.opcode,name:op.name,description:op.semantics},
+        mode,
+        selection:{
+          algorithm:"node:crypto.randomInt",operator_ordinal:operatorOrdinal,
+          operator_pool:[...p.higher_order_operator_pool],
+          mode_ordinal:modeOrdinal,
+          mode_pool:op.name==="ABSTRACT"?[...p.higher_order_abstract_modes]:[]
+        },
+        input_contract:op.input_contract,
+        output_contract:op.output_contract,
+        required_output_fields:op.name==="ABSTRACT"
+          ?higherRegistry.modes.find(x=>x.id===mode).required_output_fields
+          :Object.keys(op.output_contract),
+        invariants:[...higherRegistry.shared_invariants],
+        status:"selected_not_executed"
+      };
+      newFrame=true;
+    }
+  }
+  // One atomic function is selected per target index; this is independent from frame selection.
+  const ordinal=draw(pool.length,"atomic_function");
+  const atomic=pool[ordinal];
+  base.selected_function={
+    opcode:atomic.opcode,name:atomic.name,description:atomic.description,
+    input_contract:atomic.input_contract,output_contract:atomic.output_contract
+  };
+  base.random_selection={
+    algorithm:"node:crypto.randomInt",
+    pool_opcodes:[...p.random_function_pool],pool_size:pool.length,
+    selected_ordinal:ordinal,
+    draws,
+    note:"Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
+  };
+  base.opcodes=frame?[frame.operator.opcode,atomic.opcode]:[atomic.opcode];
+  base.higher_order_frame=frame;
+  base.higher_order_selection_new=newFrame;
   if(index>=16){
     const role=p.reconciliation_roles.find(x=>x.index===index);
+    assert(role,"Unrecognized reconciliation role");
     return {...base,role:role.role,read_indices:Array.from({length:index},(_,i)=>i),
-      requirements:[apply,...role.requirements,"Append exactly one substantive scratchpad at index "+index+"; retain the previously accepted prefix."]};
-  }
-  const frame=Math.floor((index-1)/3),slot=(index-1)%3;
-  const framing={frame_id:"F"+frame,enclosing_frame_id:frame===0?null:"F"+(frame-1)};
-  if(slot===0||slot===1){
-    const ref=p.reference_ids[slot];
-    const anchor=1+slot;
-    const previous=frame===0?null:1+(frame-1)*3+slot;
-    return {...base,...framing,role:frame===0?"establish_reference":"preserve_reference",
-      reference_id:ref,original_anchor_index:anchor,previous_frame_index:previous,
-      read_indices:frame===0?(slot===0?[0]:[0,1]):[0,anchor,previous,3*frame],
-      requirements:frame===0?[
-        apply,"Establish identifiable referent "+ref+" in light of the five-part preparation at index 0.",
-        "Keep this referent distinct from the other anchor.",
-        "Append exactly one substantive scratchpad at index "+index+"."
-      ]:[
-        apply,"Preserve referent "+ref+" from index "+anchor+" through enclosing frame F"+frame+".",
-        "Preserve source attribution rather than asserting nested claims as facts.",
-        "Append exactly one substantive scratchpad at index "+index+"."
+      requirements:[
+        "Use atomic "+atomic.name+" ("+atomic.opcode+") for a bounded supporting action.",
+        ...role.requirements,
+        "Reconcile all five persisted higher-order frames and their lineage, not merely the atomic function choices.",
+        "Append exactly one substantive scratchpad at index "+index+"; keep the accepted prefix unchanged."
       ]};
   }
-  const prev=frame===0?null:3*frame;
-  return {...base,...framing,role:frame===0?"seed_narrative":"expand_enclosing_narrative",
-    read_indices:frame===0?[0,1,2]:[0,prev,index-2,index-1],
-    previous_frame_index:prev,
-    requirements:frame===0?[
-      apply,"Create substantive original narrative from the two reference anchors, informed by contextual preparation at index 0.",
-      "Preserve distinctions among verbatim instruction, inferred intent and provisional opcode mapping.",
-      "Append exactly one substantive scratchpad at index "+index+"."
-    ]:[
-      apply,"Enclose preceding frame F"+(frame-1)+" within frame F"+frame+" without promoting attributed claims.",
-      "Keep R-A and R-B stable; add substantive development instead of paraphrasing the previous narrative.",
-      "Append exactly one substantive scratchpad at index "+index+"."
-    ]};
+  const apply="Use atomic "+atomic.name+" ("+atomic.opcode+") inside the fixed higher-order frame "+frame.operator.name+
+    (frame.mode?" / "+frame.mode:"")+". An opcode instruction is not execution evidence.";
+  const lineage=[
+    "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
+    "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
+    "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction."
+  ];
+  const frameInfo={frame_id:frameId,enclosing_frame_id:enclosingFrameId};
+  if(slot===0||slot===1){
+    const ref=p.reference_ids[slot],anchor=1+slot,previous=frameNumber===0?null:1+(frameNumber-1)*3+slot;
+    return {...base,...frameInfo,role:frameNumber===0?"establish_reference":"preserve_reference",
+      reference_id:ref,original_anchor_index:anchor,previous_frame_index:previous,
+      read_indices:frameNumber===0?(slot===0?[0]:[0,1]):[0,anchor,previous,3*frameNumber],
+      requirements:[
+        apply,
+        ...(slot===0?[
+          "Reference A: identify the prior solver or subject representation, with its assumptions, method, evidence and limitations.",
+          "Cite the actual preceding solver or preparatory instruction; do not invent completed execution."
+        ]:[
+          "Reference B: identify the enclosing perspective, selected abstraction mode if applicable, target representation, and preservation criteria.",
+          "Differentiate this framing reference from the inner solver or subject."
+        ]),
+        ...lineage,
+        "Append exactly one substantive scratchpad at index "+index+" and retain the accepted prefix."
+      ]};
+  }
+  const prev=frameNumber===0?null:3*frameNumber;
+  const requirements=[
+    apply,
+    "Apply the *same* higher-order choice as the other two slots of "+frameId+"; do not reroll or switch modes.",
+    frame.operator.name==="SOLVER_LIFT"
+      ?"Construct a higher-level solver whose subject is the previous solver, including its method, assumptions, intermediate results and limitations."
+      :"Construct an explicit "+frame.mode+" representation with its specified fields; IMPLEMENTATION describes mechanisms, not execution.",
+    "Supply preserved_properties, suppressed_details, introduced_assumptions, source_mapping, and next_solver_input in substantive output.",
+    ...lineage,
+    "Add substantive development rather than a quotation ladder or paraphrase.",
+    "Append exactly one substantive scratchpad at index "+index+"; retain the accepted prefix."
+  ];
+  return {...base,...frameInfo,role:frameNumber===0?"seed_narrative":"expand_enclosing_narrative",
+    read_indices:frameNumber===0?[0,1,2]:[0,prev,index-2,index-1],
+    previous_frame_index:prev,requirements};
 }
 function processWithController(previous,body,commentId,revisionPath,eventName,profile,registry,randomInt=crypto.randomInt){
   const result=processRevision(previous,body,commentId,revisionPath,eventName,(arr,index)=>validateEntryStructure(arr,index,profile,registry));
@@ -201,8 +289,14 @@ function processWithController(previous,body,commentId,revisionPath,eventName,pr
   const p=result.state.progression;
   const incremental=result.action==="accepted_one_entry"||result.action==="completed_index_18";
   if(incremental){
-    p.function_selection="issuescratch.framing-controller.v1";
-    p.next_function=p.complete?null:functionForIndex(commentId,p.next_index,profile,registry,randomInt);
+    p.function_selection="issuescratch.higher-order-framing.v2";
+    if(!isObject(p.frame_selections))p.frame_selections={};
+    p.next_function=p.complete?null:functionForIndex(commentId,p.next_index,profile,registry,randomInt,p.frame_selections);
+    if(p.next_function?.higher_order_selection_new){
+      const selection=p.next_function.higher_order_frame;
+      assert(!p.frame_selections[selection.frame_id],"Unexpected higher-order frame reselection");
+      p.frame_selections[selection.frame_id]=selection;
+    }
     p.controller_status=p.complete?"completed":"awaiting_publication";
     result.diagnostic.next_function=p.next_function;
     result.diagnostic.functions_selected=p.next_function?1:0;
