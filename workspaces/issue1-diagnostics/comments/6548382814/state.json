@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 14,
-    "last_accepted_index": 13,
-    "next_index": 14,
-    "accepted_prefix_sha256": "e9750576ec5b275bbc4efa4003614fcd25df939b2a30c690152cf9abdd44b685",
+    "accepted_entries": 15,
+    "last_accepted_index": 14,
+    "next_index": 15,
+    "accepted_prefix_sha256": "981a77321c78a859da8b6f47d1aa1cf0a7cb9d13bc873f01ec40f423fad961cb",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 14,
+      "target_index": 15,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.002",
-        "name": "GENERATE",
-        "description": "Produce new content under given constraints",
-        "input_contract": "input_and_constraints",
-        "output_contract": "candidate"
+        "opcode": "OP.01.012",
+        "name": "BRANCH",
+        "description": "Select a branch based on an explicit predicate",
+        "input_contract": "condition_and_branches",
+        "output_contract": "selected_branch"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,12 +40,12 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 0,
+        "selected_ordinal": 10,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.002"
+        "OP.01.012"
       ],
       "read_indices": [],
       "frame_id": null,
@@ -55,9 +55,9 @@
       "original_anchor_index": null,
       "previous_frame_index": null,
       "requirements": [
-        "Apply function GENERATE (OP.01.002) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Apply function BRANCH (OP.01.012) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
         "Choose a substantive contribution without a fixed semantic role.",
-        "Append exactly one scratchpad object at index 14; preserve the accepted prefix."
+        "Append exactly one scratchpad object at index 15; preserve the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -65,8 +65,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "1c49a55e7badf85d489115b5e9c765534f153d36d2d505df1cc567713ee4c59b",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/1c49a55e7badf85d489115b5e9c765534f153d36d2d505df1cc567713ee4c59b.json",
+  "last_processed_revision_sha256": "4a2cb806025ac8be7f8b9ec81584324c7bac26f135df8c5535adeb68631f889a",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/4a2cb806025ac8be7f8b9ec81584324c7bac26f135df8c5535adeb68631f889a.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -179,6 +179,14 @@
       "json_valid": true,
       "array_length": 14,
       "accepted_entries_after": 14,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "4a2cb806025ac8be7f8b9ec81584324c7bac26f135df8c5535adeb68631f889a",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/4a2cb806025ac8be7f8b9ec81584324c7bac26f135df8c5535adeb68631f889a.json",
+      "json_valid": true,
+      "array_length": 15,
+      "accepted_entries_after": 15,
       "transition": "accepted_one_entry"
     }
   ]
