@@ -1,0 +1,105 @@
+{
+  "document_type": "issuescratch.opcode-adapter-contract",
+  "format_version": "1.0.0",
+  "purpose": "Reversible projection of arbitrary source documents into a JSON-object envelope containing reusable functional opcodes and stable source-linked records.",
+  "supported_source_formats": {
+    "json": "Valid JSON parsed into records with JSON Pointers; original UTF-8 bytes preserved in the envelope.",
+    "utf8_text": "Unicode text segmented into line views; original bytes remain authoritative.",
+    "opaque_binary": "Arbitrary bytes preserved in base64 with one uninterpreted capture record. Content extraction requires a separately implemented format-specific parser."
+  },
+  "distinction": {
+    "procedure_opcode": "IS.* identifiers uniquely identify normative AGENTS.md clauses. They do not represent reusable functions.",
+    "operation_opcode": "OP.01.* identifies a reusable action from the registry. Multiple records and documents may use the same opcode.",
+    "record_id": "Original source ID if supplied; otherwise a stable ordinal identity within that conversion. Not an opcode.",
+    "domain_function": "A registered implementation of an opcode for a concrete domain; not generated or inferred by the generic adapter."
+  },
+  "source_envelope": {
+    "must_preserve": [
+      "path",
+      "format",
+      "sha256",
+      "byte_length",
+      "bytes_base64",
+      "encoding"
+    ],
+    "required_property": "Exact original file bytes reconstructible from canonical base64, checked against SHA-256.",
+    "authoritative": "Stored source.bytes_base64 overrides any projections in case of disagreement; validation should reject the disagreement."
+  },
+  "record_shape": {
+    "fields": [
+      "record_id",
+      "source_pointer",
+      "source_kind",
+      "original_value",
+      "source_text",
+      "mapping_status",
+      "steps"
+    ],
+    "step_fields": [
+      "step",
+      "operation_opcode",
+      "operation_name",
+      "input_ref"
+    ],
+    "capture_rule": "First step is CAPTURE with original source pointer.",
+    "emit_rule": "Last step is EMIT; these are declarations, not execution receipts.",
+    "default": "CAPTURE -> EMIT with mapping_status=capture_only; do not guess semantic operations from arbitrary prose.",
+    "explicit_mapping": "An externally provided mapping profile supplies intermediate operation opcodes; all opcodes must belong to the documented registry."
+  },
+  "procedure": [
+    {
+      "opcode": "IS.09.001",
+      "action": "Load original bytes and select the appropriate source extractor; default to opaque preservation for unsupported formats.",
+      "condition": "always"
+    },
+    {
+      "opcode": "IS.09.002",
+      "action": "Compute canonical byte length and SHA-256, and retain exact original bytes in base64 before any transformation.",
+      "condition": "always"
+    },
+    {
+      "opcode": "IS.09.003",
+      "action": "Extract source-linked records and assign record identities separately from functional opcodes.",
+      "condition": "always"
+    },
+    {
+      "opcode": "IS.09.004",
+      "action": "Assign CAPTURE and EMIT; add only explicitly mapped, registry-valid intermediate operator opcodes.",
+      "condition": "always"
+    },
+    {
+      "opcode": "IS.09.005",
+      "action": "Output one valid JSON object holding source, conversion metadata, and operation-coded records. Never replace or mutate the original document.",
+      "condition": "always"
+    },
+    {
+      "opcode": "IS.09.006",
+      "action": "Verify byte-for-byte restoration, source digest, record coverage, pointers, original values, text fields, opcode validity, and step ordering.",
+      "condition": "before claiming success"
+    },
+    {
+      "opcode": "IS.09.007",
+      "action": "Refuse unrecognized opcodes, duplicated identities, invalid mappings, and loss of source provenance; report errors instead of silently dropping source material.",
+      "condition": "on any conflict"
+    },
+    {
+      "opcode": "IS.09.008",
+      "action": "Keep opcode classification separate from execution and semantic assessment; never claim that output instructions have been performed.",
+      "condition": "always"
+    }
+  ],
+  "versioning": {
+    "registry": "src/types/issuescratch.operation-registry.v1.json",
+    "parser": "src/opcode-document-adapter.js",
+    "test": "src/opcode-document-adapter.test.js",
+    "first_profile": "experiments/general-purpose-job-opcode-map.v1.json",
+    "first_source": "experiments/general-purpose-job-prompts.v1.json",
+    "first_output": "experiments/general-purpose-job-prompts.opcoded.v1.json"
+  },
+  "limitations": [
+    "Content inside binary PDFs, images, DOCX or other binary files is preserved but not extracted without dedicated parsers.",
+    "Structural conversion does not imply semantic understanding or equivalence of task interpretations.",
+    "Core function opcodes are finite and reusable; concrete task performance additionally requires domain-specific functions and arguments.",
+    "These JSON-object documents do not replace the required scratchpad-wrapped array for final RS records."
+  ]
+}
