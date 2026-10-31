@@ -238,7 +238,9 @@ jobs:
                   progress.controller_comment_id=actualReplyId;
                   progress.controller_status='delivered';
                   if(!result.duplicate){
-                    result.diagnostic.functions_dispatched=1;
+                    // Publishing an instruction is not autonomous execution of the function.
+                    result.diagnostic.functions_dispatched=0;
+                    result.diagnostic.functions_published=1;
                     result.diagnostic.controller_comment_id=actualReplyId;
                   }
                   stats.functions_published++;
