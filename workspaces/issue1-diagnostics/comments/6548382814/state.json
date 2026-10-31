@@ -4,69 +4,18 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 16,
-    "last_accepted_index": 15,
-    "next_index": 16,
-    "accepted_prefix_sha256": "e3517e1b5aa68eb954c090d79900a0f1106c7850ec948f05ab2b361e59e7f45e",
-    "complete": false,
-    "next_function": {
-      "schema": "issuescratch.next-framing-function.v1",
-      "comment_id": 6548382814,
-      "target_index": 16,
-      "profile_version": "1.1.0",
-      "selected_function": {
-        "opcode": "OP.01.008",
-        "name": "DESIGN",
-        "description": "Specify a structure or mechanism meeting requirements",
-        "input_contract": "requirements",
-        "output_contract": "design"
-      },
-      "random_selection": {
-        "algorithm": "node:crypto.randomInt",
-        "pool_opcodes": [
-          "OP.01.002",
-          "OP.01.003",
-          "OP.01.004",
-          "OP.01.005",
-          "OP.01.006",
-          "OP.01.007",
-          "OP.01.008",
-          "OP.01.009",
-          "OP.01.010",
-          "OP.01.011",
-          "OP.01.012",
-          "OP.01.013",
-          "OP.01.014",
-          "OP.01.015"
-        ],
-        "pool_size": 14,
-        "selected_ordinal": 6,
-        "selection_round": 1,
-        "note": "One fresh draw on an accepted revision; retry uses persisted choice."
-      },
-      "opcodes": [
-        "OP.01.008"
-      ],
-      "read_indices": [],
-      "frame_id": null,
-      "enclosing_frame_id": null,
-      "role": "unrestricted",
-      "reference_id": null,
-      "original_anchor_index": null,
-      "previous_frame_index": null,
-      "requirements": [
-        "Apply function DESIGN (OP.01.008) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Choose a substantive contribution without a fixed semantic role.",
-        "Append exactly one scratchpad object at index 16; preserve the accepted prefix."
-      ],
-      "control_mode": "publish_instruction_not_autonomous_agent"
-    },
+    "accepted_entries": 17,
+    "last_accepted_index": 16,
+    "next_index": null,
+    "accepted_prefix_sha256": "f10c9d8df9fec85c47ae0a9ba1337a2f43aea9c6812eac37cadbfb2618144c2b",
+    "complete": true,
+    "next_function": null,
     "function_selection": "issuescratch.framing-controller.v1",
-    "controller_status": "delivered",
+    "controller_status": "completed",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "bc37ecf2127266808df69d1df83cc95d51db8894f005ced1e648286071c57db1",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/bc37ecf2127266808df69d1df83cc95d51db8894f005ced1e648286071c57db1.json",
+  "last_processed_revision_sha256": "c17907aeffc7b9b7a1ff485d218746af54c9ea4418598d108f2db4117ae3ade6",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/c17907aeffc7b9b7a1ff485d218746af54c9ea4418598d108f2db4117ae3ade6.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -196,6 +145,14 @@
       "array_length": 16,
       "accepted_entries_after": 16,
       "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "c17907aeffc7b9b7a1ff485d218746af54c9ea4418598d108f2db4117ae3ade6",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/c17907aeffc7b9b7a1ff485d218746af54c9ea4418598d108f2db4117ae3ade6.json",
+      "json_valid": true,
+      "array_length": 17,
+      "accepted_entries_after": 17,
+      "transition": "completed_index_16"
     }
   ]
 }
