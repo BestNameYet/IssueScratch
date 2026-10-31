@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 2,
-    "last_accepted_index": 1,
-    "next_index": 2,
-    "accepted_prefix_sha256": "17eec5e4e894f9a82e162953ff62e1871224ed1f94bd9f8c7ad678109be7ac61",
+    "accepted_entries": 3,
+    "last_accepted_index": 2,
+    "next_index": 3,
+    "accepted_prefix_sha256": "8fc64caca41b67e3e30b38551e2782bc7edc94632b21ab41b30518277b28a108",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 2,
+      "target_index": 3,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.004",
-        "name": "ANALYZE",
-        "description": "Extract or examine properties and relationships",
-        "input_contract": "subject_and_questions",
-        "output_contract": "observations"
+        "opcode": "OP.01.010",
+        "name": "SELECT",
+        "description": "Choose one or more candidates according to a rule",
+        "input_contract": "candidates_and_rule",
+        "output_contract": "selection"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,28 +40,30 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 2,
+        "selected_ordinal": 8,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.004"
+        "OP.01.010"
       ],
       "read_indices": [
         0,
-        1
+        0,
+        2
       ],
-      "frame_id": "F0",
-      "enclosing_frame_id": null,
-      "role": "seed_narrative",
-      "reference_id": null,
-      "original_anchor_index": null,
-      "previous_frame_index": null,
+      "frame_id": "F1",
+      "enclosing_frame_id": "F0",
+      "role": "preserve_reference",
+      "reference_id": "R-A",
+      "original_anchor_index": 0,
+      "previous_frame_index": 0,
       "requirements": [
-        "Apply function ANALYZE (OP.01.004) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
-        "Create an original narrative involving the two distinct reference anchors established at indices 0 and 1.",
-        "Do not assign a fixed qualitative property to either reference.",
-        "Append exactly one substantive scratchpad at index 2."
+        "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Carry the *same referent identity* R-A from index 0 through this enclosing frame.",
+        "Do not convert attributed inner claims into direct factual assertions.",
+        "Use textual references freely while maintaining identity and attribution.",
+        "Append exactly one substantive scratchpad at index 3; retain the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -69,8 +71,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "da5d41fee36a4dd0d9b6cc40bacd28c51a501b54eae938aaccdce56999ab5735",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/da5d41fee36a4dd0d9b6cc40bacd28c51a501b54eae938aaccdce56999ab5735.json",
+  "last_processed_revision_sha256": "08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -87,6 +89,14 @@
       "json_valid": true,
       "array_length": 2,
       "accepted_entries_after": 2,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/08d4dcb499fa801de42e60d440dcc82ceaf730c6bcfa540867bd21366db6380b.json",
+      "json_valid": true,
+      "array_length": 3,
+      "accepted_entries_after": 3,
       "transition": "accepted_one_entry"
     }
   ]
