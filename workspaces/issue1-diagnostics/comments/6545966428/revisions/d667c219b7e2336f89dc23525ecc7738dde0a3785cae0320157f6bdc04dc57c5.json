@@ -1,0 +1,1936 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6545966428,
+  "source_revision_sha256": "d667c219b7e2336f89dc23525ecc7738dde0a3785cae0320157f6bdc04dc57c5",
+  "transition": "expected_single_root_array",
+  "progression_before": 0,
+  "progression_after": 0,
+  "next_index": 0,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "object",
+    "json_valid": true,
+    "validation_error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  },
+  "metrics": {
+    "raw_sha256": "d667c219b7e2336f89dc23525ecc7738dde0a3785cae0320157f6bdc04dc57c5",
+    "raw_characters": 13233,
+    "raw_utf8_bytes": 13241,
+    "json_valid": true,
+    "root_type": "object",
+    "root_array_count": 0,
+    "nested_array_count": 5,
+    "total_array_count": 5,
+    "array_length": null,
+    "all_wrappers_valid": null,
+    "array_compact_json_characters": null,
+    "indexes": [],
+    "all_keys": [
+      {
+        "path": "/scratchpad_1",
+        "key": "scratchpad_1",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 2318,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 285,
+        "value_text_characters": 283
+      },
+      {
+        "path": "/scratchpad_1/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "object",
+        "value_json_characters": 2017,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/title",
+        "key": "title",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 71,
+        "value_text_characters": 69
+      },
+      {
+        "path": "/scratchpad_1/job/nonce",
+        "key": "nonce",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 54,
+        "value_text_characters": 52
+      },
+      {
+        "path": "/scratchpad_1/job/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_1/job/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions",
+        "key": "revisions",
+        "key_characters": 9,
+        "value_type": "array",
+        "value_json_characters": 464,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/note",
+        "key": "note",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 80,
+        "value_text_characters": 78
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/0/previous_status",
+        "key": "previous_status",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/change",
+        "key": "change",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 49,
+        "value_text_characters": 47
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 72,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 84,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/revisions/1/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job/original_user_instruction",
+        "key": "original_user_instruction",
+        "key_characters": 25,
+        "value_type": "string",
+        "value_json_characters": 371,
+        "value_text_characters": 369
+      },
+      {
+        "path": "/scratchpad_1/job/scope",
+        "key": "scope",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 247,
+        "value_text_characters": 245
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test",
+        "key": "workflow_idempotence_test",
+        "key_characters": 25,
+        "value_type": "object",
+        "value_json_characters": 594,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/before_comment_ids",
+        "key": "before_comment_ids",
+        "key_characters": 18,
+        "value_type": "array",
+        "value_json_characters": 45,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/preexisting_comments_tested",
+        "key": "preexisting_comments_tested",
+        "key_characters": 27,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_8",
+        "key": "run_8",
+        "key_characters": 5,
+        "value_type": "object",
+        "value_json_characters": 105,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_8/id",
+        "key": "id",
+        "key_characters": 2,
+        "value_type": "number",
+        "value_json_characters": 11,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_8/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_8/conclusion",
+        "key": "conclusion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_8/sha",
+        "key": "sha",
+        "key_characters": 3,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_9",
+        "key": "run_9",
+        "key_characters": 5,
+        "value_type": "object",
+        "value_json_characters": 105,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_9/id",
+        "key": "id",
+        "key_characters": 2,
+        "value_type": "number",
+        "value_json_characters": 11,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_9/event",
+        "key": "event",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_9/conclusion",
+        "key": "conclusion",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/run_9/sha",
+        "key": "sha",
+        "key_characters": 3,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/comments_identical_after_both_runs",
+        "key": "comments_identical_after_both_runs",
+        "key_characters": 34,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/workflow_restored_blob_sha",
+        "key": "workflow_restored_blob_sha",
+        "key_characters": 26,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_1/job/workflow_idempotence_test/limitation",
+        "key": "limitation",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 138,
+        "value_text_characters": 136
+      },
+      {
+        "path": "/scratchpad_2",
+        "key": "scratchpad_2",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 4842,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 239,
+        "value_text_characters": 237
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol",
+        "key": "evaluation_protocol",
+        "key_characters": 19,
+        "value_type": "object",
+        "value_json_characters": 555,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/classification_rule",
+        "key": "classification_rule",
+        "key_characters": 19,
+        "value_type": "string",
+        "value_json_characters": 225,
+        "value_text_characters": 223
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/confidence_meaning",
+        "key": "confidence_meaning",
+        "key_characters": 18,
+        "value_type": "object",
+        "value_json_characters": 202,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/confidence_meaning/high",
+        "key": "high",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/confidence_meaning/medium",
+        "key": "medium",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 58,
+        "value_text_characters": 56
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/confidence_meaning/low",
+        "key": "low",
+        "key_characters": 3,
+        "value_type": "string",
+        "value_json_characters": 82,
+        "value_text_characters": 80
+      },
+      {
+        "path": "/scratchpad_2/evaluation_protocol/scope",
+        "key": "scope",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 73,
+        "value_text_characters": 71
+      },
+      {
+        "path": "/scratchpad_2/demonstrations",
+        "key": "demonstrations",
+        "key_characters": 14,
+        "value_type": "array",
+        "value_json_characters": 3998,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 44,
+        "value_text_characters": 42
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 48,
+        "value_text_characters": 46
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 45,
+        "value_text_characters": 43
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/0/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 41,
+        "value_text_characters": 39
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 38,
+        "value_text_characters": 36
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/1/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 39,
+        "value_text_characters": 37
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 41,
+        "value_text_characters": 39
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 32,
+        "value_text_characters": 30
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 46,
+        "value_text_characters": 44
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/2/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 35,
+        "value_text_characters": 33
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 39,
+        "value_text_characters": 37
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/3/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 34,
+        "value_text_characters": 32
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 38,
+        "value_text_characters": 36
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 43,
+        "value_text_characters": 41
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/4/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/5/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 50,
+        "value_text_characters": 48
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 27,
+        "value_text_characters": 25
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 27,
+        "value_text_characters": 25
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 65,
+        "value_text_characters": 63
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/6/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 40,
+        "value_text_characters": 38
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 38,
+        "value_text_characters": 36
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 50,
+        "value_text_characters": 48
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/7/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 48,
+        "value_text_characters": 46
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 34,
+        "value_text_characters": 32
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 20,
+        "value_text_characters": 18
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 34,
+        "value_text_characters": 32
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/8/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 22,
+        "value_text_characters": 20
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 32,
+        "value_text_characters": 30
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 35,
+        "value_text_characters": 33
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/9/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 49,
+        "value_text_characters": 47
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 24,
+        "value_text_characters": 22
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 40,
+        "value_text_characters": 38
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 56,
+        "value_text_characters": 54
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/10/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 13,
+        "value_text_characters": 11
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 47,
+        "value_text_characters": 45
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/11/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 21,
+        "value_text_characters": 19
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/12/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 43,
+        "value_text_characters": 41
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 43,
+        "value_text_characters": 41
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/13/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 48,
+        "value_text_characters": 46
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 22,
+        "value_text_characters": 20
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 47,
+        "value_text_characters": 45
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 60,
+        "value_text_characters": 58
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/14/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/n",
+        "key": "n",
+        "key_characters": 1,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/axis",
+        "key": "axis",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 51,
+        "value_text_characters": 49
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 30,
+        "value_text_characters": 28
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 41,
+        "value_text_characters": 39
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 55,
+        "value_text_characters": 53
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 6,
+        "value_text_characters": 4
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/ordering",
+        "key": "ordering",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/demonstrations/15/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_3",
+        "key": "scratchpad_3",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 3190,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/text",
+        "key": "text",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 327,
+        "value_text_characters": 325
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment",
+        "key": "live_job_assessment",
+        "key_characters": 19,
+        "value_type": "array",
+        "value_json_characters": 1514,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/comment_id",
+        "key": "comment_id",
+        "key_characters": 10,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/proposed_axis",
+        "key": "proposed_axis",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 34,
+        "value_text_characters": 32
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 45,
+        "value_text_characters": 43
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 57,
+        "value_text_characters": 55
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 61,
+        "value_text_characters": 59
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/ranking",
+        "key": "ranking",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/0/caveat",
+        "key": "caveat",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 153,
+        "value_text_characters": 151
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/comment_id",
+        "key": "comment_id",
+        "key_characters": 10,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/proposed_axis",
+        "key": "proposed_axis",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 59,
+        "value_text_characters": 57
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 49,
+        "value_text_characters": 47
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 8,
+        "value_text_characters": 6
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/ranking",
+        "key": "ranking",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 31,
+        "value_text_characters": 29
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 24,
+        "value_text_characters": 22
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/1/caveat",
+        "key": "caveat",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 137,
+        "value_text_characters": 135
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/comment_id",
+        "key": "comment_id",
+        "key_characters": 10,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/job",
+        "key": "job",
+        "key_characters": 3,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/proposed_axis",
+        "key": "proposed_axis",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 44,
+        "value_text_characters": 42
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/s1",
+        "key": "s1",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 29,
+        "value_text_characters": 27
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/s2",
+        "key": "s2",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 45,
+        "value_text_characters": 43
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/s3",
+        "key": "s3",
+        "key_characters": 2,
+        "value_type": "string",
+        "value_json_characters": 62,
+        "value_text_characters": 60
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/confidence",
+        "key": "confidence",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 5,
+        "value_text_characters": 3
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/ranking",
+        "key": "ranking",
+        "key_characters": 7,
+        "value_type": "string",
+        "value_json_characters": 18,
+        "value_text_characters": 16
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/distinctness",
+        "key": "distinctness",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 24,
+        "value_text_characters": 22
+      },
+      {
+        "path": "/scratchpad_3/live_job_assessment/2/caveat",
+        "key": "caveat",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 128,
+        "value_text_characters": 126
+      },
+      {
+        "path": "/scratchpad_3/conclusions",
+        "key": "conclusions",
+        "key_characters": 11,
+        "value_type": "object",
+        "value_json_characters": 1130,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples",
+        "key": "examples",
+        "key_characters": 8,
+        "value_type": "object",
+        "value_json_characters": 122,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples/reviewed",
+        "key": "reviewed",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples/plausible_axis",
+        "key": "plausible_axis",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples/high_confidence",
+        "key": "high_confidence",
+        "key_characters": 15,
+        "value_type": "number",
+        "value_json_characters": 2,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples/medium_confidence",
+        "key": "medium_confidence",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/examples/demonstrated_actual_original_choice",
+        "key": "demonstrated_actual_original_choice",
+        "key_characters": 35,
+        "value_type": "boolean",
+        "value_json_characters": 5,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs",
+        "key": "live_jobs",
+        "key_characters": 9,
+        "value_type": "object",
+        "value_json_characters": 113,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs/reviewed",
+        "key": "reviewed",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs/high_confidence",
+        "key": "high_confidence",
+        "key_characters": 15,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs/medium_confidence",
+        "key": "medium_confidence",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs/low_confidence",
+        "key": "low_confidence",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/live_jobs/unambiguously_proven_monotonicity",
+        "key": "unambiguously_proven_monotonicity",
+        "key_characters": 33,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/conclusions/can_agent_decipher",
+        "key": "can_agent_decipher",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 115,
+        "value_text_characters": 113
+      },
+      {
+        "path": "/scratchpad_3/conclusions/is_requirement_implemented",
+        "key": "is_requirement_implemented",
+        "key_characters": 26,
+        "value_type": "string",
+        "value_json_characters": 187,
+        "value_text_characters": 185
+      },
+      {
+        "path": "/scratchpad_3/conclusions/certainty_limit",
+        "key": "certainty_limit",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 170,
+        "value_text_characters": 168
+      },
+      {
+        "path": "/scratchpad_3/conclusions/suggested_test",
+        "key": "suggested_test",
+        "key_characters": 14,
+        "value_type": "string",
+        "value_json_characters": 308,
+        "value_text_characters": 306
+      },
+      {
+        "path": "/scratchpad_3/repository_references",
+        "key": "repository_references",
+        "key_characters": 21,
+        "value_type": "object",
+        "value_json_characters": 147,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/repository_references/agents_path",
+        "key": "agents_path",
+        "key_characters": 11,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_3/repository_references/job_comments",
+        "key": "job_comments",
+        "key_characters": 12,
+        "value_type": "array",
+        "value_json_characters": 34,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/repository_references/verified_source_blob_sha",
+        "key": "verified_source_blob_sha",
+        "key_characters": 24,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      }
+    ],
+    "key_totals": [],
+    "error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  }
+}
