@@ -6,9 +6,9 @@ const digest=x=>crypto.createHash("sha256").update(x).digest("hex");
 function assert(condition,message){if(!condition)throw Error(message)}
 function validateProfile(p){
   assert(isObject(p)&&p.schema==="issuescratch.framing-controller-profile.v1","Unknown framing profile");
-  assert(p.first_index===0&&p.last_tracked_index===16&&p.frame_count===4&&p.slots_per_frame===3,"Invalid 12+5 layout");
+  assert(p.first_index===0&&p.last_tracked_index===18&&p.frame_count===5&&p.slots_per_frame===3,"Invalid 15+4 layout");
   assert(Array.isArray(p.reference_ids)&&p.reference_ids.length===2&&new Set(p.reference_ids).size===2,"Reference IDs must be distinct");
-  assert(Array.isArray(p.free_indices)&&p.free_indices.join(",")==="12,13,14,15,16","Unexpected free indices");
+  assert(Array.isArray(p.free_indices)&&p.free_indices.join(",")==="15,16,17,18","Unexpected free indices");
   assert(Array.isArray(p.random_function_pool)&&p.random_function_pool.length>0,"No random function pool");
   assert(new Set(p.random_function_pool).size===p.random_function_pool.length,"Duplicate pool opcodes");
   return p;
@@ -16,7 +16,7 @@ function validateProfile(p){
 function functionForIndex(commentId,index,profile,registry,randomInt=crypto.randomInt){
   const p=validateProfile(profile);
   assert(Number.isSafeInteger(commentId)&&commentId>0,"Invalid comment identity");
-  assert(Number.isInteger(index)&&index>=0&&index<=16,"Index outside controller range");
+  assert(Number.isInteger(index)&&index>=0&&index<=18,"Index outside controller range");
   assert(isObject(registry)&&Array.isArray(registry.primitives),"Missing operation registry");
   const lookup=new Map(registry.primitives.map(op=>[op.opcode,op]));
   const pool=p.random_function_pool.map(code=>{
@@ -51,7 +51,7 @@ function functionForIndex(commentId,index,profile,registry,randomInt=crypto.rand
     control_mode:"publish_instruction_not_autonomous_agent"
   };
   const apply="Apply function "+operation.name+" ("+operation.opcode+") to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.";
-  if(index>=12){
+  if(index>=15){
     return {...base,role:"unrestricted",
       requirements:[apply,
         "Choose a substantive contribution without a fixed semantic role.",
