@@ -7,6 +7,12 @@ on:
       - '.github/workflows/issue1-json-validator.yml'
       - 'src/issue1-diagnostics.js'
       - 'src/issue1-diagnostics.test.js'
+      - 'src/opcode-document-adapter.js'
+      - 'src/opcode-document-adapter.test.js'
+      - 'src/types/issuescratch.operation-registry.v1.json'
+      - 'src/types/issuescratch.opcode-adapter-contract.v1.json'
+      - 'experiments/general-purpose-job-opcode-map.v1.json'
+      - 'experiments/general-purpose-job-prompts.v1.json'
   workflow_dispatch:
 
 permissions:
@@ -25,7 +31,53 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test deterministic analyzer and state machine
-        run: node --test src/issue1-diagnostics.test.js
+        run: node --test src/*.test.js
+      - name: Convert prompt manifest with reusable functional opcodes
+        if: github.event_name != 'issue_comment'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const {convert,validate}=require('./src/opcode-document-adapter.js');
+            const owner=context.repo.owner,repo=context.repo.repo;
+            const originalPath='experiments/general-purpose-job-prompts.v1.json';
+            const mapPath='experiments/general-purpose-job-opcode-map.v1.json';
+            const registryPath='src/types/issuescratch.operation-registry.v1.json';
+            const outputPath='experiments/general-purpose-job-prompts.opcoded.v1.json';
+            const source=fs.readFileSync(originalPath);
+            const profile=JSON.parse(fs.readFileSync(mapPath,'utf8'));
+            const registry=JSON.parse(fs.readFileSync(registryPath,'utf8'));
+            const obj=convert(source,{
+              registry,profile,sourcePath:originalPath,
+              itemsPointer:profile.selected_pointer,
+              idField:profile.identity_field,
+              textField:profile.text_field
+            });
+            const verification=validate(obj,source,registry);
+            if(verification.record_count!==17)throw Error('Prompt source must contain 17 records');
+            const contents=JSON.stringify(obj,null,2)+'\n';
+            let current;
+            try{
+              const {data}=await github.rest.repos.getContent({owner,repo,path:outputPath});
+              current=data;
+            }catch(e){
+              if(e.status!==404)throw e;
+            }
+            const previous=current?Buffer.from(current.content,'base64').toString('utf8'):null;
+            if(previous===contents){
+              core.info('Output already matches the deterministic conversion');
+            }else{
+              await github.rest.repos.createOrUpdateFileContents({
+                owner,repo,path:outputPath,
+                message:'experiments: regenerate verified opcode-encoded prompt manifest',
+                content:Buffer.from(contents,'utf8').toString('base64'),
+                ...(current?{sha:current.sha}:{})
+              });
+            }
+            const {data:check}=await github.rest.repos.getContent({owner,repo,path:outputPath});
+            const actual=Buffer.from(check.content,'base64').toString('utf8');
+            if(actual!==contents)throw Error('Converted artifact readback mismatch');
+            core.info('Converted manifest verified: '+verification.record_count+' records; '+verification.opcode_occurrences+' opcode occurrences');
       - name: Validate, measure, and persist comment state
         uses: actions/github-script@v7
         with:
