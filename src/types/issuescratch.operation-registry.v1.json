@@ -1,0 +1,125 @@
+{
+  "document_type": "issuescratch.operation-registry",
+  "format_version": "1.0.0",
+  "opcode_namespace": "OP.01",
+  "opcode_pattern": "^OP\\.01\\.[0-9]{3}$",
+  "relationship_to_agents_opcode": "OP.* is a reusable functional operation namespace distinct from the unique IS.* procedure identifiers in AGENTS.md. A job/record identity is not an operation opcode.",
+  "registry_intent": "Small, extensible vocabulary of first-level operators; higher-order procedures are sequences or compositions. These describe requested operations, not proof of execution or semantic correctness.",
+  "operational_semantics": "An opcode selects an abstract operation. Any concrete executor must separately register and verify the function or transformation used to realize it; no opcode by itself grants tool permissions or establishes task completion.",
+  "no_semantic_guess": "Generic conversion MUST use CAPTURE only when no explicit mapping profile exists. Specialized opcode sequences are supplied by a mapping profile, not inferred from arbitrary prose.",
+  "primitives": [
+    {
+      "opcode": "OP.01.001",
+      "name": "CAPTURE",
+      "description": "Preserve a source fragment and its identity without interpreting its meaning",
+      "input_contract": "source_fragment",
+      "output_contract": "source_reference"
+    },
+    {
+      "opcode": "OP.01.002",
+      "name": "GENERATE",
+      "description": "Produce new content under given constraints",
+      "input_contract": "input_and_constraints",
+      "output_contract": "candidate"
+    },
+    {
+      "opcode": "OP.01.003",
+      "name": "TRANSFORM",
+      "description": "Convert existing material while respecting stated invariants",
+      "input_contract": "existing_content_and_constraints",
+      "output_contract": "transformed_content"
+    },
+    {
+      "opcode": "OP.01.004",
+      "name": "ANALYZE",
+      "description": "Extract or examine properties and relationships",
+      "input_contract": "subject_and_questions",
+      "output_contract": "observations"
+    },
+    {
+      "opcode": "OP.01.005",
+      "name": "EVALUATE",
+      "description": "Appraise a claim or artifact against declared criteria",
+      "input_contract": "subject_and_criteria",
+      "output_contract": "assessment"
+    },
+    {
+      "opcode": "OP.01.006",
+      "name": "COMPARE",
+      "description": "Contrast two or more subjects with respect to dimensions",
+      "input_contract": "subjects_and_dimensions",
+      "output_contract": "comparison"
+    },
+    {
+      "opcode": "OP.01.007",
+      "name": "COMPUTE",
+      "description": "Apply an explicit mathematical or computational procedure",
+      "input_contract": "function_and_operands",
+      "output_contract": "result"
+    },
+    {
+      "opcode": "OP.01.008",
+      "name": "DESIGN",
+      "description": "Specify a structure or mechanism meeting requirements",
+      "input_contract": "requirements",
+      "output_contract": "design"
+    },
+    {
+      "opcode": "OP.01.009",
+      "name": "PLAN",
+      "description": "Arrange actions with constraints and dependencies",
+      "input_contract": "goal_and_constraints",
+      "output_contract": "plan"
+    },
+    {
+      "opcode": "OP.01.010",
+      "name": "SELECT",
+      "description": "Choose one or more candidates according to a rule",
+      "input_contract": "candidates_and_rule",
+      "output_contract": "selection"
+    },
+    {
+      "opcode": "OP.01.011",
+      "name": "APPLY",
+      "description": "Apply a named, separately defined function to arguments",
+      "input_contract": "function_ref_and_arguments",
+      "output_contract": "result"
+    },
+    {
+      "opcode": "OP.01.012",
+      "name": "BRANCH",
+      "description": "Select a branch based on an explicit predicate",
+      "input_contract": "condition_and_branches",
+      "output_contract": "selected_branch"
+    },
+    {
+      "opcode": "OP.01.013",
+      "name": "ITERATE",
+      "description": "Repeat a specified operator under an explicit bound or stopping test",
+      "input_contract": "operator_state_and_stop_condition",
+      "output_contract": "iteration_result"
+    },
+    {
+      "opcode": "OP.01.014",
+      "name": "VALIDATE",
+      "description": "Check a result against machine-checkable or declared conditions",
+      "input_contract": "result_and_conditions",
+      "output_contract": "validation_result"
+    },
+    {
+      "opcode": "OP.01.015",
+      "name": "REFERENCE",
+      "description": "Bind or resolve an identifier, scope, or contextual relationship",
+      "input_contract": "reference_and_environment",
+      "output_contract": "resolution"
+    },
+    {
+      "opcode": "OP.01.016",
+      "name": "EMIT",
+      "description": "Return or serialize an artifact without claiming successful evaluation",
+      "input_contract": "artifact_and_format",
+      "output_contract": "output"
+    }
+  ],
+  "mapping_profile_example": "experiments/general-purpose-job-opcode-map.v1.json"
+}
