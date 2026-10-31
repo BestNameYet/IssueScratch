@@ -9,73 +9,89 @@ function validateProfile(p){
   assert(p.first_index===0&&p.last_tracked_index===16&&p.frame_count===4&&p.slots_per_frame===3,"Invalid 12+5 layout");
   assert(Array.isArray(p.reference_ids)&&p.reference_ids.length===2&&new Set(p.reference_ids).size===2,"Reference IDs must be distinct");
   assert(Array.isArray(p.free_indices)&&p.free_indices.join(",")==="12,13,14,15,16","Unexpected free indices");
-  assert(Array.isArray(p.enclosing_actions)&&p.enclosing_actions.length>0,"No enclosing actions");
-  for(const a of p.enclosing_actions)assert(typeof a.action_id==="string"&&typeof a.action==="string","Invalid action");
+  assert(Array.isArray(p.random_function_pool)&&p.random_function_pool.length>0,"No random function pool");
+  assert(new Set(p.random_function_pool).size===p.random_function_pool.length,"Duplicate pool opcodes");
   return p;
 }
-function actionFor(commentId,frame,p){
-  const seed=digest(p.version+":"+commentId+":"+frame);
-  const selected=parseInt(seed.slice(0,8),16)%p.enclosing_actions.length;
-  return {...p.enclosing_actions[selected],seed_hex:seed.slice(0,8),selected_ordinal:selected};
-}
-function functionForIndex(commentId,index,profile){
+function functionForIndex(commentId,index,profile,registry,randomInt=crypto.randomInt){
   const p=validateProfile(profile);
   assert(Number.isSafeInteger(commentId)&&commentId>0,"Invalid comment identity");
   assert(Number.isInteger(index)&&index>=0&&index<=16,"Index outside controller range");
-  const common={
+  assert(isObject(registry)&&Array.isArray(registry.primitives),"Missing operation registry");
+  const lookup=new Map(registry.primitives.map(op=>[op.opcode,op]));
+  const pool=p.random_function_pool.map(code=>{
+    const op=lookup.get(code);
+    assert(op&&op.name!=="CAPTURE"&&op.name!=="EMIT","Unknown or non-functional opcode in pool: "+code);
+    return op;
+  });
+  const selected=randomInt(pool.length);
+  assert(Number.isInteger(selected)&&selected>=0&&selected<pool.length,"Random selector returned invalid ordinal");
+  const operation=pool[selected];
+  const base={
     schema:"issuescratch.next-framing-function.v1",
     comment_id:commentId,target_index:index,
-    profile_version:p.version,opcodes:[],read_indices:[],
-    frame_id:null,enclosing_frame_id:null,role:null,
-    reference_id:null,original_anchor_index:null,previous_frame_index:null,
-    enclosing_action:null,requirements:[],
+    profile_version:p.version,
+    selected_function:{
+      opcode:operation.opcode,name:operation.name,
+      description:operation.description,
+      input_contract:operation.input_contract,output_contract:operation.output_contract
+    },
+    random_selection:{
+      algorithm:"node:crypto.randomInt",
+      pool_opcodes:[...p.random_function_pool],
+      pool_size:pool.length,selected_ordinal:selected,
+      selection_round:1,
+      note:"One fresh draw on an accepted revision; retry uses persisted choice."
+    },
+    opcodes:[operation.opcode],
+    read_indices:[],frame_id:null,enclosing_frame_id:null,
+    role:null,reference_id:null,original_anchor_index:null,
+    previous_frame_index:null,
+    requirements:[],
     control_mode:"publish_instruction_not_autonomous_agent"
   };
+  const apply="Apply function "+operation.name+" ("+operation.opcode+") to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.";
   if(index>=12){
-    return {...common,role:"unrestricted",opcodes:[p.operator_opcodes.free],
-      requirements:["Choose a substantive contribution without a fixed semantic role.","Append exactly one scratchpad object at index "+index+"; preserve the accepted prefix."]};
+    return {...base,role:"unrestricted",
+      requirements:[apply,
+        "Choose a substantive contribution without a fixed semantic role.",
+        "Append exactly one scratchpad object at index "+index+"; preserve the accepted prefix."]};
   }
   const frame=Math.floor(index/3),slot=index%3;
-  const action=frame>0?actionFor(commentId,frame,p):null;
-  const framing={frame_id:"F"+frame,enclosing_frame_id:frame===0?null:"F"+(frame-1),
-    enclosing_action:action?{action_id:action.action_id,action:action.action,
-      selection_index:action.selected_ordinal,seed_hex:action.seed_hex}:null};
+  const framing={frame_id:"F"+frame,enclosing_frame_id:frame===0?null:"F"+(frame-1)};
   if(slot===0||slot===1){
-    const ref=p.reference_ids[slot];
-    const anchor=slot;
+    const ref=p.reference_ids[slot],anchor=slot;
     const previous=frame===0?null:(frame-1)*3+slot;
-    return {...common,...framing,role:frame===0?"establish_reference":"preserve_reference",
+    return {...base,...framing,role:frame===0?"establish_reference":"preserve_reference",
       reference_id:ref,original_anchor_index:anchor,previous_frame_index:previous,
       read_indices:previous===null?[]:[anchor,previous,(frame-1)*3+2],
-      opcodes:[p.operator_opcodes.reference,...(frame===0?[]:[p.operator_opcodes.enclosure])],
       requirements:frame===0?[
-        "Establish an identifiable referent "+ref+"; its textual name or description may be selected by the agent.",
+        apply,"Establish an identifiable referent "+ref+"; its textual form is agent-selected.",
         "Keep this referent distinct from the other anchor.",
         "Append exactly one substantive scratchpad at index "+index+"."
       ]:[
-        "Carry the *same referent identity* "+ref+" from index "+anchor+" through the enclosing frame.",
-        "The enclosing action "+action.action_id+" applies to the previous frame, not directly to the truth of its inner statements.",
+        apply,"Carry the *same referent identity* "+ref+" from index "+anchor+" through this enclosing frame.",
+        "Do not convert attributed inner claims into direct factual assertions.",
         "Use textual references freely while maintaining identity and attribution.",
         "Append exactly one substantive scratchpad at index "+index+"; retain the accepted prefix."
       ]};
   }
   const prev=frame===0?null:(frame-1)*3+2;
-  return {...common,...framing,role:frame===0?"seed_narrative":"expand_enclosing_narrative",
+  return {...base,...framing,role:frame===0?"seed_narrative":"expand_enclosing_narrative",
     read_indices:frame===0?[0,1]:[prev,frame*3,frame*3+1],
     previous_frame_index:prev,
-    opcodes:[p.operator_opcodes.narrative,...(frame===0?[]:[p.operator_opcodes.enclosure])],
     requirements:frame===0?[
-      "Create an original narrative involving the two distinct reference anchors established at indices 0 and 1.",
+      apply,"Create an original narrative involving the two distinct reference anchors established at indices 0 and 1.",
       "Do not assign a fixed qualitative property to either reference.",
       "Append exactly one substantive scratchpad at index "+index+"."
     ]:[
-      "Enclose frame F"+(frame-1)+" inside frame F"+frame+" via action "+action.action_id+".",
+      apply,"Enclose frame F"+(frame-1)+" inside frame F"+frame+" while preserving attribution.",
       "Preserve the identities R-A and R-B and the attribution of claims in the prior frame.",
       "Add substantive narrative development, not merely a paraphrase or a quotation ladder.",
       "Append exactly one substantive scratchpad at index "+index+"; retain the accepted prefix."
     ]};
 }
-function processWithController(previous,body,commentId,revisionPath,eventName,profile){
+function processWithController(previous,body,commentId,revisionPath,eventName,profile,registry,randomInt=crypto.randomInt){
   const result=processRevision(previous,body,commentId,revisionPath,eventName);
   if(result.duplicate){
     return {...result,next_instruction:result.state.progression?.next_function||null,publication_required:false};
@@ -84,7 +100,7 @@ function processWithController(previous,body,commentId,revisionPath,eventName,pr
   const incremental=result.action==="accepted_one_entry"||result.action==="completed_index_16";
   if(incremental){
     p.function_selection="issuescratch.framing-controller.v1";
-    p.next_function=p.complete?null:functionForIndex(commentId,p.next_index,profile);
+    p.next_function=p.complete?null:functionForIndex(commentId,p.next_index,profile,registry,randomInt);
     p.controller_status=p.complete?"completed":"awaiting_publication";
     result.diagnostic.next_function=p.next_function;
     result.diagnostic.functions_selected=p.next_function?1:0;
