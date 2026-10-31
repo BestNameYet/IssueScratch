@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.10.1",
+  "format_version": "2.11.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -1939,11 +1939,11 @@
     },
     {
       "opcode": "IS.07.020",
-      "version": 2,
+      "version": 3,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep the existing root README and earlier 17-entry README candidates as historical comparators; do not claim a new README job complete without nineteen sequentially verified entries, eighteen controller instructions and a matching final receipt.",
+      "imperative": "Treat every requested repository artifact, including README.md, identically: after a controlled nineteen-entry completion and verified publication contract, write the finalized content directly to the declared repository-relative path, replacing its prior content using the current blob SHA; verify the saved bytes and record a source-linked generic publication receipt. Do not create special candidate, comparison, or promotion gates based on filename.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2135,41 +2135,41 @@
     },
     {
       "opcode": "IS.10.009",
-      "version": 3,
+      "version": 4,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "At outer index 18, verify progression.complete, accepted_entries=19, last_accepted_index=18, the final source revision digest, five persisted frame selections, eighteen controller instructions, and a source-consistent README candidate/receipt; otherwise report incomplete or blocked.",
+      "imperative": "At outer index 18, verify progression.complete, accepted_entries=19, last_accepted_index=18, final source revision digest, five persisted frame selections, and eighteen controller instructions. For any declared artifact target, require the generic artifact publication receipt and exact destination readback before claiming publication success; otherwise report incomplete or blocked.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.010",
-      "version": 1,
+      "version": 2,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Preserve the previous imported-complete README candidate and README.md. Produce a distinct controlled-run README candidate, leaving user selection of the final root README outstanding.",
+      "imperative": "For a completed job requesting artifact output, use the same generic finalization rule for every authorized repository-relative path. Declare artifact_targets[array<object>] in the first nested preparatory scratchpad, each with path and source_context_id referencing an explicit_user context element; place corresponding UTF-8 {path,content} records in final outer index 18 under artifacts[array<object>]. The workflow replaces existing destination files in place and verifies their contents. No filename-specific exemptions or extra approval for README.md.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.011",
-      "version": 4,
+      "version": 5,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "The workflow, not the worker, owns all state, acknowledgement, diagnostics, instruction and run-receipt JSON writes under workspaces/. The worker only edits its existing Issue #1 source comment and reads workflow outputs.",
+      "imperative": "The workflow, not the worker, owns state, diagnostics, instructions, run receipts and general artifact publication following completion. During controlled job execution the worker writes only its existing Issue #1 source comment and reads back workflow outputs; the workflow writes finalized artifacts to their declared paths after all general publication checks.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.10.012",
-      "version": 5,
+      "version": 6,
       "source_section": "10",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not claim the nineteen-entry experiment complete based on array length or successful tests alone. Require nineteen accepted revisions, five consistently retained higher-order frame selections, eighteen source-linked instructions and a verified final artifact receipt. Never require worker-written control acknowledgements.",
+      "imperative": "Do not claim the nineteen-entry job complete based on array length or successful tests alone. Require nineteen accepted revisions, five consistently retained higher-order frame selections, eighteen source-linked instructions, and—when the job declares output artifacts—a verified general publication receipt and final file readback. Never require worker-written control acknowledgements.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2295,11 +2295,11 @@
     },
     {
       "opcode": "IS.11.012",
-      "version": 1,
+      "version": 2,
       "source_section": "11",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Preserve all earlier 17-entry completed jobs, candidate READMEs, and related receipts as historical outputs; the 19-entry format applies prospectively to new runs, never retroactively upgrades those historical records.",
+      "imperative": "Retain earlier completed 17-entry jobs and their historical candidate/receipt files as historical records without making them operative publication procedures. The 19-entry format and general artifact publisher apply prospectively and do not retroactively upgrade historical jobs.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2734,7 +2734,7 @@
       "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
       "tests_path": "src/framing-controller.test.js",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
-      "workflow_sha": "9650443020e22dcf094f6ab16f14c21bdff8e67d",
+      "workflow_sha": "superseded; consult current workflow blob",
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
@@ -2743,7 +2743,6 @@
       "persistent_instruction_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/instructions/<zero-padded-index>.json",
       "persistent_state_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
       "controller_comment_schema": "issuescratch.frame-control-comment.v1",
-      "uncontrolled_readme_source_comment": 6547874447,
       "live_probe_source_comment": 6548135349,
       "live_probe_controller_comment": 6548137149,
       "live_probe_verified_indices": [
@@ -2802,7 +2801,8 @@
       "higher_order_mode_count": 4,
       "frame_selections_state_key": "progression.frame_selections",
       "frame_input_validation": true,
-      "frame_output_validation": true
+      "frame_output_validation": true,
+      "historical_17_entry_readme_comment": 6547874447
     },
     "agent_workflow_handshake": {
       "schema": "issuescratch.agent-workflow-handshake.v1.2",
@@ -2823,17 +2823,16 @@
       "terminal_acceptance": [
         "19 sequential accepted revisions",
         "completion at index 18",
-        "18 controller instructions",
-        "matching source revision and external workflow receipt",
-        "historical 17-entry candidate kept unchanged"
+        "five persisted frames",
+        "18 source-linked controller instructions",
+        "generic publication receipt and destination readback if an artifact target is declared"
       ],
-      "failure": "Stop, report blocked and preserve saved comment, instructions, state and prior README candidates.",
-      "old_candidate_preservation": true,
+      "failure": "Stop, report blocked and preserve saved comment, instructions, state and any already verified artifact receipts.",
       "comment_echo_requirement": "Existing IS.03.05 obligations unchanged, but full echoes may be limited by the UI; record any inability explicitly.",
       "acknowledgement_location": "per-comment revision diagnostic JSON and state.json history",
       "acknowledgement_type": "automatic workflow-derived acceptance receipt, not worker authored",
       "source_comment_contract": "Only substantive, single-key scratchpad wrappers. No job IDs, controller acknowledgements, hashes, opcodes, metadata fields, or workflow markers required in the comment.",
-      "job_registration": "Separate workspace job.json keyed to verified comment ID; never infer jobs by inspecting scratchpad text.",
+      "job_registration": "Job registration is independent from generic output; publisher reads explicit source-linked artifact targets from the initial preparation, never inferred from prose or filename.",
       "acknowledgement_timing": "The workflow records the accepted revision after the comment edit event; no explicit agent acknowledgement.",
       "acknowledgement_protocol": [
         "agent edits exactly one substantive scratchpad in Issue #1 source comment",
@@ -2850,7 +2849,7 @@
       "workflow_writable_surfaces": [
         "workspaces/",
         "Issue #1 controller reply",
-        "experiment candidate and receipt files"
+        "user-authorized artifact paths declared in the source, after completed verification"
       ],
       "agent_workspace_writes_allowed": false,
       "agent_workflow_file_writes_allowed_during_job": false
@@ -2924,13 +2923,33 @@
       "no_worker_workspace_writes": true,
       "no_worker_workflow_writes": true,
       "main_branch_only": true
+    },
+    "artifact_publication": {
+      "schema": "issuescratch.generic-artifact-publication.v1",
+      "implementation_path": "src/artifact-publisher.js",
+      "tests_path": "src/artifact-publisher.test.js",
+      "workflow_path": ".github/workflows/issue1-json-validator.yml",
+      "authorizing_actor": "repository owner, source comment author",
+      "authorization": "artifact_targets declared in nested preparation index 0 with paths and source_context_id referencing explicit_user context",
+      "output": "artifacts[array<object>] at outer index 18; UTF-8 path/content records matching declared paths",
+      "preconditions": [
+        "19 consecutive accepted revisions",
+        "5 saved higher-order frame selections",
+        "18 controller instructions matched to immutable instruction receipts",
+        "current source digest and controller completion"
+      ],
+      "publication": "Use a single generic create-or-update GitHub file operation with optimistic blob SHA concurrency; any existing artifact is replaced directly regardless of filename",
+      "receipt_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/published-artifacts/<source-sha256>.json",
+      "receipt_schema": "issuescratch.artifact-publication-receipt.v1",
+      "no_special_readme_rule": true,
+      "historical_experiments": "Retain old candidate files and receipts only as historical evidence; no new README-only generation or comparison steps"
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
     "previous_active_document_blob_sha": "837b72c80bf1fb0a5e2a68ac03532fda0a125642",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Record successful 43-test suite and four accepted live source indices, with one persistent ABSTRACT/IMPLEMENTATION frame, fresh second frame and verified workflow-owned instruction receipts. Full nineteen-index task completion remains unverified.",
+    "current_amendment": "Eliminate filename-specific README experiment publication. All source-linked artifacts now use one 19-entry-controlled publication contract, overwrite existing repository paths directly, and require SHA-verified readback and generic receipts. Preserve legacy candidates as historical records. New tests require separate workflow verification.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2978,6 +2997,8 @@
     "higher_order_one_frame_live_verified": true,
     "higher_order_live_accepted_indices": 4,
     "higher_order_tests_passed": 43,
-    "higher_order_test_run": 41241263066
+    "higher_order_test_run": 41241263066,
+    "generic_artifact_publication": true,
+    "readme_specific_publication_active": false
   }
 }
