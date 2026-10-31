@@ -197,9 +197,9 @@ Classify the sequence as **invalid** if either transition is paraphrase or appen
 
 The test is about **semantic independence**, not literal word overlap. Repeating an identifier, repository name, or necessary background term does not by itself create a paraphrase or appendage.
 
-### 4.3 Six complete few-shot demonstrations with classification
+### 4.3 Sixteen positive few-shot demonstrations with classification
 
-The six valid examples below illustrate different tasks. The **JSON is the example RS**; the **classification and contribution analysis appear outside the JSON** as training annotations. Neither the examples nor their annotations identify the property chosen for any actual comment. An agent must select a fresh undisclosed property for each new real comment. These examples are teaching material, not fixed templates or a finite property menu.
+The sixteen positive examples illustrate different tasks and are designed around sixteen non-repeating, undisclosed properties. The **JSON is the example RS**; the **classification and contribution analysis appear outside the JSON** as training annotations. Neither the examples nor their annotations identify the property chosen for any actual comment. An agent must select a fresh undisclosed property for each new real comment. These examples are teaching material, not fixed templates or a finite property menu.
 
 **Few-shot 1 — Conflicting source reports**
 
@@ -285,6 +285,206 @@ The six valid examples below illustrate different tasks. The **JSON is the examp
 - `2 → 3`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: receipt meaning, inference limitation, governance principle.
 
+**Few-shot 7 — Chronology**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "Meeting notes place the original idea in the first week of October."
+  },
+  "scratchpad_2": {
+    "text": "The implementation was merged into main on October 12 at 16:04 UTC."
+  },
+  "scratchpad_3": {
+    "text": "An independent release receipt establishes production deployment at 16:12 UTC, after the merge."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (originating discussion versus recorded implementation); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (recorded implementation versus production transition); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: originating discussion, recorded implementation, and production transition.
+
+**Few-shot 8 — Information exposure**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "A sample table contains a customer's first name."
+  },
+  "scratchpad_2": {
+    "text": "An export exposes home addresses to participants who do not require them."
+  },
+  "scratchpad_3": {
+    "text": "A publicly shared artifact contains an active credential that should be revoked before further distribution."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (ordinary sample data versus unnecessary disclosure); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (unnecessary disclosure versus separate access risk); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: ordinary sample data, unnecessary disclosure, and separate access risk.
+
+**Few-shot 9 — Code provenance**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "Search results contain an excerpt mentioning the command."
+  },
+  "scratchpad_2": {
+    "text": "The repository file on its default branch has different argument names."
+  },
+  "scratchpad_3": {
+    "text": "A reliable comparison requires retrieving the exact commit recorded in the execution receipt."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (indexed excerpt versus current source discrepancy); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (current source discrepancy versus revision-grounded test); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: indexed excerpt, current source discrepancy, and revision-grounded test.
+
+**Few-shot 10 — Ambiguous instruction**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "The user asks to tidy the job queue."
+  },
+  "scratchpad_2": {
+    "text": "The queue contains both unfinished tasks and historical audit records."
+  },
+  "scratchpad_3": {
+    "text": "Deletion should not proceed until the user identifies which records are expendable."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (general request versus important record distinction); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (important record distinction versus scope decision); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: general request, important record distinction, and scope decision.
+
+**Few-shot 11 — Accessibility**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "A user requested clearer task-status presentation."
+  },
+  "scratchpad_2": {
+    "text": "A mobile screen reader skips a collapsed part of the current status display."
+  },
+  "scratchpad_3": {
+    "text": "Verify the proposed change with the same assistive interaction before claiming that it resolves the barrier."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (presentation request versus reported usability defect); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (reported usability defect versus user-impact verification); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: presentation request, reported usability defect, and user-impact verification.
+
+**Few-shot 12 — Competing explanations**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "An API callback exceeded its time limit."
+  },
+  "scratchpad_2": {
+    "text": "Independent monitoring shows the database was reachable during the incident."
+  },
+  "scratchpad_3": {
+    "text": "Correlate request traces to distinguish connection congestion from downstream processing delay."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (observed symptom versus independent observation); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (independent observation versus causal discrimination); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: observed symptom, independent observation, and causal discrimination.
+
+**Few-shot 13 — Parallel work**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "A regression run is blocked on a missing fixture."
+  },
+  "scratchpad_2": {
+    "text": "Documentation review can proceed without that fixture."
+  },
+  "scratchpad_3": {
+    "text": "Delegate the independent review while rebuilding the fixture, then reconcile both work products."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (blocked dependency versus unblocked activity); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (unblocked activity versus coordinated plan); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: blocked dependency, unblocked activity, and coordinated plan.
+
+**Few-shot 14 — Textual authority**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "A quoted policy statement differs from its published version."
+  },
+  "scratchpad_2": {
+    "text": "The authoritative version narrows the set of permitted approving roles."
+  },
+  "scratchpad_3": {
+    "text": "Any obligation inferred from the quotation must be reassessed using the exact governing text."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (quotation discrepancy versus material source distinction); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (material source distinction versus interpretive consequence); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: quotation discrepancy, material source distinction, and interpretive consequence.
+
+**Few-shot 15 — Recovery**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "A publish attempt ended without a confirmation message."
+  },
+  "scratchpad_2": {
+    "text": "The queue contains a result with the same nonce but another attempt identifier."
+  },
+  "scratchpad_3": {
+    "text": "Compare persisted artifact IDs before retrying to prevent duplicate publication."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (missing acknowledgment versus deduplication evidence); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (deduplication evidence versus safe recovery procedure); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: missing acknowledgment, deduplication evidence, and safe recovery procedure.
+
+**Few-shot 16 — Task architecture**
+
+```json
+{
+  "scratchpad_1": {
+    "text": "Work items are grouped by their hosting GitHub repository."
+  },
+  "scratchpad_2": {
+    "text": "A cross-repository graph could link task dependencies without copying entire comments."
+  },
+  "scratchpad_3": {
+    "text": "A portable capability record could instead attach permissions and evidence to each link, independent of repository boundaries."
+  }
+}
+```
+
+- `1 → 2`: **Independent contribution** (current organization versus graph alternative); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (graph alternative versus capability-oriented abstraction); **not a paraphrase**, **not appended text**.
+- **Sequence:** valid for distinctness; three different contributions: current organization, graph alternative, and capability-oriented abstraction.
+
 **Counterexample A — paraphrases (invalid)**
 
 ```json
@@ -315,9 +515,9 @@ The six valid examples below illustrate different tasks. The **JSON is the examp
 
 **Negative classifications take precedence:** a trainee should not label a candidate "valid" just because a reviewer can invent a latent intensity property after reading it. Distinctness must be demonstrated through different semantic contributions independently of the intensity criterion.
 
-### 4.4 Few-shot coverage guidance (examples, not fixed property assignments)
+### 4.4 Few-shot coverage guidance (properties not disclosed)
 
-The six complete valid demonstrations above and two invalid counterexamples provide a minimal working set. For a broad lesson, **approximately nine illustrative property types** give diversity without making an exhaustive menu. Examples of properties that could vary in other lessons include **specificity, skepticism, procedural rigor, conceptual abstraction, interpretive boldness, urgency, critical scrutiny, creative divergence, and evidentiary caution**. They must remain illustrations rather than a fixed selection roster.
+The sixteen positive demonstrations and two negative counterexamples provide the working set. Each positive demonstration must use a different property chosen for that example; none may be reused or identified in prose, JSON, titles, annotations, or review artifacts. The separate property used in each live comment must likewise remain undisclosed.
 
 Every additional few-shot must include (a) exactly three scratchpad texts, (b) classification of **both** adjacent transitions as *paraphrase*, *appended expansion*, or *independent contribution*, and (c) short separate explanations identifying the **different substantive contribution** of each text. Do not reveal the agent's selected property, or assign property names or scores inside the RS. More examples are useful only when they add real variation in context and content.
 
