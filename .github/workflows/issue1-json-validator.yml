@@ -193,22 +193,35 @@ jobs:
                 const upcoming=priorState?.progression?.accepted_entries??0;
                 const pendingPath=root+'/instructions/'+String(upcoming+1).padStart(2,'0')+'.json';
                 const persistedDraw=await readFile(pendingPath);
-                let selection=undefined;
+                let savedDraws=null;
                 if(persistedDraw){
                   const payload=persistedDraw.value;
-                  if(payload.source_revision_sha256===revisionSha&&
+                  if(payload.source_revision_sha256===revisionSha &&
                      payload.next_function?.target_index===upcoming+1){
-                    selection=payload.next_function.random_selection.selected_ordinal;
+                    const selection=payload.next_function.random_selection;
+                    // The replay sequence includes a higher-order operator draw,
+                    // an optional ABSTRACT mode draw, and the atomic operator draw.
+                    savedDraws=Array.isArray(selection?.draws)
+                      ? selection.draws
+                      : [{purpose:'atomic_function',pool_size:selection.pool_size,
+                          selected_ordinal:selection.selected_ordinal}];
                   }
                 }
+                let replayCursor=0;
                 const selectInt=(size)=>{
-                  if(selection===undefined)return require('node:crypto').randomInt(size);
-                  if(!Number.isInteger(selection)||selection<0||selection>=size){
-                    throw Error('Persisted random selection is invalid');
+                  if(savedDraws===null)return require('node:crypto').randomInt(size);
+                  const step=savedDraws[replayCursor++];
+                  if(!step || step.pool_size!==size ||
+                     !Number.isInteger(step.selected_ordinal)||
+                     step.selected_ordinal<0||step.selected_ordinal>=size){
+                    throw Error('Persisted ordered random selection mismatch at draw '+replayCursor);
                   }
-                  return selection;
+                  return step.selected_ordinal;
                 };
                 const result=processWithController(priorState,body,id,revisionPath,eventName,profile,registry,selectInt);
+                if(savedDraws!==null && !result.duplicate && savedDraws.length!==replayCursor){
+                  throw Error('Persisted random draw sequence was not consumed completely');
+                }
                 let instruction=result.next_instruction;
                 const needsRetry=result.duplicate&&priorState?.progression?.controller_status==='awaiting_publication'&&
                   !!priorState?.progression?.next_function;
