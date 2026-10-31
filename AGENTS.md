@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.9.2",
+  "format_version": "2.10.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -1879,31 +1879,31 @@
     },
     {
       "opcode": "IS.07.014",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Select exactly one substantive function at random with node:crypto.randomInt from the explicitly enumerated eligible OP pool on each successful advancement; do not choose functions by agent preference or a deterministic hash.",
+      "imperative": "At each new three-index framing exercise (indices 1, 4, 7, 10, 13), randomly select one higher-order operation from SOLVER_LIFT or ABSTRACT with node:crypto.randomInt; if ABSTRACT, independently select one of its four explicit modes. Preserve that choice across all three slots while selecting atomic OP.01 operators independently for each eligible next index.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.07.015",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Store the selected opcode, name, selected pool ordinal, target array index, source revision hash, and enclosing-frame/reference instructions as JSON objects linked to the permanent comment ID.",
+      "imperative": "Persist the higher-order frame selection (operator opcode, optional abstraction mode, selection ordinal, source lineage, and input/output contract) once per frame in progression.frame_selections and each frame instruction, alongside the independently chosen atomic OP.01 operation and all ordered random draws.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.07.016",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Recover an already-persisted random selection after retries or interrupted execution; never reroll a selection for the same accepted source revision and target index.",
+      "imperative": "Recover the full ordered random-draw sequence (higher-order operator, optional ABSTRACT mode, atomic operator) after retries or interrupted execution and reuse every persisted frame choice within that frame; do not reroll a higher-order operator on its second or third index.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -1919,31 +1919,31 @@
     },
     {
       "opcode": "IS.07.018",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Use four levels of two persistent referents plus narrative expansion (12 slots) and five freely authored slots; keep the referents identifiable across frames without assigning fixed semantic properties to scratchpad indices.",
+      "imperative": "Maintain five three-index framing exercises in indices 1–15, each with two distinguishable referents and a transformed output at its third slot. Apply a single selected higher-order operator to all three slots; preserve the chain of inner solver, enclosing solver, source attribution and invariants across the five levels.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.07.019",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not issue a new controller operation when JSON is invalid, wrapper shape or one-entry progression fails, the array is imported as a complete first submission, or the seventeenth tracked index has already been accepted.",
+      "imperative": "Do not issue a new operation when source JSON or required framing content is structurally invalid, the accepted prefix changes, a complete array is imported without sequential edits, or the nineteenth tracked index has already been accepted. Do not silently establish a new framing choice mid-frame.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.07.020",
-      "version": 1,
+      "version": 2,
       "source_section": "7",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Keep the existing root README and the first imported README candidate for comparison; only accept a new controller-driven README candidate as experimentally complete when a verified 17-entry incremental progression and controller delivery history supports it.",
+      "imperative": "Keep the existing root README and earlier 17-entry README candidates as historical comparators; do not claim a new README job complete without nineteen sequentially verified entries, eighteen controller instructions and a matching final receipt.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2085,11 +2085,11 @@
     },
     {
       "opcode": "IS.10.004",
-      "version": 1,
+      "version": 2,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "For each accepted index below 16, poll and read the published next-function receipt and controller comment; verify target_index, selected_function opcode, source revision, controller comment ID, and delivered state before authoring the next scratchpad.",
+      "imperative": "For each accepted index below 18, poll the source-linked controller reply and saved instruction receipt; verify source comment ID, accepted prefix, selected atomic opcode, higher-order frame identity and mode when applicable, source revision hash, and delivered state before writing the next substantive scratchpad.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2135,11 +2135,11 @@
     },
     {
       "opcode": "IS.10.009",
-      "version": 2,
+      "version": 3,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "At index 16, verify progression.complete, accepted_entries=19, last_accepted_index=18, current source revision hash, and the terminal controller state, then verify a README candidate and receipt generated from that exact source comment; otherwise mark the job blocked or incomplete.",
+      "imperative": "At outer index 18, verify progression.complete, accepted_entries=19, last_accepted_index=18, the final source revision digest, five persisted frame selections, eighteen controller instructions, and a source-consistent README candidate/receipt; otherwise report incomplete or blocked.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2165,11 +2165,11 @@
     },
     {
       "opcode": "IS.10.012",
-      "version": 4,
+      "version": 5,
       "source_section": "10",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not claim the README experiment complete merely because seventeen entries exist; require sequential accepted revisions in workflow-owned JSON state, matching eighteen controller instruction receipts, and a source-consistent final artifact receipt. Never impose a separate agent-written acknowledgement.",
+      "imperative": "Do not claim the nineteen-entry experiment complete based on array length or successful tests alone. Require nineteen accepted revisions, five consistently retained higher-order frame selections, eighteen source-linked instructions and a verified final artifact receipt. Never require worker-written control acknowledgements.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2300,6 +2300,116 @@
       "source_line_range": null,
       "modality": "require",
       "imperative": "Preserve all earlier 17-entry completed jobs, candidate READMEs, and related receipts as historical outputs; the 19-entry format applies prospectively to new runs, never retroactively upgrades those historical records.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.001",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Register SOLVER_LIFT (OP.02.001) and ABSTRACT (OP.02.002) as separate higher-order operators, distinguished from ordinary atomic OP.01.* functions. Use the versioned higher-order operator registry as their formal contract.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.002",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Select the higher-order operator once when entering a frame, with a uniform random draw between SOLVER_LIFT and ABSTRACT; choose one of CONTRACT, IMPLEMENTATION, CONSTRUCT, GENERAL only if ABSTRACT was selected, using a separate uniform draw.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.003",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Bind the one selected frame operator and optional mode to each of its three scratchpads, with reference A describing the inner solver, reference B describing the enclosing target, and the third entry containing the transformed solver or representation.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.004",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For SOLVER_LIFT, the enclosing solver must take the inner solver's problem, method, assumptions, intermediate results, limitations and provenance as its subject and input. Do not substitute a paraphrase of the original user task for the new solver's input.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.005",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For ABSTRACT, choose and preserve exactly one mode: CONTRACT for obligations/interfaces/invariants, IMPLEMENTATION for a nonexecuting model of mechanisms and dependencies, CONSTRUCT for structural elements/relationships, or GENERAL for cross-instance properties and limits.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.006",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Every completed third-slot framing result must identify preserved properties, intentionally suppressed details, introduced assumptions, source mappings, and a distinctly framed next-solver input. The selected mode must supply its required output fields.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.007",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Keep the higher-order selection stable for the full three-index frame and persist all five frame selections in progression.frame_selections. Each subsequent frame may independently select its new higher-order operator, retaining ancestry to the preceding frame and original instruction.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.008",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Preserve atomic OP.01 choice as a separately selected supporting function per index. An atomic operation cannot replace the selected higher-order framing operation, nor can naming an opcode count as its execution.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.009",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Validate the structural presence of source-linked inner-solver inputs, enclosing targets and the operator-specific third-slot result before accepting frame indices. A structural validator cannot certify reasoning depth, semantic correctness or implementation execution.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.010",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not add workflow acknowledgements, controller IDs or operational receipt metadata to substantive scratchpads. All operational frame selection and replay state remains workflow-owned; the agent edits only its Issue #1 source comment during a job.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.12.011",
+      "version": 1,
+      "source_section": "12",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "The final reconciliation stage must account for all five higher-order frame operators, their abstraction modes, retained and omitted properties, and traceable source mappings before an agent claims a synthesized output addresses the original instruction.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -2473,6 +2583,13 @@
         "start_line": null,
         "end_line": null,
         "kind": "current_normative_extension"
+      },
+      {
+        "id": "12",
+        "title": "Higher-order SOLVER_LIFT and ABSTRACT framing, mode selection and lineage",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_normative_extension"
       }
     ],
     "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
@@ -2611,13 +2728,13 @@
     },
     "framing_controller": {
       "profile_path": "src/types/issuescratch.framing-controller.v1.json",
-      "profile_sha": "f1ea727e37f6027e3519bcffcc508d8ca2ed02b1",
-      "profile_version": "1.6.0",
+      "profile_sha": "351fda7e3e0ec4de6e259f6793f0d78e6a900c49",
+      "profile_version": "2.1.0",
       "implementation_path": "src/framing-controller.js",
-      "implementation_sha": "eccec894d576dad35873c829a2d08c7a7e2c65fc",
+      "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
       "tests_path": "src/framing-controller.test.js",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
-      "workflow_sha": "7277829d569c3f92056f37099476677389f21ff9",
+      "workflow_sha": "7c0d45a4cec64dac65491b6a11b52c196cf29d95",
       "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
       "random_pool_size": 14,
       "random_selection": "node:crypto.randomInt",
@@ -2669,10 +2786,17 @@
         41239803917,
         41239852275
       ],
-      "latest_live_probe_scope": "Live event tests verify the first two accepted revisions, not full nineteen-index completion.",
-      "verified_on_main": true,
+      "latest_live_probe_scope": "Previous two-index probe predates higher-order framing; fresh live verification pending.",
+      "verified_on_main": false,
       "test_suite_run": 41239683462,
-      "test_count": 36
+      "test_count": 36,
+      "frame_count": 5,
+      "higher_order_frame_selection_count": 5,
+      "higher_order_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+      "higher_order_mode_count": 4,
+      "frame_selections_state_key": "progression.frame_selections",
+      "frame_input_validation": true,
+      "frame_output_validation": true
     },
     "agent_workflow_handshake": {
       "schema": "issuescratch.agent-workflow-handshake.v1.2",
@@ -2755,13 +2879,52 @@
       "minimum_atomic_op_steps": 2,
       "historical_runs_preserved": true,
       "workflow_artifacts_in_agent_comment": false
+    },
+    "higher_order_framing": {
+      "registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+      "registry_blob_sha": "79e993b7e852461bac99bc3a4b7b5b25cf8d1ed0",
+      "operator_ids": [
+        "OP.02.001",
+        "OP.02.002"
+      ],
+      "mode_ids": [
+        "CONTRACT",
+        "IMPLEMENTATION",
+        "CONSTRUCT",
+        "GENERAL"
+      ],
+      "selection_indices": [
+        1,
+        4,
+        7,
+        10,
+        13
+      ],
+      "operator_random_method": "crypto.randomInt(2) once per 3-index frame",
+      "conditional_abstract_mode_random_method": "crypto.randomInt(4) when ABSTRACT chosen",
+      "atomic_function_registry": "src/types/issuescratch.operation-registry.v1.json",
+      "atomic_registry_blob_sha": "233406589704b8b8a6ad8d1a749606867a2856c3",
+      "atomic_random_method": "crypto.randomInt(14) per target index",
+      "persisted_frame_state_path": "progression.frame_selections",
+      "persisted_draw_receipt": "next_function.random_selection.draws",
+      "substantive_input_fields": [
+        "solver_or_subject[object]",
+        "enclosing_target[object]"
+      ],
+      "substantive_output_field": "higher_order_result[object]",
+      "reframing_count": 5,
+      "scope": "indices 1..15, three entries per frame",
+      "validation": "structural only, semantic agent execution unverified",
+      "no_worker_workspace_writes": true,
+      "no_worker_workflow_writes": true,
+      "main_branch_only": true
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
-    "previous_active_document_blob_sha": "cea3528e2ee0bbb78d943888214ce09abeb222aa",
+    "previous_active_document_blob_sha": "8ef7a142e8c06d753494e343c901daca41be832f",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Synchronize GitHub Actions workflow blob SHA and record successful 36-test suite plus first two live 19-index framing handshake transitions; full 19-index execution remains unverified.",
+    "current_amendment": "Define SOLVER_LIFT and ABSTRACT higher-order framing with four abstraction modes, one persistent selection per frame, atomic supporting operations, source lineage and mode-specific structural validation.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2769,8 +2932,8 @@
     }
   },
   "coverage": {
-    "active_section_count": 24,
-    "active_procedure_count": 197,
+    "active_section_count": 25,
+    "active_procedure_count": 208,
     "registered_fields": 59,
     "linked_registry_sha": "03a624ae2cbc8fa84ce95aa6a98af1060a50f249",
     "active_examples": 0,
@@ -2800,7 +2963,11 @@
     "reframing_exercises": 5,
     "reconciliation_slots": 3,
     "initial_opcode_projection_required": true,
-    "framing_controller_current_live_probe_accepted": 2,
-    "framing_controller_complete_19_index_run_verified": false
+    "framing_controller_current_live_probe_accepted": 0,
+    "framing_controller_complete_19_index_run_verified": false,
+    "higher_order_operators": 2,
+    "higher_order_abstraction_modes": 4,
+    "higher_order_framing_selection_count": 5,
+    "higher_order_full_run_verified": false
   }
 }
