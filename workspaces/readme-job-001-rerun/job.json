@@ -1,0 +1,19 @@
+{
+  "schema": "issuescratch.readme-controlled-job.v1",
+  "job_id": "RS17-README-001-RERUN",
+  "source_issue_number": 1,
+  "source_comment_id": 6548382814,
+  "original_instruction": "Create the readme that basically is a manifest and description of the major file components of this repo",
+  "source_interpretation": "A README that manifests and describes major repository file components, generated from the completed 17-scratchpad controlled issue comment.",
+  "candidate_path": "experiments/readme-job-001-rerun.candidate.md",
+  "prior_candidate_path": "experiments/readme-job-001.candidate.md",
+  "root_readme_path": "README.md",
+  "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
+  "handshake": "issuescratch.agent-workflow-handshake.v1.1",
+  "accepted_comment_schema": "one root array of scratchpad-wrapped heterogeneous objects",
+  "workflow_artifacts_in_comment": false,
+  "start_index": 0,
+  "last_index": 16,
+  "acknowledgement_path_pattern": "workspaces/issue1-diagnostics/comments/6548382814/acknowledgements/<two-digit-index>.json",
+  "status": "active"
+}
