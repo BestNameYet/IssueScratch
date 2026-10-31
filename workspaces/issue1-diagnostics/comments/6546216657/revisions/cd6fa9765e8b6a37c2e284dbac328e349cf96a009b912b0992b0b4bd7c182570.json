@@ -1,0 +1,504 @@
+{
+  "schema": "issuescratch.comment-diagnostics.v1",
+  "issue_number": 1,
+  "comment_id": 6546216657,
+  "source_revision_sha256": "cd6fa9765e8b6a37c2e284dbac328e349cf96a009b912b0992b0b4bd7c182570",
+  "transition": "expected_single_root_array",
+  "progression_before": 0,
+  "progression_after": 0,
+  "next_index": 0,
+  "functions_dispatched": 0,
+  "source": {
+    "root_type": "object",
+    "json_valid": true,
+    "validation_error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  },
+  "metrics": {
+    "raw_sha256": "cd6fa9765e8b6a37c2e284dbac328e349cf96a009b912b0992b0b4bd7c182570",
+    "raw_characters": 3242,
+    "raw_utf8_bytes": 3242,
+    "json_valid": true,
+    "root_type": "object",
+    "root_array_count": 0,
+    "nested_array_count": 4,
+    "total_array_count": 4,
+    "array_length": null,
+    "all_wrappers_valid": null,
+    "array_compact_json_characters": null,
+    "indexes": [],
+    "all_keys": [
+      {
+        "path": "/scratchpad_1",
+        "key": "scratchpad_1",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 1066,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]",
+        "key": "job[object<LegacyJob>]",
+        "key_characters": 22,
+        "value_type": "object",
+        "value_json_characters": 770,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/sequence",
+        "key": "sequence",
+        "key_characters": 8,
+        "value_type": "number",
+        "value_json_characters": 1,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/title",
+        "key": "title",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 104,
+        "value_text_characters": 102
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/nonce",
+        "key": "nonce",
+        "key_characters": 5,
+        "value_type": "string",
+        "value_json_characters": 58,
+        "value_text_characters": 56
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions",
+        "key": "revisions",
+        "key_characters": 9,
+        "value_type": "array",
+        "value_json_characters": 459,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/0/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/0/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 12,
+        "value_text_characters": 10
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/0/note",
+        "key": "note",
+        "key_characters": 4,
+        "value_type": "string",
+        "value_json_characters": 78,
+        "value_text_characters": 76
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/0/prior_status",
+        "key": "prior_status",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/revision",
+        "key": "revision",
+        "key_characters": 8,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/status",
+        "key": "status",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 9,
+        "value_text_characters": 7
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/supersedes",
+        "key": "supersedes",
+        "key_characters": 10,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/change",
+        "key": "change",
+        "key_characters": 6,
+        "value_type": "string",
+        "value_json_characters": 49,
+        "value_text_characters": 47
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/previous_values",
+        "key": "previous_values",
+        "key_characters": 15,
+        "value_type": "object",
+        "value_json_characters": 72,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/previous_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/previous_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/previous_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/current_values",
+        "key": "current_values",
+        "key_characters": 14,
+        "value_type": "object",
+        "value_json_characters": 84,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/current_values/source_comment_id",
+        "key": "source_comment_id",
+        "key_characters": 17,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/current_values/job_comment_id",
+        "key": "job_comment_id",
+        "key_characters": 14,
+        "value_type": "number",
+        "value_json_characters": 10,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/job[object<LegacyJob>]/revisions/1/current_values/current_revision",
+        "key": "current_revision",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/user_instructions[array<UserInstruction>]",
+        "key": "user_instructions[array<UserInstruction>]",
+        "key_characters": 41,
+        "value_type": "array",
+        "value_json_characters": 224,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/user_instructions[array<UserInstruction>]/0/instruction_id[string]",
+        "key": "instruction_id[string]",
+        "key_characters": 22,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_1/user_instructions[array<UserInstruction>]/0/verbatim[string]",
+        "key": "verbatim[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 107,
+        "value_text_characters": 105
+      },
+      {
+        "path": "/scratchpad_1/user_instructions[array<UserInstruction>]/0/source_comment_id[number|null]",
+        "key": "source_comment_id[number|null]",
+        "key_characters": 30,
+        "value_type": "null",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_1/user_instructions[array<UserInstruction>]/0/effective[boolean]",
+        "key": "effective[boolean]",
+        "key_characters": 18,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2",
+        "key": "scratchpad_2",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 603,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]",
+        "key": "repository_revisions[array<RepositoryRevision>]",
+        "key_characters": 47,
+        "value_type": "array",
+        "value_json_characters": 551,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/0/repository[string]",
+        "key": "repository[string]",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/0/path[string]",
+        "key": "path[string]",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/0/commit_sha[string]",
+        "key": "commit_sha[string]",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/0/change_summary[string]",
+        "key": "change_summary[string]",
+        "key_characters": 22,
+        "value_type": "string",
+        "value_json_characters": 123,
+        "value_text_characters": 121
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/1/repository[string]",
+        "key": "repository[string]",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 26,
+        "value_text_characters": 24
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/1/path[string]",
+        "key": "path[string]",
+        "key_characters": 12,
+        "value_type": "string",
+        "value_json_characters": 11,
+        "value_text_characters": 9
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/1/commit_sha[string]",
+        "key": "commit_sha[string]",
+        "key_characters": 18,
+        "value_type": "string",
+        "value_json_characters": 42,
+        "value_text_characters": 40
+      },
+      {
+        "path": "/scratchpad_2/repository_revisions[array<RepositoryRevision>]/1/change_summary[string]",
+        "key": "change_summary[string]",
+        "key_characters": 22,
+        "value_type": "string",
+        "value_json_characters": 93,
+        "value_text_characters": 91
+      },
+      {
+        "path": "/scratchpad_3",
+        "key": "scratchpad_3",
+        "key_characters": 12,
+        "value_type": "object",
+        "value_json_characters": 771,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]",
+        "key": "test_cases[array<TestCase>]",
+        "key_characters": 27,
+        "value_type": "array",
+        "value_json_characters": 739,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/0/test_id[string]",
+        "key": "test_id[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/0/input[string]",
+        "key": "input[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 19,
+        "value_text_characters": 17
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/0/expected[string]",
+        "key": "expected[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 33,
+        "value_text_characters": 31
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/0/observed[string|null]",
+        "key": "observed[string|null]",
+        "key_characters": 21,
+        "value_type": "string",
+        "value_json_characters": 35,
+        "value_text_characters": 33
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/0/passed[boolean|null]",
+        "key": "passed[boolean|null]",
+        "key_characters": 20,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/1/test_id[string]",
+        "key": "test_id[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/1/input[string]",
+        "key": "input[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 37,
+        "value_text_characters": 35
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/1/expected[string]",
+        "key": "expected[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 36,
+        "value_text_characters": 34
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/1/observed[string|null]",
+        "key": "observed[string|null]",
+        "key_characters": 21,
+        "value_type": "string",
+        "value_json_characters": 69,
+        "value_text_characters": 67
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/1/passed[boolean|null]",
+        "key": "passed[boolean|null]",
+        "key_characters": 20,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/2/test_id[string]",
+        "key": "test_id[string]",
+        "key_characters": 15,
+        "value_type": "string",
+        "value_json_characters": 4,
+        "value_text_characters": 2
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/2/input[string]",
+        "key": "input[string]",
+        "key_characters": 13,
+        "value_type": "string",
+        "value_json_characters": 32,
+        "value_text_characters": 30
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/2/expected[string]",
+        "key": "expected[string]",
+        "key_characters": 16,
+        "value_type": "string",
+        "value_json_characters": 47,
+        "value_text_characters": 45
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/2/observed[string|null]",
+        "key": "observed[string|null]",
+        "key_characters": 21,
+        "value_type": "string",
+        "value_json_characters": 85,
+        "value_text_characters": 83
+      },
+      {
+        "path": "/scratchpad_3/test_cases[array<TestCase>]/2/passed[boolean|null]",
+        "key": "passed[boolean|null]",
+        "key_characters": 20,
+        "value_type": "boolean",
+        "value_json_characters": 4,
+        "value_text_characters": null
+      }
+    ],
+    "key_totals": [],
+    "error": {
+      "code": "expected_single_root_array",
+      "message": "Expected exactly one root JSON array"
+    }
+  }
+}
