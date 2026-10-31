@@ -7,6 +7,9 @@ on:
       - '.github/workflows/issue1-json-validator.yml'
       - 'src/issue1-diagnostics.js'
       - 'src/issue1-diagnostics.test.js'
+      - 'src/framing-controller.js'
+      - 'src/framing-controller.test.js'
+      - 'src/types/issuescratch.framing-controller.v1.json'
       - 'src/opcode-document-adapter.js'
       - 'src/opcode-document-adapter.test.js'
       - 'src/readme-comment-renderer.js'
@@ -19,7 +22,7 @@ on:
 
 permissions:
   contents: write
-  issues: read
+  issues: write
 
 # Serialize writes into the same git branch, including different comment IDs.
 concurrency:
@@ -89,7 +92,19 @@ jobs:
             const owner=context.repo.owner,repo=context.repo.repo;
             const id=context.payload.comment.id;
             const {data:comment}=await github.rest.issues.getComment({owner,repo,comment_id:id});
-            const rendered=render(comment.body||'',{commentId:id,repository:owner+'/'+repo});
+            // Intermediate 1..16-entry arrays are drafts, not final README candidates.
+            const body=comment.body||'';
+            if(!body.includes('"RS17-README-001"')){
+              core.info('Comment is not the README experiment job');
+              return;
+            }
+            let parsed;
+            try {parsed=JSON.parse(body);} catch(e) {return;}
+            if(!Array.isArray(parsed)||parsed.length<17){
+              core.info('README experiment comment is not yet a completed 17-entry array');
+              return;
+            }
+            const rendered=render(body,{commentId:id,repository:owner+'/'+repo});
             if(!rendered){
               core.info('Not the registered README schema job. No candidate created.');
               return;
@@ -147,7 +162,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const { processRevision, sha } = require('./src/issue1-diagnostics.js');
+            const { sha } = require('./src/issue1-diagnostics.js');
+            const { processWithController, publicationDocument, publicationEntry, isControlComment } = require('./src/framing-controller.js');
+            const profile=require('./src/types/issuescratch.framing-controller.v1.json');
             const owner = context.repo.owner, repo = context.repo.repo;
             const eventName = context.eventName;
             const scan = eventName !== 'issue_comment';
@@ -155,7 +172,7 @@ jobs:
               ? await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: 1, per_page: 100 })
               : [context.payload.comment];
             const folder = 'workspaces/issue1-diagnostics/comments';
-            const stats = { inspected: 0, recorded: 0, duplicates: 0, malformed: 0, errored: 0 };
+            const stats = { inspected: 0, recorded: 0, duplicates: 0, malformed: 0, errored: 0, functions_published: 0 };
             const rows = [];
             const failures = [];
 
@@ -188,6 +205,45 @@ jobs:
                 throw new Error('Persistent JSON readback mismatch: '+path);
               }
             }
+            async function sendInstruction(id, functionEntry, knownReplyId) {
+              // A single source-linked bot-owned comment is updated non-destructively.
+              let reply=null;
+              if(knownReplyId){
+                try{
+                  const {data}=await github.rest.issues.getComment({owner,repo,comment_id:knownReplyId});
+                  reply=data;
+                }catch(e){if(e.status!==404)throw e;}
+              }
+              if(!reply){
+                // Recover from a crash after comment creation but before state persistence.
+                const issueComments=await github.paginate(github.rest.issues.listComments,{
+                  owner,repo,issue_number:1,per_page:100
+                });
+                reply=issueComments.find(c=>{
+                  if(!isControlComment(c.body||''))return false;
+                  try {return JSON.parse(c.body).source_comment_id===id;}catch{return false;}
+                })||null;
+              }
+              let history=[];
+              if(reply){
+                const decoded=JSON.parse(reply.body);
+                if(decoded.schema!=='issuescratch.frame-control-comment.v1'||decoded.source_comment_id!==id)throw Error('Controller reply conflict');
+                history=decoded.history;
+              }
+              const exists=history.some(x=>x.source_revision_sha256===functionEntry.source_revision_sha256&&x.target_index===functionEntry.target_index);
+              if(!exists)history=[...history,functionEntry];
+              const expected=JSON.stringify(publicationDocument(id,history),null,2)+'\n';
+              if(!reply){
+                const {data}=await github.rest.issues.createComment({owner,repo,issue_number:1,body:expected});
+                reply=data;
+              }else if(reply.body!==expected){
+                const {data}=await github.rest.issues.updateComment({owner,repo,comment_id:reply.id,body:expected});
+                reply=data;
+              }
+              const {data:saved}=await github.rest.issues.getComment({owner,repo,comment_id:reply.id});
+              if(saved.body!==expected)throw Error('Next-function comment readback mismatch');
+              return reply.id;
+            }
             for (const item of comments) {
               const id = item.id;
               const url = item.html_url || ('https://github.com/'+owner+'/'+repo+'/issues/1#issuecomment-'+id);
@@ -196,25 +252,65 @@ jobs:
                 // Re-fetch current source: an event payload may represent a superseded edit.
                 const {data:current} = await github.rest.issues.getComment({owner,repo,comment_id:id});
                 const body = current.body ?? '';
+                if(isControlComment(body)){
+                  rows.push([String(id),'controller_reply_ignored','—',url]);
+                  continue;
+                }
                 const revisionSha = sha(body);
                 const root = folder+'/'+id;
                 const statePath = root+'/state.json';
                 const revisionPath = root+'/revisions/'+revisionSha+'.json';
                 const existingState = await readFile(statePath);
                 const priorState = existingState?.value ?? null;
-                const result = processRevision(priorState,body,id,revisionPath,eventName);
-                if (result.duplicate) {
+                const result=processWithController(priorState,body,id,revisionPath,eventName,profile);
+                let instruction=result.next_instruction;
+                const needsRetry=result.duplicate&&priorState?.progression?.controller_status==='awaiting_publication'&&
+                  !!priorState?.progression?.next_function;
+                if(needsRetry)instruction=priorState.progression.next_function;
+                if(result.duplicate&&!needsRetry){
                   stats.duplicates++;
                   rows.push([String(id),'unchanged',String(priorState?.progression?.accepted_entries??0),url]);
                   continue;
                 }
-                // Immutable diagnostic snapshots. Persist before advancing the state pointer.
-                const previousDiagnostic = await readFile(revisionPath);
-                if (previousDiagnostic) {
-                  if (JSON.stringify(previousDiagnostic.value)!==JSON.stringify(result.diagnostic)) {
-                    throw new Error('Immutable revision hash conflicts with stored diagnostics');
+                // Publish the instruction only after persisting its immutable JSON object.
+                let actualReplyId=null;
+                if(instruction){
+                  const instructionPath=root+'/instructions/'+String(instruction.target_index).padStart(2,'0')+'.json';
+                  const record={
+                    schema:'issuescratch.frame-instruction-receipt.v1',
+                    source_comment_id:id,source_revision_sha256:revisionSha,
+                    next_function:instruction,publication_status:'selected'
+                  };
+                  const oldInstruction=await readFile(instructionPath);
+                  if(oldInstruction){
+                    if(JSON.stringify(oldInstruction.value)!==JSON.stringify(record))throw Error('Immutable next-function instruction conflict');
+                  }else await writeObject(instructionPath,record,null);
+                  const entry=publicationEntry(revisionSha,instruction);
+                  actualReplyId=await sendInstruction(id,entry,
+                    priorState?.progression?.controller_comment_id||null);
+                  const progress=result.state.progression;
+                  progress.controller_comment_id=actualReplyId;
+                  progress.controller_status='delivered';
+                  if(!result.duplicate){
+                    result.diagnostic.functions_dispatched=1;
+                    result.diagnostic.controller_comment_id=actualReplyId;
                   }
-                } else {
+                  stats.functions_published++;
+                }
+                if(result.duplicate&&needsRetry){
+                  const state={...priorState,progression:{...priorState.progression,
+                    controller_comment_id:actualReplyId,controller_status:'delivered'}};
+                  await writeObject(statePath,state,existingState);
+                  rows.push([String(id),'redelivered_function',String(state.progression.accepted_entries),url]);
+                  continue;
+                }
+                // Immutable source diagnostics, then the pointer to accepted state.
+                const previousDiagnostic=await readFile(revisionPath);
+                if(previousDiagnostic){
+                  if(JSON.stringify(previousDiagnostic.value)!==JSON.stringify(result.diagnostic)){
+                    throw Error('Immutable revision hash conflicts with stored diagnostics');
+                  }
+                }else{
                   await writeObject(revisionPath,result.diagnostic,null);
                 }
                 await writeObject(statePath,result.state,existingState);
@@ -236,7 +332,7 @@ jobs:
             }
             await core.summary
               .addHeading('Issue #1 deterministic JSON diagnostics')
-              .addRaw('Event: '+eventName+'; inspected: '+stats.inspected+'; recorded: '+stats.recorded+'; repeated: '+stats.duplicates+'; invalid JSON: '+stats.malformed+'; persistence failures: '+stats.errored+'. Stored state and immutable revisions are JSON objects under '+folder+'/.' )
+              .addRaw('Event: '+eventName+'; inspected: '+stats.inspected+'; recorded: '+stats.recorded+'; published next functions: '+stats.functions_published+'; repeated: '+stats.duplicates+'; invalid JSON: '+stats.malformed+'; persistence failures: '+stats.errored+'. Stored state and immutable revisions are JSON objects under '+folder+'/.' )
               .addTable([
                 [{data:'Comment',header:true},{data:'Transition',header:true},{data:'Accepted entries',header:true},{data:'URL',header:true}],
                 ...rows.map(r=>r.map(data=>({data})))
