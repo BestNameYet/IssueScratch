@@ -4,22 +4,22 @@
   "comment_id": 6548382814,
   "progression": {
     "mode": "incremental",
-    "accepted_entries": 12,
-    "last_accepted_index": 11,
-    "next_index": 12,
-    "accepted_prefix_sha256": "8d870bff9439fde6bdaa7a6873e7a97a99bd6dec20f81e57f2e473c568ade4f0",
+    "accepted_entries": 13,
+    "last_accepted_index": 12,
+    "next_index": 13,
+    "accepted_prefix_sha256": "94785a013c33efa665b78c9fee04100027c3c8fb525deb869621b3ed8a0a9a14",
     "complete": false,
     "next_function": {
       "schema": "issuescratch.next-framing-function.v1",
       "comment_id": 6548382814,
-      "target_index": 12,
+      "target_index": 13,
       "profile_version": "1.1.0",
       "selected_function": {
-        "opcode": "OP.01.010",
-        "name": "SELECT",
-        "description": "Choose one or more candidates according to a rule",
-        "input_contract": "candidates_and_rule",
-        "output_contract": "selection"
+        "opcode": "OP.01.007",
+        "name": "COMPUTE",
+        "description": "Apply an explicit mathematical or computational procedure",
+        "input_contract": "function_and_operands",
+        "output_contract": "result"
       },
       "random_selection": {
         "algorithm": "node:crypto.randomInt",
@@ -40,12 +40,12 @@
           "OP.01.015"
         ],
         "pool_size": 14,
-        "selected_ordinal": 8,
+        "selected_ordinal": 5,
         "selection_round": 1,
         "note": "One fresh draw on an accepted revision; retry uses persisted choice."
       },
       "opcodes": [
-        "OP.01.010"
+        "OP.01.007"
       ],
       "read_indices": [],
       "frame_id": null,
@@ -55,9 +55,9 @@
       "original_anchor_index": null,
       "previous_frame_index": null,
       "requirements": [
-        "Apply function SELECT (OP.01.010) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
+        "Apply function COMPUTE (OP.01.007) to the material available in the designated frame; use its declared input/output meaning without asserting that the controller executed it.",
         "Choose a substantive contribution without a fixed semantic role.",
-        "Append exactly one scratchpad object at index 12; preserve the accepted prefix."
+        "Append exactly one scratchpad object at index 13; preserve the accepted prefix."
       ],
       "control_mode": "publish_instruction_not_autonomous_agent"
     },
@@ -65,8 +65,8 @@
     "controller_status": "delivered",
     "controller_comment_id": 6548393119
   },
-  "last_processed_revision_sha256": "bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d",
-  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/bb152aacf9861cf110a9801d75a5acbf7c2278de42f10cb61b400bc09f66a49d.json",
+  "last_processed_revision_sha256": "2879261b009d45bf9543f8129f71c91205fdcc38b2127b7054338c8192df3773",
+  "latest_diagnostic_path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/2879261b009d45bf9543f8129f71c91205fdcc38b2127b7054338c8192df3773.json",
   "latest_validation": "valid",
   "history": [
     {
@@ -163,6 +163,14 @@
       "json_valid": true,
       "array_length": 12,
       "accepted_entries_after": 12,
+      "transition": "accepted_one_entry"
+    },
+    {
+      "raw_sha256": "2879261b009d45bf9543f8129f71c91205fdcc38b2127b7054338c8192df3773",
+      "path": "workspaces/issue1-diagnostics/comments/6548382814/revisions/2879261b009d45bf9543f8129f71c91205fdcc38b2127b7054338c8192df3773.json",
+      "json_valid": true,
+      "array_length": 13,
+      "accepted_entries_after": 13,
       "transition": "accepted_one_entry"
     }
   ]
