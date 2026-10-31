@@ -11,7 +11,8 @@
     ],
     "convention": "IssueStack field[type] syntax for suggested typed forms; historical unannotated keys preserved.",
     "previous_registry_blob_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
-    "amendment": "Change new RS records to root arrays of at least seven independently typed open objects; legacy three-property JSON records remain readable and untouched."
+    "amendment": "Each new root-array element is a wrapper object containing exactly the literal key scratchpad, whose value is one open heterogeneous typed scratchpad object. Historical comments remain unmodified.",
+    "previous_active_registry_blob_sha": "fdd7a42a047315b9d940ad88790322e26d31722a"
   },
   "semantics": {
     "scratchpad_key_selection": "open and optional",
@@ -29,28 +30,49 @@
     ],
     "nested_fields": "All listed nested keys are optional examples of observed shapes; additional typed keys allowed.",
     "arrays": "Historical arrays retain their observed element types; no forced migration to IssueStack named-object arrays.",
-    "backwards_compatibility": "The five existing three-object Issue #1 jobs remain preserved, readable and valid as historical versions. Apply the new array shape to newly authored RS records only.",
+    "backwards_compatibility": "Previously saved three-named-object records and the earlier seven-entry unwrapped-array job #6 are historical, unchanged and readable. New submissions use the scratchpad-wrapped array shape.",
     "extension": "Future types and keys may be added to the registry without obligating their inclusion in any scratchpad.",
     "separate_content_rules": "AGENTS.md governs independent substantive contributions, source verification, job tracking and history. The registry specifies the new array structure and per-field types, but does not impose all registered fields on an item.",
     "root_type": "array",
     "minimum_items": 7,
     "item_type": "object",
     "array_index_base": 0,
-    "array_order": "Index 0 through last; no named scratchpad positions or semantic role allocation.",
+    "array_order": "Each zero-based index is a wrapper with the literal scratchpad key; no role assignment by index.",
     "length_above_minimum": "Any integer length greater than or equal to seven; the total length itself need not be prime.",
-    "each_item": "One independently authored open heterogeneous scratchpad object; no array nesting or primitive/null at an index.",
-    "minimum_object_content": "Each item should contain at least one meaningful agent-authored field value; no mandated field name or filler value.",
-    "legacy_record_shape": {
-      "root_type": "object",
-      "keys": [
-        "scratchpad_1",
-        "scratchpad_2",
-        "scratchpad_3"
-      ],
-      "acceptance": "Preserved as previously saved; do not coerce or rewrite old comments."
+    "each_item": "A wrapper JSON object with exactly one property named scratchpad; its value is one nonempty open heterogeneous scratchpad object. All registered typed keys belong inside this nested object, not beside scratchpad.",
+    "minimum_object_content": "The scratchpad value must be a nonempty object with at least one meaningful agent-authored field. No particular registered field is mandatory.",
+    "job_metadata": "Job metadata may be stored under a chosen registered job field inside any indexed scratchpad value or in a separately linked Issue #1 record. The wrapper contains no other key.",
+    "typed_array_validation_runtime": "Not implemented; the JSON-syntax normalizer accepts parseable content but does not validate scratchpad wrapper keys or array length.",
+    "item_keys": [
+      "scratchpad"
+    ],
+    "item_required_key": "scratchpad",
+    "item_additional_keys_allowed": false,
+    "item_value_type": "object",
+    "item_shape": {
+      "scratchpad": {
+        "type": "open_heterogeneous_object",
+        "minimum_fields": 1,
+        "field_selection": "optional and independently typed"
+      }
     },
-    "job_metadata": "Use any selected registered job metadata key inside a scratchpad object if the job record requires it, without reserving a fixed array index; alternatively reference a separately linked job record.",
-    "typed_array_validation_runtime": "Not implemented; declaration of the array shape is not proof of enforcement by the JSON-syntax normalization workflow."
+    "legacy_record_shapes": [
+      {
+        "root_type": "object",
+        "keys": [
+          "scratchpad_1",
+          "scratchpad_2",
+          "scratchpad_3"
+        ],
+        "acceptance": "Preserve all earlier three-named-object records unchanged."
+      },
+      {
+        "root_type": "array",
+        "item_type": "unwrapped heterogeneous object",
+        "example_comment_id": 6546285143,
+        "acceptance": "Preserve the already saved Job #6 comment as a historical v2 record; do not rewrite it."
+      }
+    ]
   },
   "permitted_use_fields": {
     "stewardship_claims": {
@@ -2804,6 +2826,9 @@
   "provenance": {
     "previous_registry_sha": "0fed91407a5df96726f965a1dcd174bf0864d6c0",
     "record_shape_intent": "new RS only; legacy unchanged",
-    "minimum_length_selection": 7
+    "minimum_length_selection": 7,
+    "previous_active_registry_blob_sha": "fdd7a42a047315b9d940ad88790322e26d31722a",
+    "active_wrapper_key": "scratchpad",
+    "historic_unwrapped_job_id": 6546285143
   }
 }
