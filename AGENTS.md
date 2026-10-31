@@ -197,11 +197,11 @@ Classify the sequence as **invalid** if either transition is paraphrase or appen
 
 The test is about **semantic independence**, not literal word overlap. Repeating an identifier, repository name, or necessary background term does not by itself create a paraphrase or appendage.
 
-### 4.3 Sixteen positive few-shot demonstrations with classification
+### 4.3 Sixteen numbered few-shot demonstrations with classification
 
 The sixteen positive examples illustrate different tasks and are designed around sixteen non-repeating, undisclosed properties. The **JSON is the example RS**; the **classification and contribution analysis appear outside the JSON** as training annotations. Neither the examples nor their annotations identify the property chosen for any actual comment. An agent must select a fresh undisclosed property for each new real comment. These examples are teaching material, not fixed templates or a finite property menu.
 
-**Few-shot 1 — Conflicting source reports**
+**Few-shot 1**
 
 ```json
 {
@@ -215,7 +215,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (contradiction versus the evidentiary requirement for closure); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: source inventory, observed conflict, verification criterion.
 
-**Few-shot 2 — Failed repository lookup**
+**Few-shot 2**
 
 ```json
 {
@@ -229,7 +229,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (branch observation versus a concrete validation action); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: error, probable cause, proposed test.
 
-**Few-shot 3 — Conflicting instructions**
+**Few-shot 3**
 
 ```json
 {
@@ -243,7 +243,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (constraint versus resolution of the authorization conflict); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: request, boundary, decision.
 
-**Few-shot 4 — Architecture proposal**
+**Few-shot 4**
 
 ```json
 {
@@ -257,7 +257,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (current-state layout versus an event-derived alternative with different invariants); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: diagnosis, local alternative, broader model.
 
-**Few-shot 5 — Empirical testing**
+**Few-shot 5**
 
 ```json
 {
@@ -271,7 +271,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (data-collection procedure versus causal discrimination); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: anomaly, measurement, analytic inference plan.
 
-**Few-shot 6 — Philosophical critique of receipts**
+**Few-shot 6**
 
 ```json
 {
@@ -285,7 +285,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: receipt meaning, inference limitation, governance principle.
 
-**Few-shot 7 — Chronology**
+**Few-shot 7**
 
 ```json
 {
@@ -305,7 +305,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (recorded implementation versus production transition); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: originating discussion, recorded implementation, and production transition.
 
-**Few-shot 8 — Information exposure**
+**Few-shot 8**
 
 ```json
 {
@@ -325,7 +325,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (unnecessary disclosure versus separate access risk); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: ordinary sample data, unnecessary disclosure, and separate access risk.
 
-**Few-shot 9 — Code provenance**
+**Few-shot 9**
 
 ```json
 {
@@ -345,7 +345,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (current source discrepancy versus revision-grounded test); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: indexed excerpt, current source discrepancy, and revision-grounded test.
 
-**Few-shot 10 — Ambiguous instruction**
+**Few-shot 10**
 
 ```json
 {
@@ -365,7 +365,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (important record distinction versus scope decision); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: general request, important record distinction, and scope decision.
 
-**Few-shot 11 — Accessibility**
+**Few-shot 11**
 
 ```json
 {
@@ -385,7 +385,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (reported usability defect versus user-impact verification); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: presentation request, reported usability defect, and user-impact verification.
 
-**Few-shot 12 — Competing explanations**
+**Few-shot 12**
 
 ```json
 {
@@ -405,7 +405,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (independent observation versus causal discrimination); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: observed symptom, independent observation, and causal discrimination.
 
-**Few-shot 13 — Parallel work**
+**Few-shot 13**
 
 ```json
 {
@@ -425,7 +425,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (unblocked activity versus coordinated plan); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: blocked dependency, unblocked activity, and coordinated plan.
 
-**Few-shot 14 — Textual authority**
+**Few-shot 14**
 
 ```json
 {
@@ -445,7 +445,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (material source distinction versus interpretive consequence); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: quotation discrepancy, material source distinction, and interpretive consequence.
 
-**Few-shot 15 — Recovery**
+**Few-shot 15**
 
 ```json
 {
@@ -465,7 +465,7 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (deduplication evidence versus safe recovery procedure); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: missing acknowledgment, deduplication evidence, and safe recovery procedure.
 
-**Few-shot 16 — Task architecture**
+**Few-shot 16**
 
 ```json
 {
@@ -485,39 +485,9 @@ The sixteen positive examples illustrate different tasks and are designed around
 - `2 → 3`: **Independent contribution** (graph alternative versus capability-oriented abstraction); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness; three different contributions: current organization, graph alternative, and capability-oriented abstraction.
 
-**Counterexample A — paraphrases (invalid)**
+### 4.4 Few-shot coverage guidance
 
-```json
-{
-  "scratchpad_1": {"text": "The repository file is absent."},
-  "scratchpad_2": {"text": "The requested file does not exist in that repository."},
-  "scratchpad_3": {"text": "No such file can be found in the repository."}
-}
-```
-
-- `1 → 2`: **Paraphrase — reject**.
-- `2 → 3`: **Paraphrase — reject**.
-- **Why:** all three have essentially the same core proposition.
-
-**Counterexample B — appended expansions (invalid)**
-
-```json
-{
-  "scratchpad_1": {"text": "The lookup returned 404."},
-  "scratchpad_2": {"text": "The lookup returned 404, and the branch was not specified."},
-  "scratchpad_3": {"text": "The lookup returned 404, and the branch was not specified, and the file path may be stale."}
-}
-```
-
-- `1 → 2`: **Appended expansion — reject**.
-- `2 → 3`: **Appended expansion — reject**.
-- **Why:** each successor literally retains its predecessor's statement and adds a clause.
-
-**Negative classifications take precedence:** a trainee should not label a candidate "valid" just because a reviewer can invent a latent intensity property after reading it. Distinctness must be demonstrated through different semantic contributions independently of the intensity criterion.
-
-### 4.4 Few-shot coverage guidance (properties not disclosed)
-
-The sixteen positive demonstrations and two negative counterexamples provide the working set. Each positive demonstration must use a different property chosen for that example; none may be reused or identified in prose, JSON, titles, annotations, or review artifacts. The separate property used in each live comment must likewise remain undisclosed.
+The sixteen demonstrations provide the working set. Each demonstration must use a different property chosen for that example; none may be reused or identified in prose, JSON, titles, annotations, or review artifacts. The separate property used in each live comment must likewise remain undisclosed.
 
 Every additional few-shot must include (a) exactly three scratchpad texts, (b) classification of **both** adjacent transitions as *paraphrase*, *appended expansion*, or *independent contribution*, and (c) short separate explanations identifying the **different substantive contribution** of each text. Do not reveal the agent's selected property, or assign property names or scores inside the RS. More examples are useful only when they add real variation in context and content.
 
