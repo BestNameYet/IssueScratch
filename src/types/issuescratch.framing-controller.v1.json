@@ -1,6 +1,6 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "purpose": "One preparation entry; five three-slot recursive frames, each governed by one randomly selected higher-order operator (SOLVER_LIFT or ABSTRACT); three reconciliation entries. Atomic OP.01 operators may also be selected per index.",
   "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
@@ -34,7 +34,8 @@
     "ABSTRACT changes representation under one of four explicit modes; IMPLEMENTATION represents a mechanism without executing code.",
     "Retain the same higher-order mode/operator through all three slots, and preserve identity, attribution, invariants, suppression lists and source mapping across frames.",
     "Retain independently selected atomic OP.01 steps per index where useful; atomic and higher-order choices have different semantics and must not be conflated.",
-    "No claim of semantic correctness or actual solver execution follows from structural validation or opcode publication."
+    "No claim of semantic correctness or actual solver execution follows from structural validation or opcode publication.",
+    "Require substantive frame input and transformed output structures, including source mappings, under the selected higher-order operator; an opcode name alone cannot satisfy the third slot."
   ],
   "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
   "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
@@ -310,5 +311,37 @@
     "choice_receipt": "Same per-index immutable instruction JSON and controller comment used by OP.01 selections",
     "replay": "Upon retry, re-read the saved per-index draw sequence (operator, optional mode, atomic), and use the existing frame selection for the other two slots.",
     "compatibility": "Prior issued instructions remain immutable; this operator profile applies to newly initiated frames and new comments."
+  },
+  "substantive_frame_output_contract": {
+    "index_role_fields": {
+      "reference_a": "solver_or_subject[object]",
+      "reference_b": "enclosing_target[object]",
+      "third_slot": "higher_order_result[object]"
+    },
+    "required_solver_fields": [
+      "problem_ref",
+      "method_ref",
+      "assumptions_ref",
+      "intermediate_result_refs",
+      "limitations_ref",
+      "source_refs"
+    ],
+    "required_enclosing_target_fields": [
+      "target_ref",
+      "context_refs",
+      "invariants",
+      "purpose"
+    ],
+    "required_result_fields": [
+      "preserved_properties",
+      "suppressed_details",
+      "introduced_assumptions",
+      "source_mapping",
+      "next_solver_input"
+    ],
+    "solver_lift_specific": "outer_solver_input object with subject_solver_ref, question_about_solver, problem_ref, source_refs",
+    "abstraction_specific": "representation object with the fields declared by the selected CONTRACT, IMPLEMENTATION, CONSTRUCT or GENERAL mode",
+    "validation": "Structural validation of content fields and source references against current frame selection. It does not prove semantic correctness or execution.",
+    "source_comment_policy": "These fields are substantive solver output, NOT workflow acknowledgement, selection metadata, controller IDs or execution receipts."
   }
 }
