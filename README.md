@@ -20,6 +20,10 @@ IssueScratch/
 ├── src/
 │   ├── issue1-diagnostics.js
 │   ├── issue1-diagnostics.test.js
+│   ├── framing-controller.js
+│   ├── framing-controller.test.js
+│   ├── readme-comment-renderer.js
+│   ├── readme-comment-renderer.test.js
 │   ├── opcode-document-adapter.js
 │   ├── opcode-document-adapter.test.js
 │   └── types/
@@ -27,18 +31,22 @@ IssueScratch/
 │       ├── issuescratch.scratchpad-field-registry.v1.json
 │       ├── issuescratch.scratchpad-field-registry.v2.json
 │       ├── issuescratch.operation-registry.v1.json
-│       └── issuescratch.opcode-adapter-contract.v1.json
+│       ├── issuescratch.opcode-adapter-contract.v1.json
+│       └── issuescratch.framing-controller.v1.json
 ├── experiments/
 │   ├── general-purpose-job-prompts.v1.json
 │   ├── general-purpose-job-opcode-map.v1.json
-│   └── general-purpose-job-prompts.opcoded.v1.json
+│   ├── general-purpose-job-prompts.opcoded.v1.json
+│   └── readme-job-001.candidate.md
 └── workspaces/
     └── issue1-diagnostics/
         └── comments/
             └── <comment-id>/
                 ├── state.json
-                └── revisions/
-                    └── <source-body-sha256>.json
+                ├── revisions/
+                │   └── <source-body-sha256>.json
+                └── instructions/
+                    └── <zero-padded-next-index>.json
 ```
 
 The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` directory. The number of comment directories and revision files changes as new events are processed.
@@ -59,6 +67,10 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | --- | --- |
 | [`src/issue1-diagnostics.js`](src/issue1-diagnostics.js) | Parses comment bodies; measures Unicode code-point characters, serialized JSON lengths, keys, nested arrays, and per-index distributions; validates root-array/wrapper shape; advances per-comment accepted-index state. |
 | [`src/issue1-diagnostics.test.js`](src/issue1-diagnostics.test.js) | Tests parsing failures, nested arrays, per-index measurements, unchanged-prefix checks, duplicate events, historical snapshots, and the index-16 progression limit. |
+| [`src/framing-controller.js`](src/framing-controller.js) | Selects one random functional OP opcode using `node:crypto.randomInt` and constructs the next framing instruction for a source comment. |
+| [`src/framing-controller.test.js`](src/framing-controller.test.js) | Tests the random pool, four-frame 12+5 reference map, progression, rejection, retry, and controller history. |
+| [`src/readme-comment-renderer.js`](src/readme-comment-renderer.js) | Generates a separate README candidate retaining the exact 17-scratchpad source comment; controlled completion is checked in the workflow. |
+| [`src/readme-comment-renderer.test.js`](src/readme-comment-renderer.test.js) | Tests source/comment identity, content preservation, and candidate rendering. |
 | [`src/opcode-document-adapter.js`](src/opcode-document-adapter.js) | Command-line and module adapter from document bytes to a JSON-object envelope retaining original bytes, SHA-256, source-linked records, and declared reusable operation steps. Provides `convert` and `verify`. |
 | [`src/opcode-document-adapter.test.js`](src/opcode-document-adapter.test.js) | Tests byte-for-byte preservation, typed JSON/text/binary input handling, operation reuse, invalid profile/opcode rejection, tampering, and command-line round-trip verification. |
 
@@ -71,6 +83,7 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | [`src/types/issuescratch.scratchpad-field-registry.v2.json`](src/types/issuescratch.scratchpad-field-registry.v2.json) | Later standalone field/type registry, retained as a legacy reference; superseded for active use by the combined canonical catalog above. |
 | [`src/types/issuescratch.operation-registry.v1.json`](src/types/issuescratch.operation-registry.v1.json) | Declares 16 reusable functional operations under `OP.01.*`, their descriptions, and abstract input/output contracts. These are *not* record IDs or execution receipts. |
 | [`src/types/issuescratch.opcode-adapter-contract.v1.json`](src/types/issuescratch.opcode-adapter-contract.v1.json) | Formal lossless conversion procedure and envelope contract, including `IS.09.001`–`IS.09.008`, source/projection separation, supported formats, and limitations. |
+| [`src/types/issuescratch.framing-controller.v1.json`](src/types/issuescratch.framing-controller.v1.json) | Versioned random-controller profile listing 14 eligible functions, four frames, two reference identities, and five unrestricted slots. |
 
 ### Experimental inputs and converted outputs
 
@@ -79,6 +92,7 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | [`experiments/general-purpose-job-prompts.v1.json`](experiments/general-purpose-job-prompts.v1.json) | Original 17-prompt batch (`P01`–`P17`) spanning writing, philosophy, mathematics, coding, planning, translation, and analysis. The prompts are source material, not completed jobs. |
 | [`experiments/general-purpose-job-opcode-map.v1.json`](experiments/general-purpose-job-opcode-map.v1.json) | Explicit mapping profile assigning sequences of shared operation opcodes to the 17 prompt IDs. It declares intended operations; it does not execute them. |
 | [`experiments/general-purpose-job-prompts.opcoded.v1.json`](experiments/general-purpose-job-prompts.opcoded.v1.json) | Generated JSON-object projection of the job batch. Contains exact source bytes in Base64, a source hash, stable record IDs, source pointers, and operation sequences. Regenerate through the adapter rather than editing independently. |
+| [`experiments/readme-job-001.candidate.md`](experiments/readme-job-001.candidate.md) | Early candidate generated from a 17-entry comment imported complete, retained for comparison; **not** a completed controller-driven run. |
 
 ### Persistent operational workspace
 
@@ -87,6 +101,8 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | [`workspaces/issue1-diagnostics/comments/`](workspaces/issue1-diagnostics/comments/) | One directory per permanent Issue #1 comment ID; written by the GitHub Actions workflow. |
 | `workspaces/issue1-diagnostics/comments/<comment-id>/state.json` | Current **JSON object**: progression state, accepted prefix hash, latest revision pointer, validation result, and revision-history entries. |
 | `workspaces/issue1-diagnostics/comments/<comment-id>/revisions/<source-body-sha256>.json` | Immutable-per-content **JSON object**: diagnostics and transition information for an observed source revision, including lengths and keys at each index. |
+| `workspaces/issue1-diagnostics/comments/<comment-id>/instructions/<zero-padded-index>.json` | Per-index selected function, source revision, random draw, and framing requirements stored as a JSON object. |
+| [`workspaces/readme-job-001/receipt.json`](workspaces/readme-job-001/receipt.json) | Original README candidate receipt; evidence of an imported array, not sequential controller execution. |
 
 Workspaces contain runtime evidence, not authoritative instructions. Preserve saved records and revision identities; do not rewrite historical diagnostics to make results appear more successful.
 
@@ -121,7 +137,9 @@ For each observed comment revision it deterministically records:
 
 Invalid JSON is **not silently repaired or rewritten**. Its failure is recorded as a JSON object and it cannot advance accepted progression. Duplicate observations of the same content hash do not advance state twice. State files and diagnostic snapshots remain separate from the user-authored issue comment.
 
-The `next_function` state field and the `function_selection` mechanism are currently **unconfigured**: the workflow does **not yet** select or dispatch recursive-framing functions after each index. State validation is implemented; the proposed operator controller is a separate, unimplemented stage.
+**Framing controller v1.1:** after each valid one-entry append, GitHub Actions selects one operation uniformly with `node:crypto.randomInt` from the 14-code registered pool, persists it under the comment ID, and publishes it to a source-linked controller comment in Issue #1 while retaining prior function history. Four 3-slot frames retain two distinct reference identities and expand the enclosing narrative; five indices are freely authored. Invalid or imported-complete arrays receive no next instruction, and index 16 terminates progression. Retries recover previous draws rather than rerolling.
+
+The controller **selects and publishes** the next instruction; it does **not** autonomously execute the function, produce the next scratchpad, or assess semantic correctness. A [two-index live probe](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548135349) demonstrated successive random choices, with results in the [controller comment](https://github.com/BestNameYet/IssueScratch/issues/1#issuecomment-6548137149). A full 17-entry agent-driven run remains to be verified.
 
 ### 3. Document → opcode JSON conversion
 
@@ -142,7 +160,7 @@ A Node.js installation with the built-in `node:test` runner is sufficient; the c
 From the repository root:
 
 ```bash
-# Run both automated test suites.
+# Run all automated test suites.
 node --test src/*.test.js
 
 # Create a fresh opcode-encoded projection of the 17 prompts.
@@ -165,8 +183,8 @@ For deployed behavior, check [GitHub Actions](https://github.com/BestNameYet/Iss
 
 ## Present boundaries and maintenance
 
-- **Implemented:** one Issue #1 validator/diagnostic workflow; per-comment JSON-object state and per-revision metrics; deterministic document adapter; 16-operation registry; generated 17-prompt opcode projection; unit tests.
-- **Not implemented:** a verified agent-dispatch controller that chooses a next framing operation, causes an agent to act on an accepted index, and closes the full 17-entry experiment automatically.
+- **Implemented:** one Issue #1 validator/diagnostic workflow; per-comment JSON-object state and metrics; random framing-function selection with saved instructions and Issue #1 publication; deterministic document adapter; 16-operation registry; generated 17-prompt opcode projection; unit tests.
+- **Not implemented:** autonomous agent execution of the published function, creation of the next scratchpad by the workflow, or verified completion of all 17 sequential transitions. The existing README candidate predates the controller.
 - **Experiment status:** the 17 prompts are prepared and opcode-mapped, but producing the converted manifest does not mean the 17 agent tasks were run.
 - **Historical compatibility:** preserve older three-object and seven-entry records rather than rewriting them to the current 17-entry RS contract.
 - **On changes:** review `AGENTS.md` and Issue #1 first; update this file manifest when adding, moving, renaming, or changing the responsibilities of major components. Regenerate derived files from their declared sources, validate JSON records, run tests, and verify the GitHub Actions result before claiming operational success.
