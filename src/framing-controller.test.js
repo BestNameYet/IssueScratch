@@ -2,11 +2,13 @@
 const test=require("node:test");
 const assert=require("node:assert/strict");
 const p=require("./types/issuescratch.framing-controller.v1.json");
+const registry=require("./types/issuescratch.operation-registry.v1.json");
 const {functionForIndex,processWithController,publicationDocument,publicationEntry,isControlComment}=require("./framing-controller");
 const make=n=>JSON.stringify(Array.from({length:n},(_,i)=>({scratchpad:{"text[string]":"distinct entry "+i}})));
-const run=(s,b)=>processWithController(s,b,777,"workspaces/tests/revision.json","issue_comment",p);
+const draw=(n)=>Math.min(n-1,2);
+const run=(s,b)=>processWithController(s,b,777,"workspaces/tests/revision.json","issue_comment",p,registry,draw);
 test("12 structured and five freely selected slots, with consistent two reference anchors",()=>{
- const all=Array.from({length:17},(_,i)=>functionForIndex(777,i,p));
+ const all=Array.from({length:17},(_,i)=>functionForIndex(777,i,p,registry,draw));
  assert.deepEqual(all.slice(0,12).map(x=>x.role),[
   "establish_reference","establish_reference","seed_narrative",
   "preserve_reference","preserve_reference","expand_enclosing_narrative",
@@ -18,12 +20,17 @@ test("12 structured and five freely selected slots, with consistent two referenc
  assert.deepEqual(all[6].read_indices,[0,3,5]);
  assert.deepEqual(all[8].read_indices,[5,6,7]);
 });
-test("enclosing action selected per comment and frame, not per agent, deterministic",()=>{
- const f=functionForIndex(777,5,p);
- assert.deepEqual(f.enclosing_action,functionForIndex(777,3,p).enclosing_action);
- assert.deepEqual(f,functionForIndex(777,5,p));
- assert.equal(f.enclosing_frame_id,"F0");
- assert.equal(f.frame_id,"F1");
+test("random function drawn from registered pool, recorded and controlled on retries",()=>{
+ const a=functionForIndex(777,5,p,registry,()=>0);
+ const b=functionForIndex(777,5,p,registry,n=>n-1);
+ assert.equal(a.selected_function.opcode,p.random_function_pool[0]);
+ assert.equal(b.selected_function.opcode,p.random_function_pool.at(-1));
+ assert.notEqual(a.selected_function.opcode,b.selected_function.opcode);
+ assert.equal(a.random_selection.algorithm,"node:crypto.randomInt");
+ assert.equal(a.random_selection.selected_ordinal,0);
+ assert.equal(a.random_selection.pool_size,14);
+ assert.throws(()=>functionForIndex(777,5,p,registry,()=>-1),/Random selector/);
+ assert.throws(()=>functionForIndex(777,5,p,registry,n=>n),/Random selector/);
 });
 test("end-to-end progression selects exactly next function after each valid appended entry",()=>{
  let s=null,issued=0;
@@ -53,6 +60,10 @@ test("end-to-end progression selects exactly next function after each valid appe
 test("rejected, invalid, and imported complete arrays do not spuriously issue instructions",()=>{
  let r=run(null,make(1));
  const s=r.state;
+ const originalFn=s.progression.next_function;
+ const duplicate=run(s,make(1));
+ assert.equal(duplicate.duplicate,true);
+ assert.deepEqual(duplicate.next_instruction,originalFn);
  const reject=run(s,"no json");
  assert.equal(reject.publication_required,false);
  assert.equal(reject.state.progression.accepted_entries,1);
@@ -65,8 +76,8 @@ test("rejected, invalid, and imported complete arrays do not spuriously issue in
  assert.equal(imported.publication_required,false);
 });
 test("control comment is one JSON object retaining full instruction history",()=>{
- const original=publicationEntry("a".repeat(64),functionForIndex(777,1,p));
- const later=publicationEntry("b".repeat(64),functionForIndex(777,2,p));
+ const original=publicationEntry("a".repeat(64),functionForIndex(777,1,p,registry,draw));
+ const later=publicationEntry("b".repeat(64),functionForIndex(777,2,p,registry,draw));
  const obj=publicationDocument(777,[original,later]);
  assert.equal(obj.history.length,2);
  assert.equal(obj.current.target_index,2);
