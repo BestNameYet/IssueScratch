@@ -59,7 +59,7 @@ test("escape code fence runs without changing raw data",()=>{
 
 const {renderControlled}=require("./readme-comment-renderer");
 test("controlled renderer uses only external registration; does not require in-comment metadata",()=>{
- const items=Array.from({length:17},(_,i)=>({scratchpad:{"narrative[string]":"Independent passage "+i}}));
+ const items=Array.from({length:19},(_,i)=>({scratchpad:{"narrative[string]":"Independent passage "+i}}));
  const raw=JSON.stringify(items,null,2);
  const registration={
    schema:"issuescratch.readme-controlled-job.v1",job_id:"RS17-README-001-RERUN",
@@ -67,7 +67,7 @@ test("controlled renderer uses only external registration; does not require in-c
    candidate_path:"experiments/readme-job-001-rerun.candidate.md"
  };
  const x=renderControlled(raw,{commentId:9876,registration});
- assert.equal(x.scratchpad_count,17);
+ assert.equal(x.scratchpad_count,19);
  assert.ok(x.content.includes(raw));
  assert.ok(x.content.includes("Create a repository README."));
  assert.equal(raw.includes("job_id[string]"),false);
