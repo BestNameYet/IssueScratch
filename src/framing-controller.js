@@ -29,7 +29,7 @@ const hasOwn=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
 function wrapped(item){
   return obj(item)&&Object.keys(item).length===1&&obj(item.scratchpad)&&Object.keys(item.scratchpad).length>0;
 }
-function validateEntryStructure(parsed,index,profile,registry){
+function validateEntryStructure(parsed,index,profile,registry,frameSelections={}){
   const p=validateProfile(profile);
   if(!Array.isArray(parsed)||!Number.isInteger(index)||index<0||index>=parsed.length)
     return structuralError("Invalid submitted index");
@@ -98,6 +98,54 @@ function validateEntryStructure(parsed,index,profile,registry){
        definitive.some(s=>!atomicStep(s)||!actionIds.has(s.action_id))||
        actions.some(a=>!definitive.some(s=>s.action_id===a.action_id)))
       return structuralError("Preparation 4 must map every atomic action to registered OP steps");
+    return null;
+  }
+  if(index>=1&&index<=15){
+    const frameNumber=Math.floor((index-1)/3),slot=(index-1)%3;
+    const frame=frameSelections["F"+frameNumber];
+    if(!obj(frame)||!obj(frame.operator)||
+       !higherRegistry.operators.some(op=>op.opcode===frame.operator.opcode))
+      return structuralError("Missing persisted higher-order frame selection at index "+index);
+    const arrayOfStrings=x=>Array.isArray(x)&&x.every(nonempty);
+    if(slot===0){
+      const solver=entry?.["solver_or_subject[object]"];
+      if(!obj(solver)||p.substantive_frame_output_contract.required_solver_fields.some(k=>!hasOwn(solver,k))||
+         !nonempty(solver.problem_ref)||!nonempty(solver.method_ref)||
+         !nonempty(solver.assumptions_ref)||!nonempty(solver.limitations_ref)||
+         !arrayOfStrings(solver.intermediate_result_refs)||!arrayOfStrings(solver.source_refs)||
+         solver.source_refs.length===0)
+        return structuralError("Reference A must describe the inner solver/subject with source-linked method, assumptions and limitations");
+    }else if(slot===1){
+      const target=entry?.["enclosing_target[object]"];
+      if(!obj(target)||p.substantive_frame_output_contract.required_enclosing_target_fields.some(k=>!hasOwn(target,k))||
+         !nonempty(target.target_ref)||!nonempty(target.purpose)||
+         !arrayOfStrings(target.context_refs)||!arrayOfStrings(target.invariants)||
+         target.context_refs.length===0||target.invariants.length===0)
+        return structuralError("Reference B must identify a framing target, contexts and preserved invariants");
+    }else{
+      const result=entry?.["higher_order_result[object]"];
+      if(!obj(result)||p.substantive_frame_output_contract.required_result_fields.some(k=>!hasOwn(result,k))||
+         !arrayOfStrings(result.preserved_properties)||result.preserved_properties.length===0||
+         !arrayOfStrings(result.suppressed_details)||!Array.isArray(result.introduced_assumptions)||
+         !result.introduced_assumptions.every(obj)||
+         !Array.isArray(result.source_mapping)||!result.source_mapping.length||
+         !result.source_mapping.every(x=>obj(x)&&nonempty(x.source_ref)&&nonempty(x.target_ref))||
+         !obj(result.next_solver_input))
+        return structuralError("Framing result must record preserved/omitted properties, assumptions, provenance and next solver input");
+      if(frame.operator.name==="SOLVER_LIFT"){
+        const outer=result.outer_solver_input;
+        if(!obj(outer)||!nonempty(outer.subject_solver_ref)||
+           !nonempty(outer.question_about_solver)||!nonempty(outer.problem_ref)||
+           !arrayOfStrings(outer.source_refs)||!outer.source_refs.length)
+          return structuralError("SOLVER_LIFT must output a new solver whose subject is the preceding solver");
+      }else if(frame.operator.name==="ABSTRACT"){
+        const rep=result.representation;
+        const mode=higherRegistry.modes.find(x=>x.id===frame.mode);
+        if(!obj(rep)||!mode||
+           mode.required_output_fields.some(k=>!hasOwn(rep,k)))
+          return structuralError("ABSTRACT must produce the selected mode's defined representation");
+      }else return structuralError("Unexpected higher-order operator");
+    }
     return null;
   }
   if(index===16){
@@ -282,7 +330,7 @@ function functionForIndex(commentId,index,profile,registry,randomInt=crypto.rand
     previous_frame_index:prev,requirements};
 }
 function processWithController(previous,body,commentId,revisionPath,eventName,profile,registry,randomInt=crypto.randomInt){
-  const result=processRevision(previous,body,commentId,revisionPath,eventName,(arr,index)=>validateEntryStructure(arr,index,profile,registry));
+  const result=processRevision(previous,body,commentId,revisionPath,eventName,(arr,index)=>validateEntryStructure(arr,index,profile,registry,previous?.progression?.frame_selections||{}));
   if(result.duplicate){
     return {...result,next_instruction:result.state.progression?.next_function||null,publication_required:false};
   }
