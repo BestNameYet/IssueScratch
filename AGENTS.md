@@ -185,7 +185,7 @@ A claim of comment ownership is **not** proof of control or permission; verify t
 
 **This is the most important requirement for examples and actual scratchpad content:** each of the three texts must make an **independent substantive contribution**. Do not pass off grammatical rewriting, synonym substitution, stronger adjectives, merely appended qualifiers, recycled opening text, or a cumulative list as three scratchpads. A shift in intensity alone does not save duplicated content.
 
-For any candidate sequence, compare the two adjacent transitions (\`scratchpad_1 → scratchpad_2\` and \`scratchpad_2 → scratchpad_3\`) and classify each transition as one of:
+For any candidate sequence, compare the two adjacent transitions (`scratchpad_1 → scratchpad_2` and `scratchpad_2 → scratchpad_3`) and classify each transition as one of:
 
 - **Paraphrase — reject:** the successor mainly restates the predecessor's meaning in different words, even if its tone or strength changes.
 - **Appended expansion — reject:** the successor repeats or preserves the predecessor's substantive content and adds a clause, fact, detail, or stronger qualifier; its new tail does not make it an independent text.
@@ -203,114 +203,114 @@ The six valid examples below illustrate different tasks. The **JSON is the examp
 
 **Few-shot 1 — Conflicting source reports**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The job record links two historical reports produced on different dates."},
   "scratchpad_2": {"text": "The reports attach opposite completion statuses to the same transaction identifier."},
   "scratchpad_3": {"text": "A defensible closure requires the raw transaction receipts; neither report alone establishes completion."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (inventory of sources versus a newly identified contradiction); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (contradiction versus the evidentiary requirement for closure); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (inventory of sources versus a newly identified contradiction); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (contradiction versus the evidentiary requirement for closure); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: source inventory, observed conflict, verification criterion.
 
 **Few-shot 2 — Failed repository lookup**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The file fetch returned HTTP 404 for the specified source path."},
   "scratchpad_2": {"text": "Repository metadata names a default branch different from the branch presumed by the original lookup."},
   "scratchpad_3": {"text": "Run a branch-qualified fetch and verify the returned blob SHA before resuming edits."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (error observation versus a separate metadata discovery); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (branch observation versus a concrete validation action); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (error observation versus a separate metadata discovery); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (branch observation versus a concrete validation action); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: error, probable cause, proposed test.
 
 **Few-shot 3 — Conflicting instructions**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The current user request proposes renaming a module into a sibling directory."},
   "scratchpad_2": {"text": "The active workspace rule limits file mutations to the designated project tree."},
   "scratchpad_3": {"text": "Because the destination crosses that boundary, seek authorization for the specific path rather than treating the rename request as an implicit scope change."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (requested mutation versus an independently relevant constraint); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (constraint versus resolution of the authorization conflict); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (requested mutation versus an independently relevant constraint); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (constraint versus resolution of the authorization conflict); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: request, boundary, decision.
 
 **Few-shot 4 — Architecture proposal**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The existing queue distributes each job's progress across multiple issue comments."},
   "scratchpad_2": {"text": "A consolidated job comment could hold current state while linking events by permanent comment ID."},
   "scratchpad_3": {"text": "A more general event-ledger design could reconstruct queue state from append-only records, making revision history independently auditable."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (current architecture versus a new consolidation design); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (current-state layout versus an event-derived alternative with different invariants); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (current architecture versus a new consolidation design); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (current-state layout versus an event-derived alternative with different invariants); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: diagnosis, local alternative, broader model.
 
 **Few-shot 5 — Empirical testing**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "Two trial executions produced different output bytes for the same nominal input."},
   "scratchpad_2": {"text": "Capture five fresh runs with controlled inputs and archive each output hash alongside its receipt."},
   "scratchpad_3": {"text": "Use the controlled hash series to separate input drift, nondeterministic scheduling, and unstable serialization before attributing the discrepancy to the runner."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (initial observation versus experiment design); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (data-collection procedure versus causal discrimination); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (initial observation versus experiment design); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (data-collection procedure versus causal discrimination); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: anomaly, measurement, analytic inference plan.
 
 **Few-shot 6 — Philosophical critique of receipts**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "A machine receipt confirms that a command was accepted by an execution surface."},
   "scratchpad_2": {"text": "A successful command response does not establish that the user's intended external state was produced."},
   "scratchpad_3": {"text": "A trustworthy system should distinguish authorization, reported execution, and independently observed consequences rather than collapsing them into a single declaration of success."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Independent contribution** (what a receipt attests versus the limit of that attestation); **not a paraphrase**, **not appended text**.
-- \`2 → 3\`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
+- `1 → 2`: **Independent contribution** (what a receipt attests versus the limit of that attestation); **not a paraphrase**, **not appended text**.
+- `2 → 3`: **Independent contribution** (epistemic limitation versus a systems-design principle); **not a paraphrase**, **not appended text**.
 - **Sequence:** valid for distinctness. Three different contributions: receipt meaning, inference limitation, governance principle.
 
 **Counterexample A — paraphrases (invalid)**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The repository file is absent."},
   "scratchpad_2": {"text": "The requested file does not exist in that repository."},
   "scratchpad_3": {"text": "No such file can be found in the repository."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Paraphrase — reject**.
-- \`2 → 3\`: **Paraphrase — reject**.
+- `1 → 2`: **Paraphrase — reject**.
+- `2 → 3`: **Paraphrase — reject**.
 - **Why:** all three have essentially the same core proposition.
 
 **Counterexample B — appended expansions (invalid)**
 
-\`\`\`json
+```json
 {
   "scratchpad_1": {"text": "The lookup returned 404."},
   "scratchpad_2": {"text": "The lookup returned 404, and the branch was not specified."},
   "scratchpad_3": {"text": "The lookup returned 404, and the branch was not specified, and the file path may be stale."}
 }
-\`\`\`
+```
 
-- \`1 → 2\`: **Appended expansion — reject**.
-- \`2 → 3\`: **Appended expansion — reject**.
+- `1 → 2`: **Appended expansion — reject**.
+- `2 → 3`: **Appended expansion — reject**.
 - **Why:** each successor literally retains its predecessor's statement and adds a clause.
 
 **Negative classifications take precedence:** a trainee should not label a candidate "valid" just because a reviewer can invent a latent intensity property after reading it. Distinctness must be demonstrated through different semantic contributions independently of the intensity criterion.
