@@ -26,13 +26,13 @@ async function main(){
  const output=process.env.ISSUESCRATCH_OUTPUT_DIR||path.join(root,"workspaces","issue1-diagnostics","runtime-output",String(comment.id));
  fs.mkdirSync(output,{recursive:true});
  // node:22-alpine's node user needs permission to write the bound output dir.
- if(process.platform!=="win32")fs.chownSync(output,1000,1000);
+ if(typeof process.getuid!=="function"||typeof process.getgid!=="function")throw Error("Linux runner identity required for mounted output");
  let started=false;
  try{
   fs.copyFileSync(path.join(root,"config/stateless-services.json"),path.join(temp,"stateless-services.json"));
   fs.copyFileSync(path.join(root,"src/types/issuescratch.procedure-library.v1.json"),path.join(temp,"procedure-library.json"));
   docker(["run","-d","--rm","--name",name,"--network","bridge",
-   "-p","127.0.0.1:8787:8787","-e","GITHUB_TOKEN","-e","GITHUB_REPOSITORY",
+   "-p","127.0.0.1:8787:8787","--user",String(process.getuid())+":"+String(process.getgid()),"-e","GITHUB_TOKEN","-e","GITHUB_REPOSITORY",
    "-v",temp+":/runtime/config:ro","-v",output+":/runtime/output",image]);
   started=true;
   const base="http://127.0.0.1:8787";
