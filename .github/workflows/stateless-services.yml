@@ -31,5 +31,24 @@ jobs:
           node-version: '22'
       - name: Test callable GitHub Issue writer
         run: node --test src/github-issue-writer.test.js
+      - name: Verify Docker HTTPS egress and environment propagation
+        env:
+          GITHUB_TOKEN: connectivity-smoke-not-a-credential
+        run: |
+          docker build --tag issuescratch-runtime:connectivity-smoke .
+          docker run --rm --network bridge -e GITHUB_TOKEN -e GITHUB_REPOSITORY \
+            --entrypoint node issuescratch-runtime:connectivity-smoke -e '
+              if (process.env.GITHUB_TOKEN !== "connectivity-smoke-not-a-credential" ||
+                  process.env.GITHUB_REPOSITORY !== "BestNameYet/IssueScratch") {
+                process.stderr.write("Container environment forwarding failed\n");
+                process.exit(2);
+              }
+              fetch("https://api.github.com/zen", {signal: AbortSignal.timeout(15000)})
+                .then(response => {
+                  if (!response.ok) throw Error("GitHub HTTPS returned "+response.status);
+                  console.log("Container HTTPS egress and environment forwarding verified");
+                })
+                .catch(error => { console.error(error.message); process.exitCode=1; });
+            '
       - name: Test independent services and HTTP routing
         run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js
