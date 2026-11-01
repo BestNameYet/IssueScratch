@@ -8,7 +8,7 @@ const procedure=read("procedure-library.json");
 const servers=[
  ["router",require("./src/stateless-router-server").createRouterServer(config)],
  ["fsm",require("./src/fsm-server").createFsmServer(procedure)],
- ["renderer",require("./src/renderer-server").createRendererServer()],
+ ["renderer",require("./src/renderer-server").createRendererServer(config.renderer_settings)],
  ["validation",require("./src/validation-server").createValidationServer(procedure)],
  ["router_validator",require("./src/router-validator-server").createRouterValidatorServer(config)]
 ];
