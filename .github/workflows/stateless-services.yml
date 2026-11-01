@@ -1,0 +1,27 @@
+name: Stateless HTTP services
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/stateless-services.yml'
+      - 'src/stateless-fsm.js'
+      - 'src/http-json-service.js'
+      - 'src/fsm-server.js'
+      - 'src/agent-renderer.js'
+      - 'src/renderer-server.js'
+      - 'src/stateless-router-server.js'
+      - 'src/stateless-services.test.js'
+      - 'config/stateless-services.json'
+      - 'src/types/issuescratch.procedure-library.v1.json'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test independent services and HTTP routing
+        run: node --test src/stateless-services.test.js
