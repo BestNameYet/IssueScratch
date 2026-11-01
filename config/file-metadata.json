@@ -123,23 +123,23 @@
     {
       "path": "chatgpt-share.json",
       "description": "Root commit-triggered shared ChatGPT URL, output directory and timestamp",
-      "blob_sha": "dcae4edb5116f5ecae19d94b324a39a172e3bd38",
-      "sha256": "aa47aebbde842294b44b16e4ee7b7d66cfc12f66dc9c68ed216865b22cb1ed4f",
+      "blob_sha": "ad0e32d042f84a57bfa72b47ce9b45b6b1e01597",
+      "sha256": "2e3eb12c03575424ee4235ae48adac1d2b8404c711994dba696bf9f7523a7912",
       "size_bytes": 222
     },
     {
       "path": ".github/workflows/chatgpt-share-export.yml",
       "description": "Per-repository GitHub Actions export workflow",
-      "blob_sha": "e4eab2ae6805f9d650f040f07ac53ace05b9e819",
-      "sha256": "ae145776ea838f3c1193d51e87fc72b3a7d553525d6e3bf75b016337fe407933",
-      "size_bytes": 14286
+      "blob_sha": "8c828ed8e5724b162075fb596a4842350f933c07",
+      "sha256": "57f186d9b2acd06e5bbf67e7cfdfc869643d56e68d4f2eb7371b758e83d0ea44",
+      "size_bytes": 14637
     },
     {
       "path": "src/chatgpt-share-extract.js",
       "description": "Independent Node.js share HTML extractor",
-      "blob_sha": "1f7c65762cdc83820b536ac6d3fad8a9a444da8c",
-      "sha256": "2022f2a98baae8e1a6fd1f0bb721b5e339913ccc97fa974240188d2996c6fe51",
-      "size_bytes": 9914
+      "blob_sha": "9826031d599275820442ad71b384ca8ead84aea6",
+      "sha256": "07aaa09d2b73f0c3f006c428cbf47e2044c3e6f5a01344e79d2b184cdb7c890e",
+      "size_bytes": 10439
     },
     {
       "path": "workspaces/chatgpt-share-exports/6ae6b576-9fa8-83e8-a040-4091fe0218e3/conversation.md",
@@ -168,6 +168,27 @@
       "blob_sha": "da19a80b21f9d2dfafe536dc9e3c1fe0cfeb2892",
       "sha256": "99aafb3b7441b5a50501204e10a731bf9bfd216e88fc5c7c7fe84eafa916bd2e",
       "size_bytes": 24253
+    },
+    {
+      "path": "src/chatgpt-share-extract.test.js",
+      "description": "Deterministic message-selection and Markdown-renderer regression tests",
+      "blob_sha": "d2a83df73f262ac810833fdb905024396d3c73cc",
+      "sha256": "b8bae86abad4929cf1f0c0327ca29c25acd4c779fdb3b79cb6ac9e2743748db5",
+      "size_bytes": 4693
+    },
+    {
+      "path": "workspaces/chatgpt-share-exports/6ae6eb2c-2bf8-83e8-9382-ff442df2c570/conversation.md",
+      "description": "Readable shared ChatGPT conversation",
+      "blob_sha": "bacab32e5c753ac14830c3af9dc15e172b7251f0",
+      "sha256": "b4c7117a53bca1865cfb9ba03ac7372129b5b3028f326818e9cc96605405d78a",
+      "size_bytes": 90396
+    },
+    {
+      "path": "workspaces/chatgpt-share-exports/6ae6eb2c-2bf8-83e8-9382-ff442df2c570/conversation.json",
+      "description": "JSON representation of the same ordered conversation",
+      "blob_sha": "8d38d23a5d91add5e68490a8e2e8f3a8dd7655f5",
+      "sha256": "23a7f54390840420ae9fffa6f13955bbc97d479d887d4843e809bf09b325ff07",
+      "size_bytes": 98426
     }
   ]
 }
