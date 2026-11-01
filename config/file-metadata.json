@@ -123,16 +123,16 @@
     {
       "path": "chatgpt-share.json",
       "description": "Root commit-triggered shared ChatGPT URL, output directory and timestamp",
-      "blob_sha": "40fda930e929dc29341fab7c522e71276c52bda5",
-      "sha256": "52613dfc30cfe126a14b08872e40160fa7c0fbcf0beca7e110f0f37f9de0b294",
-      "size_bytes": 218
+      "blob_sha": "943129e7501b8082d56e6cc89c7de5d23c10bb0b",
+      "sha256": "9c97053bb8d0463115feb4490db490109dddaf13ae68d0610d59ac4d20b7fcc0",
+      "size_bytes": 222
     },
     {
       "path": ".github/workflows/chatgpt-share-export.yml",
       "description": "Per-repository GitHub Actions export workflow",
-      "blob_sha": "c98984b8c42387bb75b3663d3dc4ea5653bcd537",
-      "sha256": "c1dd8042b51da3c104b3e585e7a0bd02c36632456b7281e49b1239146da4689e",
-      "size_bytes": 9378
+      "blob_sha": "e4eab2ae6805f9d650f040f07ac53ace05b9e819",
+      "sha256": "ae145776ea838f3c1193d51e87fc72b3a7d553525d6e3bf75b016337fe407933",
+      "size_bytes": 14286
     },
     {
       "path": "src/chatgpt-share-extract.js",
