@@ -245,3 +245,7 @@ Read [docs/index-projection-procedure.json](docs/index-projection-procedure.json
 ## Agent input validation
 
 Read [docs/agent-input-validation-procedure.json](docs/agent-input-validation-procedure.json) in full for the structural input acceptance band, per-index contract binding and precise error responses. Semantic quality is excluded. Accepted input and handled rejection both terminate validation successfully; rejection never authorizes advancement. This document specifies validation and does not claim a deployed implementation.
+
+## Deployment input/output routing
+
+Read [config/workflow-routing.json](config/workflow-routing.json) for the concrete Issue #1 event/scan inputs, per-comment state and instruction paths, controller-reply destination, artifact publication destinations, invocation arguments and readback requirements. This configuration separates location-specific bindings from the generic procedures. It has not yet been wired into the workflow.
