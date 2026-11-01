@@ -255,3 +255,24 @@ Read [config/workflow-routing.json](config/workflow-routing.json) for the concre
 The workflow calls `runWorkflow({github, core, context, config})` from [src/workflow-router.js](src/workflow-router.js), passing the parsed [routing configuration](config/workflow-routing.json). Runtime argument overrides may be supplied through the function's `arguments` object. Route expressions resolve declared arguments, prior values, current iteration items, concatenated paths and padded indices; they do not evaluate arbitrary code. Existing framing/diagnostic and artifact-publication modules perform processing separately from transport.
 
 Run `node --test src/*.test.js` to include [router regression tests](src/workflow-router.test.js), including accepted/rejected inputs, reply reuse, alternate configured paths and branch, and recovery of a persisted random instruction after failed delivery. Workflow integration does not by itself verify the newer generic procedure specifications or completion of a nineteen-entry job.
+
+## Independent stateless HTTP services
+
+[config/stateless-services.json](config/stateless-services.json) binds the router's routes to separately running services. Retrieve that file for host/port and upstream path configuration.
+
+Run each command as a separate process on the same host:
+
+```bash
+node src/fsm-server.js
+node src/renderer-server.js
+node src/stateless-router-server.js
+```
+
+- [Router](src/stateless-router-server.js): port 8787, forwards `POST /state` to the FSM and `POST /render` to the renderer. It streams requests and responses without running either service's algorithms.
+- [FSM](src/fsm-server.js): port 8788, `POST /transition`. Body: `{"state": {...}, "input": {...}}`. The [pure transition function](src/stateless-fsm.js) returns `state` and `transition`. Supply the current `issuescratch.comment-state.v1` state and a validator-produced `issuescratch.validated-entry-event.v1` input, as defined in the canonical meta-controller contract. It does not validate semantic work, persist state, select a renderer or call one.
+- [Renderer](src/renderer-server.js): port 8789, `POST /render`. Body: `{"projection": {...}, "bindings": {...}}`. The [render function](src/agent-renderer.js) produces plain text containing the supplied JSON projection and bindings verbatim. It does not call the FSM, retrieve procedure data, interpolate undeclared placeholders or infer instructions.
+- Each service exposes `GET /health`. Hosts and ports belong to configuration; loopback means the services must share the caller's host/network namespace.
+
+The caller supplies and stores state externally, and separately submits projection data for rendering. These services retain no job state or request queue. The existing Issue #1 workflow is not switched to these endpoints by this addition.
+
+Run `node --test src/stateless-services.test.js` for actual HTTP routing and pure-function tests. [stateless-services.yml](.github/workflows/stateless-services.yml) runs those checks without repository-write credentials.
