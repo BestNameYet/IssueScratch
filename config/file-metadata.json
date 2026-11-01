@@ -27,12 +27,12 @@
     },
     {
       "path": "AGENTS.md",
-      "blob_sha": "7154b30fae3d64880503fb4a4e3551a8142864a7",
+      "blob_sha": "6a5e2935d0044ce36cc65fe8bdf5a598722ef244",
       "description": "Projection procedure reference."
     },
     {
       "path": "README.md",
-      "blob_sha": "c16c73fd83cf49eb8cf0a13aade2cf9cdd9d4562",
+      "blob_sha": "8256b488c12b1d36869eb0af0a75273fcc86753a",
       "description": "Projection procedure reference."
     },
     {
@@ -59,6 +59,51 @@
       "path": ".github/workflows/issue1-json-validator.yml",
       "blob_sha": "fc727d61407050d8d7c61f4171b467df9fa16989",
       "description": "Workflow invoking the configuration-driven router."
+    },
+    {
+      "path": "src/stateless-fsm.js",
+      "blob_sha": "116f17e5c9f202cbefe3220316cfef18ed7191af",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/http-json-service.js",
+      "blob_sha": "1f06430d2b69435bc1becdb1ae4af8602f1e1475",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/fsm-server.js",
+      "blob_sha": "ece41b0b240144473001c35a727543e51d726b32",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/agent-renderer.js",
+      "blob_sha": "a0790134fa41e4f26be9ed68132062f86da33aa7",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/renderer-server.js",
+      "blob_sha": "0a42081f2ab5fd87cf79177e8f523f304f9c8253",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/stateless-router-server.js",
+      "blob_sha": "5a345650a7f5bdfee1cc9b4750039751ffeca3c9",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "config/stateless-services.json",
+      "blob_sha": "4799aeed11582fd40df7751b7d2da80d9d8a8b45",
+      "description": "Independent stateless service implementation or routing configuration."
+    },
+    {
+      "path": "src/stateless-services.test.js",
+      "blob_sha": "a6d104250d13816ecf915206754dcda399a19f99",
+      "description": "Independent stateless service tests."
+    },
+    {
+      "path": ".github/workflows/stateless-services.yml",
+      "blob_sha": "9ff006e8e6326fcc9a9b295bce6aa6ee7458b937",
+      "description": "Read-only CI for stateless service tests."
     }
   ]
 }
