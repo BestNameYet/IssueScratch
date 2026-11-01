@@ -2,7 +2,7 @@
   "schema": "issuescratch.stateless-services.v2",
   "services": {
     "router_validator": {
-      "host": "127.0.0.1",
+      "host": "0.0.0.0",
       "port": 8787
     },
     "router": {
@@ -28,23 +28,13 @@
       "method": "POST",
       "path": "/transition",
       "service": "validation",
-      "upstream_path": "/validate",
-      "response_contract": {
-        "result": {
-          "service": "renderer",
-          "upstream_path": "/render",
-          "then_service": "fsm",
-          "then_path": "/transition"
-        },
-        "rejection": {
-          "service": "renderer",
-          "upstream_path": "/render"
-        },
-        "error": {
-          "service": "renderer",
-          "upstream_path": "/render"
-        }
-      }
+      "upstream_path": "/transition"
+    },
+    {
+      "method": "POST",
+      "path": "/validate",
+      "service": "validation",
+      "upstream_path": "/validate"
     },
     {
       "method": "POST",
@@ -56,28 +46,10 @@
         "input-error",
         "fsm-diagnostic",
         "state-file",
-        "validation-result"
+        "validation-result",
+        "router-input-error",
+        "router-service-error"
       ]
-    },
-    {
-      "method": "POST",
-      "path": "/validate",
-      "service": "validation",
-      "upstream_path": "/validate",
-      "response_contract": {
-        "result": {
-          "service": "renderer",
-          "upstream_path": "/render"
-        },
-        "rejection": {
-          "service": "renderer",
-          "upstream_path": "/render"
-        },
-        "error": {
-          "service": "renderer",
-          "upstream_path": "/render"
-        }
-      }
     }
   ],
   "renderer_settings": {
@@ -113,13 +85,16 @@
     },
     "destinations": {
       "agent-issue": {
-        "adapter": "github-issue"
+        "adapter": "github-issue",
+        "issue_number": 1
       },
       "fsm-log": {
-        "adapter": "file-append"
+        "adapter": "file-append",
+        "path": "/runtime/output/fsm-log.jsonl"
       },
       "state-file": {
-        "adapter": "file-replace"
+        "adapter": "file-replace",
+        "path": "/runtime/output/state.json"
       }
     }
   },
