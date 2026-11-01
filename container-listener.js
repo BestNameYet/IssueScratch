@@ -1,49 +1,72 @@
 "use strict";
 const {spawnSync}=require("node:child_process");
+const {createHash}=require("node:crypto");
 const fs=require("node:fs"),os=require("node:os"),path=require("node:path");
 const root=path.resolve(__dirname);
-const name="issuescratch-runtime-"+process.pid;
+const hash=value=>createHash("sha256").update(value,"utf8").digest("hex");
 const image=process.env.ISSUESCRATCH_IMAGE||"issuescratch-runtime:local";
-const eventPath=process.env.GITHUB_EVENT_PATH;
-if(!eventPath)throw Error("GITHUB_EVENT_PATH required");
-const event=JSON.parse(fs.readFileSync(eventPath,"utf8"));
-const comment=event.comment;
-if(!comment||!Number.isSafeInteger(comment.id)||typeof comment.body!=="string")throw Error("Issue comment event required");
-if(event.issue?.number!==1)throw Error("Out of scope Issue number");
-if(!process.env.GITHUB_TOKEN)throw Error("The workflow GITHUB_TOKEN must be supplied to the container listener");
-if(process.env.GITHUB_REPOSITORY!=="BestNameYet/IssueScratch")throw Error("Unexpected GitHub repository identity");
-const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"issuescratch-config-"));
-let started=false;
-const docker=(args,options={})=>{const result=spawnSync("docker",args,{encoding:"utf8",timeout:90000,...options});if(result.status!==0)throw Error("Docker "+args[0]+" failed: "+(result.stderr||result.error||result.stdout));return result.stdout};
-try{
- fs.copyFileSync(path.join(root,"config/stateless-services.json"),path.join(tmp,"stateless-services.json"));
- fs.copyFileSync(path.join(root,"src/types/issuescratch.procedure-library.v1.json"),path.join(tmp,"procedure-library.json"));
- docker(["run","-d","--rm","--name",name,"--network","bridge",
-  "-e","GITHUB_TOKEN","-e","GITHUB_REPOSITORY",
-  "-v",tmp+":/runtime/config:ro",image]);
- started=true;
- let ready=false;
- for(let i=0;i<30;i++){
-  const check=spawnSync("docker",["exec",name,"node","-e","fetch('http://127.0.0.1:8787/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"],{encoding:"utf8"});
-  if(check.status===0){ready=true;break;}
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)),0,0,200);
+const docker=(args,options={})=>{
+ const result=spawnSync("docker",args,{encoding:"utf8",timeout:90000,...options});
+ if(result.status!==0)throw Error("Docker "+args[0]+" failed: "+(result.stderr||result.error||result.stdout));
+ return result.stdout;
+};
+async function main(){
+ const eventPath=process.env.GITHUB_EVENT_PATH;
+ if(!eventPath)throw Error("GITHUB_EVENT_PATH required");
+ const event=JSON.parse(fs.readFileSync(eventPath,"utf8"));
+ const comment=event.comment;
+ if(!comment||!Number.isSafeInteger(comment.id)||typeof comment.body!=="string")throw Error("Issue comment event required");
+ if(event.issue?.number!==1)throw Error("Out of scope Issue number");
+ // Refuse to process machine-authored publication as a fresh source event.
+ if(comment.user?.type==="Bot"){console.log(JSON.stringify({status:"ignored_bot",comment_id:comment.id}));return}
+ if(!process.env.GITHUB_TOKEN)throw Error("GITHUB_TOKEN must be supplied to container listener");
+ if(process.env.GITHUB_REPOSITORY!=="BestNameYet/IssueScratch")throw Error("Unexpected repository identity");
+ const name="issuescratch-runtime-"+process.pid;
+ const temp=fs.mkdtempSync(path.join(os.tmpdir(),"issuescratch-config-"));
+ const output=process.env.ISSUESCRATCH_OUTPUT_DIR||path.join(root,"workspaces","issue1-diagnostics","runtime-output",String(comment.id));
+ fs.mkdirSync(output,{recursive:true});
+ // node:22-alpine's node user needs permission to write the bound output dir.
+ if(process.platform!=="win32")fs.chownSync(output,1000,1000);
+ let started=false;
+ try{
+  fs.copyFileSync(path.join(root,"config/stateless-services.json"),path.join(temp,"stateless-services.json"));
+  fs.copyFileSync(path.join(root,"src/types/issuescratch.procedure-library.v1.json"),path.join(temp,"procedure-library.json"));
+  docker(["run","-d","--rm","--name",name,"--network","bridge",
+   "-p","127.0.0.1:8787:8787","-e","GITHUB_TOKEN","-e","GITHUB_REPOSITORY",
+   "-v",temp+":/runtime/config:ro","-v",output+":/runtime/output",image]);
+  started=true;
+  const base="http://127.0.0.1:8787";
+  let ready=false;
+  for(let i=0;i<30;i++){
+   try{const r=await fetch(base+"/health",{signal:AbortSignal.timeout(1000)});if(r.ok){ready=true;break}}
+   catch{}
+   await new Promise(resolve=>setTimeout(resolve,200));
+  }
+  if(!ready)throw Error("Router Validator did not become ready on host loopback");
+  const statePath=path.join(root,"workspaces","issue1-diagnostics","comments",String(comment.id),"state.json");
+  const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath,"utf8")):{
+   schema:"issuescratch.comment-state.v1",comment_id:comment.id,
+   progression:{mode:"incremental",accepted_entries:0,last_accepted_index:null,
+    next_index:0,complete:false,accepted_prefix_sha256:hash("[]"),frame_selections:{}}
+  };
+  const message={contract:"router.envelope.v1",
+   request_id:"issue-"+comment.id+"-"+(process.env.GITHUB_RUN_ID||"manual"),
+   type:"request",payload_contract:"issuescratch.agent-submission.v1",
+   payload:{raw_input:comment.body,metadata:{source_comment_id:comment.id,
+    expected_index:state.progression.next_index,state}},error:null};
+  const response=await fetch(base+"/transition",{method:"POST",
+   headers:{"content-type":"application/json"},body:JSON.stringify(message),
+   signal:AbortSignal.timeout(90000)});
+  const body=await response.json();
+  const receipt=body?.payload;
+  const outcome=response.ok&&body.type==="result"&&receipt?.write_status==="written"&&receipt.verified===true
+   ?"published":response.ok&&body.type==="rejection"?"rejected":"failed";
+  console.log(JSON.stringify({schema:"issuescratch.container-listener-receipt.v1",
+   comment_id:comment.id,status:outcome,http_status:response.status,result:body}));
+  if(outcome==="failed")process.exitCode=1;
+ }finally{
+  if(started){try{docker(["rm","-f",name])}catch(error){console.error(error.message)}}
+  fs.rmSync(temp,{recursive:true,force:true});
  }
- if(!ready)throw Error("Router Validator health check failed");
- const statePath=path.join(root,"workspaces","issue1-diagnostics","comments",String(comment.id),"state.json");
- const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath,"utf8")):null;
- const expected_index=state?.progression?.next_index??0;
- const metadata={source_comment_id:comment.id,expected_index};
- if(state)metadata.state=state;
- const message={contract:"router.envelope.v1",request_id:"issue-"+comment.id+"-"+(process.env.GITHUB_RUN_ID||"manual"),type:"request",payload_contract:"issuescratch.agent-submission.v1",payload:{raw_input:comment.body,metadata},error:null};
- const call="let s='';process.stdin.setEncoding('utf8');process.stdin.on('data',c=>s+=c);process.stdin.on('end',async()=>{try{const r=await fetch('http://127.0.0.1:8787/validate',{method:'POST',headers:{'content-type':'application/json'},body:s});const body=await r.text();console.log(JSON.stringify({http_status:r.status,body}));process.exit(r.ok?0:2)}catch(e){console.error(e);process.exit(3)}})";
- const result=spawnSync("docker",["exec","-i",name,"node","-e",call],{encoding:"utf8",input:JSON.stringify(message),timeout:90000});
- let response;
- try{response=JSON.parse(result.stdout.trim());response.body=JSON.parse(response.body)}catch{response=null}
- const outcome=response?.http_status===200&&response.body?.type==="result"?"accepted":
-  response?.http_status===200&&response.body?.type==="rejection"?"rejected":"failed";
- console.log(JSON.stringify({schema:"issuescratch.container-listener-receipt.v1",comment_id:comment.id,status:outcome,result:response,error:result.stderr?.trim()}));
- if(result.status!==0||outcome==="failed")process.exitCode=1;
-}finally{
- if(started){try{docker(["rm","-f",name])}catch(e){console.error(e.message)}}
- fs.rmSync(tmp,{recursive:true,force:true});
 }
+main().catch(error=>{console.error(error.stack||error.message);process.exitCode=1});
