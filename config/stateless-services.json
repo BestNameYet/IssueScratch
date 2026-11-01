@@ -108,7 +108,7 @@
       },
       "router-service-error": {
         "format": "jsonl",
-        "destination": "fsm-log"
+        "destination": "service-error-log"
       }
     },
     "destinations": {
@@ -116,10 +116,16 @@
         "adapter": "github-issue"
       },
       "fsm-log": {
-        "adapter": "file-append"
+        "adapter": "file-append",
+        "path": "fsm-diagnostic.jsonl"
       },
       "state-file": {
-        "adapter": "file-replace"
+        "adapter": "file-replace",
+        "path": "state.json"
+      },
+      "service-error-log": {
+        "adapter": "file-append",
+        "path": "router-service-error.jsonl"
       }
     }
   },
