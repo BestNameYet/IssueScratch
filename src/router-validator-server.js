@@ -7,6 +7,12 @@ function createRouterValidatorServer(config,{validate=validateEnvelope}={}){
  if(!internal)throw Error("Internal router service is not configured");
  return http.createServer(async(req,res)=>{
   const path=new URL(req.url,"http://localhost").pathname;
+  if(req.method==="POST"&&path==="/check"){
+   try{let raw="";for await(const chunk of req){raw+=chunk;if(Buffer.byteLength(raw)>1048576){send(res,413,{ok:false,error:{code:"TOO_LARGE"}});return;}}
+    const data=JSON.parse(raw);const verdict=validate(data.envelope,config.renderer_settings,{renderer:data.renderer===true,route:data.route||null});
+    send(res,200,verdict);
+   }catch(error){send(res,400,{ok:false,error:{code:"CHECK_FAILED",message:error.message}});}return;
+  }
   if(req.method==="GET"&&path==="/health"){send(res,200,{ok:true});return;}
   const route=config.routes.find(r=>r.method===req.method&&r.path===path);
   if(!route){send(res,404,{error:{code:"UNKNOWN_ROUTE"}});return;}
