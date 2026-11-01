@@ -26,9 +26,26 @@
   "routes": [
     {
       "method": "POST",
-      "path": "/state",
-      "service": "fsm",
-      "upstream_path": "/transition"
+      "path": "/transition",
+      "service": "validation",
+      "upstream_path": "/validate",
+      "response_contract": {
+        "result": {
+          "service": "fsm",
+          "upstream_path": "/transition",
+          "mode": "procedure"
+        },
+        "rejection": {
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "input-error"
+        },
+        "error": {
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "fsm-diagnostic"
+        }
+      }
     },
     {
       "method": "POST",
@@ -47,7 +64,24 @@
       "method": "POST",
       "path": "/validate",
       "service": "validation",
-      "upstream_path": "/validate"
+      "upstream_path": "/validate",
+      "response_contract": {
+        "result": {
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "validation-result"
+        },
+        "rejection": {
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "validation-result"
+        },
+        "error": {
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "fsm-diagnostic"
+        }
+      }
     }
   ],
   "renderer_settings": {
