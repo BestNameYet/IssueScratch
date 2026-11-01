@@ -1,0 +1,546 @@
+{
+  "schema": "issuescratch.workflow-routing-config.v1",
+  "version": "1.0.0",
+  "purpose": "Concrete deployment bindings for the otherwise source/destination-agnostic projection and input-validation procedures.",
+  "status": "configuration_created_not_yet_consumed_by_workflow",
+  "inspected_implementation": {
+    "workflow": ".github/workflows/issue1-json-validator.yml",
+    "blob_sha": "fc11d6cbc5cc5efc0f1f005830f0de7c8b3451ce",
+    "repository": "BestNameYet/IssueScratch"
+  },
+  "procedure_documents": {
+    "projection": "docs/index-projection-procedure.json",
+    "validation": "docs/agent-input-validation-procedure.json"
+  },
+  "expression_contract": {
+    "argument": "Resolve a declared invocation argument; missing required arguments fail before I/O.",
+    "value": "Resolve a named prior operation result or caller-supplied derived value.",
+    "item": "Resolve a field of the current iteration item.",
+    "concat": "Concatenate evaluated strings; no evaluation of source code.",
+    "format_index": "Format a supplied nonnegative integer as a decimal string padded to at least two digits.",
+    "path_guard": "All repository output paths must pass the configured guard before use."
+  },
+  "defaults": {
+    "owner": "BestNameYet",
+    "repo": "IssueScratch",
+    "issue_number": 1,
+    "branch": "main",
+    "page_size": 100,
+    "workspace_root": "workspaces/issue1-diagnostics/comments"
+  },
+  "invocation_arguments": {
+    "owner": {
+      "type": "string",
+      "default_ref": "defaults.owner"
+    },
+    "repo": {
+      "type": "string",
+      "default_ref": "defaults.repo"
+    },
+    "issue_number": {
+      "type": "positive_integer",
+      "default_ref": "defaults.issue_number"
+    },
+    "branch": {
+      "type": "string",
+      "default_ref": "defaults.branch"
+    },
+    "event_name": {
+      "type": "string",
+      "required": true
+    },
+    "event_action": {
+      "type": "string",
+      "required_when": "event_name == issue_comment"
+    },
+    "event_issue_number": {
+      "type": "positive_integer",
+      "required_when": "event_name == issue_comment"
+    },
+    "event_comment_id": {
+      "type": "positive_safe_integer",
+      "required_when": "event_name == issue_comment"
+    },
+    "workspace_root": {
+      "type": "safe_repository_relative_path",
+      "default_ref": "defaults.workspace_root"
+    },
+    "page_size": {
+      "type": "integer_1_to_100",
+      "default_ref": "defaults.page_size"
+    },
+    "credential": {
+      "type": "runtime_credential_handle",
+      "required": true,
+      "storage": "Never serialize a token into this configuration; workflow supplies its authorized credential."
+    }
+  },
+  "triggers": {
+    "issue_comment": {
+      "actions": [
+        "created",
+        "edited"
+      ],
+      "guard": {
+        "equal": [
+          {
+            "argument": "event_issue_number"
+          },
+          {
+            "argument": "issue_number"
+          }
+        ]
+      },
+      "input_route": "event_comment"
+    },
+    "push": {
+      "input_route": "scan_issue_comments",
+      "scope": "Existing workflow path filters remain authoritative; this file does not alter workflow triggers."
+    },
+    "workflow_dispatch": {
+      "input_route": "scan_issue_comments"
+    }
+  },
+  "input_routes": {
+    "event_comment": {
+      "operation": "issues.getComment",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "comment_id": {
+          "argument": "event_comment_id"
+        }
+      },
+      "output": "candidate_comments",
+      "normalization": "Wrap returned current comment in a one-item collection; event payload body is not trusted as current."
+    },
+    "scan_issue_comments": {
+      "operation": "issues.listComments",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "issue_number": {
+          "argument": "issue_number"
+        },
+        "per_page": {
+          "argument": "page_size"
+        }
+      },
+      "pagination": "Fetch every page via the API pagination mechanism before ending the scan.",
+      "output": "candidate_comments"
+    },
+    "current_comment": {
+      "operation": "issues.getComment",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "comment_id": {
+          "item": "id"
+        }
+      },
+      "output": "current_comment",
+      "reason": "Re-fetch each candidate so an edited event or scan snapshot cannot supply a stale body."
+    },
+    "repository_json": {
+      "operation": "repos.getContent",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "path": {
+          "value": "repository_path"
+        },
+        "ref": {
+          "argument": "branch"
+        }
+      },
+      "decode": "Require file/base64; decode UTF-8 and parse JSON.",
+      "not_found": "Return absent; distinguish from authorization or network failures."
+    }
+  },
+  "iteration": {
+    "source": "candidate_comments",
+    "mode": "sequential",
+    "identity_field": "id",
+    "skip": {
+      "predicate": "Parsed body has schema issuescratch.frame-control-comment.v1",
+      "reason": "Do not consume controller replies as new agent submissions."
+    },
+    "per_item": [
+      {
+        "route": "current_comment",
+        "result": "current_comment"
+      },
+      {
+        "derive": "source_comment_id",
+        "from": "current_comment.id"
+      },
+      {
+        "derive": "payload_text",
+        "from": "current_comment.body",
+        "default": ""
+      },
+      {
+        "derive": "source_identity",
+        "fields": {
+          "owner": {
+            "argument": "owner"
+          },
+          "repo": {
+            "argument": "repo"
+          },
+          "issue_number": {
+            "argument": "issue_number"
+          },
+          "comment_id": {
+            "value": "source_comment_id"
+          }
+        }
+      },
+      {
+        "derive": "source_revision_sha256",
+        "algorithm": "SHA-256 over exact UTF-8 payload_text"
+      },
+      {
+        "route": "repository_json",
+        "path_binding": "paths.state",
+        "result": "state_snapshot",
+        "absent": "Use the separately defined initial-state contract; never invent prior accepted progress."
+      },
+      {
+        "invoke": "validation",
+        "arguments": {
+          "payload_text": {
+            "value": "payload_text"
+          },
+          "source_identity": {
+            "value": "source_identity"
+          },
+          "state_snapshot": {
+            "value": "state_snapshot"
+          },
+          "procedure": {
+            "value": "current_procedure"
+          },
+          "bound_operation": {
+            "value": "issued_operation"
+          }
+        }
+      },
+      {
+        "invoke": "projection",
+        "arguments": {
+          "procedure": {
+            "value": "current_procedure"
+          },
+          "supplied_inputs_by_index": {
+            "value": "substantive_inputs_by_index"
+          }
+        },
+        "when": "A next agent-facing step is required by the separately defined state protocol."
+      }
+    ],
+    "recovery": "Reuse persisted source identity, instruction, draw and reply records. Do not create a new source comment or reroll to recover a partial delivery."
+  },
+  "paths": {
+    "root": {
+      "concat": [
+        {
+          "argument": "workspace_root"
+        },
+        "/",
+        {
+          "value": "source_comment_id"
+        }
+      ]
+    },
+    "state": {
+      "concat": [
+        {
+          "argument": "workspace_root"
+        },
+        "/",
+        {
+          "value": "source_comment_id"
+        },
+        "/state.json"
+      ]
+    },
+    "revision": {
+      "concat": [
+        {
+          "argument": "workspace_root"
+        },
+        "/",
+        {
+          "value": "source_comment_id"
+        },
+        "/revisions/",
+        {
+          "value": "source_revision_sha256"
+        },
+        ".json"
+      ]
+    },
+    "instruction": {
+      "concat": [
+        {
+          "argument": "workspace_root"
+        },
+        "/",
+        {
+          "value": "source_comment_id"
+        },
+        "/instructions/",
+        {
+          "format_index": {
+            "value": "target_index"
+          }
+        },
+        ".json"
+      ]
+    },
+    "publication_receipt": {
+      "concat": [
+        {
+          "argument": "workspace_root"
+        },
+        "/",
+        {
+          "value": "source_comment_id"
+        },
+        "/published-artifacts/",
+        {
+          "value": "source_revision_sha256"
+        },
+        ".json"
+      ]
+    }
+  },
+  "output_arguments": {
+    "target_index": "Next index supplied by state protocol; not chosen by routing.",
+    "repository_path": "Evaluated configured path for the selected output route.",
+    "record_value": "Structured result supplied by diagnostics/state/instruction/publication logic.",
+    "existing_blob_sha": "Current destination blob SHA, read before replacing a repository file.",
+    "known_reply_id": "Existing progression.controller_comment_id when present.",
+    "rendered_body": "Complete instruction/comment body supplied by renderer; routing does not author semantic text.",
+    "artifact_path": "Exact explicitly authorized target path supplied by verified publication plan.",
+    "artifact_content": "Full UTF-8 content supplied by verified publication plan.",
+    "summary_rows": "Per-input acceptance/rejection/error report supplied by validation and persistence functions."
+  },
+  "output_routes": {
+    "state": {
+      "operation": "repository_json_write",
+      "path_binding": "paths.state",
+      "mode": "create_or_replace_with_current_blob_sha",
+      "required_readback": true
+    },
+    "diagnostic": {
+      "operation": "repository_json_write",
+      "path_binding": "paths.revision",
+      "mode": "immutable_create_or_require_exact_existing_value",
+      "required_readback": true
+    },
+    "instruction": {
+      "operation": "repository_json_write",
+      "path_binding": "paths.instruction",
+      "mode": "immutable_create_or_require_exact_existing_value",
+      "required_readback": true
+    },
+    "controller_reply": {
+      "destination": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "issue_number": {
+          "argument": "issue_number"
+        }
+      },
+      "lookup_order": [
+        "Use known_reply_id if present and verify its source linkage.",
+        "Otherwise paginate comments in configured issue and locate the existing controller record whose source_comment_id matches.",
+        "If no matching reply exists, create one in the configured issue."
+      ],
+      "create": {
+        "operation": "issues.createComment",
+        "arguments": {
+          "owner": {
+            "argument": "owner"
+          },
+          "repo": {
+            "argument": "repo"
+          },
+          "issue_number": {
+            "argument": "issue_number"
+          },
+          "body": {
+            "value": "rendered_body"
+          }
+        }
+      },
+      "update": {
+        "operation": "issues.updateComment",
+        "arguments": {
+          "owner": {
+            "argument": "owner"
+          },
+          "repo": {
+            "argument": "repo"
+          },
+          "comment_id": {
+            "value": "resolved_reply_id"
+          },
+          "body": {
+            "value": "rendered_body"
+          }
+        }
+      },
+      "verify": {
+        "operation": "issues.getComment",
+        "arguments": {
+          "owner": {
+            "argument": "owner"
+          },
+          "repo": {
+            "argument": "repo"
+          },
+          "comment_id": {
+            "value": "resolved_reply_id"
+          }
+        },
+        "predicate": "Saved body equals intended rendered_body."
+      },
+      "history": "Preserve source-linked controller history using the existing publication contract; no duplicate source-revision/target-index entry."
+    },
+    "validation_report": {
+      "operation": "workflow_summary",
+      "arguments": {
+        "rows": {
+          "value": "summary_rows"
+        }
+      },
+      "current_behavior": "Existing workflow reports malformed/rejected inputs in saved diagnostics and workflow warnings/summary; it does not currently publish a dedicated correction comment.",
+      "source_comment_mutation": false
+    },
+    "artifacts": {
+      "operation": "repos.createOrUpdateFileContents",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "branch": {
+          "argument": "branch"
+        },
+        "path": {
+          "value": "artifact_path"
+        },
+        "content": {
+          "encoding": "base64_utf8",
+          "value": {
+            "value": "artifact_content"
+          }
+        },
+        "sha": {
+          "value": "existing_blob_sha"
+        }
+      },
+      "sha_rule": "Omit sha only for verified absent destination.",
+      "guard": "Only a completed verified publication plan may invoke; routing configuration does not authorize arbitrary artifact paths.",
+      "required_readback": "Read same branch/path and compare exact UTF-8 bytes and digest."
+    },
+    "publication_receipt": {
+      "operation": "repository_json_write",
+      "path_binding": "paths.publication_receipt",
+      "mode": "immutable_create_or_require_exact_existing_value",
+      "required_readback": true
+    }
+  },
+  "repository_json_write": {
+    "operation": "repos.createOrUpdateFileContents",
+    "arguments": {
+      "owner": {
+        "argument": "owner"
+      },
+      "repo": {
+        "argument": "repo"
+      },
+      "branch": {
+        "argument": "branch"
+      },
+      "path": {
+        "value": "repository_path"
+      },
+      "content": {
+        "encoding": "base64",
+        "serialization": "JSON.stringify(record_value,null,2) + newline"
+      },
+      "sha": {
+        "value": "existing_blob_sha"
+      }
+    },
+    "preconditions": [
+      "Evaluate and validate configured path.",
+      "Fetch existing destination from the same branch.",
+      "Require JSON object root for state/diagnostic/instruction/receipt records.",
+      "For immutable routes require exact equality if present, never overwrite a conflict."
+    ],
+    "verification": {
+      "operation": "repos.getContent",
+      "arguments": {
+        "owner": {
+          "argument": "owner"
+        },
+        "repo": {
+          "argument": "repo"
+        },
+        "path": {
+          "value": "repository_path"
+        },
+        "ref": {
+          "argument": "branch"
+        }
+      },
+      "test": "Decode and compare saved JSON to record_value."
+    }
+  },
+  "guards": {
+    "paths": [
+      "Repository-relative; no absolute path, empty segment, dot/dot-dot traversal, backslash or NUL.",
+      "Validate source ID and digest before interpolation.",
+      "Artifact paths must match the separately verified authorized target set."
+    ],
+    "source_mutation": "This deployment never rewrites the agent source comment while validating, rendering or routing results.",
+    "concurrency": {
+      "group": "issuescratch-issue1-state",
+      "cancel_in_progress": false,
+      "mode": "Serialize writes to the target branch; use blob SHA concurrency for replacement."
+    },
+    "failures": "Expose missing arguments, failed reads, conflicts and failed readbacks. Do not relabel transport/persistence failure as invalid agent JSON.",
+    "permissions": {
+      "contents": "write",
+      "issues": "write"
+    }
+  },
+  "integration_boundary": "This document describes current concrete destinations and argument bindings for future consumption. Existing workflow remains unchanged and still has inline routing; no integration or end-to-end success is claimed."
+}
