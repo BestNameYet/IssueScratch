@@ -3,7 +3,7 @@
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
       "description": "Canonical contracts and language-independent opcode/JSON index-projection procedure, with explicit dataflow and reasons.",
-      "blob_sha": "89d524070e5656b1e1f43e55a5adea350e10aa8d",
+      "blob_sha": "d7aed8e18f090ab4082167ccee6510e17274d018",
       "change_commit": "b89d186b9ef6c57c903a8999f28da319d72c4746"
     },
     {
@@ -19,6 +19,21 @@
       "path": "src/index-projection.test.js",
       "blob_sha": "b5c8614e5e61694d53ccad01790df60b06e39275",
       "description": "Regression tests for dynamic procedure projection."
+    },
+    {
+      "path": "docs/index-projection-procedure.json",
+      "blob_sha": "95a913da87aa50b1c4227d17ee228ed003202676",
+      "description": "Standalone authoritative opcode/JSON projection procedure."
+    },
+    {
+      "path": "AGENTS.md",
+      "blob_sha": "20a48f1331305d8c6de80159144cde1a204ad71d",
+      "description": "Projection procedure reference."
+    },
+    {
+      "path": "README.md",
+      "blob_sha": "e187f1294e75cefd1a362c12c8c36470138ff6c1",
+      "description": "Projection procedure reference."
     }
   ]
 }
