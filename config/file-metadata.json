@@ -27,18 +27,23 @@
     },
     {
       "path": "AGENTS.md",
-      "blob_sha": "58cd8c9de2f11560ded918860819b1ee39113a09",
+      "blob_sha": "be5ad6ba521f8bbb5dbc456f47b8f1e158edd692",
       "description": "Projection procedure reference."
     },
     {
       "path": "README.md",
-      "blob_sha": "b22aaef32fd41c9172ba48534419159bab1d584c",
+      "blob_sha": "ccc4b487e547148d5a1ae545cde02d709dff9fd7",
       "description": "Projection procedure reference."
     },
     {
       "path": "docs/agent-input-validation-procedure.json",
       "blob_sha": "19c203e955660feb4b39aaf7653e46198dfc0b87",
       "description": "Source/destination-agnostic structural input validation procedure."
+    },
+    {
+      "path": "config/workflow-routing.json",
+      "blob_sha": "4e0bb5435fd90357ec63e19c548e3ccfe202b36a",
+      "description": "Concrete workflow input/output routing, dynamic arguments, iteration and delivery verification."
     }
   ]
 }
