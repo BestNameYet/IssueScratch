@@ -25,28 +25,37 @@ test("FSM terminates and rejects a stale prefix without advancing",()=>{
  const result=transition({state:s,input:{...event(),candidate_index:18,contract_id:"IS.INDEX.018"}},procedure);
  assert.equal(result.state.progression.complete,true);assert.equal(result.state.progression.next_index,null);
 });
-test("renderer renders only supplied projection data and bindings",()=>{
+test("renderer formats the received payload under its declared configured mode",()=>{
  const {render}=require("./agent-renderer");
- const result=render({projection:{shared:{input:"read"},definition:{output:"write literal {name}"}},bindings:{name:"source"}});
- assert.equal(result.text,'{\n  "shared": {\n    "input": "read"\n  },\n  "definition": {\n    "output": "write literal {name}"\n  }\n}\n\nBindings\n{\n  "name": "source"\n}\n');
- assert.throws(()=>render({}),/projection/);
+ const settings=require("../config/stateless-services.json").renderer_settings;
+ const payload={arbitrary:[1,{meaning:"unchanged"}]};
+ const data=render({contract:"router.envelope.v1",request_id:"t",
+  type:"result",payload_contract:"test.result.v1",payload,error:null,mode:"procedure"},settings);
+ assert.equal(data.mode,"procedure");
+ assert.equal(data.destination_ref,"agent-issue");
+ assert.deepEqual(JSON.parse(data.text),payload);
 });
-test("router forwards to independent HTTP FSM and renderer services",async t=>{
- const {createFsmServer}=require("./fsm-server");
- const {createRendererServer}=require("./renderer-server");
- const {createRouterServer}=require("./stateless-router-server");
- const fsm=await listen(t,createFsmServer(procedure)),renderer=await listen(t,createRendererServer());
- const router=await listen(t,createRouterServer({routes:[
-  {method:"POST",path:"/state",target:fsm+"/transition"},
-  {method:"POST",path:"/render",target:renderer+"/render"}
- ]}));
- const post=(path,data)=>fetch(router+path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});
- const a=await post("/state",{state:state(),input:event()});assert.equal(a.status,200);
- assert.equal((await a.json()).state.progression.next_index,1);
- const b=await post("/render",{projection:{instruction:"verbatim"},bindings:{source:"supplied"}});assert.equal(b.status,200);
- assert.match((await b.json()).text,/verbatim/);
- const invalid=await fetch(router+"/state",{method:"POST",body:"{"});assert.equal(invalid.status,400);
- assert.equal((await fetch(router+"/unknown",{method:"POST"})).status,404);
- const again=await post("/state",{state:state(),input:event()});
- assert.equal((await again.json()).state.progression.next_index,1);
+test("Router forwards opaque packages and does not inspect FSM acceptance",async t=>{
+ const http=require("node:http"),{createRouterServer}=require("./stateless-router-server");
+ const input={contract:"router.envelope.v1",request_id:"opaque-1",
+  type:"request",payload_contract:"opaque.bytes.v1",
+  payload:{accepted:false,raw_input:"{opaque-contents}",nested:{state:"not Router data"}},error:null};
+ let observed;
+ const upstream=http.createServer(async(req,res)=>{
+  let raw="";for await(const chunk of req)raw+=chunk;
+  observed=JSON.parse(raw);
+  res.setHeader("content-type","application/json");
+  res.end(JSON.stringify({contract:"router.envelope.v1",request_id:input.request_id,
+   type:"result",payload_contract:"test.response.v1",mode:"procedure",payload:{ok:true},error:null}));
+ });
+ const port=await listen(t,upstream);
+ const upstreamPort=Number(new URL(port).port);
+ const cfg={routes:[{method:"POST",path:"/probe",service:"dummy",upstream_path:"/accepted"}],
+  services:{dummy:{host:"127.0.0.1",port:upstreamPort}},
+  service_port_lookup:{dummy:upstreamPort}};
+ const router=await listen(t,createRouterServer(cfg));
+ const reply=await fetch(router+"/probe",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(input)});
+ assert.equal(reply.status,200);
+ assert.deepEqual(observed,input);
+ assert.equal((await reply.json()).payload.ok,true);
 });
