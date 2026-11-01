@@ -2,9 +2,9 @@
   "files": [
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
-      "description": "Canonical procedure with programmatic projection binding; fixed per-index projection pointer table removed.",
-      "blob_sha": "133e5b12e1718270437b8a60147b6f37838d57b7",
-      "change_commit": "4963eb1b51657b9c81429919f903dfc0475f193f"
+      "description": "Canonical contracts and language-independent opcode/JSON index-projection procedure, with explicit dataflow and reasons.",
+      "blob_sha": "89d524070e5656b1e1f43e55a5adea350e10aa8d",
+      "change_commit": "b89d186b9ef6c57c903a8999f28da319d72c4746"
     },
     {
       "path": "config/file-metadata.json",
