@@ -4805,5 +4805,11 @@
       "access": "Read the complete JSON document at this repository-relative path. It defines the language-independent projection algorithm.",
       "authority": "Authoritative projection subprocedure referenced by this unified procedure; do not replace it with implementation code or a summary."
     }
+  },
+  "agent_input_validation": {
+    "document_ref": "docs/agent-input-validation-procedure.json",
+    "schema": "issuescratch.agent-input-validation-procedure.v1",
+    "scope": "Structural acceptance/rejection only; semantic quality is excluded. Handled rejections terminate validation successfully without advancement.",
+    "implementation_status": "specified_not_implemented"
   }
 }
