@@ -8,12 +8,12 @@ function createValidationServer(procedure){
    return {contract:"router.envelope.v1",request_id:envelope.request_id,
     type:result.accepted?"result":"rejection",
     payload_contract:"issuescratch.validation-result.v1",
-    payload:{accepted:result.accepted,input_status:result.input_status,
+    mode:"validation-result",payload:{accepted:result.accepted,input_status:result.input_status,
      execution_status:result.execution_status,errors:result.errors},
     error:null};
   }catch(cause){
    return {contract:"router.envelope.v1",request_id:envelope.request_id,
-    type:"error",payload_contract:"issuescratch.validation-result.v1",payload:null,
+    type:"error",payload_contract:"issuescratch.validation-result.v1",mode:"fsm-diagnostic",payload:null,
     error:{code:"VALIDATION_EXECUTION_FAILED",message:cause.message}};
   }
  }});
