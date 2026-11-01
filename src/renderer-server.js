@@ -1,9 +1,9 @@
 "use strict";
 const {createJsonService}=require("./http-json-service");
-const {render}=require("./agent-renderer");
-function createRendererServer(settings){
- return createJsonService({"POST /render":envelope=>{
-  const data=render(envelope,settings);
+const {publish}=require("./agent-renderer");
+function createRendererServer(settings,options){
+ return createJsonService({"POST /render":async envelope=>{
+  const data=await publish(envelope,settings,options);
   return {contract:"router.envelope.v1",request_id:envelope.request_id,type:"result",
    payload_contract:"issuescratch.render-result.v1",mode:envelope.mode,payload:data,error:null};
  }});
