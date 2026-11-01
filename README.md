@@ -237,3 +237,7 @@ For deployed behavior, check [GitHub Actions](https://github.com/BestNameYet/Iss
 - **On changes:** review `AGENTS.md` and Issue #1 first; update this file manifest when adding, moving, renaming, or changing the responsibilities of major components. Regenerate derived files from their declared sources, validate JSON records, run tests, and verify the GitHub Actions result before claiming operational success.
 
 The most important entry points are **[`AGENTS.md`](AGENTS.md)** for rules, **[Issue #1](https://github.com/BestNameYet/IssueScratch/issues/1)** for work, **[the workflow](.github/workflows/issue1-json-validator.yml)** for event handling, **[the canonical type catalog](src/types/issuescratch.permitted-uses-and-input-types.v1.json)** for permitted scratchpad content, and **[the opcode adapter](src/opcode-document-adapter.js)** for reversible document conversion.
+
+## Index projection procedure
+
+Read [docs/index-projection-procedure.json](docs/index-projection-procedure.json) for the language-independent opcode/JSON procedure used to construct each index's projection for a renderer. It specifies the inputs, operations, dependencies, outputs, reasons and failure handling. Retrieve the complete document from that repository-relative path before reviewing or implementing projection logic. [src/index-projection.js](src/index-projection.js) is the current JavaScript implementation; its presence does not establish conformance to the procedure or completed UI rendering.
