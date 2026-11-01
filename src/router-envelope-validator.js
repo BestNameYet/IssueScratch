@@ -9,13 +9,13 @@ function validateEnvelope(input,settings,{renderer=false,route=null}={}){
  if(typeof input.payload_contract!=="string"||!input.payload_contract.trim())return reject("INVALID_PAYLOAD_CONTRACT","payload_contract is required");
  if(!Object.hasOwn(input,"payload")||!Object.hasOwn(input,"error"))return reject("INVALID_SHAPE","payload and error must be present");
  if(input.type==="error"&&(!object(input.error)||typeof input.error.code!=="string"))return reject("INVALID_ERROR","Error envelope requires structured error");
- if(renderer){
+ if(renderer||input.type!=="request"){
   if(typeof input.mode!=="string"||!input.mode.trim())return reject("MODE_REQUIRED","Renderer mode must be declared");
   const mode=settings?.modes?.[input.mode];
   if(!object(mode))return reject("UNKNOWN_MODE","Renderer mode is not configured");
   if(typeof mode.format!=="string"||typeof mode.destination!=="string"||!object(settings?.destinations?.[mode.destination]))return reject("INVALID_MODE_CONFIG","Renderer mode has no configured format or destination");
   if(Array.isArray(mode.payload_contracts)&&!mode.payload_contracts.includes(input.payload_contract))return reject("INCOMPATIBLE_PAYLOAD","Payload contract not permitted for mode");
-  if(Array.isArray(route?.allowed_modes)&&!route.allowed_modes.includes(input.mode))return reject("MODE_NOT_ALLOWED","Mode not authorized for route");
+  if(renderer&&Array.isArray(route?.allowed_modes)&&!route.allowed_modes.includes(input.mode))return reject("MODE_NOT_ALLOWED","Mode not authorized for route");
  }
  return {ok:true,value:input};
 }
