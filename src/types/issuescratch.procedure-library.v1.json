@@ -4777,5 +4777,260 @@
     "resolution": "Resolve the referenced definition once. Compose it with unique local fields by recursive object merge. Arrays and scalar values are atomic. Any unequal overlapping leaf, missing reference or reference cycle is an error; no silent override.",
     "iteration": "Iterate index_contracts records only. Definitions are a lookup collection, not additional stages. Read the referenced definition without copying its contents into each saved index record.",
     "preservation": "Composition must reproduce the prior agent-only contracts exactly; this change neither adds state-machine obligations nor modifies semantic work."
+  },
+  "agent_step_rendering": {
+    "schema": "issuescratch.agent-step-rendering.v1",
+    "purpose": "Construct each agent-facing step verbatim from canonical procedure fields and supplied substantive inputs. This is a rendering definition, not controller implementation.",
+    "reference_rules_ref": "#/index_contract_reference_rules",
+    "content_policy": {
+      "permitted": [
+        "Copy canonical field values verbatim",
+        "Resolve declared references",
+        "Insert the supplied substantive binding values under their fixed labels",
+        "Use the declared block order and formatting"
+      ],
+      "prohibited": [
+        "Summarizing or rewriting procedure text",
+        "Inventing semantic instructions",
+        "Inferring or choosing an operator/mode",
+        "Rendering state transitions, hashes, receipts, random draws or diagnostics as agent work"
+      ],
+      "missing_source": "Fail rendering with the exact missing reference or binding; do not invent replacement text.",
+      "composition": "Recursively resolve definition_ref using index_contract_reference_rules. Do not iterate definitions as stages.",
+      "verbatim_values": "Render string values unchanged; render structured values as JSON without changing keys, values or array order. Labels and containers below are presentation only.",
+      "execution_boundary": "This definition does not certify any existing renderer or workflow. Rendering implementation and execution verification remain separate."
+    },
+    "bindings": {
+      "substantive_inputs": {
+        "required": true,
+        "type": "array<object>",
+        "item": {
+          "source_ref": "string",
+          "content": "any JSON value"
+        },
+        "meaning": "Actual substantive inputs provided for this occurrence. Preserve attribution and content."
+      },
+      "framing_operator": {
+        "required": "indices 1..15",
+        "type": "registered OP.02 opcode supplied externally",
+        "lookup": "#/higher_order_operation_registry/operators",
+        "match_field": "opcode",
+        "meaning": "The supplied operation is an input; rendering does not select it."
+      },
+      "abstraction_mode": {
+        "required": "framing_operator is OP.02.002",
+        "type": "registered mode ID supplied externally",
+        "lookup": "#/higher_order_operation_registry/modes",
+        "match_field": "id"
+      },
+      "atomic_operation": {
+        "required": false,
+        "type": "registered OP.01 opcode supplied externally when prescribed",
+        "lookup": "#/atomic_operation_registry/primitives",
+        "match_field": "opcode"
+      }
+    },
+    "shared_section": {
+      "source_contract_ref": "#/index_contract_definitions/common",
+      "display": "Define once in the shared agent-facing procedure surface; each step references it.",
+      "blocks": [
+        {
+          "label": "Required inputs",
+          "source": "resolved_common.input.required"
+        },
+        {
+          "label": "Evaluator",
+          "source": "resolved_common.semantic_completion.evaluator"
+        },
+        {
+          "label": "Shared completion criteria",
+          "source": "resolved_common.semantic_completion.criteria_refs",
+          "resolve": {
+            "lookup": "#/shared_semantic_completion_criteria",
+            "match_field": "id",
+            "copy_fields": [
+              "criterion",
+              "success"
+            ]
+          }
+        },
+        {
+          "label": "Missing substantive input",
+          "source": "resolved_common.semantic_completion.missing_source"
+        }
+      ]
+    },
+    "step_template": {
+      "shared_section_ref": "#/agent_step_rendering/shared_section",
+      "block_order": [
+        {
+          "label": "Contract",
+          "source": "resolved_contract.contract_id"
+        },
+        {
+          "label": "Work",
+          "source_fields": [
+            "resolved_contract.phase",
+            "resolved_contract.role"
+          ]
+        },
+        {
+          "label": "Substantive inputs",
+          "source": "bindings.substantive_inputs"
+        },
+        {
+          "label": "Supplied higher-order operation",
+          "when": "index is 1..15",
+          "source": "bindings.framing_operator",
+          "resolve": {
+            "lookup": "#/higher_order_operation_registry/operators",
+            "match_field": "opcode",
+            "copy_fields": [
+              "name",
+              "input_contract",
+              "output_contract",
+              "semantics",
+              "constraints"
+            ]
+          }
+        },
+        {
+          "label": "Supplied abstraction mode",
+          "when": "bindings.framing_operator equals OP.02.002",
+          "source": "bindings.abstraction_mode",
+          "resolve": {
+            "lookup": "#/higher_order_operation_registry/modes",
+            "match_field": "id",
+            "copy_fields": [
+              "description",
+              "required_output_fields"
+            ]
+          }
+        },
+        {
+          "label": "Supplied supporting operation",
+          "when": "bindings.atomic_operation is present",
+          "source": "bindings.atomic_operation",
+          "resolve": {
+            "lookup": "#/atomic_operation_registry/primitives",
+            "match_field": "opcode",
+            "copy_fields": [
+              "name",
+              "description",
+              "input_contract",
+              "output_contract"
+            ]
+          }
+        },
+        {
+          "label": "Required output",
+          "source": "resolved_contract.output.scratchpad_contract",
+          "expand_references": [
+            {
+              "field": "stage_refs[].procedure_ref",
+              "when": "present",
+              "rule": "Resolve the existing controller_profile.preparatory_roles[n] reference by exact index; copy the complete referenced role object verbatim. This is static semantic source content."
+            }
+          ]
+        },
+        {
+          "label": "Completion criteria for this work",
+          "source": "resolved_contract.semantic_completion.stage_criteria"
+        },
+        {
+          "label": "Referenced substantive clauses",
+          "source": "resolved_contract.normative_clauses",
+          "when": "present",
+          "resolve": {
+            "lookup": "#/agent_contract/procedures",
+            "match_field": "opcode",
+            "copy_fields": [
+              "opcode",
+              "imperative"
+            ]
+          }
+        }
+      ],
+      "scope": "Only blocks and bindings for the current index are constructed; reference shared definitions rather than saving expanded duplicates."
+    },
+    "sections": [
+      {
+        "index": 0,
+        "contract_ref": "#/index_contracts/0"
+      },
+      {
+        "index": 1,
+        "contract_ref": "#/index_contracts/1"
+      },
+      {
+        "index": 2,
+        "contract_ref": "#/index_contracts/2"
+      },
+      {
+        "index": 3,
+        "contract_ref": "#/index_contracts/3"
+      },
+      {
+        "index": 4,
+        "contract_ref": "#/index_contracts/4"
+      },
+      {
+        "index": 5,
+        "contract_ref": "#/index_contracts/5"
+      },
+      {
+        "index": 6,
+        "contract_ref": "#/index_contracts/6"
+      },
+      {
+        "index": 7,
+        "contract_ref": "#/index_contracts/7"
+      },
+      {
+        "index": 8,
+        "contract_ref": "#/index_contracts/8"
+      },
+      {
+        "index": 9,
+        "contract_ref": "#/index_contracts/9"
+      },
+      {
+        "index": 10,
+        "contract_ref": "#/index_contracts/10"
+      },
+      {
+        "index": 11,
+        "contract_ref": "#/index_contracts/11"
+      },
+      {
+        "index": 12,
+        "contract_ref": "#/index_contracts/12"
+      },
+      {
+        "index": 13,
+        "contract_ref": "#/index_contracts/13"
+      },
+      {
+        "index": 14,
+        "contract_ref": "#/index_contracts/14"
+      },
+      {
+        "index": 15,
+        "contract_ref": "#/index_contracts/15"
+      },
+      {
+        "index": 16,
+        "contract_ref": "#/index_contracts/16"
+      },
+      {
+        "index": 17,
+        "contract_ref": "#/index_contracts/17"
+      },
+      {
+        "index": 18,
+        "contract_ref": "#/index_contracts/18"
+      }
+    ],
+    "section_template_ref": "#/agent_step_rendering/step_template"
   }
 }
