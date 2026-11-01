@@ -10,13 +10,17 @@ const event=JSON.parse(fs.readFileSync(eventPath,"utf8"));
 const comment=event.comment;
 if(!comment||!Number.isSafeInteger(comment.id)||typeof comment.body!=="string")throw Error("Issue comment event required");
 if(event.issue?.number!==1)throw Error("Out of scope Issue number");
+if(!process.env.GITHUB_TOKEN)throw Error("The workflow GITHUB_TOKEN must be supplied to the container listener");
+if(process.env.GITHUB_REPOSITORY!=="BestNameYet/IssueScratch")throw Error("Unexpected GitHub repository identity");
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"issuescratch-config-"));
 let started=false;
 const docker=(args,options={})=>{const result=spawnSync("docker",args,{encoding:"utf8",timeout:90000,...options});if(result.status!==0)throw Error("Docker "+args[0]+" failed: "+(result.stderr||result.error||result.stdout));return result.stdout};
 try{
  fs.copyFileSync(path.join(root,"config/stateless-services.json"),path.join(tmp,"stateless-services.json"));
  fs.copyFileSync(path.join(root,"src/types/issuescratch.procedure-library.v1.json"),path.join(tmp,"procedure-library.json"));
- docker(["run","-d","--rm","--name",name,"--network","none","-v",tmp+":/runtime/config:ro",image]);
+ docker(["run","-d","--rm","--name",name,"--network","bridge",
+  "-e","GITHUB_TOKEN","-e","GITHUB_REPOSITORY",
+  "-v",tmp+":/runtime/config:ro",image]);
  started=true;
  let ready=false;
  for(let i=0;i<30;i++){
