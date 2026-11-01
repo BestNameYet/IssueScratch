@@ -563,9 +563,12 @@
     ],
     "partial_output": "Do not return partial data as a complete projection."
   },
-  "implementation_relationship": {
-    "existing_module": "src/index-projection.js",
-    "role": "Implementation to be checked against this opcode/JSON procedure; not the authoritative procedural definition",
-    "verification_status": "This change establishes the inspectable procedure; it does not claim a newly executed conformance test."
+  "environment_boundary": {
+    "scope": "Pure procedure over supplied in-memory values; independent of storage, transport, hosting service, user interface and delivery destination.",
+    "caller_responsibility": "A separately configured adapter obtains inputs and receives results. This procedure does not choose, describe or access those locations.",
+    "input_rule": "Inputs are values passed to this procedure; names and references identify logical data, not physical sources.",
+    "output_rule": "Return result values to the caller. EMIT means returning/serializing a value; it does not mean writing a file, posting a comment or sending a message.",
+    "references": "RFC 6901 references resolve within the supplied procedure object only, without external retrieval.",
+    "configuration": "Concrete input/output bindings and adapter implementations belong in a separate configuration document."
   }
 }
