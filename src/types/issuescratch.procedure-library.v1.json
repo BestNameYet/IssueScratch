@@ -4410,15 +4410,10 @@
     {
       "contract_id": "IS.INDEX.000",
       "index": 0,
+      "definition_ref": "#/index_contract_definitions/common",
       "kind": "preparation",
       "phase": "initial",
       "role": "five_nested_preparatory_scratchpads",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
       "output": {
         "scratchpad_contract": {
           "preparation[array<object>]": {
@@ -4459,21 +4454,13 @@
         }
       },
       "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
         "stage_criteria": [
           "Preserve original instruction and surrounding context with source attribution; do not confuse assistant interpretation with explicit user authority.",
           "Produce distinct minimalist/maximalist intent interpretations and bounded inferred beginning, desired end, and inferred change.",
           "Provisional opcode projection decomposes the request into individually traceable actions with inputs/dependencies; do not claim execution.",
           "Five nested stages provide substantive requirements analysis, adversarial challenges, independent action decomposition, and reconciled opcode rendering.",
           "Disclose missing context rather than inventing it."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
+        ]
       },
       "normative_clauses": [
         "IS.11.002",
@@ -4482,706 +4469,90 @@
         "IS.11.005",
         "IS.11.006",
         "IS.11.009"
-      ],
-      "status": "agent_semantic_requirements"
+      ]
     },
     {
       "contract_id": "IS.INDEX.001",
       "index": 1,
-      "kind": "framing",
-      "phase": "reference_a",
-      "role": "inner_solver_or_subject",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "solver_or_subject[object]": {
-            "type": "object",
-            "required_fields": [
-              "problem_ref",
-              "method_ref",
-              "assumptions_ref",
-              "intermediate_result_refs",
-              "limitations_ref",
-              "source_refs"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
-          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_a"
     },
     {
       "contract_id": "IS.INDEX.002",
       "index": 2,
-      "kind": "framing",
-      "phase": "reference_b",
-      "role": "enclosing_reference",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "enclosing_target[object]": {
-            "type": "object",
-            "required_fields": [
-              "target_ref",
-              "context_refs",
-              "invariants",
-              "purpose"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
-          "Clearly distinguish the enclosing perspective from the reference-A solver."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_b"
     },
     {
       "contract_id": "IS.INDEX.003",
       "index": 3,
-      "kind": "framing",
-      "phase": "framing_result",
-      "role": "transformed_enclosing_output",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "higher_order_result[object]": {
-            "type": "object",
-            "required_fields": [
-              "preserved_properties",
-              "suppressed_details",
-              "introduced_assumptions",
-              "source_mapping",
-              "next_solver_input"
-            ],
-            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
-          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
-          "Perform the supplied higher-order operation and mode without inventing transformed results."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/framing_result"
     },
     {
       "contract_id": "IS.INDEX.004",
       "index": 4,
-      "kind": "framing",
-      "phase": "reference_a",
-      "role": "inner_solver_or_subject",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "solver_or_subject[object]": {
-            "type": "object",
-            "required_fields": [
-              "problem_ref",
-              "method_ref",
-              "assumptions_ref",
-              "intermediate_result_refs",
-              "limitations_ref",
-              "source_refs"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
-          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_a"
     },
     {
       "contract_id": "IS.INDEX.005",
       "index": 5,
-      "kind": "framing",
-      "phase": "reference_b",
-      "role": "enclosing_reference",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "enclosing_target[object]": {
-            "type": "object",
-            "required_fields": [
-              "target_ref",
-              "context_refs",
-              "invariants",
-              "purpose"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
-          "Clearly distinguish the enclosing perspective from the reference-A solver."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_b"
     },
     {
       "contract_id": "IS.INDEX.006",
       "index": 6,
-      "kind": "framing",
-      "phase": "framing_result",
-      "role": "transformed_enclosing_output",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "higher_order_result[object]": {
-            "type": "object",
-            "required_fields": [
-              "preserved_properties",
-              "suppressed_details",
-              "introduced_assumptions",
-              "source_mapping",
-              "next_solver_input"
-            ],
-            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
-          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
-          "Perform the supplied higher-order operation and mode without inventing transformed results."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/framing_result"
     },
     {
       "contract_id": "IS.INDEX.007",
       "index": 7,
-      "kind": "framing",
-      "phase": "reference_a",
-      "role": "inner_solver_or_subject",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "solver_or_subject[object]": {
-            "type": "object",
-            "required_fields": [
-              "problem_ref",
-              "method_ref",
-              "assumptions_ref",
-              "intermediate_result_refs",
-              "limitations_ref",
-              "source_refs"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
-          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_a"
     },
     {
       "contract_id": "IS.INDEX.008",
       "index": 8,
-      "kind": "framing",
-      "phase": "reference_b",
-      "role": "enclosing_reference",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "enclosing_target[object]": {
-            "type": "object",
-            "required_fields": [
-              "target_ref",
-              "context_refs",
-              "invariants",
-              "purpose"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
-          "Clearly distinguish the enclosing perspective from the reference-A solver."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_b"
     },
     {
       "contract_id": "IS.INDEX.009",
       "index": 9,
-      "kind": "framing",
-      "phase": "framing_result",
-      "role": "transformed_enclosing_output",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "higher_order_result[object]": {
-            "type": "object",
-            "required_fields": [
-              "preserved_properties",
-              "suppressed_details",
-              "introduced_assumptions",
-              "source_mapping",
-              "next_solver_input"
-            ],
-            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
-          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
-          "Perform the supplied higher-order operation and mode without inventing transformed results."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/framing_result"
     },
     {
       "contract_id": "IS.INDEX.010",
       "index": 10,
-      "kind": "framing",
-      "phase": "reference_a",
-      "role": "inner_solver_or_subject",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "solver_or_subject[object]": {
-            "type": "object",
-            "required_fields": [
-              "problem_ref",
-              "method_ref",
-              "assumptions_ref",
-              "intermediate_result_refs",
-              "limitations_ref",
-              "source_refs"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
-          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_a"
     },
     {
       "contract_id": "IS.INDEX.011",
       "index": 11,
-      "kind": "framing",
-      "phase": "reference_b",
-      "role": "enclosing_reference",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "enclosing_target[object]": {
-            "type": "object",
-            "required_fields": [
-              "target_ref",
-              "context_refs",
-              "invariants",
-              "purpose"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
-          "Clearly distinguish the enclosing perspective from the reference-A solver."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_b"
     },
     {
       "contract_id": "IS.INDEX.012",
       "index": 12,
-      "kind": "framing",
-      "phase": "framing_result",
-      "role": "transformed_enclosing_output",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "higher_order_result[object]": {
-            "type": "object",
-            "required_fields": [
-              "preserved_properties",
-              "suppressed_details",
-              "introduced_assumptions",
-              "source_mapping",
-              "next_solver_input"
-            ],
-            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
-          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
-          "Perform the supplied higher-order operation and mode without inventing transformed results."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/framing_result"
     },
     {
       "contract_id": "IS.INDEX.013",
       "index": 13,
-      "kind": "framing",
-      "phase": "reference_a",
-      "role": "inner_solver_or_subject",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "solver_or_subject[object]": {
-            "type": "object",
-            "required_fields": [
-              "problem_ref",
-              "method_ref",
-              "assumptions_ref",
-              "intermediate_result_refs",
-              "limitations_ref",
-              "source_refs"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
-          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_a"
     },
     {
       "contract_id": "IS.INDEX.014",
       "index": 14,
-      "kind": "framing",
-      "phase": "reference_b",
-      "role": "enclosing_reference",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "enclosing_target[object]": {
-            "type": "object",
-            "required_fields": [
-              "target_ref",
-              "context_refs",
-              "invariants",
-              "purpose"
-            ]
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
-          "Clearly distinguish the enclosing perspective from the reference-A solver."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/reference_b"
     },
     {
       "contract_id": "IS.INDEX.015",
       "index": 15,
-      "kind": "framing",
-      "phase": "framing_result",
-      "role": "transformed_enclosing_output",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
-      "output": {
-        "scratchpad_contract": {
-          "higher_order_result[object]": {
-            "type": "object",
-            "required_fields": [
-              "preserved_properties",
-              "suppressed_details",
-              "introduced_assumptions",
-              "source_mapping",
-              "next_solver_input"
-            ],
-            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
-          }
-        }
-      },
-      "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
-        "stage_criteria": [
-          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
-          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
-          "Perform the supplied higher-order operation and mode without inventing transformed results."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
-      },
-      "normative_clauses": [
-        "IS.12.006"
-      ],
-      "status": "agent_semantic_requirements"
+      "definition_ref": "#/index_contract_definitions/framing_result"
     },
     {
       "contract_id": "IS.INDEX.016",
       "index": 16,
+      "definition_ref": "#/index_contract_definitions/common",
       "kind": "reconciliation",
       "phase": "collect_and_reconcile",
       "role": "collect_and_reconcile",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
       "output": {
         "scratchpad_contract": {
           "covered_indexes[array<number>]": {
@@ -5194,36 +4565,22 @@
         }
       },
       "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
         "stage_criteria": [
           "Reconcile every preceding contribution without silently discarding contradictory evidence or original user requirements.",
           "Prepare a usable solution input, not merely a summary."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
+        ]
       },
       "normative_clauses": [
         "IS.12.011"
-      ],
-      "status": "agent_semantic_requirements"
+      ]
     },
     {
       "contract_id": "IS.INDEX.017",
       "index": 17,
+      "definition_ref": "#/index_contract_definitions/common",
       "kind": "reconciliation",
       "phase": "opcode_reconciliation",
       "role": "opcode_reconciliation",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
       "output": {
         "scratchpad_contract": {
           "opcode_steps[array<object>]": {
@@ -5237,36 +4594,22 @@
         }
       },
       "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
         "stage_criteria": [
           "Compile all source-linked actions and preparatory/frame inputs into an actionable, complete solution.",
           "Distinguish opcodes requested from those actually executed and prove action coverage."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
+        ]
       },
       "normative_clauses": [
         "IS.12.011"
-      ],
-      "status": "agent_semantic_requirements"
+      ]
     },
     {
       "contract_id": "IS.INDEX.018",
       "index": 18,
+      "definition_ref": "#/index_contract_definitions/common",
       "kind": "reconciliation",
       "phase": "final_synthesis_and_validation",
       "role": "final_synthesis_and_validation",
-      "input": {
-        "required": [
-          "canonical semantic procedure",
-          "all referenced substantive source material"
-        ]
-      },
       "output": {
         "scratchpad_contract": {
           "final_reconciliation[object]": {
@@ -5291,24 +4634,15 @@
         }
       },
       "semantic_completion": {
-        "evaluator": "acting_agent_only",
-        "criteria_refs": [
-          "SEM.COMMON.01",
-          "SEM.COMMON.02",
-          "SEM.COMMON.03",
-          "SEM.COMMON.04"
-        ],
         "stage_criteria": [
           "Produce the actual user-requested answer or full authorized artifact and evaluate it independently against user requirements.",
           "For authorized file output, complete UTF-8 content must appear in artifacts; final_output may be a pointer, not a false publication claim.",
           "Treat structural completion as separate from published artifact readback and semantic correctness."
-        ],
-        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
+        ]
       },
       "normative_clauses": [
         "IS.12.011"
-      ],
-      "status": "agent_semantic_requirements"
+      ]
     }
   ],
   "shared_semantic_completion_criteria": [
@@ -5332,5 +4666,116 @@
       "criterion": "Honest limitations and failure handling",
       "success": "Requests necessary valid input on blockers and does not assert unverified results."
     }
-  ]
+  ],
+  "index_contract_definitions": {
+    "common": {
+      "input": {
+        "required": [
+          "canonical semantic procedure",
+          "all referenced substantive source material"
+        ]
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "missing_source": "Disclose missing substantive input; do not invent it or claim semantic completion."
+      },
+      "status": "agent_semantic_requirements"
+    },
+    "framing": {
+      "definition_ref": "#/index_contract_definitions/common",
+      "kind": "framing",
+      "normative_clauses": [
+        "IS.12.006"
+      ]
+    },
+    "reference_a": {
+      "definition_ref": "#/index_contract_definitions/framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "output": {
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        }
+      },
+      "semantic_completion": {
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ]
+      }
+    },
+    "reference_b": {
+      "definition_ref": "#/index_contract_definitions/framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "output": {
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        }
+      },
+      "semantic_completion": {
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ]
+      }
+    },
+    "framing_result": {
+      "definition_ref": "#/index_contract_definitions/framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "output": {
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        }
+      },
+      "semantic_completion": {
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Perform the supplied higher-order operation and mode without inventing transformed results."
+        ]
+      }
+    }
+  },
+  "index_contract_reference_rules": {
+    "reference_form": "definition_ref is a local RFC 6901 pointer within this document, not an executable instruction.",
+    "resolution": "Resolve the referenced definition once. Compose it with unique local fields by recursive object merge. Arrays and scalar values are atomic. Any unequal overlapping leaf, missing reference or reference cycle is an error; no silent override.",
+    "iteration": "Iterate index_contracts records only. Definitions are a lookup collection, not additional stages. Read the referenced definition without copying its contents into each saved index record.",
+    "preservation": "Composition must reproduce the prior agent-only contracts exactly; this change neither adds state-machine obligations nor modifies semantic work."
+  }
 }
