@@ -24,4 +24,4 @@ test("Router Validator blocks malformed upstream envelope",async t=>{
  const response=await fetch("http://127.0.0.1:"+validatorPort+"/test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(envelope())});
  assert.equal(response.status,502);assert.equal((await response.json()).error.code,"INVALID_UPSTREAM_ENVELOPE");
 });
-test("Router has no direct validator dependency",()=>{const fs=require("node:fs");const source=fs.readFileSync(require.resolve("./stateless-router-server"),"utf8");assert.doesNotMatch(source,/require\\(["']\\.\\/router-envelope-validator/);});
+test("Router has no direct validator dependency",()=>{const fs=require("node:fs");const source=fs.readFileSync(require.resolve("./stateless-router-server"),"utf8");assert.equal(source.includes("router-envelope-validator"),false);});
