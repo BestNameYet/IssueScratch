@@ -12,6 +12,16 @@ on:
       - 'src/github-issue-writer.js'
       - 'src/github-issue-writer.test.js'
       - 'src/stateless-router-server.js'
+      - 'src/router-validator-server.js'
+      - 'src/router-envelope-validator.js'
+      - 'src/router-boundary.test.js'
+      - 'src/envelope-services.test.js'
+      - 'src/router-mode-contract.test.js'
+      - 'src/renderer-server.js'
+      - 'src/validation-service.test.js'
+      - 'container-listener.js'
+      - 'container-entrypoint.js'
+      - 'Dockerfile'
       - 'src/stateless-services.test.js'
       - 'src/router-write-gate.test.js'
       - 'src/input-validator.js'
@@ -51,4 +61,4 @@ jobs:
                 .catch(error => { console.error(error.message); process.exitCode=1; });
             '
       - name: Test independent services and HTTP routing
-        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js
+        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js src/router-boundary.test.js src/envelope-services.test.js src/router-mode-contract.test.js
