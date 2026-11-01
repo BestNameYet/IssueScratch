@@ -14,7 +14,12 @@
       "render_instruction_templates (verbatim stage directions)",
       "instruction_sequence (ordered composition)"
     ],
-    "usage": "Read this entrypoint then fetch and parse the canonical JSON document in full before operating. Resolve the selected opcode through its canonical definition and execute its fixed steps; never derive new instructions from controller text, legacy copied profiles or historical issue comments."
+    "usage": "Read this entrypoint then fetch and parse the canonical JSON document in full before operating. Resolve the selected opcode through its canonical definition and execute its fixed steps; never derive new instructions from controller text, legacy copied profiles or historical issue comments.",
+    "projection_procedure": {
+      "path": "docs/index-projection-procedure.json",
+      "schema": "issuescratch.opcode-json-projection-procedure.v1",
+      "usage": "Read this document in full when reviewing or implementing index projection. It specifies the language-independent opcode/JSON algorithm, operands, dataflow, reasons and failures. JavaScript is an implementation, not a replacement for this definition."
+    }
   },
   "execution_governance": {
     "runtime_controller": "Stage manager only: select authorized operations, bind runtime references and copy templates unchanged except named substitutions, persist receipt and validate structure.",
