@@ -2,7 +2,20 @@
 const {createJsonService}=require("./http-json-service");
 const {validate}=require("./input-validator");
 function createValidationServer(procedure){
- return createJsonService({"POST /validate":input=>validate(input,procedure)});
+ return createJsonService({"POST /validate":envelope=>{
+  // Transport envelope was checked at the Router Validator boundary.
+  // The FSM input validator receives only its designated payload.
+  try{
+   const result=validate(envelope.payload,procedure);
+   return {contract:"router.envelope.v1",request_id:envelope.request_id,
+    type:result.accepted?"result":"rejection",
+    payload_contract:"issuescratch.validation-result.v1",payload:result,error:null};
+  }catch(cause){
+   return {contract:"router.envelope.v1",request_id:envelope.request_id,
+    type:"error",payload_contract:"issuescratch.validation-result.v1",payload:null,
+    error:{code:"VALIDATION_EXECUTION_FAILED",message:cause.message}};
+  }
+ }});
 }
 module.exports={createValidationServer};
 if(require.main===module){
