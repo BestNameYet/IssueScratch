@@ -31,9 +31,11 @@
       "upstream_path": "/validate",
       "response_contract": {
         "result": {
-          "service": "fsm",
-          "upstream_path": "/transition",
-          "mode": "procedure"
+          "service": "renderer",
+          "upstream_path": "/render",
+          "mode": "validation-result",
+          "then_service": "fsm",
+          "then_path": "/transition"
         },
         "rejection": {
           "service": "renderer",
@@ -116,6 +118,17 @@
       },
       "state-file": {
         "adapter": "file-replace"
+      }
+    },
+    "service_render_locations": {
+      "validation": {
+        "result": "validation-result",
+        "rejection": "input-error",
+        "error": "fsm-diagnostic"
+      },
+      "fsm": {
+        "result": "procedure",
+        "error": "fsm-diagnostic"
       }
     }
   },
