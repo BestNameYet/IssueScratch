@@ -41,6 +41,9 @@ jobs:
           node-version: '22'
       - name: Test callable GitHub Issue writer
         run: node --test src/github-issue-writer.test.js
+      - name: Test independent services and HTTP routing
+        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js src/router-boundary.test.js src/envelope-services.test.js src/router-mode-contract.test.js
+
       - name: Verify Docker HTTPS egress and environment propagation
         env:
           GITHUB_TOKEN: connectivity-smoke-not-a-credential
@@ -55,10 +58,8 @@ jobs:
               }
               fetch("https://api.github.com/zen", {signal: AbortSignal.timeout(15000)})
                 .then(response => {
-                  if (!response.ok) throw Error("GitHub HTTPS returned "+response.status);
-                  console.log("Container HTTPS egress and environment forwarding verified");
+                  if (response.status >= 500) throw Error("GitHub HTTPS service returned "+response.status);
+                  console.log("Container HTTPS response "+response.status+"; network and environment verified, API authorization not asserted");
                 })
                 .catch(error => { console.error(error.message); process.exitCode=1; });
             '
-      - name: Test independent services and HTTP routing
-        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js src/router-boundary.test.js src/envelope-services.test.js src/router-mode-contract.test.js
