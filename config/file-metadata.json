@@ -107,9 +107,9 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "db16525dc4f688f0d8f8208145ce3aaa4eec49cf",
-      "description": "Workflow verifies real Docker transition/return route with file persistence and rejection after packaging correction, job 6560681262.",
-      "change_commit": "fa182f4db02bf7b007ee2e2626754c97beeb8d52"
+      "blob_sha": "ce5e2eac537be2e8957b4fabda15daa68bec0c7e",
+      "description": "CI validates 21 Node service tests, six GitHub-writer mocks, actual Docker route and persistence, and actual listener invalid-event ingress without remote publication; job 6560681262.",
+      "change_commit": "d934ed04836146d1cb73fe4df55dbdb7c700d041"
     },
     {
       "path": "src/input-validator.js",
