@@ -5,7 +5,7 @@ function createRendererServer(settings){
  return createJsonService({"POST /render":envelope=>{
   const data=render(envelope,settings);
   return {contract:"router.envelope.v1",request_id:envelope.request_id,type:"result",
-   payload_contract:"issuescratch.render-result.v1",payload:data,error:null};
+   payload_contract:"issuescratch.render-result.v1",mode:envelope.mode,payload:data,error:null};
  }});
 }
 module.exports={createRendererServer};
