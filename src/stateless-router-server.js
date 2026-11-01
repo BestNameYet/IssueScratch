@@ -28,8 +28,8 @@ function createRouterServer(config){
   if(result.request_id!==envelope.request_id)throw Error("Response correlation mismatch");
   return result;
  };
- const wrap=(request,payload,mode)=>({contract:"router.envelope.v1",request_id:request.request_id,type:"request",
-  payload_contract:"issuescratch.render-input.v1",payload,error:null,mode});
+ const wrap=(request,response)=>({contract:"router.envelope.v1",request_id:request.request_id,type:"request",
+  payload_contract:"issuescratch.render-input.v1",payload:response,error:null,mode:response.mode});
  const prepare=(request,verdict)=>{
   const metadata=request.payload?.metadata,state=metadata?.state;
   if(!state||!state.progression||!verdict.payload?.accepted)throw Error("Transition requires accepted validation and supplied state");
@@ -42,22 +42,22 @@ function createRouterServer(config){
    accepted_prefix_sha256_after:hash(JSON.stringify(values))}};
  };
  async function perform(route,input){
-  const first=await hop(route.service,route.upstream_path,input);
-  const choice=route.response_contract?.[first.type];
-  if(!choice)return first;
-  if(choice.service==="renderer"){
-   return hop("renderer",choice.upstream_path,wrap(input,first,choice.mode));
-  }
-  if(choice.service==="fsm"){
-   let next;
-   try{next=prepare(input,first)}
-   catch(error){return hop("renderer","/render",wrap(input,{error:{code:"TRANSITION_PREPARATION_FAILED",message:error.message}}, "fsm-diagnostic"))}
-   const fsm=await hop("fsm",choice.upstream_path,{contract:"router.envelope.v1",request_id:input.request_id,type:"request",
-    payload_contract:"issuescratch.transition-input.v1",payload:next,error:null});
-   return hop("renderer","/render",wrap(input,fsm,fsm.type==="result"?"procedure":"fsm-diagnostic"));
-  }
-  throw Error("Unknown continuation service");
+  const validation=await hop(route.service,route.upstream_path,input);
+  const next=route.response_contract?.[validation.type];
+  if(!next)return validation;
+  // The service declares the mode; Router only dispatches and retains it.
+  const rendered=await hop("renderer","/render",wrap(input,validation));
+  if(next.then_service!=="fsm")return rendered;
+  const prepared=prepare(input,validation);
+  const fsm=await hop("fsm",next.then_path,{contract:"router.envelope.v1",
+   request_id:input.request_id,type:"request",
+   payload_contract:"issuescratch.transition-input.v1",payload:prepared,error:null});
+  const fsmRendered=await hop("renderer","/render",wrap(input,fsm));
+  return {contract:"router.envelope.v1",request_id:input.request_id,
+   type:"result",payload_contract:"issuescratch.route-completion.v1",
+   payload:{validation_render:rendered.payload,fsm_render:fsmRendered.payload},error:null};
  }
+
  return http.createServer(async(req,res)=>{
   const pathname=new URL(req.url,"http://localhost").pathname;
   if(req.method==="GET"&&pathname==="/health"){send(res,200,{ok:true});return}
