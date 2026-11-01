@@ -57,8 +57,8 @@
     },
     {
       "path": ".github/workflows/issue1-json-validator.yml",
-      "blob_sha": "fc727d61407050d8d7c61f4171b467df9fa16989",
-      "description": "Workflow invoking the configuration-driven router."
+      "blob_sha": "bc156c6bfb100fe2a5b9935b861c7841143f8c49",
+      "description": "Issue #1 listener workflow uses issues:write, supplies GITHUB_TOKEN to listener and tests GitHub Issue writer."
     },
     {
       "path": "src/stateless-fsm.js",
@@ -103,9 +103,8 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "4ae3aaedd5f43c1b9e27027314f838f695f41229",
-      "description": "Candidate service CI includes router write-gate tests.",
-      "change_commit": "c6388ee406126b6cc700a24627331a5bf235c91e"
+      "blob_sha": "4152d617cde98cb224796706ce10925749a6b1ae",
+      "description": "Service CI independently tests callable Issue writer before legacy tests."
     },
     {
       "path": "src/input-validator.js",
@@ -203,6 +202,21 @@
       "blob_sha": "15a1f9f3c11c5418bfc7283f04db714368075e34",
       "description": "Candidate image CI runs router write-gate regressions before building.",
       "change_commit": "de7340956b25ef54f1816eec7cd1e5892d998348"
+    },
+    {
+      "path": "src/github-issue-writer.js",
+      "description": "Callable authenticated GitHub Issue create/readback adapter; token supplied only at runtime.",
+      "blob_sha": "91e65bea575fe6c6d74c648d038e664e0da4747a"
+    },
+    {
+      "path": "src/github-issue-writer.test.js",
+      "description": "Mocked tests for authenticated Issue writes, readback identity, failures and credentials.",
+      "blob_sha": "c54c61766f094cc4edbc8e8b714878aa1cd03178"
+    },
+    {
+      "path": "container-listener.js",
+      "description": "Listener Docker bridge networking and workflow-scoped credential forwarding by environment variable name.",
+      "blob_sha": "24dae8ffd886ea06a4b7416d99cf6187ea92868c"
     }
   ]
 }
