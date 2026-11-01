@@ -4143,5 +4143,2393 @@
     "frozen_atomic_registry_path": "src/types/issuescratch.operation-registry.v1.json",
     "frozen_higher_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
     "legacy_snapshots": "Prior receipts remain unchanged and their profile/registries remain available for provenance. The runtime checks current compatibility snapshots against canonical definitions."
-  }
+  },
+  "meta_controller_contract": {
+    "schema": "issuescratch.meta-controller-contract.v1",
+    "version": "1.0.0",
+    "principle": "One reusable verified-entry transition protocol for all 19 indices. Index contracts supply inputs, validation predicates and semantic self-evaluation; the meta-controller manages persisted state, event processing, selection and rendering without semantic authority.",
+    "scope": {
+      "start": 0,
+      "end": 18,
+      "accepted_entries_initial": 0,
+      "terminal_accepted_entries": 19,
+      "progression_mode": "incremental"
+    },
+    "state_store": {
+      "path_template": "workspaces/issue1-diagnostics/comments/{source_comment_id}/state.json",
+      "schema": "issuescratch.comment-state.v1",
+      "fields": [
+        "comment_id",
+        "progression.mode",
+        "progression.accepted_entries",
+        "progression.last_accepted_index",
+        "progression.next_index",
+        "progression.accepted_prefix_sha256",
+        "progression.complete",
+        "progression.next_function",
+        "progression.function_selection",
+        "progression.frame_selections",
+        "progression.controller_comment_id",
+        "progression.controller_status",
+        "last_processed_revision_sha256",
+        "latest_diagnostic_path",
+        "latest_validation",
+        "history"
+      ],
+      "source_comment": "The GitHub Issue #1 source comment is the only agent-writable surface. The state store is workflow-owned.",
+      "receipt_templates": {
+        "revision": "workspaces/issue1-diagnostics/comments/{source_comment_id}/revisions/{source_revision_sha256}.json",
+        "next_instruction": "workspaces/issue1-diagnostics/comments/{source_comment_id}/instructions/{index_two_digit}.json"
+      },
+      "replay": "Use existing receipt and source-linked state to replay selections; no reroll on retry; fail closed on mismatched identity, digest or persisted choice."
+    },
+    "state_input": {
+      "source": "Validator result for freshly re-fetched saved Issue #1 comment, not an agent-supplied transition signal.",
+      "schema": "issuescratch.validated-entry-event.v1",
+      "required": [
+        "source_comment_id",
+        "source_revision_sha256",
+        "candidate_index",
+        "contract_id",
+        "validation_status",
+        "expected_prefix_sha256"
+      ],
+      "validation_status_enum": [
+        "valid",
+        "invalid",
+        "duplicate",
+        "stale",
+        "unavailable",
+        "conflict"
+      ],
+      "guaranteed_by_validator": "Only valid means that syntax, structure, identity, accepted prefix and contract-specified machine checks passed. Never a claim of semantic adequacy."
+    },
+    "uniform_transition": {
+      "valid": {
+        "guard": "saved_identity_and_revision_and_prefix_match && validated_candidate_index_equals_next_index",
+        "action": "accept_exactly_one",
+        "state_change": "accepted_entries +1; last_accepted_index = submitted_index; accepted_prefix_sha256 = hash(saved accepted prefix); next_index = null when terminal else accepted_entries; complete = accepted_entries===19",
+        "effects": [
+          "persist_revision_diagnostic",
+          "persist_state",
+          "resolve_any_authorized_random_choices",
+          "persist_next_instruction_receipt",
+          "render_next_canonical_step_if_nonterminal"
+        ],
+        "semantic_verdict": false
+      },
+      "invalid": {
+        "guard": "invalid JSON, missing required field, wrong type, invalid opcode, invalid source or missing input",
+        "action": "request_valid_input",
+        "state_change": "No change to accepted index, accepted prefix, selected frame or selected opcode.",
+        "effects": [
+          "record_diagnostic",
+          "identify_specific_missing_or_invalid_fields",
+          "retain_current_step",
+          "ask_for_corrected_valid_input"
+        ]
+      },
+      "unavailable": {
+        "guard": "missing required source, inaccessible source, or incomplete input",
+        "action": "request_valid_input",
+        "state_change": "None",
+        "effects": [
+          "report_precise_missing_source",
+          "retain_current_step"
+        ]
+      },
+      "duplicate": {
+        "guard": "previously recorded exact saved revision",
+        "action": "idempotent_replay",
+        "state_change": "None",
+        "effects": [
+          "keep_prior_selection_and_instruction",
+          "do_not_reroll"
+        ]
+      },
+      "stale": {
+        "guard": "superseded event payload, changed saved source or accepted-prefix mismatch",
+        "action": "reject_and_refresh",
+        "state_change": "No accepted-index advancement",
+        "effects": [
+          "fetch_current_source",
+          "request_correction_or_halt_if_conflict"
+        ]
+      },
+      "conflict": {
+        "guard": "contradictory canonical procedures, inconsistent immutable receipt or state source",
+        "action": "halt",
+        "state_change": "None",
+        "effects": [
+          "record_failure",
+          "never_invent_transition_or_input"
+        ]
+      },
+      "terminal": {
+        "guard": "validated index 18 with 19 accepted entries",
+        "action": "complete_structurally",
+        "state_change": "next_index=null; complete=true",
+        "effects": [
+          "perform_separate_post_acceptance_verification_and_publication_if_applicable"
+        ],
+        "semantic_verdict": false
+      }
+    },
+    "subcontrollers": {
+      "preparation": {
+        "indices": [
+          0
+        ],
+        "entry_contract": "index_contracts[0]",
+        "responsibility": "Validate the single outer wrapper containing five distinct nested preparation stages. No new random choice."
+      },
+      "framing": {
+        "indices": [
+          1,
+          15
+        ],
+        "frame_formula": "frame_number=floor((index-1)/3); slot=(index-1)%3",
+        "slot_roles": [
+          "reference_a",
+          "reference_b",
+          "framing_result"
+        ],
+        "responsibility": "Resolve an already-authorized higher-order operator and its selected mode, keep them fixed across all three slots, and verify corresponding structural fields."
+      },
+      "reconciliation": {
+        "indices": [
+          16,
+          18
+        ],
+        "stages": [
+          "collect_and_reconcile",
+          "opcode_reconciliation",
+          "final_synthesis_and_validation"
+        ],
+        "responsibility": "Validate source coverage, final artifact/answer shape and terminal evidence without semantic certification."
+      },
+      "random_selector": {
+        "indices": [
+          1,
+          18
+        ],
+        "responsibility": "Draw only from registered and authorized pools and persist ordinals; no interpretation or semantic generation.",
+        "selection_points": {
+          "higher_order_frame_start": [
+            1,
+            4,
+            7,
+            10,
+            13
+          ],
+          "abstraction_mode": "Only on frame start when selected higher_order_operator is OP.02.002",
+          "atomic": "Each index 1 through 18"
+        },
+        "algorithm": "node:crypto.randomInt",
+        "replay": "Selected values immutable per source revision and frame."
+      }
+    },
+    "hooks": {
+      "hook_contract": {
+        "input": [
+          "source_comment_id",
+          "source_revision_sha256",
+          "candidate_index",
+          "contract_id",
+          "state_snapshot"
+        ],
+        "output": [
+          "handler_id",
+          "outcome",
+          "diagnostic_or_receipt_ref"
+        ],
+        "constraints": [
+          "Handlers do not advance state independently",
+          "Handlers do not synthesize canonical procedure",
+          "Failures must be recorded and must not be hidden by other successful hooks"
+        ]
+      },
+      "registered": [
+        {
+          "handler_id": "diagnostics",
+          "trigger": [
+            "on_candidate_saved",
+            "on_validation_result"
+          ],
+          "required": true,
+          "behavior": "Collect structural metrics, validation results, source digest and error details."
+        },
+        {
+          "handler_id": "state_persistence",
+          "trigger": [
+            "on_validated_acceptance",
+            "on_nonadvancing_error"
+          ],
+          "required": true,
+          "behavior": "Persist state and verify readback; only validated accepted entry may increment index."
+        },
+        {
+          "handler_id": "random_selection",
+          "trigger": [
+            "on_new_index_after_acceptance"
+          ],
+          "required": true,
+          "behavior": "Execute authorized draws and persist/replay selections."
+        },
+        {
+          "handler_id": "instruction_receipt",
+          "trigger": [
+            "on_next_step_resolved"
+          ],
+          "required": true,
+          "behavior": "Persist immutable index instruction and verify same revision and source."
+        },
+        {
+          "handler_id": "step_renderer",
+          "trigger": [
+            "on_next_step_resolved",
+            "on_input_correction_required"
+          ],
+          "required": true,
+          "behavior": "Present the exact selected canonical instruction and input request in the controller comment; execution history stays in external records."
+        },
+        {
+          "handler_id": "artifact_publisher",
+          "trigger": [
+            "on_structural_completion"
+          ],
+          "required": false,
+          "behavior": "Use separately verified source-authorized artifact path and full-byte readback."
+        }
+      ],
+      "extensibility": "Additional diagnostic, observational, evaluative or publication handlers can be registered with declared triggers and contracts; they cannot define an alternative transition or claim semantic success."
+    },
+    "semantic_boundary": "The index contract exposes agent-facing evaluatory criteria; deterministic acceptance is strictly machine-verifiable. Semantic failure causes the agent to correct or ask for valid input before claiming completion."
+  },
+  "index_contracts": [
+    {
+      "contract_id": "IS.INDEX.000",
+      "index": 0,
+      "kind": "preparation",
+      "phase": "initial",
+      "role": "five_nested_preparatory_scratchpads",
+      "authoritative_procedure_ref": "controller_profile.preparatory_roles[0..4]",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 0,
+        "expected_accepted_entries": 0,
+        "read_indices": [],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 1,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "preparation[array<object>]": {
+            "type": "array",
+            "length": 5,
+            "items": {
+              "exact_wrapper": "scratchpad",
+              "type": "nonempty_object"
+            },
+            "stage_refs": [
+              {
+                "nested_index": 0,
+                "role": "contextual_instruction_and_initial_opcode_projection",
+                "procedure_ref": "controller_profile.preparatory_roles[0]"
+              },
+              {
+                "nested_index": 1,
+                "role": "requirements_rumination",
+                "procedure_ref": "controller_profile.preparatory_roles[1]"
+              },
+              {
+                "nested_index": 2,
+                "role": "adversarial_review",
+                "procedure_ref": "controller_profile.preparatory_roles[2]"
+              },
+              {
+                "nested_index": 3,
+                "role": "atomistic_action_decomposition",
+                "procedure_ref": "controller_profile.preparatory_roles[3]"
+              },
+              {
+                "nested_index": 4,
+                "role": "atomic_opcode_rendering",
+                "procedure_ref": "controller_profile.preparatory_roles[4]"
+              }
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Preserve original instruction and surrounding context with source attribution; do not confuse assistant interpretation with explicit user authority.",
+          "Produce distinct minimalist/maximalist intent interpretations and bounded inferred beginning, desired end, and inferred change.",
+          "Provisional opcode projection decomposes the request into individually traceable actions with inputs/dependencies; do not claim execution.",
+          "Five nested stages provide substantive requirements analysis, adversarial challenges, independent action decomposition, and reconciled opcode rendering.",
+          "Disclose missing context rather than inventing it."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 0 to 1",
+        "on_invalid": "request_valid_input and retain index 0",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 1,
+        "random_selection_hooks": {
+          "atomic": false,
+          "frame_operator": false,
+          "abstraction_mode": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.001",
+        "IS.11.002",
+        "IS.11.003",
+        "IS.11.004",
+        "IS.11.005",
+        "IS.11.006",
+        "IS.11.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.001",
+      "index": 1,
+      "kind": "framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_A",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 1,
+        "expected_accepted_entries": 1,
+        "read_indices": [
+          0
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 2,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 1 to 2",
+        "on_invalid": "request_valid_input and retain index 1",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 2,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": true,
+          "abstraction_mode": "conditional_on_ABSTRACT",
+          "frame_id": "F0",
+          "frame_slot": 0,
+          "frame_reuse": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.002",
+      "index": 2,
+      "kind": "framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_B",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 2,
+        "expected_accepted_entries": 2,
+        "read_indices": [
+          0,
+          1
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 3,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 2 to 3",
+        "on_invalid": "request_valid_input and retain index 2",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 3,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F0",
+          "frame_slot": 1,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.003",
+      "index": 3,
+      "kind": "framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "authoritative_procedure_ref": "instruction_sequence.frame_result",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 3,
+        "expected_accepted_entries": 3,
+        "read_indices": [
+          0,
+          1,
+          2
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 4,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Keep the same frame operator/mode as both reference slots; do not reroll or invent transformed results."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 3 to 4",
+        "on_invalid": "request_valid_input and retain index 3",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 4,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F0",
+          "frame_slot": 2,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.004",
+      "index": 4,
+      "kind": "framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_A",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 4,
+        "expected_accepted_entries": 4,
+        "read_indices": [
+          0,
+          1,
+          1,
+          3
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 5,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 4 to 5",
+        "on_invalid": "request_valid_input and retain index 4",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 5,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": true,
+          "abstraction_mode": "conditional_on_ABSTRACT",
+          "frame_id": "F1",
+          "frame_slot": 0,
+          "frame_reuse": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.005",
+      "index": 5,
+      "kind": "framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_B",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 5,
+        "expected_accepted_entries": 5,
+        "read_indices": [
+          0,
+          2,
+          2,
+          3
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 6,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 5 to 6",
+        "on_invalid": "request_valid_input and retain index 5",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 6,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F1",
+          "frame_slot": 1,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.006",
+      "index": 6,
+      "kind": "framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "authoritative_procedure_ref": "instruction_sequence.frame_result",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 6,
+        "expected_accepted_entries": 6,
+        "read_indices": [
+          0,
+          3,
+          4,
+          5
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 7,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Keep the same frame operator/mode as both reference slots; do not reroll or invent transformed results."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 6 to 7",
+        "on_invalid": "request_valid_input and retain index 6",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 7,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F1",
+          "frame_slot": 2,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.007",
+      "index": 7,
+      "kind": "framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_A",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 7,
+        "expected_accepted_entries": 7,
+        "read_indices": [
+          0,
+          1,
+          4,
+          6
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 8,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 7 to 8",
+        "on_invalid": "request_valid_input and retain index 7",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 8,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": true,
+          "abstraction_mode": "conditional_on_ABSTRACT",
+          "frame_id": "F2",
+          "frame_slot": 0,
+          "frame_reuse": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.008",
+      "index": 8,
+      "kind": "framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_B",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 8,
+        "expected_accepted_entries": 8,
+        "read_indices": [
+          0,
+          2,
+          5,
+          6
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 9,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 8 to 9",
+        "on_invalid": "request_valid_input and retain index 8",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 9,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F2",
+          "frame_slot": 1,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.009",
+      "index": 9,
+      "kind": "framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "authoritative_procedure_ref": "instruction_sequence.frame_result",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 9,
+        "expected_accepted_entries": 9,
+        "read_indices": [
+          0,
+          6,
+          7,
+          8
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 10,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Keep the same frame operator/mode as both reference slots; do not reroll or invent transformed results."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 9 to 10",
+        "on_invalid": "request_valid_input and retain index 9",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 10,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F2",
+          "frame_slot": 2,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.010",
+      "index": 10,
+      "kind": "framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_A",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 10,
+        "expected_accepted_entries": 10,
+        "read_indices": [
+          0,
+          1,
+          7,
+          9
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 11,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 10 to 11",
+        "on_invalid": "request_valid_input and retain index 10",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 11,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": true,
+          "abstraction_mode": "conditional_on_ABSTRACT",
+          "frame_id": "F3",
+          "frame_slot": 0,
+          "frame_reuse": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.011",
+      "index": 11,
+      "kind": "framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_B",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 11,
+        "expected_accepted_entries": 11,
+        "read_indices": [
+          0,
+          2,
+          8,
+          9
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 12,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 11 to 12",
+        "on_invalid": "request_valid_input and retain index 11",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 12,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F3",
+          "frame_slot": 1,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.012",
+      "index": 12,
+      "kind": "framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "authoritative_procedure_ref": "instruction_sequence.frame_result",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 12,
+        "expected_accepted_entries": 12,
+        "read_indices": [
+          0,
+          9,
+          10,
+          11
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 13,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Keep the same frame operator/mode as both reference slots; do not reroll or invent transformed results."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 12 to 13",
+        "on_invalid": "request_valid_input and retain index 12",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 13,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F3",
+          "frame_slot": 2,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.013",
+      "index": 13,
+      "kind": "framing",
+      "phase": "reference_a",
+      "role": "inner_solver_or_subject",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_A",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 13,
+        "expected_accepted_entries": 13,
+        "read_indices": [
+          0,
+          1,
+          10,
+          12
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 14,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "solver_or_subject[object]": {
+            "type": "object",
+            "required_fields": [
+              "problem_ref",
+              "method_ref",
+              "assumptions_ref",
+              "intermediate_result_refs",
+              "limitations_ref",
+              "source_refs"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reference the real preceding solver or subject with method, assumptions, evidence, intermediate results and limitations.",
+          "Preserve source identities and distinguish an unexecuted projected step from a completed operation."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 13 to 14",
+        "on_invalid": "request_valid_input and retain index 13",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 14,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": true,
+          "abstraction_mode": "conditional_on_ABSTRACT",
+          "frame_id": "F4",
+          "frame_slot": 0,
+          "frame_reuse": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.014",
+      "index": 14,
+      "kind": "framing",
+      "phase": "reference_b",
+      "role": "enclosing_reference",
+      "authoritative_procedure_ref": "instruction_sequence.frame_reference_B",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 14,
+        "expected_accepted_entries": 14,
+        "read_indices": [
+          0,
+          2,
+          11,
+          12
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 15,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "enclosing_target[object]": {
+            "type": "object",
+            "required_fields": [
+              "target_ref",
+              "context_refs",
+              "invariants",
+              "purpose"
+            ]
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Describe a genuinely different enclosing target with its context, invariants, assumptions and source mappings.",
+          "Clearly distinguish the enclosing perspective from the reference-A solver."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 14 to 15",
+        "on_invalid": "request_valid_input and retain index 14",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 15,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F4",
+          "frame_slot": 1,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.015",
+      "index": 15,
+      "kind": "framing",
+      "phase": "framing_result",
+      "role": "transformed_enclosing_output",
+      "authoritative_procedure_ref": "instruction_sequence.frame_result",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 15,
+        "expected_accepted_entries": 15,
+        "read_indices": [
+          0,
+          12,
+          13,
+          14
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 16,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "higher_order_result[object]": {
+            "type": "object",
+            "required_fields": [
+              "preserved_properties",
+              "suppressed_details",
+              "introduced_assumptions",
+              "source_mapping",
+              "next_solver_input"
+            ],
+            "selected_operator_specific": "higher_order_operation_registry.operators[].output_contract and selected mode required_output_fields"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce a substantive output satisfying the exact selected higher-order operation and mode—not a label, repetition or paraphrase.",
+          "Preserve and map invariants, disclosed omissions, assumptions, unresolved questions, sources and the next solver input.",
+          "Keep the same frame operator/mode as both reference slots; do not reroll or invent transformed results."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 15 to 16",
+        "on_invalid": "request_valid_input and retain index 15",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 16,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false,
+          "frame_id": "F4",
+          "frame_slot": 2,
+          "frame_reuse": true
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.007",
+        "IS.12.003",
+        "IS.12.006",
+        "IS.12.007",
+        "IS.12.008",
+        "IS.12.009"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.016",
+      "index": 16,
+      "kind": "reconciliation",
+      "phase": "collect_and_reconcile",
+      "role": "collect_and_reconcile",
+      "authoritative_procedure_ref": "controller_profile.reconciliation_roles[index=16]",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 16,
+        "expected_accepted_entries": 16,
+        "read_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 17,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "covered_indexes[array<number>]": {
+            "type": "array",
+            "must_include": "0..15"
+          },
+          "reconciliation[object]": {
+            "type": "object"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Reconcile every preceding contribution without silently discarding contradictory evidence or original user requirements.",
+          "Prepare a usable solution input, not merely a summary."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 16 to 17",
+        "on_invalid": "request_valid_input and retain index 16",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 17,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.008",
+        "IS.12.011"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.017",
+      "index": 17,
+      "kind": "reconciliation",
+      "phase": "opcode_reconciliation",
+      "role": "opcode_reconciliation",
+      "authoritative_procedure_ref": "controller_profile.reconciliation_roles[index=17]",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 17,
+        "expected_accepted_entries": 17,
+        "read_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 18,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "opcode_steps[array<object>]": {
+            "type": "array",
+            "source_pointer_required": true
+          },
+          "covered_source_pointers[array<string>]": {
+            "type": "array",
+            "must_cover": "outer indices 0..16 plus five preparatory nested stages and original instruction/projection pointers"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Compile all source-linked actions and preparatory/frame inputs into an actionable, complete solution.",
+          "Distinguish opcodes requested from those actually executed and prove action coverage."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 17 to 18",
+        "on_invalid": "request_valid_input and retain index 17",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": 18,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence",
+          "random_selection",
+          "instruction_receipt",
+          "step_renderer"
+        ],
+        "optional_hooks": []
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.008",
+        "IS.12.011"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    },
+    {
+      "contract_id": "IS.INDEX.018",
+      "index": 18,
+      "kind": "reconciliation",
+      "phase": "final_synthesis_and_validation",
+      "role": "final_synthesis_and_validation",
+      "authoritative_procedure_ref": "controller_profile.reconciliation_roles[index=18]",
+      "input": {
+        "source": "GitHub saved source comment plus persisted state and canonical procedural references",
+        "expected_next_index": 18,
+        "expected_accepted_entries": 18,
+        "read_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "required": [
+          "stable_source_comment_id",
+          "source_revision",
+          "accepted_prefix_sha256",
+          "canonical_procedure",
+          "all referenced source material"
+        ],
+        "failure": "request_valid_input_no_advance"
+      },
+      "output": {
+        "format": "JSON root array of exact accepted-prefix plus one appended {scratchpad:{...}}",
+        "expected_array_length": 19,
+        "outer_wrapper": {
+          "exact_key": "scratchpad",
+          "nonempty_object": true
+        },
+        "scratchpad_contract": {
+          "final_reconciliation[object]": {
+            "type": "object"
+          },
+          "final_output[string]": {
+            "type": "nonempty_string",
+            "artifact_case": "may be a pointer to declared artifact"
+          },
+          "coverage[object]": {
+            "type": "object"
+          },
+          "artifacts[array<object>]": {
+            "type": "conditional",
+            "when": "artifact targets declared by original user",
+            "item_fields": [
+              "path",
+              "content"
+            ],
+            "content_type": "full_UTF8"
+          }
+        },
+        "prior_prefix_must_be_byte_semantically_unchanged": true,
+        "semantic_quality_not_machine_verifiable": true
+      },
+      "semantic_completion": {
+        "evaluator": "acting_agent_only",
+        "criteria_refs": [
+          "SEM.COMMON.01",
+          "SEM.COMMON.02",
+          "SEM.COMMON.03",
+          "SEM.COMMON.04"
+        ],
+        "stage_criteria": [
+          "Produce the actual user-requested answer or full authorized artifact and evaluate it independently against user requirements.",
+          "For authorized file output, complete UTF-8 content must appear in artifacts; final_output may be a pointer, not a false publication claim.",
+          "Treat structural completion as separate from published artifact readback and semantic correctness."
+        ],
+        "missing_source": "Disclose the missing input and request valid input instead of claiming completion.",
+        "machine_certification": false
+      },
+      "controller_handoff": {
+        "origin": "deterministic validator of re-fetched saved source comment",
+        "event_schema": "issuescratch.validated-entry-event.v1",
+        "validity_for_transition": "valid",
+        "transition_ref": "meta_controller_contract.uniform_transition",
+        "on_valid": "accepted_entries advances from 18 to 19",
+        "on_invalid": "request_valid_input and retain index 18",
+        "on_duplicate": "idempotent replay without advancing or rerolling",
+        "on_stale_or_conflict": "reject/refresh or halt; never infer authoritative content",
+        "next_index": null,
+        "random_selection_hooks": {
+          "atomic": true,
+          "frame_operator": false,
+          "abstraction_mode": false
+        },
+        "required_controller_functions": [
+          "diagnostics",
+          "state_persistence"
+        ],
+        "optional_hooks": [
+          "artifact_publisher"
+        ]
+      },
+      "normative_clauses": [
+        "IS.10.002",
+        "IS.10.003",
+        "IS.10.004",
+        "IS.10.005",
+        "IS.10.006",
+        "IS.10.007",
+        "IS.10.008",
+        "IS.11.010",
+        "IS.11.008",
+        "IS.12.011",
+        "IS.10.009",
+        "IS.10.010",
+        "IS.10.012"
+      ],
+      "status": "contract_declared_not_semantically_certifying"
+    }
+  ],
+  "shared_semantic_completion_criteria": [
+    {
+      "id": "SEM.COMMON.01",
+      "criterion": "Source fidelity, provenance and attribution",
+      "success": "Claims trace to source references; no invented execution, authorship or user authorization."
+    },
+    {
+      "id": "SEM.COMMON.02",
+      "criterion": "Substantive fulfillment of the selected step",
+      "success": "Performs the actual requested transformation rather than naming an opcode or paraphrasing."
+    },
+    {
+      "id": "SEM.COMMON.03",
+      "criterion": "Conformity to original user intent",
+      "success": "Preserves explicit requirements; identifies uncertain or unsupported inferences."
+    },
+    {
+      "id": "SEM.COMMON.04",
+      "criterion": "Honest limitations and failure handling",
+      "success": "Requests necessary valid input on blockers and does not assert unverified results."
+    }
+  ]
 }
