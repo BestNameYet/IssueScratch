@@ -5,6 +5,7 @@ on:
     paths:
       - 'Dockerfile'
       - 'src/router-write-gate.test.js'
+      - 'src/renderer-persistence.test.js'
       - '.dockerignore'
       - 'container-entrypoint.js'
       - 'src/**'
@@ -19,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test validation-render write gate
         run: node --test src/router-write-gate.test.js
+      - name: Test renderer persistence
+        run: node --test src/renderer-persistence.test.js
       - name: Run router boundary tests
         run: node --test src/router-boundary.test.js
       - name: Set up Docker Buildx
