@@ -62,13 +62,25 @@ test("context and prefix mismatches cannot produce acceptance or mutate supplied
  assert.deepEqual(state,before);
  assert.throws(()=>validate({raw_input:JSON.stringify([prep()]),metadata:{}},procedure),/expected_index/);
 });
-test("validation HTTP service is independently reachable through the router",async t=>{
+test("validation-only HTTP entry returns an envelope without executing FSM",async t=>{
  const {createValidationServer}=require("./validation-server");
- const {createRouterServer}=require("./stateless-router-server");
- async function start(server){await new Promise(done=>server.listen(0,"127.0.0.1",done));t.after(()=>new Promise(done=>{server.close(done);server.closeAllConnections();}));return "http://127.0.0.1:"+server.address().port;}
- const validation=await start(createValidationServer(procedure));
- const router=await start(createRouterServer({routes:[{method:"POST",path:"/validate",target:validation+"/validate"}]}));
- const post=raw_input=>fetch(router+"/validate",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({raw_input,metadata:{source_comment_id:12,expected_index:0}})});
- const rejected=await post("{");assert.equal(rejected.status,200);assert.equal((await rejected.json()).accepted,false);
- const accepted=await post(JSON.stringify([prep()]));assert.equal(accepted.status,200);assert.equal((await accepted.json()).accepted,true);
+ const server=createValidationServer(procedure);
+ await new Promise(done=>server.listen(0,"127.0.0.1",done));
+ t.after(()=>new Promise(done=>{server.close(done);server.closeAllConnections()}));
+ const url="http://127.0.0.1:"+server.address().port;
+ const send=async raw_input=>{
+  const res=await fetch(url+"/validate",{method:"POST",headers:{"content-type":"application/json"},
+   body:JSON.stringify({contract:"router.envelope.v1",request_id:"validation-1",type:"request",
+    payload_contract:"issuescratch.agent-submission.v1",
+    payload:{raw_input,metadata:{source_comment_id:12,expected_index:0}},error:null})});
+  assert.equal(res.status,200);
+  return res.json();
+ };
+ const rejected=await send("{");
+ assert.equal(rejected.type,"rejection");
+ assert.equal(rejected.payload.accepted,false);
+ const accepted=await send(JSON.stringify([prep()]));
+ assert.equal(accepted.type,"result");
+ assert.equal(accepted.payload.accepted,true);
+ assert.equal(accepted.mode,"validation-result");
 });
