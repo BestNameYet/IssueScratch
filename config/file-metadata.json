@@ -22,8 +22,8 @@
     },
     {
       "path": "docs/index-projection-procedure.json",
-      "blob_sha": "95a913da87aa50b1c4227d17ee228ed003202676",
-      "description": "Standalone authoritative opcode/JSON projection procedure."
+      "blob_sha": "6c2baaf8cf836be0446fe3bac5dbc32bed388285",
+      "description": "Source/destination-agnostic opcode/JSON index projection procedure."
     },
     {
       "path": "AGENTS.md",
@@ -37,8 +37,8 @@
     },
     {
       "path": "docs/agent-input-validation-procedure.json",
-      "blob_sha": "13f53e2d13e7ed3fa02358944cec3422a4009c3c",
-      "description": "Structural agent input validation procedure: acceptance predicates, error responses and non-semantic successful termination."
+      "blob_sha": "19c203e955660feb4b39aaf7653e46198dfc0b87",
+      "description": "Source/destination-agnostic structural input validation procedure."
     }
   ]
 }
