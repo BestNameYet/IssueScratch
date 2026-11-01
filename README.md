@@ -248,4 +248,10 @@ Read [docs/agent-input-validation-procedure.json](docs/agent-input-validation-pr
 
 ## Deployment input/output routing
 
-Read [config/workflow-routing.json](config/workflow-routing.json) for the concrete Issue #1 event/scan inputs, per-comment state and instruction paths, controller-reply destination, artifact publication destinations, invocation arguments and readback requirements. This configuration separates location-specific bindings from the generic procedures. It has not yet been wired into the workflow.
+Read [config/workflow-routing.json](config/workflow-routing.json) for the concrete Issue #1 event/scan inputs, per-comment state and instruction paths, controller-reply destination, artifact publication destinations, invocation arguments and readback requirements. The workflow now invokes [src/workflow-router.js](src/workflow-router.js), which consumes this configuration for event/scan inputs, state and instruction persistence, controller replies, and artifact publication. Generic procedures remain location-agnostic.
+
+### Executable router
+
+The workflow calls `runWorkflow({github, core, context, config})` from [src/workflow-router.js](src/workflow-router.js), passing the parsed [routing configuration](config/workflow-routing.json). Runtime argument overrides may be supplied through the function's `arguments` object. Route expressions resolve declared arguments, prior values, current iteration items, concatenated paths and padded indices; they do not evaluate arbitrary code. Existing framing/diagnostic and artifact-publication modules perform processing separately from transport.
+
+Run `node --test src/*.test.js` to include [router regression tests](src/workflow-router.test.js), including accepted/rejected inputs, reply reuse, alternate configured paths and branch, and recovery of a persisted random instruction after failed delivery. Workflow integration does not by itself verify the newer generic procedure specifications or completion of a nineteen-entry job.
