@@ -107,9 +107,9 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "0b6a96abfe6fde7c8bdeec634e32e4301f176a9d",
-      "description": "Runtime CI validation of corrected route and independent output publication, job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+      "blob_sha": "a77160a0833b9f7fb194a5ccf0eb6e112b05d8c4",
+      "description": "Actions workflow routing integration and Docker service conformance coverage, IssueStack job 6560681262.",
+      "change_commit": "823d625c1a6f37b1375d10686f820bd06e3a27b8"
     },
     {
       "path": "src/input-validator.js",
@@ -249,6 +249,12 @@
       "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
       "blob_sha": "8fb2d8e9cc8b72abe3238db456f77e99bff76cb1",
       "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+    },
+    {
+      "path": "src/docker-route-smoke.js",
+      "description": "Real Docker bridge ingress-to-Renderer file persistence integration smoke test, IssueStack job 6560681262.",
+      "blob_sha": "9c34c292a4dd92cea2d229b5471e6a9ef7a0d1a6",
+      "change_commit": "823d625c1a6f37b1375d10686f820bd06e3a27b8"
     }
   ]
 }
