@@ -61,6 +61,13 @@ function createRouterServer(config){
  return http.createServer(async(req,res)=>{
   const pathname=new URL(req.url,"http://localhost").pathname;
   if(req.method==="GET"&&pathname==="/health"){send(res,200,{ok:true});return}
+  if(req.method==="POST"&&pathname==="/boundary-error"){
+   try{let raw="";for await(const chunk of req){raw+=chunk;if(Buffer.byteLength(raw)>1048576)throw Error("Request too large")}
+    const message=JSON.parse(raw);
+    const rendered=await post("renderer","/render",{contract:"router.envelope.v1",request_id:message.request_id,type:"request",payload_contract:"issuescratch.render-input.v1",mode:message.mode,payload:message,error:null});
+    send(res,rendered.status,rendered.body);
+   }catch(error){send(res,502,{error:{code:"BOUNDARY_ERROR_RENDER_FAILED",message:error.message}})}return;
+  }
   const route=routes.find(r=>r.method===req.method&&r.path===pathname);
   if(!route){send(res,404,{error:{code:"UNKNOWN_ROUTE"}});return}
   try{
