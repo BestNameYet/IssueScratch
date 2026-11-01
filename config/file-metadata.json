@@ -32,8 +32,8 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "5436ba5c3011e9346c3525f651f5f98fc1a02f70",
-      "description": "Projection procedure reference."
+      "blob_sha": "b22af883fed69c370f1b449636b26126a1d50c6b",
+      "description": "Live repository manifest: current user-confirmed RV→RO→FSMV→FSM→RV→RO→RE runtime topology and implementation gaps, separate from historical snapshot"
     },
     {
       "path": "docs/agent-input-validation-procedure.json",
