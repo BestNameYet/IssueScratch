@@ -107,9 +107,9 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "ce5e2eac537be2e8957b4fabda15daa68bec0c7e",
-      "description": "CI validates 21 Node service tests, six GitHub-writer mocks, actual Docker route and persistence, and actual listener invalid-event ingress without remote publication; job 6560681262.",
-      "change_commit": "d934ed04836146d1cb73fe4df55dbdb7c700d041"
+      "blob_sha": "b6823c06b3cd637be16426375eec431fbf164292",
+      "description": "Runs complete 85-test Node suite plus six GitHub writer mocks, Docker full routing and real listener no-write smoke, job 6560681262.",
+      "change_commit": "2dee5792f5341a390c12e9acffb4f3ce2d15d94a"
     },
     {
       "path": "src/input-validator.js",
