@@ -2,7 +2,7 @@
   "schema": "issuescratch.workflow-routing-config.v1",
   "version": "1.0.0",
   "purpose": "Concrete deployment bindings for the otherwise source/destination-agnostic projection and input-validation procedures.",
-  "status": "configuration_created_not_yet_consumed_by_workflow",
+  "status": "consumed_by_router_workflow_live_verification_pending",
   "inspected_implementation": {
     "workflow": ".github/workflows/issue1-json-validator.yml",
     "blob_sha": "fc11d6cbc5cc5efc0f1f005830f0de7c8b3451ce",
@@ -542,5 +542,19 @@
       "issues": "write"
     }
   },
-  "integration_boundary": "This document describes current concrete destinations and argument bindings for future consumption. Existing workflow remains unchanged and still has inline routing; no integration or end-to-end success is claimed."
+  "integration_boundary": "Workflow invokes the configured router for comment processing, persistence, instruction delivery and verified artifact publication. Existing prompt conversion remains its separate workflow step. The newly specified generic procedures are not claimed to be independently implemented or conformant by this routing extraction.",
+  "runtime": {
+    "script": "src/workflow-router.js",
+    "entrypoint": "runWorkflow",
+    "arguments": [
+      "github",
+      "core",
+      "context",
+      "config"
+    ],
+    "workflow": ".github/workflows/issue1-json-validator.yml",
+    "load_configuration": "Read config/workflow-routing.json on each workflow invocation.",
+    "processing": "Delegates to existing framing-controller and artifact-publisher modules; the router binds transport/configuration and does not define semantic work.",
+    "test_command": "node --test src/*.test.js"
+  }
 }
