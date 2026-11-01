@@ -22,6 +22,7 @@ on:
       - 'container-listener.js'
       - 'container-entrypoint.js'
       - 'Dockerfile'
+      - '.dockerignore'
       - 'src/stateless-services.test.js'
       - 'src/router-write-gate.test.js'
       - 'src/input-validator.js'
