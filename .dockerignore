@@ -2,4 +2,3 @@
 !src/
 !src/**
 !container-entrypoint.js
-src/types/
