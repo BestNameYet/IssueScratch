@@ -9,6 +9,8 @@ on:
       - 'src/fsm-server.js'
       - 'src/agent-renderer.js'
       - 'src/renderer-server.js'
+      - 'src/github-issue-writer.js'
+      - 'src/github-issue-writer.test.js'
       - 'src/stateless-router-server.js'
       - 'src/stateless-services.test.js'
       - 'src/router-write-gate.test.js'
@@ -27,5 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Test callable GitHub Issue writer
+        run: node --test src/github-issue-writer.test.js
       - name: Test independent services and HTTP routing
         run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js
