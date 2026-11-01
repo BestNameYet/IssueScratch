@@ -1,19 +1,19 @@
 {
   "schema": "issuescratch.agent-input-validation-procedure.v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "purpose": "Define the admissible agent-submission band and deterministic rejection responses. This is an input-validation specification; it does not implement a validator.",
   "boundary": {
-    "machine_validation": "JSON syntax, envelope shape, current-index structural fields and existing progression identity/prefix predicates only.",
+    "machine_validation": "JSON syntax, envelope shape, current-index structural fields and supplied progression identity/prefix predicates only.",
     "semantic_validation": "None. Do not evaluate meaning, quality, correctness, usefulness, reasoning depth, source interpretation, or whether the task is substantively complete.",
     "semantic_fields": "A field named semantic_completion or final_output does not authorize semantic evaluation; only explicitly declared structural type/presence predicates apply.",
     "termination": "Both accepted and rejected submissions are successfully processed validation outcomes. Rejection is not a process crash, acceptance or advancement. Infrastructure failures remain explicit execution failures."
   },
   "inputs": {
-    "saved_body": "Exact saved agent source-comment text",
-    "source_identity": "Script-bound repository, issue and source-comment identity",
-    "state_snapshot": "Script-owned current accepted prefix and expected index; never authored or acknowledged by the agent",
-    "procedure": "Current canonical procedure, including index_contracts and referenced definitions",
-    "bound_operation": "Previously supplied operator/mode when operator-specific output shape applies"
+    "payload_text": "Complete candidate JSON text supplied as a value by the caller, regardless of its origin.",
+    "source_identity": "Opaque submission/context identity supplied by the caller; it identifies a logical validation context, not an input location.",
+    "state_snapshot": "Current accepted prefix and expected index supplied as values; this procedure neither retrieves nor persists state.",
+    "procedure": "Current procedure object and structural definitions supplied as values.",
+    "bound_operation": "Supplied operator/mode when the structural output schema depends on it."
   },
   "shared_definitions": {
     "wrapper": {
@@ -62,14 +62,14 @@
         "not_evaluated"
       ]
     },
-    "preserved_prefix": "Compare parsed JSON values using the existing canonical accepted-prefix encoding and hash. Formatting-only differences are not substantive prefix changes."
+    "preserved_prefix": "Compare parsed JSON values using the prefix representation and equality/hash convention supplied with the validation context. Formatting-only differences are not substantive prefix changes."
   },
   "accepted_band": {
     "all_required": true,
     "predicates": [
       {
         "id": "V01",
-        "check": "saved_body parses as exactly one JSON value without Markdown fences, prose or trailing non-whitespace text",
+        "check": "payload_text parses as exactly one JSON value without Markdown fences, prose or trailing non-whitespace text",
         "error": "INVALID_JSON"
       },
       {
@@ -84,17 +84,17 @@
       },
       {
         "id": "V04",
-        "check": "source identity matches the script-bound job",
+        "check": "supplied candidate identity matches the expected logical context identity supplied by the caller",
         "error": "SOURCE_MISMATCH"
       },
       {
         "id": "V05",
-        "check": "candidate adds exactly one entry at the script-supplied expected index and stays within the supported progression protocol",
+        "check": "candidate adds exactly one entry at the supplied expected index and stays within the supplied progression protocol",
         "error": "OUT_OF_SEQUENCE"
       },
       {
         "id": "V06",
-        "check": "previously accepted prefix matches the script-owned accepted-prefix value/hash",
+        "check": "previously accepted prefix matches the supplied accepted-prefix value/hash",
         "error": "PREFIX_CHANGED"
       },
       {
@@ -133,35 +133,35 @@
     "preparation": "Use the declared five-part preparation shape and its explicitly defined field/type requirements.",
     "framing": "Use the declared reference-A/reference-B/result output shape. Supplied operator and mode determine only the applicable output-field schema, not a semantic verdict.",
     "reconciliation": "Check declared coverage arrays and field structures; do not determine whether reconciliation is substantively adequate.",
-    "final": "Check final field types and conditional artifact path/content structure. A structurally accepted final answer is not verified semantic success or a publication receipt.",
+    "final": "Check the final field types and any conditional output-data structures declared by the supplied contract. Structural acceptance does not establish semantic success or actual delivery.",
     "unsupported_rule_language": "Unsupported or ambiguous schema clauses are configuration failures, not implied authorization for model judgment."
   },
   "error_catalog": {
     "INVALID_JSON": "Invalid JSON. Submit one JSON array without Markdown fences or surrounding text.",
     "INVALID_ROOT": "Invalid root type. Expected one JSON array.",
     "INVALID_WRAPPER": "Invalid entry wrapper. Expected exactly one nonempty scratchpad object.",
-    "SOURCE_MISMATCH": "Submission belongs to a different source than this job.",
+    "SOURCE_MISMATCH": "Submission identity does not match the supplied validation context.",
     "OUT_OF_SEQUENCE": "Invalid entry count or index. Submit only the requested next entry.",
     "PREFIX_CHANGED": "Previously accepted entries were changed. Preserve the accepted prefix.",
     "INVALID_FIELD": "Missing or invalid field. Correct the field identified by pointer and expected type.",
     "INVALID_OPERATION_OUTPUT": "Output does not match the structural fields required by the supplied operation or mode.",
     "CONTRACT_UNAVAILABLE": "Validation configuration unavailable or inconsistent. No acceptance decision was made.",
-    "EXECUTION_UNAVAILABLE": "Validation could not access required saved source or state. No acceptance decision was made."
+    "EXECUTION_UNAVAILABLE": "Required input, state or configuration values were not supplied. No acceptance decision was made."
   },
   "procedure": [
     {
       "step_id": "IV01",
       "opcode": "OP.01.015",
-      "action": "bind_saved_input",
+      "action": "bind_supplied_input",
       "inputs": [
-        "saved_body",
+        "payload_text",
         "source_identity",
         "state_snapshot",
         "procedure",
         "bound_operation"
       ],
       "result_ref": "bound_input",
-      "reason": "Validate actual saved input against script-bound context, not an agent acceptance claim."
+      "reason": "Bind the supplied candidate and validation context; do not retrieve input or rely on an agent acceptance claim."
     },
     {
       "step_id": "IV02",
@@ -176,7 +176,7 @@
         "V03"
       ],
       "result_ref": "envelope_result",
-      "on_invalid": "Emit rejected result with a specific error; terminate successfully.",
+      "on_invalid": "Return rejected result with a specific error; terminate successfully.",
       "reason": "Malformed envelopes are outside the admissible band regardless of meaning."
     },
     {
@@ -193,7 +193,7 @@
         "V06"
       ],
       "result_ref": "progression_result",
-      "on_invalid": "Emit rejected result without advancement; terminate successfully.",
+      "on_invalid": "Return rejected result without advancement; terminate successfully.",
       "reason": "A valid JSON value is not sufficient if it edits accepted history or skips the requested entry."
     },
     {
@@ -208,8 +208,8 @@
         "V07"
       ],
       "result_ref": "structural_contract",
-      "on_failure": "Emit failed/not_evaluated configuration result; no advancement.",
-      "reason": "Input shape follows the current contract rather than a duplicated list of nineteen schemas."
+      "on_failure": "Return failed/not_evaluated configuration result; no advancement.",
+      "reason": "Input shape follows the current supplied contract rather than a duplicated fixed list of schemas."
     },
     {
       "step_id": "IV05",
@@ -224,7 +224,7 @@
         "V09"
       ],
       "result_ref": "field_result",
-      "on_invalid": "Emit rejected result with pointer/type errors; terminate successfully.",
+      "on_invalid": "Return rejected result with pointer/type errors; terminate successfully.",
       "reason": "Only declared mechanical predicates narrow acceptance. Semantic claims are not judged."
     },
     {
@@ -241,7 +241,7 @@
         "advance_allowed": true,
         "errors": []
       },
-      "reason": "Signal structural acceptance only. A separate state-management operation may consume it."
+      "reason": "Return structural acceptance as a value. The caller decides whether a separately configured state-management operation consumes it."
     }
   ],
   "outcomes": {
@@ -302,5 +302,13 @@
       "execution_status": "failed",
       "code": "CONTRACT_UNAVAILABLE"
     }
-  ]
+  ],
+  "environment_boundary": {
+    "scope": "Pure procedure over supplied in-memory values; independent of storage, transport, hosting service, user interface and delivery destination.",
+    "caller_responsibility": "A separately configured adapter obtains inputs and receives results. This procedure does not choose, describe or access those locations.",
+    "input_rule": "Inputs are values passed to this procedure; names and references identify logical data, not physical sources.",
+    "output_rule": "Return result values to the caller. EMIT means returning/serializing a value; it does not mean writing a file, posting a comment or sending a message.",
+    "references": "RFC 6901 references resolve within the supplied procedure object only, without external retrieval.",
+    "configuration": "Concrete input/output bindings and adapter implementations belong in a separate configuration document."
+  }
 }
