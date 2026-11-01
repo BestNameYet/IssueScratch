@@ -8,7 +8,7 @@ test("public Router Validator blocks invalid envelope before internal Router dis
  let received=0;
  const upstream=http.createServer((req,res)=>{received++;res.setHeader("content-type","application/json");res.end(JSON.stringify({...envelope(),type:"result"}));});
  const upstreamPort=await listen(t,upstream);
- const config={services:{router:{host:"127.0.0.1",port:0},downstream:{host:"127.0.0.1",port:upstreamPort}},routes:[{method:"POST",path:"/test",service:"downstream",upstream_path:"/test"}]};
+ const config={services:{router:{host:"127.0.0.1",port:0},downstream:{host:"127.0.0.1",port:upstreamPort}},service_port_lookup:{downstream:upstreamPort},routes:[{method:"POST",path:"/test",service:"downstream",upstream_path:"/test"}]};
  const routerPort=await listen(t,createRouterServer(config));config.services.router.port=routerPort;
  const gatewayPort=await listen(t,createRouterValidatorServer(config));
  const request=async body=>fetch("http://127.0.0.1:"+gatewayPort+"/test",{method:"POST",body,headers:{"content-type":"application/json"}});
@@ -18,7 +18,7 @@ test("public Router Validator blocks invalid envelope before internal Router dis
 test("Router Validator blocks malformed upstream envelope",async t=>{
  const upstream=http.createServer((req,res)=>{res.setHeader("content-type","application/json");res.end('{"unvalidated":true}')});
  const upstreamPort=await listen(t,upstream);
- const cfg={services:{router:{host:"127.0.0.1",port:0},downstream:{host:"127.0.0.1",port:upstreamPort}},routes:[{method:"POST",path:"/test",service:"downstream",upstream_path:"/test"}]};
+ const cfg={services:{router:{host:"127.0.0.1",port:0},downstream:{host:"127.0.0.1",port:upstreamPort}},service_port_lookup:{downstream:upstreamPort},routes:[{method:"POST",path:"/test",service:"downstream",upstream_path:"/test"}]};
  cfg.services.router.port=await listen(t,createRouterServer(cfg));
  const validatorPort=await listen(t,createRouterValidatorServer(cfg));
  const response=await fetch("http://127.0.0.1:"+validatorPort+"/test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(envelope())});
