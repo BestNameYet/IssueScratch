@@ -2,13 +2,23 @@
   "files": [
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
-      "description": "Canonical procedure library with nineteen concrete index-to-renderer projections referencing seven unique field projections and shared inputs.",
-      "blob_sha": "dce8882ffca2c28ae501ca471c8fb24103d3c969",
+      "description": "Canonical procedure with programmatic projection binding; fixed per-index projection pointer table removed.",
+      "blob_sha": "133e5b12e1718270437b8a60147b6f37838d57b7",
       "change_commit": "4963eb1b51657b9c81429919f903dfc0475f193f"
     },
     {
       "path": "config/file-metadata.json",
       "description": "Metadata for substantive repository file changes."
+    },
+    {
+      "path": "src/index-projection.js",
+      "blob_sha": "96792f7af5cc7e98eff241c7f80261a6d3a70059",
+      "description": "Programmatic index projection factory; consumes the current procedure on each call."
+    },
+    {
+      "path": "src/index-projection.test.js",
+      "blob_sha": "b5c8614e5e61694d53ccad01790df60b06e39275",
+      "description": "Regression tests for dynamic procedure projection."
     }
   ]
 }
