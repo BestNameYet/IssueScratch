@@ -27,6 +27,13 @@
     "workflow_routing": {
       "path": "config/workflow-routing.json",
       "usage": "Read config/workflow-routing.json for concrete input/output arguments and routes. The workflow invokes src/workflow-router.js runWorkflow({github,core,context,config}) to consume this configuration. Generic projection and input-validation specifications remain source/destination agnostic."
+    },
+    "stateless_services": {
+      "configuration": "config/stateless-services.json",
+      "router": "src/stateless-router-server.js",
+      "fsm": "src/fsm-server.js",
+      "renderer": "src/renderer-server.js",
+      "boundary": "Independent HTTP services. Router only forwards. FSM consumes supplied state and validated input; renderer consumes supplied projection and bindings. Neither service calls or imports the other. State storage and caller orchestration are external."
     }
   },
   "execution_governance": {
