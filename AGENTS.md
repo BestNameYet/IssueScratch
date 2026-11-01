@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.11.0",
+  "format_version": "2.12.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2412,6 +2412,166 @@
       "imperative": "The final reconciliation stage must account for all five higher-order frame operators, their abstraction modes, retained and omitted properties, and traceable source mappings before an agent claims a synthesized output addresses the original instruction.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.001",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Use one mandatory agent–workflow lifecycle handshake for each new controller-driven Issue #1 task, from intake and job creation through all accepted revisions, final deliverable verification, terminal receipt, and a read-back of the final state. Do not treat job creation or acceptance of the nineteenth entry as task completion.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.002",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Before creating a job, read README.md, root and applicable nested AGENTS.md, Issue #1 rules, current controller/profile/type catalog, and any previous job with the same instruction, source, or nonce. Establish intended output artifacts, explicit authorization and success criteria, and deduplicate without altering historical completed jobs.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.003",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Start the handshake by creating exactly one new Issue #1 source comment containing a single root-array scratchpad entry at index 0 and its five nested preparatory scratchpads. Verify the permanent comment ID, author, complete saved body, correct target declarations, and initial source SHA-256 before relying on any workflow event.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.004",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Require the workflow to acknowledge index 0 with a persisted state.json acceptance, an immutable diagnostic revision, and a source-linked controller instruction and instruction receipt for index 1. Compare their source comment ID, source revision hash, accepted_entries=1, next_index=1 and delivered status before advancing.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.005",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For every subsequent tracked index i (1 through 18), treat the next index as a gated handshake: independently read the saved source and persisted prior state, consume the exact published controller instruction for i and its immutable receipt, produce a distinct substantive scratchpad, append only that entry to the same source comment, then read back the resulting comment body.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.006",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "After each edit, poll only the same comment's persisted state, immutable diagnostic revision, controller reply, and instruction receipt until the workflow accepts exactly one new entry and confirms the submitted SHA-256, the unchanged accepted prefix, correct comment identity, instruction lineage, and next target. Never infer acknowledgement from a successful API submission or an unrelated workflow run.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.007",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Between accepted indices 1 and 18, verify that the controller has published precisely the next instruction for the source-linked revision, including the selected atomic opcode, higher-order frame identity and mode when applicable, ordered random draws, persisted frame choice, and readback of the immutable instruction JSON. Preserve all accepted entries without modification.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.008",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Preserve five independent three-slot frame handshakes at indices 1–15 and three reconciliation handshakes at indices 16–18. Verify each frame's shared higher-order selection remains unchanged through all three slots, and verify the final reconciliation maps all source material including the five initial nested preparatory scratchpads.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.009",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not jump indices, batch several future entries into one revision, create a new source comment to bypass an existing blocked comment, reroll persisted operations, write agent-authored workflow acknowledgements, or replace workflow receipt verification with narrative assertions.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.010",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "After acceptance of index 18, perform a separate task-completion handshake. Verify nineteen independently accepted revisions, five persisted framing selections, eighteen source-linked controller instructions and immutable receipts, final source-body digest, and semantic coverage of the original user request; structural completion alone is not evidence that the requested task or its deliverables are complete.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.011",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "When output artifacts are declared, verify the final artifact content and any applicable domain-specific validation (including the real document-to-JSON opcode adapter for opcode-encoded documents); then wait for workflow-owned generic publication. Read back every destination at its declared path, its actual bytes/hash, and the source-linked immutable publication receipt before reporting completed.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.012",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "For non-artifact tasks, define an explicit source-linked completion criterion and externally inspectable verification evidence before reporting completed. An accepted nineteenth scratchpad without a verified requested result must remain incomplete, pending or blocked, not successful by default.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.013",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "If the task requires more than nineteen substantive steps, do not truncate the work or declare completion at nineteen. Carry the same comment identity, accepted prefix, source lineage and acknowledgement-before-next-edit obligations through every additional step using a separately documented and tested extension protocol, or stop as blocked until that controller capability exists. The current deployed controller freezes accepted-index tracking after index 18 and does not yet verify extended indices.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.014",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "On a failed, stale, missing or contradictory acknowledgement, bound polling to the documented limit, preserve the last verified revision and controller decisions, inspect the real workflow failure, and report blocked with the exact comment ID, accepted index, missing evidence and safe next action; do not silently retry with a different comment.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.015",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "require",
+      "imperative": "Treat terminal handoff as a mandatory final handshake: independently reread the persisted state and any applicable final receipt, report the permanent comment ID, accepted count, next index, controller status, output paths, file hashes and validation results, and explicitly identify any incomplete steps or unverified deliverables. Completion must be supported by these read-backs.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
+    },
+    {
+      "opcode": "IS.13.016",
+      "version": 1,
+      "source_section": "13",
+      "source_line_range": null,
+      "modality": "prohibit",
+      "imperative": "Do not invent or assume that adding a procedural requirement implements the extended controller, semantic evaluator, automated agent execution or final publication. Report AGENTS.md contractual changes separately from runtime enforcement and tested end-to-end behavior.",
+      "condition": null,
+      "source_archive_ref": "source_archive.current_amendment"
     }
   ],
   "reference_data": {
@@ -2587,6 +2747,13 @@
       {
         "id": "12",
         "title": "Higher-order SOLVER_LIFT and ABSTRACT framing, mode selection and lineage",
+        "start_line": null,
+        "end_line": null,
+        "kind": "current_normative_extension"
+      },
+      {
+        "id": "13",
+        "title": "Mandatory end-to-end job lifecycle handshake and continuation beyond minimum RS",
         "start_line": null,
         "end_line": null,
         "kind": "current_normative_extension"
@@ -2805,12 +2972,12 @@
       "historical_17_entry_readme_comment": 6547874447
     },
     "agent_workflow_handshake": {
-      "schema": "issuescratch.agent-workflow-handshake.v1.2",
+      "schema": "issuescratch.agent-workflow-handshake.v1.3",
       "job_scope": "Issue #1 source comment",
       "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
       "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
-      "index_sequence": "Create outer index 0 with five preparatory scratchpads; append one entry per edit through index 18.",
+      "index_sequence": "New comment with only index 0 containing five preparatory scratchpads, read back and await first acceptance; append one and only one new entry after each delivered source-linked instruction for indices 1..18; then perform terminal completion handshake. Further indices need a separately implemented and tested continuation.",
       "ack_keys": [],
       "max_poll_cycles_per_revision": 12,
       "poll_checks": [
@@ -2821,13 +2988,15 @@
         "workflow run conclusion if identifiable"
       ],
       "terminal_acceptance": [
-        "19 sequential accepted revisions",
-        "completion at index 18",
-        "five persisted frames",
-        "18 source-linked controller instructions",
-        "generic publication receipt and destination readback if an artifact target is declared"
+        "verified permanent comment identity and source author",
+        "19 distinct, ordered, immutable accepted revision receipts",
+        "five persisted and stable higher-order frame selections",
+        "18 source-linked controller operations and independently retrieved instruction receipts",
+        "final source SHA-256 and state/controller completion readback",
+        "original user task deliverables independently validated; if artifacts, real conversion/tests and published file bytes, paths, hashes and source-linked generic publication receipt",
+        "explicit reported status completed only if both structural and task completion gates passed; otherwise blocked/incomplete"
       ],
-      "failure": "Stop, report blocked and preserve saved comment, instructions, state and any already verified artifact receipts.",
+      "failure": "On 12 bounded polling cycles, stale/failed acknowledgement, unsupported extension, missing result or unverified publication, stop as blocked, preserve current comment and receipts, report exact missing evidence; do not submit another comment.",
       "comment_echo_requirement": "Existing IS.03.05 obligations unchanged, but full echoes may be limited by the UI; record any inability explicitly.",
       "acknowledgement_location": "per-comment revision diagnostic JSON and state.json history",
       "acknowledgement_type": "automatic workflow-derived acceptance receipt, not worker authored",
@@ -2852,7 +3021,13 @@
         "user-authorized artifact paths declared in the source, after completed verification"
       ],
       "agent_workspace_writes_allowed": false,
-      "agent_workflow_file_writes_allowed_during_job": false
+      "agent_workflow_file_writes_allowed_during_job": false,
+      "scope": "Mandatory from deduplicated intake through job source creation, initial acceptance, each controller-selected index, final task validation, generic artifact publication where applicable, and final receipt/read-back",
+      "minimum_entries": 19,
+      "default_current_terminal_index": 18,
+      "tracked_extension_implemented": false,
+      "entries_beyond_19": "Allowed in conceptual RS contract; controller cannot currently accept/acknowledge index >= 19. Do not continue unacknowledged or assert task completion.",
+      "lifecycle_handshake_ref": "reference_data.job_lifecycle_handshake"
     },
     "preparation_and_reconciliation": {
       "profile_path": "src/types/issuescratch.framing-controller.v1.json",
@@ -2943,13 +3118,77 @@
       "receipt_schema": "issuescratch.artifact-publication-receipt.v1",
       "no_special_readme_rule": true,
       "historical_experiments": "Retain old candidate files and receipts only as historical evidence; no new README-only generation or comparison steps"
+    },
+    "job_lifecycle_handshake": {
+      "schema": "issuescratch.job-lifecycle-handshake.v1",
+      "mandatory": true,
+      "scope": "Each new controller-driven Issue #1 job, irrespective of artifact filename or task type",
+      "minimum_outer_entries": 19,
+      "phases": [
+        {
+          "phase": "preflight",
+          "worker_action": "Read instructions and current sources; deduplicate; record user-authorized output, validators and task success criteria",
+          "workflow_evidence": "none required before source creation",
+          "advance": "only if a fresh job is authorized and no matching active source job exists"
+        },
+        {
+          "phase": "source_creation",
+          "worker_action": "Create single source comment with one index-0 entry and five nested preparatory scratchpads; read back comment ID, author, full JSON and hash",
+          "workflow_evidence": "immutable GitHub source comment",
+          "advance": "only after source identity is independently verified"
+        },
+        {
+          "phase": "first_acceptance",
+          "worker_action": "Inspect saved state and instruction 01 and controller reply",
+          "workflow_evidence": "accepted_entries=1, next_index=1, matching source hash, persisted index-1 instruction and delivered status",
+          "advance": "only when all sources agree"
+        },
+        {
+          "phase": "tracked_loop",
+          "worker_action": "For i=1..18, apply exactly the published instruction, append one distinct substantive entry without mutating prefix, read back source, then poll state, revision and next instruction/receipt",
+          "workflow_evidence": "one accepted transition per edit; source hash, prefix, selected operation and frame persisted; next index verified",
+          "advance": "only after independent acknowledgement of the current index and delivered next instruction"
+        },
+        {
+          "phase": "minimum_proof",
+          "worker_action": "At index 18 reconcile all 19 entries and five frames and inspect completed controller",
+          "workflow_evidence": "19 ordered accepted transitions; 5 persisted frame choices; 18 controller instructions and immutable receipts; final digest",
+          "advance": "only if task-specific output and its validations are also complete"
+        },
+        {
+          "phase": "deliverables",
+          "worker_action": "Check user-defined completion predicates, run required domain validations, inspect workflow-written artifact and generic publication receipt where requested",
+          "workflow_evidence": "readback of actual output bytes/hash/path and validated receipt; or independently inspectable proof of non-artifact result",
+          "advance": "only if independently observed task result fulfills request"
+        },
+        {
+          "phase": "terminal_readback",
+          "worker_action": "Read final state/receipt again; report verified identifiers, counts, destinations, results and remaining failures",
+          "workflow_evidence": "exact job identity, completion status and immutable receipts",
+          "advance": "mark completed only with both minimum_proof and deliverables evidence"
+        },
+        {
+          "phase": "extension_if_needed",
+          "worker_action": "If original task remains unfinished after index 18, retain same identity and fail closed until a separately implemented/tested continuation protocol supports each extra index",
+          "workflow_evidence": "current controller has no accepted indices beyond 18",
+          "advance": "never describe post-19 material as an accepted handshake without verified controller support"
+        }
+      ],
+      "no_worker_workspace_writes": true,
+      "no_special_readme_path": true,
+      "abort_on_unverified_transition": true,
+      "implementation_status": {
+        "tracked_0_through_18": "Implemented for structured source-state and published instructions; final artifact validation is separate workflow step",
+        "post_19": "not implemented",
+        "semantic_task_completion": "requires external verification and cannot be inferred from selected opcodes"
+      }
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
     "previous_active_document_blob_sha": "837b72c80bf1fb0a5e2a68ac03532fda0a125642",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Eliminate filename-specific README experiment publication. All source-linked artifacts now use one 19-entry-controlled publication contract, overwrite existing repository paths directly, and require SHA-verified readback and generic receipts. Preserve legacy candidates as historical records. New tests require separate workflow verification.",
+    "current_amendment": "Add mandatory full-lifecycle handshake IS.13.001–IS.13.016: creation, sequential 0–18 indexed source–controller acknowledgements, independent task/deliverable completion and terminal readback; prohibit false completion or unverified >19 extensions. Distinguish procedures from runtime extension support.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -2999,6 +3238,8 @@
     "higher_order_tests_passed": 43,
     "higher_order_test_run": 41241263066,
     "generic_artifact_publication": true,
-    "readme_specific_publication_active": false
+    "readme_specific_publication_active": false,
+    "required_end_to_end_job_handshake": true,
+    "extended_entry_handshake_deployed": false
   }
 }
