@@ -7,9 +7,9 @@ const config=read("stateless-services.json");
 const procedure=read("procedure-library.json");
 const servers=[
  ["router",require("./src/stateless-router-server").createRouterServer(config)],
- ["fsm",require("./src/fsm-server").createFsmServer(procedure)],
- ["renderer",require("./src/renderer-server").createRendererServer(config.renderer_settings)],
- ["validation",require("./src/validation-server").createValidationServer(procedure)],
+ ["fsm",require("./src/fsm-server").createFsmServer(procedure,config)],
+ ["renderer",require("./src/renderer-server").createRendererServer(config.renderer_settings,{enablePersistence:true})],
+ ["validation",require("./src/validation-server").createValidationServer(procedure,config)],
  ["router_validator",require("./src/router-validator-server").createRouterValidatorServer(config)]
 ];
 let shuttingDown=false;
