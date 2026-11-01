@@ -1,7 +1,7 @@
 {
   "schema": "issuescratch.framing-controller-profile.v1",
-  "version": "2.1.0",
-  "purpose": "One preparation entry; five three-slot recursive frames, each governed by one randomly selected higher-order operator (SOLVER_LIFT or ABSTRACT); three reconciliation entries. Atomic OP.01 operators may also be selected per index.",
+  "version": "2.1.1",
+  "purpose": "One preparation entry; five three-slot higher-order frames; three solution-producing final entries: reconcile all source work (16), compile it into an actionable solution (17), and produce the requested deliverable (18). The controller verifies structure and source-linked progression; the agent independently evaluates the delivered result against the user's task.",
   "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
   "first_index": 0,
   "last_tracked_index": 18,
@@ -12,7 +12,7 @@
     "R-B"
   ],
   "free_indices": [],
-  "layout": "0: one preparatory scratchpad holding five nested scratchpads; 1..15: five frames of R-A, R-B, and narrative expansion (3 each); 16: collect/reconcile; 17: opcode project all earlier material; 18: final synthesis/validation.",
+  "layout": "0: one preparatory scratchpad holding five nested scratchpads; 1..15: five frames of R-A, R-B and narrative expansion (3 each); 16: reconcile all contributions; 17: compile a coherent solution with atomic opcode lineage; 18: produce the actual answer/artifact and agent-evaluate it.",
   "selection_method": "On the first slot of each three-index frame, draw SOLVER_LIFT or ABSTRACT uniformly using crypto.randomInt(2). If ABSTRACT is chosen, draw one mode from CONTRACT, IMPLEMENTATION, CONSTRUCT, GENERAL using crypto.randomInt(4). Retain that single higher-order choice across the frame's three indices. Independently draw an eligible OP.01 atomic function for each new index, including reconciliation. Persist every draw and never reroll after interruption.",
   "constraints": [
     "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
@@ -207,8 +207,9 @@
       "role": "collect_and_reconcile",
       "read_indices": "0..15",
       "requirements": [
-        "Inventory all preparatory and framing entries with stable source pointers and relevant provenance.",
-        "Identify what is missing, conflicting or unsupported."
+        "Consolidate all preparatory and framing entries into one source-traceable account of the user's problem, evidence, constraints, and useful intermediate results.",
+        "Resolve conflicts, distinguish explicit user requirements from inference, identify unresolved gaps, and specify the complete solution that the next entry must compile.",
+        "Carry all relevant contributions forward; the output of this step must be usable by the solution compiler, not merely a summary of previous entries."
       ]
     },
     {
@@ -216,11 +217,10 @@
       "role": "opcode_reconciliation",
       "read_indices": "0..16",
       "requirements": [
-        "Convert the atomistic actions and all prior scratchpad contributions into individually registered opcode steps with typed operands, dependency edges, result references, and source pointers.",
-        "Account explicitly for all five preparatory scratchpads including the verbatim instruction, adversarial challenges, and atomistic decomposition.",
-        "Check action-to-opcode coverage; do not substitute a single CAPTURE, GENERATE, or TRANSFORM command for the full instruction.",
-        "Retain declared/verified/executed distinctions and do not assert semantic equivalence without review.",
-        "Project both explicit and inferred instruction components from nested index 0 without merging their authority or collapsing them into a single opcode."
+        "Compile the reconciled contributions and the agent's substantive work into a coherent actionable solution that satisfies the original user's request; do not stop at an opcode projection.",
+        "Preserve individually registered opcode steps with typed operands, dependencies, result references and source pointers, accounting for all five preparatory scratchpads and framing outputs.",
+        "Supply the deliverable specification and actual solution content or construction inputs needed by index 18, with explicit linkage between requirements, outputs, and verification predicates.",
+        "Distinguish declared operations from operations actually performed; selected opcodes and structural validity are not proof that compilation or task execution succeeded."
       ]
     },
     {
@@ -228,8 +228,11 @@
       "role": "final_synthesis_and_validation",
       "read_indices": "0..17",
       "requirements": [
-        "Reconcile the full record and produce the final answer or artifact plan for the original instruction.",
-        "Verify structural and opcode coverage, record unresolved constraints, and declare the final reconciliation operation itself without claiming semantic validation by the workflow."
+        "Use the compiled solution from index 17 to produce the ACTUAL user-requested deliverable in index 18, not a proposed answer, TODO list, outline, or artifact plan.",
+        "For a response-only task, include the complete user-facing answer in final_output[string]. For an explicitly authorized repository-file task, include the complete UTF-8 target content in artifacts[array<object>] with the previously declared exact destination path; final_output[string] may explain what was delivered.",
+        "Independently, as the acting agent, inspect the actual deliverable against the original user instruction, required format, source provenance, and domain-specific validation (for example, the real opcode-document adapter where required). Distinguish observed results from inferred assertions.",
+        "Report any missing or failed essential deliverable checks as incomplete/blocked; do not claim success solely because the controller accepted the nineteenth entry.",
+        "Keep workflow acknowledgments, publication receipts and later readback as external evidence of publishing the content already supplied at index 18; they do not constitute another content-generation stage."
       ]
     }
   ],
@@ -343,5 +346,20 @@
     "abstraction_specific": "representation object with the fields declared by the selected CONTRACT, IMPLEMENTATION, CONSTRUCT or GENERAL mode",
     "validation": "Structural validation of content fields and source references against current frame selection. It does not prove semantic correctness or execution.",
     "source_comment_policy": "These fields are substantive solver output, NOT workflow acknowledgement, selection metadata, controller IDs or execution receipts."
+  },
+  "agent_deliverable_contract": {
+    "schema": "issuescratch.agent-final-deliverable.v1",
+    "indices": {
+      "reconcile": 16,
+      "compile": 17,
+      "deliver": 18
+    },
+    "required_principle": "Every completed controlled task culminates in a substantive deliverable at index 18, grounded in the compiled output of indices 16 and 17.",
+    "response_delivery": "final_output[string] must contain the actual answer, not a plan to answer.",
+    "artifact_delivery": "For targets declared by the user, artifacts[array<object>] at index 18 contains full UTF-8 path/content objects. The existing general publisher verifies its own technical preconditions and writes the exact output after controller acceptance.",
+    "verification_owner": "The acting agent evaluates semantic adequacy, requirement coverage, originality, provenance, applicable tests, and whether the submitted output actually addresses the user request.",
+    "controller_boundary": "The controller can verify syntax, shape, identity, ordinal progression, framing structures, and persisted instruction receipts; it cannot verify the semantic adequacy, correctness, or usefulness of the delivered answer.",
+    "post_acceptance": "The acting agent independently checks destination readback and external receipts and reports success only if delivery evidence matches the user's requirements. This is verification of index 18, not a new generation step.",
+    "failure": "If a substantive deliverable cannot be produced, report incomplete/blocked and identify deficiencies; do not substitute an outline, a candidate plan, or a completion claim."
   }
 }
