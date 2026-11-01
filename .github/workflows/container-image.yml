@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'Dockerfile'
+      - 'src/router-write-gate.test.js'
       - '.dockerignore'
       - 'container-entrypoint.js'
       - 'src/**'
@@ -16,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Test validation-render write gate
+        run: node --test src/router-write-gate.test.js
       - name: Run router boundary tests
         run: node --test src/router-boundary.test.js
       - name: Set up Docker Buildx
