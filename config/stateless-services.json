@@ -12,6 +12,10 @@
     "renderer": {
       "host": "127.0.0.1",
       "port": 8789
+    },
+    "validation": {
+      "host": "127.0.0.1",
+      "port": 8790
     }
   },
   "routes": [
@@ -26,7 +30,13 @@
       "path": "/render",
       "service": "renderer",
       "upstream_path": "/render"
+    },
+    {
+      "method": "POST",
+      "path": "/validate",
+      "service": "validation",
+      "upstream_path": "/validate"
     }
   ],
-  "boundary": "Router forwards HTTP requests and responses only. FSM and renderer do not reference each other. The caller supplies current state and validated input, persists returned state externally, and separately supplies projection/bindings for rendering. No job state, queues, orchestration or diagnostics are stored in these services."
+  "boundary": "Router forwards HTTP requests and responses only. FSM and renderer do not reference each other. The caller supplies current state and validated input, persists returned state externally, and separately supplies projection/bindings for rendering. No job state, queues, orchestration or diagnostics are stored in these services. Validation is a separate service. Its request envelope contains raw_input and metadata; only raw_input is treated as agent submission content. Metadata supplies correlation and validation context."
 }
