@@ -192,6 +192,11 @@ function renderMarkdown(messages) {
   const turns = [];
   let active = [];
   for (const m of messages) {
+    if (!m || typeof m.text !== "string" || !m.text.trim() ||
+        !(m.role === "user" && m.channel === null ||
+          m.role === "assistant" && (m.channel === "commentary" || m.channel === "final"))) {
+      throw new Error("Unsupported or empty transcript message");
+    }
     if (m.role === "user" && active.length) {
       turns.push(active.join("\n\n"));
       active = [];
