@@ -107,9 +107,9 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "a77160a0833b9f7fb194a5ccf0eb6e112b05d8c4",
-      "description": "Actions workflow routing integration and Docker service conformance coverage, IssueStack job 6560681262.",
-      "change_commit": "823d625c1a6f37b1375d10686f820bd06e3a27b8"
+      "blob_sha": "db16525dc4f688f0d8f8208145ce3aaa4eec49cf",
+      "description": "Workflow verifies real Docker transition/return route with file persistence and rejection after packaging correction, job 6560681262.",
+      "change_commit": "fa182f4db02bf7b007ee2e2626754c97beeb8d52"
     },
     {
       "path": "src/input-validator.js",
@@ -255,6 +255,12 @@
       "description": "Real Docker bridge ingress-to-Renderer file persistence integration smoke test, IssueStack job 6560681262.",
       "blob_sha": "9c34c292a4dd92cea2d229b5471e6a9ef7a0d1a6",
       "change_commit": "823d625c1a6f37b1375d10686f820bd06e3a27b8"
+    },
+    {
+      "path": ".dockerignore",
+      "description": "Docker build context retains runtime-required canonical procedure library under src/types/; corrected startup dependency, job 6560681262.",
+      "blob_sha": "9f9f47ab46ecba3c1f8cebc1b05e87824ca372e9",
+      "change_commit": "fa182f4db02bf7b007ee2e2626754c97beeb8d52"
     }
   ]
 }
