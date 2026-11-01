@@ -7,7 +7,18 @@ const settings=require("../config/stateless-services.json").renderer_settings;
 async function start(t,server){await new Promise(done=>server.listen(0,"127.0.0.1",done));t.after(()=>new Promise(done=>{server.close(done);server.closeAllConnections();}));return "http://127.0.0.1:"+server.address().port}
 const envelope=(payload,extra={})=>({contract:"router.envelope.v1",request_id:"contract-test-1",type:"request",payload_contract:"test.input.v1",payload,error:null,...extra});
 test("FSM returns a correlated structured error envelope instead of a raw HTTP exception",async t=>{
- const url=await start(t,createFsmServer(procedure));
+ const http=require("node:http");
+ let rvResponse=null;
+ const rv=http.createServer(async(req,res)=>{
+  let raw="";for await(const part of req)raw+=part;
+  rvResponse=JSON.parse(raw);
+  assert.equal(req.url,"/fsm-result");
+  res.setHeader("content-type","application/json");
+  res.end(JSON.stringify(rvResponse));
+ });
+ const rvUrl=await start(t,rv),port=Number(new URL(rvUrl).port);
+ const config={services:{router_validator:{host:"127.0.0.1",port}},service_port_lookup:{router_validator:port}};
+ const url=await start(t,createFsmServer(procedure,config));
  const result=await fetch(url+"/transition",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(envelope({}))});
  assert.equal(result.status,200);
  const body=await result.json();
@@ -15,6 +26,7 @@ test("FSM returns a correlated structured error envelope instead of a raw HTTP e
  assert.equal(body.request_id,"contract-test-1");
  assert.equal(body.type,"error");
  assert.equal(body.error.code,"FSM_EXECUTION_FAILED");
+ assert.deepEqual(rvResponse,body);
 });
 test("Renderer formats arbitrary nested payload and returns correlated envelope",async t=>{
  const url=await start(t,createRendererServer(settings));
