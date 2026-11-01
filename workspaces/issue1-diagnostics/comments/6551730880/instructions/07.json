@@ -1,0 +1,152 @@
+{
+  "schema": "issuescratch.frame-instruction-receipt.v1",
+  "source_comment_id": 6551730880,
+  "source_revision_sha256": "51235cfc0d7022eb0e8d2895255c927cc3f6fae5261d9240ac5dfca297f6e6ee",
+  "next_function": {
+    "schema": "issuescratch.next-framing-function.v1",
+    "comment_id": 6551730880,
+    "target_index": 7,
+    "profile_version": "2.1.1",
+    "selected_function": {
+      "opcode": "OP.01.015",
+      "name": "REFERENCE",
+      "description": "Bind or resolve an identifier, scope, or contextual relationship",
+      "input_contract": "reference_and_environment",
+      "output_contract": "resolution"
+    },
+    "higher_order_frame": {
+      "schema": "issuescratch.higher-order-frame-selection.v1",
+      "frame_id": "F2",
+      "frame_number": 2,
+      "frame_start_index": 7,
+      "frame_end_index": 9,
+      "enclosing_frame_id": "F1",
+      "source_indices": [
+        0,
+        6
+      ],
+      "source_refs": [
+        "/0",
+        "/6"
+      ],
+      "level": 3,
+      "operator": {
+        "opcode": "OP.02.002",
+        "name": "ABSTRACT",
+        "description": "Change the subject's representation under an explicitly selected abstraction mode while preserving source traceability and recording intentionally omitted details."
+      },
+      "mode": "CONSTRUCT",
+      "selection": {
+        "algorithm": "node:crypto.randomInt",
+        "operator_ordinal": 1,
+        "operator_pool": [
+          "OP.02.001",
+          "OP.02.002"
+        ],
+        "mode_ordinal": 2,
+        "mode_pool": [
+          "CONTRACT",
+          "IMPLEMENTATION",
+          "CONSTRUCT",
+          "GENERAL"
+        ]
+      },
+      "input_contract": {
+        "subject_ref": "string",
+        "context_refs": "string[]",
+        "invariants": "string[]",
+        "mode": "CONTRACT|IMPLEMENTATION|CONSTRUCT|GENERAL",
+        "target": "string"
+      },
+      "output_contract": {
+        "representation": "object",
+        "preserved_properties": "string[]",
+        "suppressed_details": "string[]",
+        "new_assumptions": "object[]",
+        "source_mapping": "object[]",
+        "unresolved_questions": "object[]",
+        "next_solver_input": "object"
+      },
+      "required_output_fields": [
+        "elements",
+        "relationships",
+        "construction_rules",
+        "invariants"
+      ],
+      "invariants": [
+        "Two distinguishable referents across levels",
+        "Traceable ancestry of each enclosing solver",
+        "No promotion of inferred claims to direct user instructions",
+        "Meaningful change of reasoning level or representation"
+      ],
+      "status": "selected_not_executed"
+    },
+    "higher_order_selection_new": true,
+    "random_selection": {
+      "algorithm": "node:crypto.randomInt",
+      "pool_opcodes": [
+        "OP.01.002",
+        "OP.01.003",
+        "OP.01.004",
+        "OP.01.005",
+        "OP.01.006",
+        "OP.01.007",
+        "OP.01.008",
+        "OP.01.009",
+        "OP.01.010",
+        "OP.01.011",
+        "OP.01.012",
+        "OP.01.013",
+        "OP.01.014",
+        "OP.01.015"
+      ],
+      "pool_size": 14,
+      "selected_ordinal": 13,
+      "draws": [
+        {
+          "purpose": "higher_order_operator",
+          "pool_size": 2,
+          "selected_ordinal": 1
+        },
+        {
+          "purpose": "abstraction_mode",
+          "pool_size": 4,
+          "selected_ordinal": 2
+        },
+        {
+          "purpose": "atomic_function",
+          "pool_size": 14,
+          "selected_ordinal": 13
+        }
+      ],
+      "note": "Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
+    },
+    "opcodes": [
+      "OP.02.002",
+      "OP.01.015"
+    ],
+    "read_indices": [
+      0,
+      1,
+      4,
+      6
+    ],
+    "frame_id": "F2",
+    "enclosing_frame_id": "F1",
+    "role": "preserve_reference",
+    "reference_id": "R-A",
+    "original_anchor_index": 1,
+    "previous_frame_index": 4,
+    "requirements": [
+      "Use atomic REFERENCE (OP.01.015) inside the fixed higher-order frame ABSTRACT / CONSTRUCT. An opcode instruction is not execution evidence.",
+      "Reference A: identify the prior solver or subject representation, with its assumptions, method, evidence and limitations.",
+      "Cite the actual preceding solver or preparatory instruction; do not invent completed execution.",
+      "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
+      "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
+      "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction.",
+      "Append exactly one substantive scratchpad at index 7 and retain the accepted prefix."
+    ],
+    "control_mode": "publish_instruction_not_autonomous_agent"
+  },
+  "publication_status": "selected"
+}
