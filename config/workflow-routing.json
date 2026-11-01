@@ -2,7 +2,7 @@
   "schema": "issuescratch.workflow-routing-config.v1",
   "version": "1.0.0",
   "purpose": "Concrete deployment bindings for the otherwise source/destination-agnostic projection and input-validation procedures.",
-  "status": "consumed_by_router_workflow_live_verification_pending",
+  "status": "consumed_by_workflow_live_scan_verified",
   "inspected_implementation": {
     "workflow": ".github/workflows/issue1-json-validator.yml",
     "blob_sha": "fc11d6cbc5cc5efc0f1f005830f0de7c8b3451ce",
@@ -556,5 +556,16 @@
     "load_configuration": "Read config/workflow-routing.json on each workflow invocation.",
     "processing": "Delegates to existing framing-controller and artifact-publisher modules; the router binds transport/configuration and does not define semantic work.",
     "test_command": "node --test src/*.test.js"
+  },
+  "verification": {
+    "workflow_run_id": 41267354831,
+    "workflow_head_sha": "87747a507e2052855e93d0f21368573a005459d2",
+    "workflow_conclusion": "success",
+    "router_step_conclusion": "success",
+    "tests": {
+      "passed": 54,
+      "failed": 0
+    },
+    "scope": "Live push-triggered issue scan; event-mode acceptance and recovery verified by transport regression tests, not a new live nineteen-entry task."
   }
 }
