@@ -241,3 +241,7 @@ The most important entry points are **[`AGENTS.md`](AGENTS.md)** for rules, **[I
 ## Index projection procedure
 
 Read [docs/index-projection-procedure.json](docs/index-projection-procedure.json) for the language-independent opcode/JSON procedure used to construct each index's projection for a renderer. It specifies the inputs, operations, dependencies, outputs, reasons and failure handling. Retrieve the complete document from that repository-relative path before reviewing or implementing projection logic. [src/index-projection.js](src/index-projection.js) is the current JavaScript implementation; its presence does not establish conformance to the procedure or completed UI rendering.
+
+## Agent input validation
+
+Read [docs/agent-input-validation-procedure.json](docs/agent-input-validation-procedure.json) in full for the structural input acceptance band, per-index contract binding and precise error responses. Semantic quality is excluded. Accepted input and handled rejection both terminate validation successfully; rejection never authorizes advancement. This document specifies validation and does not claim a deployed implementation.
