@@ -3,7 +3,7 @@
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
       "description": "Canonical contracts and language-independent opcode/JSON index-projection procedure, with explicit dataflow and reasons.",
-      "blob_sha": "d7aed8e18f090ab4082167ccee6510e17274d018",
+      "blob_sha": "cdeaf49e66e903287364b2258c8a85629399f5c4",
       "change_commit": "b89d186b9ef6c57c903a8999f28da319d72c4746"
     },
     {
@@ -27,13 +27,18 @@
     },
     {
       "path": "AGENTS.md",
-      "blob_sha": "20a48f1331305d8c6de80159144cde1a204ad71d",
+      "blob_sha": "58cd8c9de2f11560ded918860819b1ee39113a09",
       "description": "Projection procedure reference."
     },
     {
       "path": "README.md",
-      "blob_sha": "e187f1294e75cefd1a362c12c8c36470138ff6c1",
+      "blob_sha": "b22aaef32fd41c9172ba48534419159bab1d584c",
       "description": "Projection procedure reference."
+    },
+    {
+      "path": "docs/agent-input-validation-procedure.json",
+      "blob_sha": "13f53e2d13e7ed3fa02358944cec3422a4009c3c",
+      "description": "Structural agent input validation procedure: acceptance predicates, error responses and non-semantic successful termination."
     }
   ]
 }
