@@ -1,9 +1,13 @@
 {
-  "schema": "issuescratch.stateless-services.v1",
+  "schema": "issuescratch.stateless-services.v2",
   "services": {
-    "router": {
+    "router_validator": {
       "host": "127.0.0.1",
       "port": 8787
+    },
+    "router": {
+      "host": "127.0.0.1",
+      "port": 8786
     },
     "fsm": {
       "host": "127.0.0.1",
@@ -18,6 +22,7 @@
       "port": 8790
     }
   },
+  "timeout_ms": 30000,
   "routes": [
     {
       "method": "POST",
@@ -29,7 +34,14 @@
       "method": "POST",
       "path": "/render",
       "service": "renderer",
-      "upstream_path": "/render"
+      "upstream_path": "/render",
+      "allowed_modes": [
+        "procedure",
+        "input-error",
+        "fsm-diagnostic",
+        "state-file",
+        "validation-result"
+      ]
     },
     {
       "method": "POST",
@@ -38,5 +50,39 @@
       "upstream_path": "/validate"
     }
   ],
-  "boundary": "Router forwards HTTP requests and responses only. FSM and renderer do not reference each other. The caller supplies current state and validated input, persists returned state externally, and separately supplies projection/bindings for rendering. No job state, queues, orchestration or diagnostics are stored in these services. Validation is a separate service. Its request envelope contains raw_input and metadata; only raw_input is treated as agent submission content. Metadata supplies correlation and validation context."
+  "renderer_settings": {
+    "modes": {
+      "procedure": {
+        "format": "json",
+        "destination": "agent-issue"
+      },
+      "input-error": {
+        "format": "json",
+        "destination": "agent-issue"
+      },
+      "fsm-diagnostic": {
+        "format": "jsonl",
+        "destination": "fsm-log"
+      },
+      "state-file": {
+        "format": "json",
+        "destination": "state-file"
+      },
+      "validation-result": {
+        "format": "json",
+        "destination": "agent-issue"
+      }
+    },
+    "destinations": {
+      "agent-issue": {
+        "adapter": "github-issue"
+      },
+      "fsm-log": {
+        "adapter": "file-append"
+      },
+      "state-file": {
+        "adapter": "file-replace"
+      }
+    }
+  }
 }
