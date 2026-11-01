@@ -194,9 +194,9 @@ function renderMarkdown(messages) {
       turns.push(active.join("\n\n"));
       active = [];
     }
-    if (m.role === "user") active.push("**You**\n\n" + quoteMarkdown(m.text));
-    else if (m.channel === "commentary") active.push("**Assistant · Commentary**\n\n" + quoteMarkdown(m.text));
-    else active.push("**Assistant**\n\n" + m.text);
+    const speaker = m.role === "user" ? "User" :
+      m.channel === "commentary" ? "Assistant · Commentary" : "Assistant";
+    active.push("**" + speaker + "**\n\n" + quoteMarkdown(m.text));
   }
   if (active.length) turns.push(active.join("\n\n"));
   return "# Conversation\n\n" + turns.join("\n\n---\n\n") + "\n";
