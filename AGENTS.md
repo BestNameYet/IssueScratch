@@ -23,6 +23,10 @@
     "agent_input_validation": {
       "path": "docs/agent-input-validation-procedure.json",
       "usage": "Read in full before implementing or reviewing input acceptance. Apply mechanical predicates only; no semantic-quality acceptance test. Handled rejection is successful validation execution without advancement."
+    },
+    "workflow_routing": {
+      "path": "config/workflow-routing.json",
+      "usage": "Concrete repository/issue input and output bindings, invocation arguments, iteration and readback routes. Generic projection and validation procedures remain location-agnostic. Configuration is not yet integrated into the workflow."
     }
   },
   "execution_governance": {
