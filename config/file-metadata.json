@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "path": "src/types/issuescratch.procedure-library.v1.json",
+      "description": "Canonical procedure library; individual index contracts stripped of deterministic state-machine obligations.",
+      "blob_sha": "9024b4d9703563a6f4e16e36cb21bba55cb8e7b1",
+      "change_commit": "e03d0ecfdee674d3f2bcc62c31d3f725a20e5230"
+    },
+    {
+      "path": "config/file-metadata.json",
+      "description": "Metadata for substantive repository file changes."
+    }
+  ]
+}
