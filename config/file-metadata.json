@@ -27,12 +27,12 @@
     },
     {
       "path": "AGENTS.md",
-      "blob_sha": "6a5e2935d0044ce36cc65fe8bdf5a598722ef244",
+      "blob_sha": "343249f5d5309698bcd9cf980651b785bc4be02b",
       "description": "Projection procedure reference."
     },
     {
       "path": "README.md",
-      "blob_sha": "8256b488c12b1d36869eb0af0a75273fcc86753a",
+      "blob_sha": "5436ba5c3011e9346c3525f651f5f98fc1a02f70",
       "description": "Projection procedure reference."
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "path": "config/stateless-services.json",
-      "blob_sha": "4799aeed11582fd40df7751b7d2da80d9d8a8b45",
+      "blob_sha": "7818071e4360e74dd1613f23c716e219a2d6048d",
       "description": "Independent stateless service implementation or routing configuration."
     },
     {
@@ -102,8 +102,23 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "9ff006e8e6326fcc9a9b295bce6aa6ee7458b937",
+      "blob_sha": "2de24f373ab9b69e0938d9a7b0ae477dd6118f43",
       "description": "Read-only CI for stateless service tests."
+    },
+    {
+      "path": "src/input-validator.js",
+      "blob_sha": "6587bbfeba8979bc2885ff70a564d2ea8946368c",
+      "description": "Independent raw-input validation service, API contract or regression checks."
+    },
+    {
+      "path": "src/validation-server.js",
+      "blob_sha": "8e25ebddadc0eb8478c516beb3a1406638695421",
+      "description": "Independent raw-input validation service, API contract or regression checks."
+    },
+    {
+      "path": "src/validation-service.test.js",
+      "blob_sha": "6401cca890df195416ce0a93d52d5863678c0b28",
+      "description": "Independent raw-input validation service, API contract or regression checks."
     }
   ]
 }
