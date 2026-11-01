@@ -1,34 +1,74 @@
 "use strict";
-const http=require("node:http"),https=require("node:https");
+const http=require("node:http");
+const {createHash}=require("node:crypto");
 function createRouterServer(config){
- if(!config||!Array.isArray(config.routes))throw Error("Router routes missing");
- return http.createServer((req,res)=>{
-  const incoming=new URL(req.url,"http://localhost");
-  if(req.method==="GET"&&incoming.pathname==="/health"){res.writeHead(200,{"content-type":"application/json"});res.end('{"ok":true}');return;}
-  const route=config.routes.find(r=>r.method===req.method&&r.path===incoming.pathname);
-  if(!route){res.writeHead(404,{"content-type":"application/json"});res.end('{"error":"Unknown route"}');return;}
-  try{
-   const service=config.services?.[route.service];
-   const port=config.service_port_lookup?.[route.service];
-   if(!service||!Number.isSafeInteger(port)||port<1||port>65535||!route.upstream_path)throw Error("Route destination is unavailable");
-   const target=new URL("http://"+service.host+":"+port+route.upstream_path);
-   target.search=incoming.search;
-   const transport=target.protocol==="http:"?http:target.protocol==="https:"?https:null;
-   if(!transport)throw Error("Unsupported target protocol");
-   const outgoing=transport.request(target,{method:req.method,headers:{"content-type":req.headers["content-type"]||"application/json"}},reply=>{
-    res.writeHead(reply.statusCode,{"content-type":reply.headers["content-type"]||"application/json","cache-control":"no-store"});
-    reply.pipe(res);
+ const routes=config.routes;
+ const send=(res,status,body)=>{res.writeHead(status,{"content-type":"application/json","cache-control":"no-store"});res.end(JSON.stringify(body))};
+ const post=async(service,path,body)=>{
+  const address=config.services[service],port=config.service_port_lookup[service];
+  if(!address||!Number.isSafeInteger(port))throw Error("Unconfigured service destination: "+service);
+  return new Promise((resolve,reject)=>{
+   const request=http.request({hostname:address.host,port,path,method:"POST",headers:{"content-type":"application/json"}},response=>{
+    let raw="";response.on("data",chunk=>{raw+=chunk;if(Buffer.byteLength(raw)>1048576)response.destroy(Error("Response too large"))});
+    response.on("error",reject);
+    response.on("end",()=>{try{resolve({status:response.statusCode,body:JSON.parse(raw)})}catch(error){reject(error)}});
    });
-   outgoing.on("error",()=>{if(!res.headersSent){res.writeHead(502,{"content-type":"application/json"});res.end('{"error":"Upstream unavailable"}');}else res.destroy();});
-   outgoing.setTimeout(config.timeout_ms||30000,()=>outgoing.destroy(Error("Upstream timeout")));
-   req.on("aborted",()=>outgoing.destroy());
-   req.pipe(outgoing);
-  }catch(error){res.writeHead(502,{"content-type":"application/json"});res.end(JSON.stringify({error:error.message}));}
+   request.on("error",reject);request.setTimeout(config.timeout_ms||30000,()=>request.destroy(Error("Service timeout")));
+   request.end(JSON.stringify(body));
+  });
+ };
+ const checked=async envelope=>{
+  const result=await post("router_validator","/check",{envelope});
+  if(result.status!==200||!result.body.ok)throw Error("Router Validator rejected service response: "+JSON.stringify(result.body.error));
+  return result.body.value;
+ };
+ const hop=async(service,path,envelope)=>{
+  const response=await post(service,path,envelope);
+  const result=await checked(response.body);
+  if(result.request_id!==envelope.request_id)throw Error("Response correlation mismatch");
+  return result;
+ };
+ const wrap=(request,payload,mode)=>({contract:"router.envelope.v1",request_id:request.request_id,type:"request",
+  payload_contract:"issuescratch.render-input.v1",payload,error:null,mode});
+ const prepare=(request,verdict)=>{
+  const metadata=request.payload?.metadata,state=metadata?.state;
+  if(!state||!state.progression||!verdict.payload?.accepted)throw Error("Transition requires accepted validation and supplied state");
+  const raw=request.payload.raw_input,values=JSON.parse(raw),index=metadata.expected_index;
+  const hash=x=>createHash("sha256").update(x).digest("hex");
+  return {state,input:{schema:"issuescratch.validated-entry-event.v1",source_comment_id:metadata.source_comment_id,
+   source_revision_sha256:hash(raw),candidate_index:index,
+   contract_id:"IS.INDEX."+String(index).padStart(3,"0"),validation_status:"valid",
+   expected_prefix_sha256:state.progression.accepted_prefix_sha256,
+   accepted_prefix_sha256_after:hash(JSON.stringify(values))}};
+ };
+ async function perform(route,input){
+  const first=await hop(route.service,route.upstream_path,input);
+  const choice=route.response_contract?.[first.type];
+  if(!choice)return first;
+  if(choice.service==="renderer"){
+   return hop("renderer",choice.upstream_path,wrap(input,first,choice.mode));
+  }
+  if(choice.service==="fsm"){
+   let next;
+   try{next=prepare(input,first)}
+   catch(error){return hop("renderer","/render",wrap(input,{error:{code:"TRANSITION_PREPARATION_FAILED",message:error.message}}, "fsm-diagnostic"))}
+   const fsm=await hop("fsm",choice.upstream_path,{contract:"router.envelope.v1",request_id:input.request_id,type:"request",
+    payload_contract:"issuescratch.transition-input.v1",payload:next,error:null});
+   return hop("renderer","/render",wrap(input,fsm,fsm.type==="result"?"procedure":"fsm-diagnostic"));
+  }
+  throw Error("Unknown continuation service");
+ }
+ return http.createServer(async(req,res)=>{
+  const pathname=new URL(req.url,"http://localhost").pathname;
+  if(req.method==="GET"&&pathname==="/health"){send(res,200,{ok:true});return}
+  const route=routes.find(r=>r.method===req.method&&r.path===pathname);
+  if(!route){send(res,404,{error:{code:"UNKNOWN_ROUTE"}});return}
+  try{
+   let raw="";for await(const chunk of req){raw+=chunk;if(Buffer.byteLength(raw)>1048576)throw Error("Request too large")}
+   const result=await perform(route,JSON.parse(raw));send(res,200,result);
+  }catch(error){send(res,502,{error:{code:"ROUTING_FAILED",message:error.message}})}
  });
 }
 module.exports={createRouterServer};
-if(require.main===module){
- const config=require("../config/stateless-services.json");
- const service=config.services.router;
- createRouterServer(config).listen(service.port,service.host,()=>console.log("Router listening on "+service.host+":"+service.port));
-}
+if(require.main===module){const config=require("../config/stateless-services.json");
+ const service=config.services.router;createRouterServer(config).listen(service.port,service.host)}
