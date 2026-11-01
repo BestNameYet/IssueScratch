@@ -1,6 +1,6 @@
 {
   "document_type": "IssueScratch agent instructions",
-  "format_version": "2.12.0",
+  "format_version": "2.13.0",
   "repository": "BestNameYet/IssueScratch",
   "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
   "opcode_format": {
@@ -2135,11 +2135,11 @@
     },
     {
       "opcode": "IS.10.009",
-      "version": 4,
+      "version": 5,
       "source_section": "10",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "At outer index 18, verify progression.complete, accepted_entries=19, last_accepted_index=18, final source revision digest, five persisted frame selections, and eighteen controller instructions. For any declared artifact target, require the generic artifact publication receipt and exact destination readback before claiming publication success; otherwise report incomplete or blocked.",
+      "imperative": "At index 18, the worker must SUBMIT the actual solution or deliverable compiled from indices 0–17, with the final output content in final_output[string] for a response and full path/content in artifacts[array<object>] for declared file targets. After workflow acceptance, the agent verifies the final source digest, five frame selections, eighteen instructions, actual output and destination/receipt readback if publishing. The controller's completed status certifies structural progression only.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2165,11 +2165,11 @@
     },
     {
       "opcode": "IS.10.012",
-      "version": 6,
+      "version": 7,
       "source_section": "10",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not claim the nineteen-entry job complete based on array length or successful tests alone. Require nineteen accepted revisions, five consistently retained higher-order frame selections, eighteen source-linked instructions, and—when the job declares output artifacts—a verified general publication receipt and final file readback. Never require worker-written control acknowledgements.",
+      "imperative": "Never equate structural acceptance of nineteen entries with verified task success. The acting agent must independently judge whether the actual deliverable included at index 18 satisfies the original user instructions, content and format requirements, applicable tests and domain checks. For user-authorized files, require generic publication receipt and exact file readback before reporting success; otherwise report incomplete or blocked.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2255,11 +2255,11 @@
     },
     {
       "opcode": "IS.11.008",
-      "version": 1,
+      "version": 2,
       "source_section": "11",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Reserve outer indices 16, 17 and 18 for reconciliation: inventory and conflict analysis, atomic opcode projection of all preceding content including all five nested preparatory scratchpads, and final synthesis with validation and identified limitations.",
+      "imperative": "Reserve the final three entries as a direct solution-production sequence: index 16 reconciles every preceding contribution and resolves conflicting requirements; index 17 compiles the reconciled material and action-level opcode lineage into a coherent actionable solution; index 18 produces the actual requested answer or complete artifact contents and records agent-performed checks. These entries must culminate in a deliverable, not merely a proposed solution or plan.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2275,11 +2275,11 @@
     },
     {
       "opcode": "IS.11.010",
-      "version": 1,
+      "version": 2,
       "source_section": "11",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Structurally validate the preparatory nested array and all reconciliation artifacts before accepting the corresponding index. Structural acceptance is not proof of the semantic accuracy of inferred intent or the faithful execution of opcode steps.",
+      "imperative": "The controller structurally validates the mandatory preparatory, framing and final-entry fields. The acting agent—not the controller—must evaluate whether the compiled solution and deliverable are substantively correct, complete, useful, and faithful to the user's request; do not assert that source/field validation proves semantic compliance.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2415,11 +2415,11 @@
     },
     {
       "opcode": "IS.13.001",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Use one mandatory agent–workflow lifecycle handshake for each new controller-driven Issue #1 task, from intake and job creation through all accepted revisions, final deliverable verification, terminal receipt, and a read-back of the final state. Do not treat job creation or acceptance of the nineteenth entry as task completion.",
+      "imperative": "Use one mandatory agent–workflow handshake from intake and job creation through the final user-requested deliverable at index 18 and verification of its saved/published result. The final three entries ARE the solution process: reconcile at 16, compile at 17, deliver at 18. No separate content-generation stage follows the nineteenth entry; subsequent readbacks verify delivery.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2485,11 +2485,11 @@
     },
     {
       "opcode": "IS.13.008",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Preserve five independent three-slot frame handshakes at indices 1–15 and three reconciliation handshakes at indices 16–18. Verify each frame's shared higher-order selection remains unchanged through all three slots, and verify the final reconciliation maps all source material including the five initial nested preparatory scratchpads.",
+      "imperative": "Preserve the five controller-guided three-slot frames at indices 1–15. For the final three entries, the agent reconciles all contributions at index 16, compiles them into a usable solution at index 17, and produces the actual user-requested answer or full artifact at index 18. Every final result must retain source lineage from initial preparation through the five frames.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2505,41 +2505,41 @@
     },
     {
       "opcode": "IS.13.010",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "After acceptance of index 18, perform a separate task-completion handshake. Verify nineteen independently accepted revisions, five persisted framing selections, eighteen source-linked controller instructions and immutable receipts, final source-body digest, and semantic coverage of the original user request; structural completion alone is not evidence that the requested task or its deliverables are complete.",
+      "imperative": "At index 18, the agent must use the preceding reconciled and compiled solution to actually deliver the requested result, not merely promise a result or supply an artifact plan. Independently verify its semantic and format coverage against the original instructions; the controller acknowledges structure/progression but cannot determine whether the task's content is correct. After accepted index 18, only readback/publication verification and reporting remain.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.13.011",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "When output artifacts are declared, verify the final artifact content and any applicable domain-specific validation (including the real document-to-JSON opcode adapter for opcode-encoded documents); then wait for workflow-owned generic publication. Read back every destination at its declared path, its actual bytes/hash, and the source-linked immutable publication receipt before reporting completed.",
+      "imperative": "For a file-producing task, put the complete UTF-8 artifact in index-18 artifacts[array<object>] with the exact previously declared path, and perform all applicable domain checks (including real opcode-document adapter validation when required). The workflow then performs its generic publication operation. The agent independently checks the actual published bytes/hash and source-linked receipt; this verifies the deliverable already produced at index 18.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.13.012",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "For non-artifact tasks, define an explicit source-linked completion criterion and externally inspectable verification evidence before reporting completed. An accepted nineteenth scratchpad without a verified requested result must remain incomplete, pending or blocked, not successful by default.",
+      "imperative": "For a response-only or otherwise non-repository task, produce the complete requested answer or substantive outcome in index-18 final_output[string], and independently evaluate it using task-specific criteria and externally inspectable evidence where applicable. A placeholder, proposal, TODO list, or declaration of future execution is not a completed deliverable.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.13.013",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "If the task requires more than nineteen substantive steps, do not truncate the work or declare completion at nineteen. Carry the same comment identity, accepted prefix, source lineage and acknowledgement-before-next-edit obligations through every additional step using a separately documented and tested extension protocol, or stop as blocked until that controller capability exists. The current deployed controller freezes accepted-index tracking after index 18 and does not yet verify extended indices.",
+      "imperative": "If the result cannot be substantively completed by index 18, do not misrepresent a plan or an unverified result as a completed deliverable. The currently deployed controller has no verified extended handshake beyond index 18; preserve the accepted source, report incomplete/blocked with missing work, and use a separately documented/tested continuation only if later authorized and implemented.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
@@ -2555,21 +2555,21 @@
     },
     {
       "opcode": "IS.13.015",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "require",
-      "imperative": "Treat terminal handoff as a mandatory final handshake: independently reread the persisted state and any applicable final receipt, report the permanent comment ID, accepted count, next index, controller status, output paths, file hashes and validation results, and explicitly identify any incomplete steps or unverified deliverables. Completion must be supported by these read-backs.",
+      "imperative": "After the substantive deliverable is produced at index 18, independently reread the persisted progression and the final answer or published files/receipts. Report permanent source comment ID, accepted count, controller status, actual output location or answer, relevant hashes, performed tests and any failure. This terminal readback verifies the deliverable; it does not create or redefine the solution.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     },
     {
       "opcode": "IS.13.016",
-      "version": 1,
+      "version": 2,
       "source_section": "13",
       "source_line_range": null,
       "modality": "prohibit",
-      "imperative": "Do not invent or assume that adding a procedural requirement implements the extended controller, semantic evaluator, automated agent execution or final publication. Report AGENTS.md contractual changes separately from runtime enforcement and tested end-to-end behavior.",
+      "imperative": "Do not claim that the deterministic controller is capable of judging answer quality, source interpretation, semantic task success, or artifact usefulness. Such evaluation belongs to the acting agent and domain-specific validation. Controller acceptance certifies only configured structural/index/provenance conditions; reports must distinguish these from deliverable success.",
       "condition": null,
       "source_archive_ref": "source_archive.current_amendment"
     }
@@ -2895,8 +2895,8 @@
     },
     "framing_controller": {
       "profile_path": "src/types/issuescratch.framing-controller.v1.json",
-      "profile_sha": "351fda7e3e0ec4de6e259f6793f0d78e6a900c49",
-      "profile_version": "2.1.0",
+      "profile_sha": "124c2946e737160fd6e10157e2dc152581a7675d",
+      "profile_version": "2.1.1",
       "implementation_path": "src/framing-controller.js",
       "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
       "tests_path": "src/framing-controller.test.js",
@@ -2920,7 +2920,7 @@
         41234676639,
         41234726263
       ],
-      "execution_scope": "Node.js runtime selects, saves, and publishes operations. Narrative drafting and semantic application by an external agent remain outside this workflow.",
+      "execution_scope": "Controller selects, validates structure and index progression, and publishes source-linked instructions; the agent authors a deliverable at index 18 and performs semantic verification independently.",
       "preparatory_outer_index": 0,
       "preparatory_nested_scratchpads": 5,
       "framing_outer_indices": "1–15 (five sets of three)",
@@ -2972,12 +2972,12 @@
       "historical_17_entry_readme_comment": 6547874447
     },
     "agent_workflow_handshake": {
-      "schema": "issuescratch.agent-workflow-handshake.v1.3",
+      "schema": "issuescratch.agent-workflow-handshake.v1.4",
       "job_scope": "Issue #1 source comment",
       "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
       "workflow_path": ".github/workflows/issue1-json-validator.yml",
       "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
-      "index_sequence": "New comment with only index 0 containing five preparatory scratchpads, read back and await first acceptance; append one and only one new entry after each delivered source-linked instruction for indices 1..18; then perform terminal completion handshake. Further indices need a separately implemented and tested continuation.",
+      "index_sequence": "Index 0 prepares, indices 1–15 frame, index 16 reconciles all preceding work, index 17 compiles the solution, and index 18 supplies the actual answer or artifact contents. Controller source-linked acknowledgments gate each revision; following acceptance the agent reads back the published result.",
       "ack_keys": [],
       "max_poll_cycles_per_revision": 12,
       "poll_checks": [
@@ -2988,13 +2988,13 @@
         "workflow run conclusion if identifiable"
       ],
       "terminal_acceptance": [
-        "verified permanent comment identity and source author",
-        "19 distinct, ordered, immutable accepted revision receipts",
-        "five persisted and stable higher-order frame selections",
-        "18 source-linked controller operations and independently retrieved instruction receipts",
-        "final source SHA-256 and state/controller completion readback",
-        "original user task deliverables independently validated; if artifacts, real conversion/tests and published file bytes, paths, hashes and source-linked generic publication receipt",
-        "explicit reported status completed only if both structural and task completion gates passed; otherwise blocked/incomplete"
+        "19 sequentially accepted revisions and saved source/hash lineage",
+        "five higher-order selections and eighteen source-linked instruction receipts",
+        "index 16 reconciliation and index 17 coherent compiled solution",
+        "agent-authored actual requested deliverable in index 18 (not a plan or placeholder)",
+        "acting agent independently tests semantic/request coverage and relevant content/format validations",
+        "where requested, exact published artifact content and generic publication receipt read back",
+        "completion claimed only for observed delivered result, with the controller's structural acceptance reported separately"
       ],
       "failure": "On 12 bounded polling cycles, stale/failed acknowledgement, unsupported extension, missing result or unverified publication, stop as blocked, preserve current comment and receipts, report exact missing evidence; do not submit another comment.",
       "comment_echo_requirement": "Existing IS.03.05 obligations unchanged, but full echoes may be limited by the UI; record any inability explicitly.",
@@ -3022,7 +3022,7 @@
       ],
       "agent_workspace_writes_allowed": false,
       "agent_workflow_file_writes_allowed_during_job": false,
-      "scope": "Mandatory from deduplicated intake through job source creation, initial acceptance, each controller-selected index, final task validation, generic artifact publication where applicable, and final receipt/read-back",
+      "scope": "Mandatory source comment handshake from index 0 through index 18, culminating in an agent-authored deliverable. Controller acknowledgments are structural; the agent tests the actual index-18 result. Publication/receipt readback verifies the result, not a later generation stage.",
       "minimum_entries": 19,
       "default_current_terminal_index": 18,
       "tracked_extension_implemented": false,
@@ -3058,7 +3058,14 @@
       "terminal_index": 18,
       "minimum_atomic_op_steps": 2,
       "historical_runs_preserved": true,
-      "workflow_artifacts_in_agent_comment": false
+      "workflow_artifacts_in_agent_comment": false,
+      "reconciliation_roles": [
+        "16:reconcile",
+        "17:compile",
+        "18:deliver"
+      ],
+      "final_deliverable_index": 18,
+      "agent_verifies_semantic_deliverable": true
     },
     "higher_order_framing": {
       "registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
@@ -3120,9 +3127,9 @@
       "historical_experiments": "Retain old candidate files and receipts only as historical evidence; no new README-only generation or comparison steps"
     },
     "job_lifecycle_handshake": {
-      "schema": "issuescratch.job-lifecycle-handshake.v1",
+      "schema": "issuescratch.job-lifecycle-handshake.v1.1",
       "mandatory": true,
-      "scope": "Each new controller-driven Issue #1 job, irrespective of artifact filename or task type",
+      "scope": "Each controlled Issue #1 job culminates in substantive user-requested deliverable at index 18; subsequent output readback is verification, never a separate solution-generation stage.",
       "minimum_outer_entries": 19,
       "phases": [
         {
@@ -3150,20 +3157,20 @@
           "advance": "only after independent acknowledgement of the current index and delivered next instruction"
         },
         {
-          "phase": "minimum_proof",
-          "worker_action": "At index 18 reconcile all 19 entries and five frames and inspect completed controller",
-          "workflow_evidence": "19 ordered accepted transitions; 5 persisted frame choices; 18 controller instructions and immutable receipts; final digest",
-          "advance": "only if task-specific output and its validations are also complete"
+          "phase": "solution_reconciliation_and_compilation",
+          "worker_action": "At index 16 reconcile preceding work; at index 17 compile a coherent working solution; at index 18 submit the complete requested answer or file bytes. Perform agent-owned content and requirement checks while composing these entries.",
+          "workflow_evidence": "19 accepted revisions, five framing selections, eighteen immutable controller instructions, terminal digest; structural receipt only",
+          "advance": "only after the agent produced a concrete deliverable at index 18; controller acceptance alone is not a semantic success check"
         },
         {
-          "phase": "deliverables",
-          "worker_action": "Check user-defined completion predicates, run required domain validations, inspect workflow-written artifact and generic publication receipt where requested",
-          "workflow_evidence": "readback of actual output bytes/hash/path and validated receipt; or independently inspectable proof of non-artifact result",
-          "advance": "only if independently observed task result fulfills request"
+          "phase": "delivery_verification",
+          "worker_action": "Independently evaluate the actual index-18 deliverable for the original user's requested content, format, access and correctness; inspect published destination bytes and receipts for files.",
+          "workflow_evidence": "workflow-owned publication receipt and destination readback where applicable; task-specific evidence independently inspected by agent",
+          "advance": "only if the index-18 result is substantively produced and verified; no new plan or content-generation stage"
         },
         {
           "phase": "terminal_readback",
-          "worker_action": "Read final state/receipt again; report verified identifiers, counts, destinations, results and remaining failures",
+          "worker_action": "Read final saved state and the same index-18 output, file readback and generic publication receipts; report completed only if the actual deliverable is verified, otherwise blocked/incomplete.",
           "workflow_evidence": "exact job identity, completion status and immutable receipts",
           "advance": "mark completed only with both minimum_proof and deliverables evidence"
         },
@@ -3178,17 +3185,20 @@
       "no_special_readme_path": true,
       "abort_on_unverified_transition": true,
       "implementation_status": {
-        "tracked_0_through_18": "Implemented for structured source-state and published instructions; final artifact validation is separate workflow step",
+        "tracked_0_through_18": "Controller source progression and structural validation; final item must contain an agent-authored deliverable under the procedural contract, but semantic adequacy cannot be controller-certified.",
         "post_19": "not implemented",
-        "semantic_task_completion": "requires external verification and cannot be inferred from selected opcodes"
-      }
+        "semantic_task_completion": "Not controller-enforced: the agent evaluates semantic adequacy and correctness of its index-18 deliverable and records evidence; the workflow only validates configured structural conditions."
+      },
+      "agent_owned_semantic_verification": true,
+      "delivery_is_index_18": true,
+      "post_index_18_activity": "verification and readback only"
     }
   },
   "source_archive": {
     "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
     "previous_active_document_blob_sha": "837b72c80bf1fb0a5e2a68ac03532fda0a125642",
     "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
-    "current_amendment": "Add mandatory full-lifecycle handshake IS.13.001–IS.13.016: creation, sequential 0–18 indexed source–controller acknowledgements, independent task/deliverable completion and terminal readback; prohibit false completion or unverified >19 extensions. Distinguish procedures from runtime extension support.",
+    "current_amendment": "Correct the terminal phase: indices 16–18 reconcile, compile, then DELIVER the actual result. Controller only authenticates structure and source progression; the acting agent independently assesses correctness, completeness and utility, and verifies publication receipts as evidence after index 18. No separate solution-generation stage.",
     "previous_type_registry_reference": {
       "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
       "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
@@ -3240,6 +3250,9 @@
     "generic_artifact_publication": true,
     "readme_specific_publication_active": false,
     "required_end_to_end_job_handshake": true,
-    "extended_entry_handshake_deployed": false
+    "extended_entry_handshake_deployed": false,
+    "final_deliverable_required": true,
+    "final_deliverable_semantic_verification_owner": "agent",
+    "controller_semantic_enforcement": false
   }
 }
