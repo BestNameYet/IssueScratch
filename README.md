@@ -258,24 +258,33 @@ Run `node --test src/*.test.js` to include [router regression tests](src/workflo
 
 ## Independent stateless HTTP services
 
-[config/stateless-services.json](config/stateless-services.json) binds the router's routes to separately running services. Retrieve that file for host/port and upstream path configuration.
+The **user-corrected intended service topology** is documented in the [current IssueStack runtime design contract](https://github.com/BestNameYet/IssueStack-/blob/main/workspaces/issuescratch-stateless-runtime/runtime-design-specification.md) (candidate correction under [job #6560092235](https://github.com/BestNameYet/IssueStack-/issues/2#issuecomment-6560092235)). The large [historical design snapshot](docs/stateless-runtime-architecture-specification.md) predates this correction; do **not** use contradictory older diagrams as the current authority.
 
-Run each command as a separate process on the same host:
-
-```bash
-node src/fsm-server.js
-node src/renderer-server.js
-node src/stateless-router-server.js
+```text
+Listener --POST /transition--> Router Validator (RV, 8787)
+  --> Router (RO, 8786): forwards intact envelope and opaque payload
+  --> FSM Validator (FSMV, 8790): validates payload, directly forwards accepted payload
+  --> FSM (8788): executes transition, returns response envelope to RV
+  --> Router Validator (8787): validates FSM response envelope
+  --> Router (8786): forwards validated response envelope unchanged
+  --> Renderer (RE, 8789): resolves declared mode, writes and independently verifies output
 ```
 
-- [Router](src/stateless-router-server.js): port 8787, forwards `POST /state` to the FSM and `POST /render` to the renderer. It streams requests and responses without running either service's algorithms.
-- [FSM](src/fsm-server.js): port 8788, `POST /transition`. Body: `{"state": {...}, "input": {...}}`. The [pure transition function](src/stateless-fsm.js) returns `state` and `transition`. Supply the current `issuescratch.comment-state.v1` state and a validator-produced `issuescratch.validated-entry-event.v1` input, as defined in the canonical meta-controller contract. It does not validate semantic work, persist state, select a renderer or call one.
-- [Renderer](src/renderer-server.js): port 8789, `POST /render`. Body: `{"projection": {...}, "bindings": {...}}`. The [render function](src/agent-renderer.js) produces plain text containing the supplied JSON projection and bindings verbatim. It does not call the FSM, retrieve procedure data, interpolate undeclared placeholders or infer instructions.
-- Each service exposes `GET /health`. Hosts and ports belong to configuration; loopback means the services must share the caller's host/network namespace.
+There must be **no Renderer invocation or write-receipt prerequisite between successful FSMV validation and FSM execution**. RO must not inspect an opaque payload, prepare FSM transition input, or decide payload acceptance. FSMV owns valid-payload forwarding to FSM. FSM returns to RV, not directly to RO/RE. `POST /validate` is an independent validation-only operation which must not execute FSM. Do not infer unconfirmed rejection/error continuations from the normal transition route.
 
-The caller supplies and stores state externally, and separately submits projection data for rendering. These services retain no job state or request queue. The existing Issue #1 workflow is not switched to these endpoints by this addition.
+[config/stateless-services.json](config/stateless-services.json) contains the **current implementation's** ports, route declarations and rendering registry; those are not necessarily specification-compliant. [src/router-validator-server.js](src/router-validator-server.js), [src/stateless-router-server.js](src/stateless-router-server.js), [src/validation-server.js](src/validation-server.js), [src/fsm-server.js](src/fsm-server.js) and [src/renderer-server.js](src/renderer-server.js) currently implement independent HTTP services. [container-entrypoint.js](container-entrypoint.js) starts the collection inside Docker; each service exposes its health endpoint.
 
-Run `node --test src/stateless-services.test.js` for actual HTTP routing and pure-function tests. [stateless-services.yml](.github/workflows/stateless-services.yml) runs those checks without repository-write credentials.
+| Service | Port | Contractual role |
+| --- | --- | --- |
+| Router Validator (RV) | 8787 | Inbound and returning-FSM envelope validation |
+| Router (RO) | 8786 | Opaque, configuration-driven forwarding only |
+| FSM Validator (FSMV) | 8790 | Validate opaque FSM input; directly forward accepted payload to FSM |
+| FSM | 8788 | Deterministic transition; return response to RV |
+| Renderer (RE) | 8789 | Write returned output under declared mode and verify readback |
+
+**Implementation does not yet conform:** at main commit `174f57c1bd77b4d5570a0c1905ae261d84282b5e`, [container-listener.js](container-listener.js) sends `/validate` through `docker exec -i`; RO's [current server implementation](src/stateless-router-server.js) contains `prepare()` and a render-before-FSM gate; the production Renderer is not wired to verified GitHub publication. C003 added outbound bridge networking, Actions token forwarding and a callable [GitHub Issue writer](src/github-issue-writer.js), but **these are not evidence of successful end-to-end transition or publication**. C002 Renderer persistence remains a separate pending review. The new design-documentation job is [6560092235](https://github.com/BestNameYet/IssueStack-/issues/2#issuecomment-6560092235); code repair belongs to the revised runtime job [6557693257](https://github.com/BestNameYet/IssueStack-/issues/2#issuecomment-6557693257).
+
+Run independent [service tests](src/stateless-services.test.js), [Router boundary tests](src/router-boundary.test.js), [GitHub writer tests](src/github-issue-writer.test.js), and [CI](.github/workflows/stateless-services.yml). Passing a subset of unit tests does not prove the complete contract. Specifically, the conformance suite must observe Listener→RV→RO→FSMV→FSM→RV→RO→RE, including rejected input, invalid returned envelope, strict no-render-before-transition ordering, actual durable publication and verified receipts.
 
 ### Independent validation service
 
@@ -298,4 +307,4 @@ Only `raw_input` is parsed as the submission. Metadata is preserved separately; 
 
 The [validator](src/input-validator.js) returns `execution_status`, `input_status`, `accepted`, correlation metadata, an exact raw-string SHA-256 and specific errors. Accepted results additionally contain the parsed value and whether progression was checked. Both content acceptance and handled rejection return HTTP 200; malformed request envelopes or missing required context return HTTP 400. Semantic quality is never an acceptance predicate. No state is advanced or stored, and neither the FSM nor renderer is called.
 
-[validation-service.test.js](src/validation-service.test.js) verifies exact raw-string handling, metadata separation, structural rejection, no semantic evaluation, prefix checks and actual HTTP forwarding through the router. The issue listener itself is not implemented by this service addition.
+[validation-service.test.js](src/validation-service.test.js) verifies exact raw-string handling, metadata separation, structural rejection, no semantic evaluation, prefix checks and actual HTTP forwarding through the router. The current container Listener exists but presently invokes /validate, not the required /transition; this is tracked as a separate runtime implementation defect.
