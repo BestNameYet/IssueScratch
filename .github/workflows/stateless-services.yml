@@ -84,3 +84,28 @@ jobs:
             -v "$tempdir/output:/runtime/output" \
             issuescratch-runtime:connectivity-smoke
           node src/docker-route-smoke.js "$tempdir/output/state.json"
+      - name: Test actual Issue listener with validation rejection (no remote write)
+        run: |
+          testdir="$(mktemp -d)"
+          trap 'rm -rf "$testdir"' EXIT
+          node - "$testdir/event.json" <<'NODE'
+          const fs=require('node:fs');
+          const event={issue:{number:1},comment:{id:321,body:'{',user:{type:'User'}}};
+          fs.writeFileSync(process.argv[2],JSON.stringify(event));
+          NODE
+          GITHUB_EVENT_PATH="$testdir/event.json" \
+          GITHUB_REPOSITORY="BestNameYet/IssueScratch" \
+          GITHUB_TOKEN="listener-test-not-a-credential" \
+          ISSUESCRATCH_IMAGE="issuescratch-runtime:connectivity-smoke" \
+          ISSUESCRATCH_OUTPUT_DIR="$testdir/output" \
+          node container-listener.js | tee "$testdir/receipt.log"
+          node - "$testdir/receipt.log" <<'NODE'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const lines=fs.readFileSync(process.argv[2],'utf8').trim().split('\n');
+          const receipt=JSON.parse(lines.at(-1));
+          assert.equal(receipt.schema,'issuescratch.container-listener-receipt.v1');
+          assert.equal(receipt.status,'rejected');
+          assert.equal(receipt.http_status,200);
+          assert.equal(receipt.result.type,'rejection');
+          console.log('Host listener lifecycle and rejected transition ingress verified without GitHub publication');
+          NODE
