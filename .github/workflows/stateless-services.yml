@@ -11,6 +11,7 @@ on:
       - 'src/renderer-server.js'
       - 'src/stateless-router-server.js'
       - 'src/stateless-services.test.js'
+      - 'src/router-write-gate.test.js'
       - 'src/input-validator.js'
       - 'src/validation-server.js'
       - 'src/validation-service.test.js'
@@ -27,4 +28,4 @@ jobs:
         with:
           node-version: '22'
       - name: Test independent services and HTTP routing
-        run: node --test src/stateless-services.test.js src/validation-service.test.js
+        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js
