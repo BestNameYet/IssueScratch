@@ -19,6 +19,10 @@
       "path": "docs/index-projection-procedure.json",
       "schema": "issuescratch.opcode-json-projection-procedure.v1",
       "usage": "Read this document in full when reviewing or implementing index projection. It specifies the language-independent opcode/JSON algorithm, operands, dataflow, reasons and failures. JavaScript is an implementation, not a replacement for this definition."
+    },
+    "agent_input_validation": {
+      "path": "docs/agent-input-validation-procedure.json",
+      "usage": "Read in full before implementing or reviewing input acceptance. Apply mechanical predicates only; no semantic-quality acceptance test. Handled rejection is successful validation execution without advancement."
     }
   },
   "execution_governance": {
