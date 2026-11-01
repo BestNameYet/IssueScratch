@@ -30,6 +30,20 @@ function createRouterServer(config){
  };
  const wrap=(request,response)=>({contract:"router.envelope.v1",request_id:request.request_id,type:"request",
   payload_contract:"issuescratch.render-input.v1",payload:response,error:null,mode:response.mode});
+ // The renderer's formatted output is not a persistence receipt.  A transition
+ // must not reach the FSM until the validation verdict was durably published.
+ const requirePublication=(source,result,stage)=>{
+  const receipt=result?.payload;
+  const digest=x=>typeof x==="string"&&/^[0-9a-f]{64}$/.test(x);
+  if(result?.mode!==source?.mode||
+     !receipt||receipt.write_status!=="written"||receipt.verified!==true||
+     typeof receipt.destination_ref!=="string"||!receipt.destination_ref.trim()||
+     !digest(receipt.content_sha256)||
+     receipt.readback_sha256!==receipt.content_sha256){
+   throw Error("Renderer publication not independently verified at "+stage);
+  }
+  return result;
+ };
  const prepare=(request,verdict)=>{
   const metadata=request.payload?.metadata,state=metadata?.state;
   if(!state||!state.progression||!verdict.payload?.accepted)throw Error("Transition requires accepted validation and supplied state");
@@ -43,16 +57,22 @@ function createRouterServer(config){
  };
  async function perform(route,input){
   const validation=await hop(route.service,route.upstream_path,input);
-  const next=route.response_contract?.[validation.type];
-  if(!next)return validation;
+  if(!route.response_contract){
+   if(route.service!=="renderer")throw Error("Missing route continuation contract");
+   return requirePublication(input,validation,"direct render");
+  }
+  const next=route.response_contract[validation.type];
+  if(!next)throw Error("Missing continuation for service result "+validation.type);
   // The service declares the mode; Router only dispatches and retains it.
-  const rendered=await hop("renderer","/render",wrap(input,validation));
+  const rendered=requirePublication(validation,
+   await hop("renderer","/render",wrap(input,validation)),"validation verdict");
   if(next.then_service!=="fsm")return rendered;
   const prepared=prepare(input,validation);
   const fsm=await hop("fsm",next.then_path,{contract:"router.envelope.v1",
    request_id:input.request_id,type:"request",
    payload_contract:"issuescratch.transition-input.v1",payload:prepared,error:null});
-  const fsmRendered=await hop("renderer","/render",wrap(input,fsm));
+  const fsmRendered=requirePublication(fsm,
+   await hop("renderer","/render",wrap(input,fsm)),"FSM result");
   return {contract:"router.envelope.v1",request_id:input.request_id,
    type:"result",payload_contract:"issuescratch.route-completion.v1",
    payload:{validation_render:rendered.payload,fsm_render:fsmRendered.payload},error:null};
