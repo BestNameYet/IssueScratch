@@ -7,11 +7,11 @@ function createFsmServer(procedure){
   try{
    const outcome=transition(envelope.payload,procedure);
    return {contract:"router.envelope.v1",request_id:envelope.request_id,type:"result",
-    payload_contract:"issuescratch.transition-response.v1",
+    payload_contract:"issuescratch.transition-response.v1",mode:"procedure",
     payload:{...outcome,projection:createProjection(procedure)},error:null};
   }catch(cause){
    return {contract:"router.envelope.v1",request_id:envelope.request_id,type:"error",
-    payload_contract:"issuescratch.fsm-error.v1",payload:null,
+    payload_contract:"issuescratch.fsm-error.v1",mode:"fsm-diagnostic",payload:null,
     error:{code:"FSM_EXECUTION_FAILED",message:cause.message}};
   }
  }});
