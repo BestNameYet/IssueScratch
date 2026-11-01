@@ -9,8 +9,9 @@ function createRouterServer(config){
   if(!route){res.writeHead(404,{"content-type":"application/json"});res.end('{"error":"Unknown route"}');return;}
   try{
    const service=config.services?.[route.service];
-   if(!service||!route.upstream_path)throw Error("Route destination is unavailable");
-   const target=new URL(route.target||"http://"+service.host+":"+service.port+route.upstream_path);
+   const port=config.service_port_lookup?.[route.service];
+   if(!service||!Number.isSafeInteger(port)||port<1||port>65535||!route.upstream_path)throw Error("Route destination is unavailable");
+   const target=new URL("http://"+service.host+":"+port+route.upstream_path);
    target.search=incoming.search;
    const transport=target.protocol==="http:"?http:target.protocol==="https:"?https:null;
    if(!transport)throw Error("Unsupported target protocol");
