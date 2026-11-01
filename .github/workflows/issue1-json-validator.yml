@@ -9,9 +9,13 @@ on:
       - 'src/issue1-diagnostics.test.js'
       - 'src/framing-controller.js'
       - 'src/framing-controller.test.js'
+      - 'src/procedure-renderer.js'
+      - 'src/procedure-renderer.test.js'
       - 'src/artifact-publisher.js'
       - 'src/artifact-publisher.test.js'
       - 'src/types/issuescratch.framing-controller.v1.json'
+      - 'src/types/issuescratch.procedure-library.v1.json'
+      - 'AGENTS.md'
       - 'src/types/issuescratch.higher-order-operators.v1.json'
       - 'src/opcode-document-adapter.js'
       - 'src/opcode-document-adapter.test.js'
@@ -90,8 +94,7 @@ jobs:
           script: |
             const { sha } = require('./src/issue1-diagnostics.js');
             const { processWithController, publicationDocument, publicationEntry, isControlComment } = require('./src/framing-controller.js');
-            const profile=require('./src/types/issuescratch.framing-controller.v1.json');
-            const registry=require('./src/types/issuescratch.operation-registry.v1.json');
+            const {canonicalProfile:profile,canonicalAtomicRegistry:registry}=require('./src/procedure-renderer.js');
             const owner = context.repo.owner, repo = context.repo.repo;
             const eventName = context.eventName;
             const scan = eventName !== 'issue_comment';
