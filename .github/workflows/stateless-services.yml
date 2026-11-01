@@ -77,7 +77,7 @@ jobs:
           cfg.renderer_settings.modes.procedure.destination='state-file';
           fs.writeFileSync(process.argv[2],JSON.stringify(cfg));
           NODE
-          docker run -d --rm --name "$name" --network bridge -p 127.0.0.1:8787:8787 \
+          docker run -d --name "$name" --network bridge -p 127.0.0.1:8787:8787 \
             --user "$(id -u):$(id -g)" \
             -v "$tempdir/config:/runtime/config:ro" \
             -v "$tempdir/output:/runtime/output" \
