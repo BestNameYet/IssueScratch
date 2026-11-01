@@ -1,7 +1,7 @@
 "use strict";
 const crypto=require("node:crypto");
 const {processRevision,sha}=require("./issue1-diagnostics");
-const higherRegistry=require("./types/issuescratch.higher-order-operators.v1.json");
+const {higherRegistry,render,renderInstructions,assertProfileCompatible,assertAtomicCompatible}=require("./procedure-renderer");
 const isObject=x=>!!x&&typeof x==="object"&&!Array.isArray(x);
 const digest=x=>crypto.createHash("sha256").update(x).digest("hex");
 function assert(condition,message){if(!condition)throw Error(message)}
@@ -18,7 +18,7 @@ function validateProfile(p){
   assert(p.higher_order_registry_path==="src/types/issuescratch.higher-order-operators.v1.json","Unknown higher-order registry");
   assert(Array.isArray(p.higher_order_operator_pool)&&p.higher_order_operator_pool.join(",")==="OP.02.001,OP.02.002","Invalid higher-order operator pool");
   assert(Array.isArray(p.higher_order_abstract_modes)&&p.higher_order_abstract_modes.join(",")==="CONTRACT,IMPLEMENTATION,CONSTRUCT,GENERAL","Invalid abstraction modes");
-  return p;
+  return assertProfileCompatible(p);
 }
 function structuralError(message){
   return {code:"invalid_preparation_or_reconciliation",message};
@@ -34,6 +34,7 @@ function validateEntryStructure(parsed,index,profile,registry,frameSelections={}
   if(!Array.isArray(parsed)||!Number.isInteger(index)||index<0||index>=parsed.length)
     return structuralError("Invalid submitted index");
   const entry=parsed[index]?.scratchpad;
+  assertAtomicCompatible(registry);
   const codes=new Set(registry.primitives.map(x=>x.opcode));
   const atomicStep=step=>obj(step)&&nonempty(step.step_id)&&nonempty(step.action_id)&&
     codes.has(step.opcode)&&step.opcode!=="OP.01.001"&&step.opcode!=="OP.01.016"&&
@@ -180,6 +181,7 @@ function functionForIndex(commentId,index,profile,registry,randomInt=crypto.rand
   assert(Number.isSafeInteger(commentId)&&commentId>0,"Invalid comment identity");
   assert(Number.isInteger(index)&&index>=1&&index<=18,"Index outside controller range");
   assert(isObject(registry)&&Array.isArray(registry.primitives),"Missing atomic operation registry");
+  assertAtomicCompatible(registry);
   assert(isObject(frameSelections),"Frame selections must be a JSON object");
   const lookup=new Map(registry.primitives.map(op=>[op.opcode,op]));
   const pool=p.random_function_pool.map(code=>{
@@ -271,7 +273,7 @@ function functionForIndex(commentId,index,profile,registry,randomInt=crypto.rand
     pool_opcodes:[...p.random_function_pool],pool_size:pool.length,
     selected_ordinal:ordinal,
     draws,
-    note:"Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame."
+    note:render("selection.replay_note")
   };
   base.opcodes=frame?[frame.operator.opcode,atomic.opcode]:[atomic.opcode];
   base.higher_order_frame=frame;
@@ -280,54 +282,29 @@ function functionForIndex(commentId,index,profile,registry,randomInt=crypto.rand
     const role=p.reconciliation_roles.find(x=>x.index===index);
     assert(role,"Unrecognized reconciliation role");
     return {...base,role:role.role,read_indices:Array.from({length:index},(_,i)=>i),
-      requirements:[
-        "Use atomic "+atomic.name+" ("+atomic.opcode+") for a bounded supporting action.",
-        ...role.requirements,
-        "Reconcile all five persisted higher-order frames and their lineage, not merely the atomic function choices.",
-        "Append exactly one substantive scratchpad at index "+index+"; keep the accepted prefix unchanged."
-      ]};
+      requirements:renderInstructions("reconcile",{
+        index,atomic_name:atomic.name,atomic_opcode:atomic.opcode
+      })};
   }
-  const apply="Use atomic "+atomic.name+" ("+atomic.opcode+") inside the fixed higher-order frame "+frame.operator.name+
-    (frame.mode?" / "+frame.mode:"")+". An opcode instruction is not execution evidence.";
-  const lineage=[
-    "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
-    "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
-    "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction."
-  ];
   const frameInfo={frame_id:frameId,enclosing_frame_id:enclosingFrameId};
+  const bindings={
+    index,atomic_name:atomic.name,atomic_opcode:atomic.opcode,
+    frame_name:frame.operator.name,
+    mode:frame.mode||"",
+    mode_suffix:frame.mode?" / "+frame.mode:"",
+    frame_id:frameId
+  };
   if(slot===0||slot===1){
     const ref=p.reference_ids[slot],anchor=1+slot,previous=frameNumber===0?null:1+(frameNumber-1)*3+slot;
     return {...base,...frameInfo,role:frameNumber===0?"establish_reference":"preserve_reference",
       reference_id:ref,original_anchor_index:anchor,previous_frame_index:previous,
       read_indices:frameNumber===0?(slot===0?[0]:[0,1]):[0,anchor,previous,3*frameNumber],
-      requirements:[
-        apply,
-        ...(slot===0?[
-          "Reference A: identify the prior solver or subject representation, with its assumptions, method, evidence and limitations.",
-          "Cite the actual preceding solver or preparatory instruction; do not invent completed execution."
-        ]:[
-          "Reference B: identify the enclosing perspective, selected abstraction mode if applicable, target representation, and preservation criteria.",
-          "Differentiate this framing reference from the inner solver or subject."
-        ]),
-        ...lineage,
-        "Append exactly one substantive scratchpad at index "+index+" and retain the accepted prefix."
-      ]};
+      requirements:renderInstructions(slot===0?"frame_reference_A":"frame_reference_B",bindings)};
   }
   const prev=frameNumber===0?null:3*frameNumber;
-  const requirements=[
-    apply,
-    "Apply the *same* higher-order choice as the other two slots of "+frameId+"; do not reroll or switch modes.",
-    frame.operator.name==="SOLVER_LIFT"
-      ?"Construct a higher-level solver whose subject is the previous solver, including its method, assumptions, intermediate results and limitations."
-      :"Construct an explicit "+frame.mode+" representation with its specified fields; IMPLEMENTATION describes mechanisms, not execution.",
-    "Supply preserved_properties, suppressed_details, introduced_assumptions, source_mapping, and next_solver_input in substantive output.",
-    ...lineage,
-    "Add substantive development rather than a quotation ladder or paraphrase.",
-    "Append exactly one substantive scratchpad at index "+index+"; retain the accepted prefix."
-  ];
   return {...base,...frameInfo,role:frameNumber===0?"seed_narrative":"expand_enclosing_narrative",
     read_indices:frameNumber===0?[0,1,2]:[0,prev,index-2,index-1],
-    previous_frame_index:prev,requirements};
+    previous_frame_index:prev,requirements:renderInstructions("frame_result",bindings)};
 }
 function processWithController(previous,body,commentId,revisionPath,eventName,profile,registry,randomInt=crypto.randomInt){
   const result=processRevision(previous,body,commentId,revisionPath,eventName,(arr,index)=>validateEntryStructure(arr,index,profile,registry,previous?.progression?.frame_selections||{}));
