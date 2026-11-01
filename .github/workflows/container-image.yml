@@ -7,6 +7,8 @@ on:
       - 'src/router-write-gate.test.js'
       - '.dockerignore'
       - 'container-entrypoint.js'
+      - 'container-listener.js'
+      - 'config/stateless-services.json'
       - 'src/**'
       - '.github/workflows/container-image.yml'
 permissions:
@@ -17,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test validation-render write gate
+      - name: Test corrected FSMV-to-FSM and FSM-return routing
         run: node --test src/router-write-gate.test.js
       - name: Run router boundary tests
         run: node --test src/router-boundary.test.js
