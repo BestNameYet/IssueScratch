@@ -42,8 +42,8 @@
     },
     {
       "path": "config/workflow-routing.json",
-      "blob_sha": "d500b7f8fe0d0d0457b3e022c77e1a47a5692b21",
-      "description": "Concrete workflow input/output routing, dynamic arguments, iteration and delivery verification."
+      "blob_sha": "aca893ad833232ddc7b80c60b053b934cdfb6060",
+      "description": "Executable router configuration with live workflow run evidence and 54 passing tests."
     },
     {
       "path": "src/workflow-router.js",
