@@ -123,8 +123,8 @@
     {
       "path": "chatgpt-share.json",
       "description": "Root commit-triggered shared ChatGPT URL, output directory and timestamp",
-      "blob_sha": "943129e7501b8082d56e6cc89c7de5d23c10bb0b",
-      "sha256": "9c97053bb8d0463115feb4490db490109dddaf13ae68d0610d59ac4d20b7fcc0",
+      "blob_sha": "dcae4edb5116f5ecae19d94b324a39a172e3bd38",
+      "sha256": "aa47aebbde842294b44b16e4ee7b7d66cfc12f66dc9c68ed216865b22cb1ed4f",
       "size_bytes": 222
     },
     {
@@ -154,6 +154,20 @@
       "blob_sha": "126c9328ba63c4ab4e04ebec6342966550b18cd6",
       "sha256": "f06e5ffedf7b31739c65fb2c86dbf5dfdd2e71e66f640978481cb61e9bcfbda9",
       "size_bytes": 111631
+    },
+    {
+      "path": "workspaces/chatgpt-share-exports/6ae6e6ef-322c-83e8-973a-4ebd4d8077d7/conversation.md",
+      "description": "Readable shared ChatGPT conversation",
+      "blob_sha": "cbe478fa02a98cd6c5c2cb2e9b9ffb2452b212c1",
+      "sha256": "a2043600057fdbcf38615d5693ca21c5d326029dfd8005312a826825e67b4416",
+      "size_bytes": 20386
+    },
+    {
+      "path": "workspaces/chatgpt-share-exports/6ae6e6ef-322c-83e8-973a-4ebd4d8077d7/conversation.json",
+      "description": "JSON representation of the same ordered conversation",
+      "blob_sha": "da19a80b21f9d2dfafe536dc9e3c1fe0cfeb2892",
+      "sha256": "99aafb3b7441b5a50501204e10a731bf9bfd216e88fc5c7c7fe84eafa916bd2e",
+      "size_bytes": 24253
     }
   ]
 }
