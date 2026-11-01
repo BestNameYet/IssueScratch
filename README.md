@@ -276,3 +276,26 @@ node src/stateless-router-server.js
 The caller supplies and stores state externally, and separately submits projection data for rendering. These services retain no job state or request queue. The existing Issue #1 workflow is not switched to these endpoints by this addition.
 
 Run `node --test src/stateless-services.test.js` for actual HTTP routing and pure-function tests. [stateless-services.yml](.github/workflows/stateless-services.yml) runs those checks without repository-write credentials.
+
+### Independent validation service
+
+Start [src/validation-server.js](src/validation-server.js) with `node src/validation-server.js`. It listens on the configured validation host/port (default 127.0.0.1:8790). The router forwards `POST /validate` to it.
+
+Request envelope:
+
+```json
+{
+  "raw_input": "the exact raw agent input string",
+  "metadata": {
+    "source_comment_id": 123,
+    "correlation_id": "caller-supplied",
+    "expected_index": 0
+  }
+}
+```
+
+Only `raw_input` is parsed as the submission. Metadata is preserved separately; identifiers do not change its meaning. For structurally valid JSON, `metadata.expected_index` specifies the contract to check. Optional `metadata.state` supplies prior progression/prefix context, and `metadata.frame_selections` may supply the bound frame when no state object is provided. The listener supplies this context; the service retrieves nothing.
+
+The [validator](src/input-validator.js) returns `execution_status`, `input_status`, `accepted`, correlation metadata, an exact raw-string SHA-256 and specific errors. Accepted results additionally contain the parsed value and whether progression was checked. Both content acceptance and handled rejection return HTTP 200; malformed request envelopes or missing required context return HTTP 400. Semantic quality is never an acceptance predicate. No state is advanced or stored, and neither the FSM nor renderer is called.
+
+[validation-service.test.js](src/validation-service.test.js) verifies exact raw-string handling, metadata separation, structural rejection, no semantic evaluation, prefix checks and actual HTTP forwarding through the router. The issue listener itself is not implemented by this service addition.
