@@ -31,7 +31,7 @@ function createFsmServer(procedure,config={}){
     const outcome=transition(request.payload,procedure);
     response={contract:"router.envelope.v1",request_id:request.request_id,
      type:"result",payload_contract:"issuescratch.transition-response.v1",
-     mode:"procedure",payload:{...outcome,projection:createProjection(procedure)},error:null};
+     mode:"procedure",payload:{...outcome,source_comment_id:request.payload?.input?.source_comment_id,projection:createProjection(procedure)},error:null};
    }catch(cause){
     response={contract:"router.envelope.v1",request_id:request.request_id,
      type:"error",payload_contract:"issuescratch.fsm-error.v1",
