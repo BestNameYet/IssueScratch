@@ -84,5 +84,12 @@
         "adapter": "file-replace"
       }
     }
+  },
+  "service_port_lookup": {
+    "router_validator": 8787,
+    "router": 8786,
+    "fsm": 8788,
+    "renderer": 8789,
+    "validation": 8790
   }
 }
