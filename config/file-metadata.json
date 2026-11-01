@@ -2,9 +2,9 @@
   "files": [
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
-      "description": "Canonical procedure library; shared agent contract definitions are declared once and individual indices store references and unique content.",
-      "blob_sha": "b5e2c487987c06ffcb1ed2667817bbf66492d38c",
-      "change_commit": "363473cee15f2d4879f5e515d3da21dc694f3222"
+      "description": "Canonical procedure library with shared agent contracts and verbatim, reference-based rendered-section definitions for every index.",
+      "blob_sha": "9007be8b6dc568de8afc9d9ec668209730ef508b",
+      "change_commit": "bc693af99997c8148c40d1568647ebbfa57b5f21"
     },
     {
       "path": "config/file-metadata.json",
