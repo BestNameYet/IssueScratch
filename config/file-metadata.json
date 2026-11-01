@@ -2,9 +2,9 @@
   "files": [
     {
       "path": "src/types/issuescratch.procedure-library.v1.json",
-      "description": "Canonical procedure library with shared agent contracts and verbatim, reference-based rendered-section definitions for every index.",
-      "blob_sha": "9007be8b6dc568de8afc9d9ec668209730ef508b",
-      "change_commit": "bc693af99997c8148c40d1568647ebbfa57b5f21"
+      "description": "Canonical procedure library with nineteen concrete index-to-renderer projections referencing seven unique field projections and shared inputs.",
+      "blob_sha": "dce8882ffca2c28ae501ca471c8fb24103d3c969",
+      "change_commit": "4963eb1b51657b9c81429919f903dfc0475f193f"
     },
     {
       "path": "config/file-metadata.json",
