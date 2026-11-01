@@ -8,8 +8,8 @@
  * an alphabetical tag index, or the linear_conversation convenience field.
  *
  * Usage:
- *   node build-shared-conversation.js --url https://chatgpt.com/share/<uuid> --out /path
- *   node build-shared-conversation.js --url https://chatgpt.com/share/<uuid> --html response.html --out /path
+ *   node src/chatgpt-share-extract.js --url https://chatgpt.com/share/<uuid> --out /path
+ *   node src/chatgpt-share-extract.js --url https://chatgpt.com/share/<uuid> --html response.html --out /path
  */
 const fs = require("node:fs");
 const path = require("node:path");
@@ -195,7 +195,7 @@ function renderMarkdown(messages) {
       active = [];
     }
     const speaker = m.role === "user" ? "User" :
-      m.channel === "commentary" ? "Assistant · Commentary" : "Assistant";
+      m.channel === "commentary" ? "Assistant · Commentary" : "Assistant · Final";
     active.push("**" + speaker + "**\n\n" + quoteMarkdown(m.text));
   }
   if (active.length) turns.push(active.join("\n\n"));
