@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Test router boundary and envelope services
+        run: node --test src/router-boundary.test.js src/envelope-services.test.js
       - name: Build stateless runtime
         run: docker build -t issuescratch-runtime:local .
       - name: Process Issue event through Router Validator
