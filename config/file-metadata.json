@@ -103,8 +103,8 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "4152d617cde98cb224796706ce10925749a6b1ae",
-      "description": "Service CI independently tests callable Issue writer before legacy tests."
+      "blob_sha": "235f34b296a4da32b15958b00c7c5b1d28e4face",
+      "description": "Independent CI validates authenticated Issue writer and live Docker bridge HTTPS egress/environment forwarding before legacy service tests."
     },
     {
       "path": "src/input-validator.js",
