@@ -9,7 +9,7 @@ function createFsmServer(procedure,config={}){
   const dest=config.services?.router_validator,port=config.service_port_lookup?.router_validator;
   if(!dest||!Number.isSafeInteger(port))throw Error("FSM response Router Validator is not configured");
   return new Promise((resolve,reject)=>{
-   const req=http.request({hostname:dest.host,port,path:"/fsm-result",method:"POST",
+   const req=http.request({hostname:dest.host==="0.0.0.0"?"127.0.0.1":dest.host,port,path:"/fsm-result",method:"POST",
     headers:{"content-type":"application/json"}},res=>{
     let raw="";
     res.on("data",chunk=>{raw+=chunk;if(Buffer.byteLength(raw)>1048576)res.destroy(Error("Response too large"))});
