@@ -87,8 +87,9 @@
     },
     {
       "path": "src/stateless-router-server.js",
-      "blob_sha": "5a345650a7f5bdfee1cc9b4750039751ffeca3c9",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "d176ed9709c0d3601b23e28729db03cbc35bba5e",
+      "description": "Candidate Router continuation guard: require independently verified renderer publication before FSM execution.",
+      "change_commit": "e3a98f6f828a83c6802665b8f1ff63d31dd74fe6"
     },
     {
       "path": "config/stateless-services.json",
@@ -102,8 +103,9 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "2de24f373ab9b69e0938d9a7b0ae477dd6118f43",
-      "description": "Read-only CI for stateless service tests."
+      "blob_sha": "4ae3aaedd5f43c1b9e27027314f838f695f41229",
+      "description": "Candidate service CI includes router write-gate tests.",
+      "change_commit": "c6388ee406126b6cc700a24627331a5bf235c91e"
     },
     {
       "path": "src/input-validator.js",
@@ -189,6 +191,18 @@
       "blob_sha": "8d38d23a5d91add5e68490a8e2e8f3a8dd7655f5",
       "sha256": "23a7f54390840420ae9fffa6f13955bbc97d479d887d4843e809bf09b325ff07",
       "size_bytes": 98426
+    },
+    {
+      "path": "src/router-write-gate.test.js",
+      "blob_sha": "c2893f32de0973f4ebafbde8935eccba718830a2",
+      "description": "Candidate HTTP regression tests for /validate, /transition, rejection and verified write receipts.",
+      "change_commit": "fe316ebff31ab11836763fac784324079105eff5"
+    },
+    {
+      "path": ".github/workflows/container-image.yml",
+      "blob_sha": "15a1f9f3c11c5418bfc7283f04db714368075e34",
+      "description": "Candidate image CI runs router write-gate regressions before building.",
+      "change_commit": "de7340956b25ef54f1816eec7cd1e5892d998348"
     }
   ]
 }
