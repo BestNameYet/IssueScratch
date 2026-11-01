@@ -27,12 +27,12 @@
     },
     {
       "path": "AGENTS.md",
-      "blob_sha": "be5ad6ba521f8bbb5dbc456f47b8f1e158edd692",
+      "blob_sha": "7154b30fae3d64880503fb4a4e3551a8142864a7",
       "description": "Projection procedure reference."
     },
     {
       "path": "README.md",
-      "blob_sha": "ccc4b487e547148d5a1ae545cde02d709dff9fd7",
+      "blob_sha": "c16c73fd83cf49eb8cf0a13aade2cf9cdd9d4562",
       "description": "Projection procedure reference."
     },
     {
@@ -42,8 +42,23 @@
     },
     {
       "path": "config/workflow-routing.json",
-      "blob_sha": "4e0bb5435fd90357ec63e19c548e3ccfe202b36a",
+      "blob_sha": "d500b7f8fe0d0d0457b3e022c77e1a47a5692b21",
       "description": "Concrete workflow input/output routing, dynamic arguments, iteration and delivery verification."
+    },
+    {
+      "path": "src/workflow-router.js",
+      "blob_sha": "852357bd849764a98c4a4aa3a1a5af075be8700c",
+      "description": "Executable configuration-driven transport router."
+    },
+    {
+      "path": "src/workflow-router.test.js",
+      "blob_sha": "e508b239538dd7f6bb84d31431e5727e2982ec79",
+      "description": "Workflow router tests including persistence recovery."
+    },
+    {
+      "path": ".github/workflows/issue1-json-validator.yml",
+      "blob_sha": "fc727d61407050d8d7c61f4171b467df9fa16989",
+      "description": "Workflow invoking the configuration-driven router."
     }
   ]
 }
