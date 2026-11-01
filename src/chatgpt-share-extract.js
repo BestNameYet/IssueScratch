@@ -18,6 +18,7 @@ const crypto = require("node:crypto");
 const sha256 = buffer => crypto.createHash("sha256").update(buffer).digest("hex");
 const MAX_BYTES = 25 * 1024 * 1024;
 const args = {};
+if (require.main === module) {
 for (let i = 2; i < process.argv.length; i += 2) {
   if (!["--url", "--html", "--out"].includes(process.argv[i]) || !process.argv[i + 1]) {
     throw new Error("Usage: --url https://chatgpt.com/share/<uuid> [--html file] --out directory");
@@ -25,6 +26,7 @@ for (let i = 2; i < process.argv.length; i += 2) {
   args[process.argv[i]] = process.argv[i + 1];
 }
 if (!args["--url"] || !args["--out"]) throw new Error("--url and --out are required");
+}
 
 function validateUrl(input) {
   const u = new URL(input);
@@ -35,8 +37,8 @@ function validateUrl(input) {
   }
   return u;
 }
-const requested = validateUrl(args["--url"]);
-const shareId = requested.pathname.split("/")[2].toLowerCase();
+const requested = args["--url"] ? validateUrl(args["--url"]) : null;
+const shareId = requested ? requested.pathname.split("/")[2].toLowerCase() : null;
 
 async function downloadHtml(initial) {
   let next = initial;
@@ -238,7 +240,12 @@ async function main() {
   fs.writeFileSync(path.join(outDir, "receipt.json"), JSON.stringify(receipt, null, 2) + "\n");
   console.log(JSON.stringify(receipt));
 }
-main().catch(error => {
-  console.error(error && error.stack || String(error));
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  main().catch(error => {
+    console.error(error && error.stack || String(error));
+    process.exitCode = 1;
+  });
+}
+
+// Pure functions shared by the extractor, the validator and regression tests.
+module.exports = {renderMarkdown, quoteMarkdown, decodeConversation, extractScriptTable};
