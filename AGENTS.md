@@ -33,7 +33,9 @@
       "router": "src/stateless-router-server.js",
       "fsm": "src/fsm-server.js",
       "renderer": "src/renderer-server.js",
-      "boundary": "Independent HTTP services. Router only forwards. FSM consumes supplied state and validated input; renderer consumes supplied projection and bindings. Neither service calls or imports the other. State storage and caller orchestration are external."
+      "boundary": "Independent HTTP services. Router only forwards. FSM consumes supplied state and validated input; renderer consumes supplied projection and bindings. Neither service calls or imports the other. State storage and caller orchestration are external.",
+      "validation": "src/validation-server.js",
+      "validation_contract": "POST /validate accepts {raw_input:string,metadata:object}; raw input is submission content, metadata is correlation/validation context. Validator returns structural acceptance/errors without calling FSM, renderer or persistence."
     }
   },
   "execution_governance": {
