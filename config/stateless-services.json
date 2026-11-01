@@ -1,0 +1,32 @@
+{
+  "schema": "issuescratch.stateless-services.v1",
+  "services": {
+    "router": {
+      "host": "127.0.0.1",
+      "port": 8787
+    },
+    "fsm": {
+      "host": "127.0.0.1",
+      "port": 8788
+    },
+    "renderer": {
+      "host": "127.0.0.1",
+      "port": 8789
+    }
+  },
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/state",
+      "service": "fsm",
+      "upstream_path": "/transition"
+    },
+    {
+      "method": "POST",
+      "path": "/render",
+      "service": "renderer",
+      "upstream_path": "/render"
+    }
+  ],
+  "boundary": "Router forwards HTTP requests and responses only. FSM and renderer do not reference each other. The caller supplies current state and validated input, persists returned state externally, and separately supplies projection/bindings for rendering. No job state, queues, orchestration or diagnostics are stored in these services."
+}
