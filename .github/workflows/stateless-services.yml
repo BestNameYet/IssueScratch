@@ -67,7 +67,7 @@ jobs:
         run: |
           tempdir="$(mktemp -d)"
           name="issuescratch-smoke-${GITHUB_RUN_ID}"
-          cleanup(){ docker rm -f "$name" >/dev/null 2>&1 || true; rm -rf "$tempdir"; }
+          cleanup(){ status=$?; if [ "$status" -ne 0 ]; then docker ps -a --filter "name=$name" || true; docker logs "$name" || true; fi; docker rm -f "$name" >/dev/null 2>&1 || true; rm -rf "$tempdir"; return "$status"; }
           trap cleanup EXIT
           mkdir -p "$tempdir/config" "$tempdir/output"
           cp src/types/issuescratch.procedure-library.v1.json "$tempdir/config/procedure-library.json"
