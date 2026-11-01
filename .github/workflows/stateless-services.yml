@@ -42,8 +42,8 @@ jobs:
           node-version: '22'
       - name: Test callable GitHub Issue writer
         run: node --test src/github-issue-writer.test.js
-      - name: Test independent services and HTTP routing
-        run: node --test src/stateless-services.test.js src/validation-service.test.js src/router-write-gate.test.js src/router-boundary.test.js src/envelope-services.test.js src/router-mode-contract.test.js
+      - name: Test complete Node suite including corrected service routing
+        run: node --test src/*.test.js
 
       - name: Verify Docker HTTPS egress and environment propagation
         env:
