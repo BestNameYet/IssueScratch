@@ -101,6 +101,14 @@
       "validation-result": {
         "format": "json",
         "destination": "agent-issue"
+      },
+      "router-input-error": {
+        "format": "json",
+        "destination": "agent-issue"
+      },
+      "router-service-error": {
+        "format": "jsonl",
+        "destination": "fsm-log"
       }
     },
     "destinations": {
