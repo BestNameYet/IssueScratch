@@ -26,7 +26,7 @@
     },
     "workflow_routing": {
       "path": "config/workflow-routing.json",
-      "usage": "Concrete repository/issue input and output bindings, invocation arguments, iteration and readback routes. Generic projection and validation procedures remain location-agnostic. Configuration is not yet integrated into the workflow."
+      "usage": "Read config/workflow-routing.json for concrete input/output arguments and routes. The workflow invokes src/workflow-router.js runWorkflow({github,core,context,config}) to consume this configuration. Generic projection and input-validation specifications remain source/destination agnostic."
     }
   },
   "execution_governance": {
