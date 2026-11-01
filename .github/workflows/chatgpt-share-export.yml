@@ -22,7 +22,7 @@
 #    assistant final messages.
 # 5. Produce conversation.md (human-readable alternating conversation)
 #    and conversation.json (the same ordered roles, channels, text).
-#    Verify source/output SHA-256 and the Markdown/JSON role counts.
+#    Verify source/output SHA-256 and byte-exact rendering of every JSON message.
 # 6. Write <write_path>/conversation.md and <write_path>/conversation.json;
 #    update config/file-metadata.json under the existing repository conventions.
 # 7. Upload response.html, both transcripts and receipt.json to the
@@ -65,6 +65,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # Deterministic tests include embedded speaker labels, separators,
+      # hidden channels and parent-chain chronology.
+      - name: Test complete conversation extraction and Markdown renderer
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test src/chatgpt-share-extract.test.js
 
       # 2. Reject incomplete or unsafe requests before reaching the network.
       - name: 2 - Validate URL, write directory and UTC timestamp
@@ -136,13 +144,12 @@ jobs:
              ) && typeof m.text==="string" && !!m.text.trim())) {
             throw Error("Invalid conversation JSON roles or counts");
           }
-          const headings=[...markdown.matchAll(/^(\*\*You\*\*|\*\*Assistant · Commentary\*\*|\*\*Assistant\*\*)$/gm)].map(m=>m[1]);
-          if(!markdown.startsWith("# Conversation\n\n") ||
-             headings.length!==parsed.messages.length ||
-             headings.filter(x=>x==="**You**").length!==counts.user ||
-             headings.filter(x=>x==="**Assistant · Commentary**").length!==counts.commentary ||
-             headings.filter(x=>x==="**Assistant**").length!==counts.final) {
-            throw Error("Markdown/JSON message-count mismatch");
+          // Compare the ENTIRE rendering of every ordered JSON message.
+          // Never count label-like strings inside message bodies as headings.
+          const {renderMarkdown}=require("./src/chatgpt-share-extract.js");
+          const expectedMarkdown=renderMarkdown(parsed.messages);
+          if(markdown!==expectedMarkdown) {
+            throw Error("Complete Markdown/JSON content or order mismatch");
           }
           for(const file of ["response.html","conversation.md","conversation.json"]) {
             const bytes=fs.readFileSync(path.join(base,file));
@@ -189,6 +196,7 @@ jobs:
             "chatgpt-share.json",
             ".github/workflows/chatgpt-share-export.yml",
             "src/chatgpt-share-extract.js",
+            "src/chatgpt-share-extract.test.js",
             path.posix.join(process.env.WRITE_PATH,"conversation.md"),
             path.posix.join(process.env.WRITE_PATH,"conversation.json")
           ];
@@ -200,6 +208,7 @@ jobs:
             ])).digest("hex");
             const description=name==="chatgpt-share.json"?"Root commit-triggered shared ChatGPT URL, output directory and timestamp":
               name.endsWith(".yml")?"Per-repository GitHub Actions export workflow":
+              name.endsWith(".test.js")?"Deterministic message-selection and Markdown-renderer regression tests":
               name.endsWith(".js")?"Independent Node.js share HTML extractor":
               name.endsWith(".md")?"Readable shared ChatGPT conversation":
               "JSON representation of the same ordered conversation";
