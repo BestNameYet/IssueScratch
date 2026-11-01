@@ -72,8 +72,9 @@
     },
     {
       "path": "src/fsm-server.js",
-      "blob_sha": "ece41b0b240144473001c35a727543e51d726b32",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "907aaf50d535c1a10f89e231ddb46e87670a67c8",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/agent-renderer.js",
@@ -82,29 +83,33 @@
     },
     {
       "path": "src/renderer-server.js",
-      "blob_sha": "0a42081f2ab5fd87cf79177e8f523f304f9c8253",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "9a182928833e56a437cdd52593d4aadc4bd8d723",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/stateless-router-server.js",
-      "blob_sha": "d176ed9709c0d3601b23e28729db03cbc35bba5e",
-      "description": "Candidate Router continuation guard: require independently verified renderer publication before FSM execution.",
-      "change_commit": "e3a98f6f828a83c6802665b8f1ff63d31dd74fe6"
+      "blob_sha": "02b7a02cd57f73ed5a0ea18404eb1635f46c007f",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "config/stateless-services.json",
-      "blob_sha": "7818071e4360e74dd1613f23c716e219a2d6048d",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "19edfba4fc0850c916d05f7fdbfea8bd7380a7eb",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/stateless-services.test.js",
-      "blob_sha": "a6d104250d13816ecf915206754dcda399a19f99",
-      "description": "Independent stateless service tests."
+      "blob_sha": "9b3703256a28088fda2acd9a61ec5a57b4225f23",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "235f34b296a4da32b15958b00c7c5b1d28e4face",
-      "description": "Independent CI validates authenticated Issue writer and live Docker bridge HTTPS egress/environment forwarding before legacy service tests."
+      "blob_sha": "0b6a96abfe6fde7c8bdeec634e32e4301f176a9d",
+      "description": "Runtime CI validation of corrected route and independent output publication, job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/input-validator.js",
@@ -113,13 +118,15 @@
     },
     {
       "path": "src/validation-server.js",
-      "blob_sha": "8e25ebddadc0eb8478c516beb3a1406638695421",
-      "description": "Independent raw-input validation service, API contract or regression checks."
+      "blob_sha": "e15eb869462c5284e361813cb31ee06b35bf3bb6",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/validation-service.test.js",
-      "blob_sha": "6401cca890df195416ce0a93d52d5863678c0b28",
-      "description": "Independent raw-input validation service, API contract or regression checks."
+      "blob_sha": "b3d1074c7e571ec425e5408536f801a12b61ca43",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "chatgpt-share.json",
@@ -193,15 +200,15 @@
     },
     {
       "path": "src/router-write-gate.test.js",
-      "blob_sha": "c2893f32de0973f4ebafbde8935eccba718830a2",
-      "description": "Candidate HTTP regression tests for /validate, /transition, rejection and verified write receipts.",
-      "change_commit": "fe316ebff31ab11836763fac784324079105eff5"
+      "blob_sha": "59e62eef5a9f16276398afa23a582e08e2728494",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": ".github/workflows/container-image.yml",
-      "blob_sha": "15a1f9f3c11c5418bfc7283f04db714368075e34",
-      "description": "Candidate image CI runs router write-gate regressions before building.",
-      "change_commit": "de7340956b25ef54f1816eec7cd1e5892d998348"
+      "blob_sha": "f734228505bff2eecc884298d1b3baa006432190",
+      "description": "Runtime CI validation of corrected route and independent output publication, job 6560681262.",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
     {
       "path": "src/github-issue-writer.js",
@@ -215,8 +222,33 @@
     },
     {
       "path": "container-listener.js",
-      "description": "Listener Docker bridge networking and workflow-scoped credential forwarding by environment variable name.",
-      "blob_sha": "24dae8ffd886ea06a4b7416d99cf6187ea92868c"
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "blob_sha": "3429cce7b127a29af48181b993d0eb081de162b8",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+    },
+    {
+      "path": "container-entrypoint.js",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "blob_sha": "2a896f569d61ab0bf0e9808dda0fed3f26dfd51d",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+    },
+    {
+      "path": "src/envelope-services.test.js",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "blob_sha": "915cc85c5a32c9d9269dcbc268be18469f10e5d9",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+    },
+    {
+      "path": "src/router-boundary.test.js",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "blob_sha": "49ab49d56f785c924d887c1c707f59c8287a5a2f",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
+    },
+    {
+      "path": "src/router-validator-server.js",
+      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
+      "blob_sha": "8fb2d8e9cc8b72abe3238db456f77e99bff76cb1",
+      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     }
   ]
 }
