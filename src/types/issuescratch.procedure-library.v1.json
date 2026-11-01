@@ -1,0 +1,4147 @@
+{
+  "schema": "issuescratch.canonical-procedure-library.v1",
+  "version": "1.0.0",
+  "repository": "BestNameYet/IssueScratch",
+  "authority": {
+    "agent_entrypoint": "AGENTS.md",
+    "canonical_definition_path": "src/types/issuescratch.procedure-library.v1.json",
+    "rule": "This JSON document is the sole active source of static procedure text, operation semantics, frame profile, and agent governance clauses. Other files may hold frozen historical/compatibility copies but cannot override this document.",
+    "controller_rule": "The controller selects, binds and copies existing instructions only; no independently authored requirement text.",
+    "runtime_data_rule": "Index, source refs, frame/mode and random draw are runtime selections. A selected opcode resolves to its predeclared deterministic contract.",
+    "historical_rule": "Do not modify accepted Issue #1 comment bodies or previously issued instruction receipts.",
+    "conflict_rule": "Fail closed on contradictions, mismatched sources or absent template definitions. Only the artifact-pointer conflict is resolved explicitly in this version."
+  },
+  "source_provenance": {
+    "atomic": {
+      "path": "src/types/issuescratch.operation-registry.v1.json",
+      "original_blob_sha": "233406589704b8b8a6ad8d1a749606867a2856c3"
+    },
+    "higher": {
+      "path": "src/types/issuescratch.higher-order-operators.v1.json",
+      "original_blob_sha": "79e993b7e852461bac99bc3a4b7b5b25cf8d1ed0"
+    },
+    "profile": {
+      "path": "src/types/issuescratch.framing-controller.v1.json",
+      "original_blob_sha": "124c2946e737160fd6e10157e2dc152581a7675d"
+    },
+    "agents": {
+      "path": "AGENTS.md",
+      "original_blob_sha": "ed1b10bf161be1144efd4230f9f511ec823cd576"
+    }
+  },
+  "agent_contract": {
+    "document_type": "IssueScratch agent instructions",
+    "format_version": "2.13.0",
+    "repository": "BestNameYet/IssueScratch",
+    "interpretation": "AGENTS.md governs the nineteen-element minimum root array of literal scratchpad wrappers, job management and verification. The separately referenced canonical catalog contains all flat permitted action examples, expected action-input types, registered scratchpad fields, and reusable named object definitions. Existing comments remain historical.",
+    "opcode_format": {
+      "pattern": "^IS\\.(?:[0-9]{2}\\.)+[0-9]{3}$",
+      "order": "Numeric section hierarchy followed by numeric clause order (section before subsections), without changing opcode identities",
+      "unique": true,
+      "required_fields": [
+        "opcode",
+        "version",
+        "source_section",
+        "source_line_range",
+        "modality",
+        "imperative",
+        "condition",
+        "source_archive_ref"
+      ],
+      "modalities": [
+        "require",
+        "prohibit",
+        "allow"
+      ]
+    },
+    "procedures": [
+      {
+        "opcode": "IS.01.001",
+        "version": 1,
+        "source_section": "1",
+        "source_line_range": [
+          5,
+          17
+        ],
+        "modality": "require",
+        "imperative": "Use Issue #1 as the unified intake, work, and scratchpad surface.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.01.002",
+        "version": 5,
+        "source_section": "1",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Use one root JSON array with at least seventeen entries; every entry is an object containing exactly one key named scratchpad, whose value is one substantive scratchpad object.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.01.003",
+        "version": 1,
+        "source_section": "1",
+        "source_line_range": [
+          5,
+          17
+        ],
+        "modality": "require",
+        "imperative": "Preserve durable identity, evidence, and outcomes without importing IssueStack ceremony.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.01.004",
+        "version": 1,
+        "source_section": "1",
+        "source_line_range": [
+          5,
+          17
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not import separate issue transfer stages, fixed input slots, or unnecessary approval machinery.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.01.005",
+        "version": 1,
+        "source_section": "1",
+        "source_line_range": [
+          5,
+          17
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not claim automation exists before implementation and end-to-end verification.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.001",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Read root AGENTS.md before each assignment.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.002",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Read any applicable nested AGENTS.md.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.003",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Read README.md if present.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.004",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Read Issue #1 instructions and records before undertaking Issue #1 work.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.005",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Use a documented command interface whenever it governs an operation.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.006",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not bypass a governed interface via alternate APIs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.007",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not invent missing commands, paths, capabilities, results, or schemas.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.008",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Declare Issue #1 uninitialized when it does not exist.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.009",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Obtain authorized scope before creating or modifying repository resources.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.010",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Treat other repositories' rules as nonbinding unless explicitly adopted.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.02.011",
+        "version": 1,
+        "source_section": "2",
+        "source_line_range": [
+          18,
+          25
+        ],
+        "modality": "require",
+        "imperative": "Observe higher-priority platform and system obligations.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.001",
+        "version": 1,
+        "source_section": "3",
+        "source_line_range": [
+          26,
+          35
+        ],
+        "modality": "require",
+        "imperative": "Keep intake, queue/execution, and scratchpad functions logically distinguishable in Issue #1.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.001",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Record the exact source_comment_id for each intake.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.002",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Record and reuse the verified permanent job_comment_id for each working record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.003",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Use a stable nonce for deduplication and retries when appropriate.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.004",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not substitute nonce or comment position for a verified comment ID.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.005",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Check for an existing record with the same source or nonce before creating a record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.006",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Reconcile retries against the existing record rather than duplicating it.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.007",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Use the same comment for intake and work only when authorized editing is possible.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.008",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Preserve an uneditable user comment and link a separate agent-owned record when needed.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.009",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "require",
+        "imperative": "Keep follow-up progress comments within Issue #1 and link them to the working record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.01.010",
+        "version": 1,
+        "source_section": "3.1",
+        "source_line_range": [
+          36,
+          48
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not assume GitHub comment IDs are sequential.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.002",
+        "version": 1,
+        "source_section": "3",
+        "source_line_range": [
+          26,
+          35
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not require Issues #2 and #3 or any mandatory cross-issue transfer.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.02.001",
+        "version": 1,
+        "source_section": "3.2",
+        "source_line_range": [
+          49,
+          77
+        ],
+        "modality": "require",
+        "imperative": "Preserve source, job identity, state, owner, plan, evidence, and verification in a working record as applicable.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.02.002",
+        "version": 1,
+        "source_section": "3.2",
+        "source_line_range": [
+          49,
+          77
+        ],
+        "modality": "allow",
+        "imperative": "Allow flexible working-record serialization rather than requiring the illustrative Markdown layout.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.02.003",
+        "version": 1,
+        "source_section": "3.2",
+        "source_line_range": [
+          49,
+          77
+        ],
+        "modality": "allow",
+        "imperative": "Allow simple jobs to omit empty sections without boilerplate.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.003",
+        "version": 1,
+        "source_section": "3",
+        "source_line_range": [
+          26,
+          35
+        ],
+        "modality": "require",
+        "imperative": "Keep job references and current state discoverable.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.001",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Locate the exact original intake instruction and preserve its meaning.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.002",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Register or locate the working record and read back its permanent ID.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.003",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Record an accurate pending, active, blocked, completed, failed, or cancelled state.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.004",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Plan and execute only within authorized scope.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.005",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Preserve progress, observations, dependencies, tests, and blockers in the working record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.006",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Distinguish submission from execution and test invocation from passing results.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.007",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Record verified outcomes, failures, and unfinished work before concluding.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.008",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "require",
+        "imperative": "Read back the final record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.03.009",
+        "version": 4,
+        "source_section": "3.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Place job administration metadata inside a registered optional field of a scratchpad value or in a separately linked Issue #1 record, and do not add sibling keys beside scratchpad in the array wrapper.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.03.03.010",
+        "version": 3,
+        "source_section": "3.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Preserve ascending array index order regardless of drafting order.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.03.03.011",
+        "version": 1,
+        "source_section": "3.3",
+        "source_line_range": [
+          78,
+          89
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not require external queue or scratchpad issues.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.001",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "require",
+        "imperative": "Preserve the original user instruction separately from its interpretation.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.002",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "require",
+        "imperative": "Attribute revised scope and clarified instructions without silently replacing earlier versions.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.003",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "require",
+        "imperative": "Re-fetch and check job identity and state before editing a comment.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.004",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "require",
+        "imperative": "Reconcile conflicts before retrying concurrent writes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.005",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "require",
+        "imperative": "Read back every write and verify its effective content.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.006",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not overwrite another worker's intervening updates.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.007",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not treat write success alone as evidence of correct contents.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.04.008",
+        "version": 1,
+        "source_section": "3.4",
+        "source_line_range": [
+          90,
+          95
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not publish secrets, tokens, private chain-of-thought, or sensitive information in public issue records.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.001",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Read back a newly created GitHub Issue comment and verify its permanent comment ID.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.002",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Read back an edited GitHub Issue comment and verify the complete current saved body.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.003",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Display the full untruncated saved body in the user-facing ChatGPT conversation as the closing step of every comment create or edit.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.004",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Display the verified permanent comment ID beside that complete body.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.005",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Preserve every character, key, value, whitespace, newline, and historical and current revision marker in the echo.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.006",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Display the complete current version after edits, not just changed fields.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.007",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Display each affected comment separately with its own verified ID.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.008",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Split an overlong ChatGPT display into contiguous ordered parts without dropping content.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.009",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Report explicitly if platform limits prevent a complete echo.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.010",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "require",
+        "imperative": "Report unsuccessful writes or read-backs without presenting drafts as saved results.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.011",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not substitute an excerpt, link, summary, attachment, ellipsis, or length for full comment contents.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.012",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not truncate or rewrite the GitHub comment merely to shorten its ChatGPT echo.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.03.05.013",
+        "version": 1,
+        "source_section": "3.5",
+        "source_line_range": [
+          96,
+          108
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not claim an echo is complete until the whole comment has actually been displayed.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.001",
+        "version": 6,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Return every new RS record as one root JSON array of at least nineteen entries, each exactly {\"scratchpad\": <nonempty heterogeneous JSON object>}.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.001",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Permit any action listed in the linked canonical uses-and-input-types document within the scratchpad value of any array index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.002",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not treat the linked uses-and-input-types catalog as a checklist, closed vocabulary, mandatory activity list, or prescribed allocation of actions to scratchpads.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.003",
+        "version": 1,
+        "source_section": "4.1",
+        "source_line_range": [
+          147,
+          196
+        ],
+        "modality": "require",
+        "imperative": "Verify current comment edit authorization independently of a stewardship claim.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.01.004",
+        "version": 1,
+        "source_section": "4.1",
+        "source_line_range": [
+          147,
+          196
+        ],
+        "modality": "require",
+        "imperative": "Verify actual results independently of any recorded tool call.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.01.005",
+        "version": 1,
+        "source_section": "4.1",
+        "source_line_range": [
+          147,
+          196
+        ],
+        "modality": "require",
+        "imperative": "Distinguish cryptic notes and speculation from verified claims.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.01.006",
+        "version": 1,
+        "source_section": "4.1",
+        "source_line_range": [
+          147,
+          196
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not disclose restricted data, credentials, private internal chain-of-thought, or unsupported access claims.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.01.007",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Treat the permitted-use statements in the linked canonical document as one flat shuffled collection; their adjacency conveys no semantic relationship.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.008",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not infer parent actions, subtype hierarchy, category, or fixed scratchpad-index assignment from the order of the linked catalog.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.014",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Require the external catalog to specify expected action inputs using typed fields and preexisting named object types rather than assigning a data type to the action-description string.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.01.015",
+        "version": 6,
+        "source_section": "4.1",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not require an action's complete input contract to be populated when merely recording a partial observation; validate any present fields according to their declared types.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.002",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Arrange the single-key scratchpad wrappers by ascending zero-based array index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.02.001",
+        "version": 4,
+        "source_section": "4.2",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Check each adjacent pair of scratchpad values in the root array for semantic independence.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.02.002",
+        "version": 4,
+        "source_section": "4.2",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Classify each adjacent pair of scratchpad values in the root array as paraphrase, appended expansion, or independent contribution.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.02.003",
+        "version": 4,
+        "source_section": "4.2",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Reject a new RS when any adjacent scratchpad values merely paraphrase or append to one another.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.02.005",
+        "version": 1,
+        "source_section": "4.2",
+        "source_line_range": [
+          197,
+          212
+        ],
+        "modality": "require",
+        "imperative": "Check that each contribution contains its own substantive proposition, observation, evidence, or action.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.02.006",
+        "version": 1,
+        "source_section": "4.2",
+        "source_line_range": [
+          197,
+          212
+        ],
+        "modality": "require",
+        "imperative": "Mark violations explicitly instead of rationalizing them.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.02.007",
+        "version": 1,
+        "source_section": "4.2",
+        "source_line_range": [
+          197,
+          212
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not reject independent contributions merely because identifiers or necessary terms recur.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.03.001",
+        "version": 6,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Read the linked canonical permitted-uses-and-input-types document and its named object type definitions before selecting typed fields in a new scratchpad record.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.002",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Allow the agent to choose any subset of registered keys independently within each scratchpad.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.003",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not require an unused registered key, an empty array, or a null placeholder merely because that key is registered.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.004",
+        "version": 6,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Accept all 38 previously permitted-use field declarations and 21 observed legacy field declarations as available optional types from the linked canonical catalog.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.005",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Use the registered field type for each chosen key; validate the value of that key independently of all absent keys.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.006",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Allow additional suitable scratchpad keys when their types are appropriately defined without converting the catalog into a closed vocabulary.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.007",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Preserve all existing unannotated historical keys and value forms without migrating or invalidating earlier Issue #1 comments.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.008",
+        "version": 2,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not describe registry declaration as deployed runtime enforcement unless the relevant validator is implemented and tested.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.03.009",
+        "version": 6,
+        "source_section": "4.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Consult the combined canonical catalog for both permitted actions and registered field/named-object definitions; use the older standalone registry only for historical revision comparison.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.001",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Treat each JSON object as an open heterogeneous container whose keys may each have different value types.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.002",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Allow any selection of independently typed keys in an object without requiring its other registered fields.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.003",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Permit string, number, boolean, null, object, and array values where their individual declarations allow them.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.004",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Allow nested objects with additional appropriately typed keys and with omitted optional keys.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.005",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Respect named object declarations and nested value types for fields that are actually present.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.006",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Retain legacy primitive arrays without requiring conversion to named-object arrays.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.04.007",
+        "version": 2,
+        "source_section": "4.4",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not impose a fixed mapping between activity types and scratchpad positions.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.005",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Populate the scratchpad value in every array entry with nonempty substantive agent-authored fields; prohibit empty, primitive, null or array scratchpad values.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.05.001",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "require",
+        "imperative": "Follow explicit user instructions, tool contracts, authorized repository scope, and higher-priority obligations.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.05.002",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "require",
+        "imperative": "Fulfill the user's requested deliverable format and tests independently of the flexible RS nested schema.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.05.003",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "require",
+        "imperative": "Ground verified facts and completed operations in observed evidence.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.05.004",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "require",
+        "imperative": "Preserve material version changes or references to earlier snapshots.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.05.005",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not mistake exploratory notes for execution receipts.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.05.006",
+        "version": 1,
+        "source_section": "4.5",
+        "source_line_range": [
+          543,
+          548
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not hide missing deliverables, unauthorized changes, or failures behind RS structure.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.04.006",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Make the substantive contents of the scratchpad value in each array element distinct from those of other array elements, not paraphrases or appended expansions.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.009",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Keep the zero-based array indices and the identical scratchpad wrapper key free of fixed semantic roles or topic assignments.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.011",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Record job metadata using an optional registered field inside a selected scratchpad value or a separately linked Issue #1 record; never add it as a sibling of the wrapper key.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.012",
+        "imperative": "Require a minimum of nineteen scratchpad-wrapped array entries; do not require array lengths greater than nineteen to be prime.",
+        "modality": "require",
+        "version": 6,
+        "source_section": "4",
+        "source_line_range": null,
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.013",
+        "imperative": "Allow additional single-key scratchpad-wrapped objects beyond nineteen entries without a maximum length.",
+        "modality": "allow",
+        "version": 6,
+        "source_section": "4",
+        "source_line_range": null,
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.014",
+        "imperative": "Apply the nineteen-entry-minimum single-key scratchpad-wrapper array format to new RS records only; preserve historical three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 unchanged.",
+        "modality": "require",
+        "version": 6,
+        "source_section": "4",
+        "source_line_range": null,
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.015",
+        "imperative": "Distinguish the root array of wrappers from arrays nested inside a scratchpad's selected typed values.",
+        "modality": "prohibit",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.016",
+        "imperative": "Treat the existing issue-comment JSON normalizer as syntax-only; do not claim it enforces the required scratchpad wrapper or typed content.",
+        "modality": "require",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.017",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Require exactly one own property with the literal name scratchpad on each array element.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.018",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Require each scratchpad property to contain one nonempty open heterogeneous JSON object, whose fields are independently selected and typed.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.019",
+        "version": 4,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not use type-annotated names such as scratchpad[object<...>] for the required wrapper property; its literal JSON key is scratchpad.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.020",
+        "version": 2,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "allow",
+        "imperative": "Permit one-entry-at-a-time draft arrays of lengths 1 through 18 during an active comment's progression. Such interim revisions are not completed RS records; only a completed array meeting the nineteen-entry minimum is an RS under the standing contract.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.04.021",
+        "version": 1,
+        "source_section": "4",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Recognize that the progress-tracking workflow validates JSON syntax, a single root array, and literal single-key nonempty scratchpad wrapper shape; it performs no semantic validation of independent content.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.05.001",
+        "version": 1,
+        "source_section": "5",
+        "source_line_range": [
+          549,
+          552
+        ],
+        "modality": "require",
+        "imperative": "Initiate periodic RS adjudication only when authorized.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.01.001",
+        "version": 1,
+        "source_section": "5.1",
+        "source_line_range": [
+          553,
+          560
+        ],
+        "modality": "require",
+        "imperative": "Review actual populated RS content and organization.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.01.003",
+        "version": 3,
+        "source_section": "5.1",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Evaluate whether every adjacent array transition contributes independent substantive content.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.05.01.004",
+        "version": 1,
+        "source_section": "5.1",
+        "source_line_range": [
+          553,
+          560
+        ],
+        "modality": "require",
+        "imperative": "Evaluate claim evidence, tool records, factual correctness, user boundaries, and outcomes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.01.006",
+        "version": 1,
+        "source_section": "5.1",
+        "source_line_range": [
+          553,
+          560
+        ],
+        "modality": "require",
+        "imperative": "Assign exactly one overall adjudication label.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.01.008",
+        "version": 3,
+        "source_section": "5.1",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not penalize unusual topical placement at any scratchpad array index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.05.01.009",
+        "version": 3,
+        "source_section": "5.1",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Keep retrospective adjudication findings separate from the original scratchpad array; do not introduce non-object array elements for review findings.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.05.002",
+        "version": 1,
+        "source_section": "5",
+        "source_line_range": [
+          549,
+          552
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not invent a fixed review interval, per-task gate, reviewer, or automatic grading process.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.02.001",
+        "version": 1,
+        "source_section": "5.2",
+        "source_line_range": [
+          561,
+          571
+        ],
+        "modality": "require",
+        "imperative": "Choose adjudication labels only from excellent, adequate, fail, and extreme fail.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.02.002",
+        "version": 1,
+        "source_section": "5.2",
+        "source_line_range": [
+          561,
+          571
+        ],
+        "modality": "require",
+        "imperative": "Keep an output unadjudicated until an actual review occurs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.02.003",
+        "version": 1,
+        "source_section": "5.2",
+        "source_line_range": [
+          561,
+          571
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not assign a default grade or treat job completion as an adjudication.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.03.001",
+        "version": 1,
+        "source_section": "5.3",
+        "source_line_range": [
+          572,
+          579
+        ],
+        "modality": "require",
+        "imperative": "Preserve a snapshot or exact reference to the reviewed RS version.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.03.002",
+        "version": 1,
+        "source_section": "5.3",
+        "source_line_range": [
+          572,
+          579
+        ],
+        "modality": "require",
+        "imperative": "Record its Issue #1 IDs, reviewer identity, review time, grade, and evidence-based rationale.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.03.003",
+        "version": 3,
+        "source_section": "5.3",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Keep retrospective review findings separate from the originally reviewed scratchpad array.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.05.03.004",
+        "version": 1,
+        "source_section": "5.3",
+        "source_line_range": [
+          572,
+          579
+        ],
+        "modality": "require",
+        "imperative": "Preserve later reviews, disagreements, and corrections with an audit trail.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.05.03.005",
+        "version": 1,
+        "source_section": "5.3",
+        "source_line_range": [
+          572,
+          579
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not treat retrospective adjudication as authorization to change repository content or jobs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.001",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Work from the user's objective and verified repository ground truth.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.002",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Preserve the user's intended scope and abstraction level.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.003",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not impose unsolicited restrictions or architectural substitutions.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.004",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Parallelize independent tasks where practical and retain their links to the parent Issue #1 job.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.005",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Document consequential deviations, unresolved decisions, and failures.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.006",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Stop all work immediately on a halt request without housekeeping writes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.007",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Seek authorization before making out-of-scope changes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.008",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "require",
+        "imperative": "Report unavailable tools and missing permissions accurately.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.06.009",
+        "version": 1,
+        "source_section": "6",
+        "source_line_range": [
+          580,
+          589
+        ],
+        "modality": "prohibit",
+        "imperative": "Do not claim asynchronous workflows are operational without proof.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.001",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Verify source instructions and durable Issue #1 comment IDs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.002",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Record actual rather than optimistic job states.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.003",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Keep enough scratchpad evidence for continuation by another agent.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.005",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Verify claimed edits, tests, executions, and outputs against real evidence.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.006",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Disclose remaining work and failures.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.007",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": [
+          590,
+          602
+        ],
+        "modality": "require",
+        "imperative": "Use stronger verification for repository mutations and multi-step jobs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.07.008",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For each Issue #1 comment creation or edit, save deterministic measurements by comment ID and source revision under workspaces/issue1-diagnostics/comments/<comment_id>/, with index-level character lengths, key occurrences, and nested-array counts.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.009",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Write per-comment state and each unique diagnostic snapshot as independently valid JSON objects; store current state in state.json and immutable content-hash-named diagnostic objects in revisions/.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.010",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Advance progression only when a valid single root array adds exactly one new scratchpad entry without changing the previously accepted prefix; freeze accepted index tracking after index 18 while continuing syntax and diagnostic validation on later edits.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.011",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not rewrite an invalid JSON submission into a valid wrapper merely to normalize syntax; preserve the user comment unchanged and record the failure in the diagnostic JSON and workflow report.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.012",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not treat historical backfill or a complete first-submission array as evidence of sequential index progression; do not treat publication of a framing function as evidence that an external agent executed it.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.013",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Load the current versioned framing-controller profile and registered OP opcode catalog before selecting the next function on any eligible accepted incremental index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.014",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "At each new three-index framing exercise (indices 1, 4, 7, 10, 13), randomly select one higher-order operation from SOLVER_LIFT or ABSTRACT with node:crypto.randomInt; if ABSTRACT, independently select one of its four explicit modes. Preserve that choice across all three slots while selecting atomic OP.01 operators independently for each eligible next index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.015",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Persist the higher-order frame selection (operator opcode, optional abstraction mode, selection ordinal, source lineage, and input/output contract) once per frame in progression.frame_selections and each frame instruction, alongside the independently chosen atomic OP.01 operation and all ordered random draws.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.016",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Recover the full ordered random-draw sequence (higher-order operator, optional ABSTRACT mode, atomic operator) after retries or interrupted execution and reuse every persisted frame choice within that frame; do not reroll a higher-order operator on its second or third index.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.017",
+        "version": 1,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Publish the next function in a separate source-linked Issue #1 controller comment while retaining previous instruction records in its history; validate the saved body and ignore controller-generated comments as input arrays.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.018",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Maintain five three-index framing exercises in indices 1–15, each with two distinguishable referents and a transformed output at its third slot. Apply a single selected higher-order operator to all three slots; preserve the chain of inner solver, enclosing solver, source attribution and invariants across the five levels.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.019",
+        "version": 2,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not issue a new operation when source JSON or required framing content is structurally invalid, the accepted prefix changes, a complete array is imported without sequential edits, or the nineteenth tracked index has already been accepted. Do not silently establish a new framing choice mid-frame.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.07.020",
+        "version": 3,
+        "source_section": "7",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Treat every requested repository artifact, including README.md, identically: after a controlled nineteen-entry completion and verified publication contract, write the finalized content directly to the declared repository-relative path, replacing its prior content using the current blob SHA; verify the saved bytes and record a source-linked generic publication receipt. Do not create special candidate, comparison, or promotion gates based on filename.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.08.001",
+        "version": 1,
+        "source_section": "8",
+        "source_line_range": [
+          603,
+          608
+        ],
+        "modality": "require",
+        "imperative": "Inspect the current repository and Issue #1 rather than trusting historical bootstrap statements.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.08.002",
+        "version": 1,
+        "source_section": "8",
+        "source_line_range": [
+          603,
+          608
+        ],
+        "modality": "require",
+        "imperative": "Verify the actual intake-to-completion cycle before declaring it functional.",
+        "condition": null,
+        "source_archive_ref": "source_archive.original_blob_sha"
+      },
+      {
+        "opcode": "IS.09.001",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Load original bytes and select the appropriate source extractor; default to opaque preservation for unsupported formats.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.002",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Compute canonical byte length and SHA-256, and retain exact original bytes in base64 before any transformation.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.003",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Extract source-linked records and assign record identities separately from functional opcodes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.004",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Assign CAPTURE and EMIT; add only explicitly mapped, registry-valid intermediate operator opcodes.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.005",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Output one valid JSON object holding source, conversion metadata, and operation-coded records. Never replace or mutate the original document.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.006",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Verify byte-for-byte restoration, source digest, record coverage, pointers, original values, text fields, opcode validity, and step ordering.",
+        "condition": "before claiming success",
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.007",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Refuse unrecognized opcodes, duplicated identities, invalid mappings, and loss of source provenance; report errors instead of silently dropping source material.",
+        "condition": "on any conflict",
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.09.008",
+        "version": 1,
+        "source_section": "9",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Keep opcode classification separate from execution and semantic assessment; never claim that output instructions have been performed.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.001",
+        "version": 2,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For controller-driven Issue #1 jobs, create a fresh source comment with exactly one substantive scratchpad entry and verify its permanent GitHub comment ID by reading back its entire body. Keep job registration and workflow artifacts outside the source comment.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.002",
+        "version": 3,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "The agent handshake is limited to the existing Issue #1 scratchpad comment: one added entry per edit and readback of the same comment ID. The workflow alone validates, selects, publishes, and persists external state/instruction/diagnostic records; the agent does not write workflow metadata or acknowledgement artifacts.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.003",
+        "version": 1,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "After creating or editing a source comment, poll its actual saved body and the matching per-comment state until the submitted revision is diagnosed and exactly one additional index is accepted; reject stale state, different comment ID, or a superseded source revision.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.004",
+        "version": 2,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For each accepted index below 18, poll the source-linked controller reply and saved instruction receipt; verify source comment ID, accepted prefix, selected atomic opcode, higher-order frame identity and mode when applicable, source revision hash, and delivered state before writing the next substantive scratchpad.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.005",
+        "version": 4,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "The worker edits only its substantive Issue #1 array comment. After the worker's edit, the workflow must automatically record its acceptance, submitted source revision SHA-256, target index, and previously issued operation as JSON under the per-comment workspace. No agent-written acknowledgement file or scratchpad field is required.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.006",
+        "version": 4,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Apply the last published operation to create substantive content, append exactly one scratchpad object while preserving prior entries, and read back the edited comment. Poll for workflow confirmation. Do not submit an additional acknowledgement to GitHub or write any repository file.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.007",
+        "version": 2,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Observe at most twelve polling cycles for each submitted comment revision, consulting saved comment, controller instruction and workflow-run evidence. Workflow failures or lack of progress stop the agent's comment edits; recording blockers in workspace is a workflow responsibility, not an extra agent action.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.008",
+        "version": 1,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not advance to the next index until the previous revision and its next function have been independently read back and cross-checked; never create a second job comment as a recovery for a verified existing one.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.009",
+        "version": 6,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "At index 18, the worker must SUBMIT the actual solution or deliverable compiled from indices 0–17, with final_output[string] containing the full response for a response task or a nonempty pointer/reference to a declared artifact for a file task, and full path/content in artifacts[array<object>] for declared file targets. After workflow acceptance, the agent verifies the final source digest, five frame selections, eighteen instructions, actual output and destination/receipt readback if publishing. The controller's completed status certifies structural progression only.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.010",
+        "version": 2,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For a completed job requesting artifact output, use the same generic finalization rule for every authorized repository-relative path. Declare artifact_targets[array<object>] in the first nested preparatory scratchpad, each with path and source_context_id referencing an explicit_user context element; place corresponding UTF-8 {path,content} records in final outer index 18 under artifacts[array<object>]. The workflow replaces existing destination files in place and verifies their contents. No filename-specific exemptions or extra approval for README.md.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.011",
+        "version": 5,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "The workflow, not the worker, owns state, diagnostics, instructions, run receipts and general artifact publication following completion. During controlled job execution the worker writes only its existing Issue #1 source comment and reads back workflow outputs; the workflow writes finalized artifacts to their declared paths after all general publication checks.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.012",
+        "version": 7,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Never equate structural acceptance of nineteen entries with verified task success. The acting agent must independently judge whether the actual deliverable included at index 18 satisfies the original user instructions, content and format requirements, applicable tests and domain checks. For user-authorized files, require generic publication receipt and exact file readback before reporting success; otherwise report incomplete or blocked.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.10.013",
+        "version": 2,
+        "source_section": "10",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Commit implementation and workflow-maintenance changes directly on main, without PRs. During controller-driven job execution, the worker's ONLY write operation is creating or editing its substantive Issue #1 comment. All workspace and diagnostic writes are performed by the workflow itself.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.001",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For new 19-index runs, place one preparatory outer scratchpad at index 0 containing a nested array of exactly five separately wrapped nonempty scratchpad objects.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.002",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "In nested preparatory scratchpad 0, preserve the original instruction and explicitly separate context_elements, initial action-level opcode projection, minimalist and maximalist user intent, explicit intent, inferred beginning state, inferred desired post state and inferred change.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.003",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Represent surrounding conversation as an ordered context_elements array with stable IDs, source references, representation type, authority type, provenance and relevance. Distinguish explicit user statements, assistant statements, repository rules and inference.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.004",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Construct an immediate provisional initial_opcode_projection from the verbatim instruction and context_elements. Its steps must map bounded actions, not the whole instruction as one oversized command, to registered reusable OP opcodes with typed operands, source/context references, result IDs and dependencies.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.005",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Use nested preparatory scratchpad 1 to examine requirements and uncertainties, nested scratchpad 2 for adversarial review, nested scratchpad 3 for independently identifiable atomic actions and their dependencies, and nested scratchpad 4 for revised step-by-step opcode rendering with action coverage.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.006",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Map the preliminary opcode projection to the later atomistic decomposition, retaining explicit provenance and recording additions, deletions and revisions without altering the original instruction or confusing inference with authorization.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.007",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Perform five sequential reframing exercises at outer indices 1–15; each exercise consumes three scratchpads for reference A, reference B and a substantive enclosing narrative expansion. Maintain identity and attribution across frames.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.008",
+        "version": 2,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Reserve the final three entries as a direct solution-production sequence: index 16 reconciles every preceding contribution and resolves conflicting requirements; index 17 compiles the reconciled material and action-level opcode lineage into a coherent actionable solution; index 18 produces the actual requested answer or complete artifact contents and records agent-performed checks. These entries must culminate in a deliverable, not merely a proposed solution or plan.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.009",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not treat CAPTURE/EMIT or one GENERATE/TRANSFORM opcode as sufficient decomposition of a multi-action instruction. Require separately traceable action IDs, individually bound opcode steps, operands, source pointers and explicit coverage.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.010",
+        "version": 2,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "The controller structurally validates the mandatory preparatory, framing and final-entry fields. The acting agent—not the controller—must evaluate whether the compiled solution and deliverable are substantively correct, complete, useful, and faithful to the user's request; do not assert that source/field validation proves semantic compliance.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.011",
+        "version": 1,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not insert controller acknowledgements, workflow metadata or status markers into the substantive scratchpad array; agent writes are confined to the existing Issue #1 source comment and all workflow state/output writes are workflow-owned.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.11.012",
+        "version": 2,
+        "source_section": "11",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Retain earlier completed 17-entry jobs and their historical candidate/receipt files as historical records without making them operative publication procedures. The 19-entry format and general artifact publisher apply prospectively and do not retroactively upgrade historical jobs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.001",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Register SOLVER_LIFT (OP.02.001) and ABSTRACT (OP.02.002) as separate higher-order operators, distinguished from ordinary atomic OP.01.* functions. Use the versioned higher-order operator registry as their formal contract.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.002",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Select the higher-order operator once when entering a frame, with a uniform random draw between SOLVER_LIFT and ABSTRACT; choose one of CONTRACT, IMPLEMENTATION, CONSTRUCT, GENERAL only if ABSTRACT was selected, using a separate uniform draw.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.003",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Bind the one selected frame operator and optional mode to each of its three scratchpads, with reference A describing the inner solver, reference B describing the enclosing target, and the third entry containing the transformed solver or representation.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.004",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For SOLVER_LIFT, the enclosing solver must take the inner solver's problem, method, assumptions, intermediate results, limitations and provenance as its subject and input. Do not substitute a paraphrase of the original user task for the new solver's input.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.005",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For ABSTRACT, choose and preserve exactly one mode: CONTRACT for obligations/interfaces/invariants, IMPLEMENTATION for a nonexecuting model of mechanisms and dependencies, CONSTRUCT for structural elements/relationships, or GENERAL for cross-instance properties and limits.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.006",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Every completed third-slot framing result must identify preserved properties, intentionally suppressed details, introduced assumptions, source mappings, and a distinctly framed next-solver input. The selected mode must supply its required output fields.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.007",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Keep the higher-order selection stable for the full three-index frame and persist all five frame selections in progression.frame_selections. Each subsequent frame may independently select its new higher-order operator, retaining ancestry to the preceding frame and original instruction.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.008",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Preserve atomic OP.01 choice as a separately selected supporting function per index. An atomic operation cannot replace the selected higher-order framing operation, nor can naming an opcode count as its execution.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.009",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Validate the structural presence of source-linked inner-solver inputs, enclosing targets and the operator-specific third-slot result before accepting frame indices. A structural validator cannot certify reasoning depth, semantic correctness or implementation execution.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.010",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not add workflow acknowledgements, controller IDs or operational receipt metadata to substantive scratchpads. All operational frame selection and replay state remains workflow-owned; the agent edits only its Issue #1 source comment during a job.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.12.011",
+        "version": 1,
+        "source_section": "12",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "The final reconciliation stage must account for all five higher-order frame operators, their abstraction modes, retained and omitted properties, and traceable source mappings before an agent claims a synthesized output addresses the original instruction.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.001",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Use one mandatory agent–workflow handshake from intake and job creation through the final user-requested deliverable at index 18 and verification of its saved/published result. The final three entries ARE the solution process: reconcile at 16, compile at 17, deliver at 18. No separate content-generation stage follows the nineteenth entry; subsequent readbacks verify delivery.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.002",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Before creating a job, read README.md, root and applicable nested AGENTS.md, Issue #1 rules, current controller/profile/type catalog, and any previous job with the same instruction, source, or nonce. Establish intended output artifacts, explicit authorization and success criteria, and deduplicate without altering historical completed jobs.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.003",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Start the handshake by creating exactly one new Issue #1 source comment containing a single root-array scratchpad entry at index 0 and its five nested preparatory scratchpads. Verify the permanent comment ID, author, complete saved body, correct target declarations, and initial source SHA-256 before relying on any workflow event.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.004",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Require the workflow to acknowledge index 0 with a persisted state.json acceptance, an immutable diagnostic revision, and a source-linked controller instruction and instruction receipt for index 1. Compare their source comment ID, source revision hash, accepted_entries=1, next_index=1 and delivered status before advancing.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.005",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For every subsequent tracked index i (1 through 18), treat the next index as a gated handshake: independently read the saved source and persisted prior state, consume the exact published controller instruction for i and its immutable receipt, produce a distinct substantive scratchpad, append only that entry to the same source comment, then read back the resulting comment body.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.006",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "After each edit, poll only the same comment's persisted state, immutable diagnostic revision, controller reply, and instruction receipt until the workflow accepts exactly one new entry and confirms the submitted SHA-256, the unchanged accepted prefix, correct comment identity, instruction lineage, and next target. Never infer acknowledgement from a successful API submission or an unrelated workflow run.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.007",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Between accepted indices 1 and 18, verify that the controller has published precisely the next instruction for the source-linked revision, including the selected atomic opcode, higher-order frame identity and mode when applicable, ordered random draws, persisted frame choice, and readback of the immutable instruction JSON. Preserve all accepted entries without modification.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.008",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "Preserve the five controller-guided three-slot frames at indices 1–15. For the final three entries, the agent reconciles all contributions at index 16, compiles them into a usable solution at index 17, and produces the actual user-requested answer or full artifact at index 18. Every final result must retain source lineage from initial preparation through the five frames.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.009",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not jump indices, batch several future entries into one revision, create a new source comment to bypass an existing blocked comment, reroll persisted operations, write agent-authored workflow acknowledgements, or replace workflow receipt verification with narrative assertions.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.010",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "At index 18, the agent must use the preceding reconciled and compiled solution to actually deliver the requested result, not merely promise a result or supply an artifact plan. Independently verify its semantic and format coverage against the original instructions; the controller acknowledges structure/progression but cannot determine whether the task's content is correct. After accepted index 18, only readback/publication verification and reporting remain.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.011",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For a file-producing task, put the complete UTF-8 artifact in index-18 artifacts[array<object>] with the exact previously declared path, and perform all applicable domain checks (including real opcode-document adapter validation when required). The workflow then performs its generic publication operation. The agent independently checks the actual published bytes/hash and source-linked receipt; this verifies the deliverable already produced at index 18.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.012",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "For a response-only or otherwise non-repository task, produce the complete requested answer or substantive outcome in index-18 final_output[string], and independently evaluate it using task-specific criteria and externally inspectable evidence where applicable. A placeholder, proposal, TODO list, or declaration of future execution is not a completed deliverable.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.013",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "If the result cannot be substantively completed by index 18, do not misrepresent a plan or an unverified result as a completed deliverable. The currently deployed controller has no verified extended handshake beyond index 18; preserve the accepted source, report incomplete/blocked with missing work, and use a separately documented/tested continuation only if later authorized and implemented.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.014",
+        "version": 1,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "On a failed, stale, missing or contradictory acknowledgement, bound polling to the documented limit, preserve the last verified revision and controller decisions, inspect the real workflow failure, and report blocked with the exact comment ID, accepted index, missing evidence and safe next action; do not silently retry with a different comment.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.015",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "require",
+        "imperative": "After the substantive deliverable is produced at index 18, independently reread the persisted progression and the final answer or published files/receipts. Report permanent source comment ID, accepted count, controller status, actual output location or answer, relevant hashes, performed tests and any failure. This terminal readback verifies the deliverable; it does not create or redefine the solution.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      },
+      {
+        "opcode": "IS.13.016",
+        "version": 2,
+        "source_section": "13",
+        "source_line_range": null,
+        "modality": "prohibit",
+        "imperative": "Do not claim that the deterministic controller is capable of judging answer quality, source interpretation, semantic task success, or artifact usefulness. Such evaluation belongs to the acting agent and domain-specific validation. Controller acceptance certifies only configured structural/index/provenance conditions; reports must distinguish these from deliverable success.",
+        "condition": null,
+        "source_archive_ref": "source_archive.current_amendment"
+      }
+    ],
+    "reference_data": {
+      "sections": [
+        {
+          "id": "1",
+          "title": "Purpose and scope",
+          "start_line": 5,
+          "end_line": 17,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "2",
+          "title": "Read-before-operation rule",
+          "start_line": 18,
+          "end_line": 25,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3",
+          "title": "Issue #1 is the unified operating surface",
+          "start_line": 26,
+          "end_line": 35,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3.1",
+          "title": "Job identity",
+          "start_line": 36,
+          "end_line": 48,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3.2",
+          "title": "Suggested working-record structure",
+          "start_line": 49,
+          "end_line": 77,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3.3",
+          "title": "State and progression",
+          "start_line": 78,
+          "end_line": 89,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3.4",
+          "title": "Preservation and concurrency",
+          "start_line": 90,
+          "end_line": 95,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "3.5",
+          "title": "Mandatory closing step after creating or editing a comment: full ChatGPT echo",
+          "start_line": 96,
+          "end_line": 108,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "4",
+          "title": "Return Schema (RS): root array with at least seventeen scratchpad-wrapped objects",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_instruction"
+        },
+        {
+          "id": "4.1",
+          "title": "Permitted scratchpad uses and expected input types (linked canonical catalog)",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_instruction"
+        },
+        {
+          "id": "4.2",
+          "title": "Independent contributions across adjacent scratchpad array objects",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_instruction"
+        },
+        {
+          "id": "4.3",
+          "title": "Optional registered field types (linked canonical catalog)",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_instruction"
+        },
+        {
+          "id": "4.4",
+          "title": "Open heterogeneous object members",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_instruction"
+        },
+        {
+          "id": "4.5",
+          "title": "Precedence and fidelity",
+          "start_line": 543,
+          "end_line": 548,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "5",
+          "title": "Periodic adjudication of RS designs and populated outputs",
+          "start_line": 549,
+          "end_line": 552,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "5.1",
+          "title": "What is reviewed",
+          "start_line": 553,
+          "end_line": 560,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "5.2",
+          "title": "Allowed labels",
+          "start_line": 561,
+          "end_line": 571,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "5.3",
+          "title": "Review record and provenance",
+          "start_line": 572,
+          "end_line": 579,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "6",
+          "title": "Agent conduct and scope",
+          "start_line": 580,
+          "end_line": 589,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "7",
+          "title": "Operational acceptance checks",
+          "start_line": 590,
+          "end_line": 602,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "8",
+          "title": "Bootstrap status",
+          "start_line": 603,
+          "end_line": 608,
+          "kind": "archived_source_reference"
+        },
+        {
+          "id": "9",
+          "title": "Document-to-JSON procedural opcode adapter",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_normative_extension"
+        },
+        {
+          "id": "10",
+          "title": "Agent–workflow framing handshake and bounded indexed polling",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_normative_extension"
+        },
+        {
+          "id": "11",
+          "title": "Contextual preparation, five reframings, and atomic opcode reconciliation",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_normative_extension"
+        },
+        {
+          "id": "12",
+          "title": "Higher-order SOLVER_LIFT and ABSTRACT framing, mode selection and lineage",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_normative_extension"
+        },
+        {
+          "id": "13",
+          "title": "Mandatory end-to-end job lifecycle handshake and continuation beyond minimum RS",
+          "start_line": null,
+          "end_line": null,
+          "kind": "current_normative_extension"
+        }
+      ],
+      "suggested_record_template": "<!-- issuescratch:job:v2 -->\n# Job: <concise description>\n\nSource: Issue #1 comment <source_comment_id>\nJob: Issue #1 comment <job_comment_id, once known>\nNonce: <stable nonce, if used>\nState: pending | active | blocked | completed | failed | cancelled\n\n## Instruction and scope\n<faithful interpretation; link to original instruction>\n\n## Scratchpad return array\n<one root JSON array with at least seventeen entries starting at index 0; each entry is {\"scratchpad\": {<independently selected typed fields>}}; the outer wrapper contains only the literal key scratchpad and its value is a nonempty heterogeneous object; no unused registered fields are required>\n\n## Verification and receipt\n<observed outcomes, checks performed, failures, links, remaining work>",
+      "allowed_RS_transition_classifications": [
+        "paraphrase",
+        "appended expansion",
+        "independent contribution"
+      ],
+      "adjudication_labels": [
+        "excellent",
+        "adequate",
+        "fail",
+        "extreme fail"
+      ],
+      "job_states": [
+        "pending",
+        "active",
+        "blocked",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "registered_scratchpad_fields": {
+        "version": "issuescratch.scratchpad-permitted-uses-and-input-types",
+        "path": "src/types/issuescratch.permitted-uses-and-input-types.v1.json",
+        "blob_sha": "a335225df90e356832cdc0aacabad564899245d9",
+        "git_url": "https://github.com/BestNameYet/IssueScratch/blob/main/src/types/issuescratch.permitted-uses-and-input-types.v1.json",
+        "declared_fields": 59,
+        "permitted_use_fields": 38,
+        "observed_existing_fields": 21,
+        "named_object_types": 68,
+        "registered_keys_optional": true,
+        "may_omit_any_registered_key": true,
+        "object_member_types_independent": true,
+        "legacy_records_preserved": true,
+        "enforcement_state": "The type registry and AGENTS.md specify a required wrapper, but the deployed comment-normalization workflow verifies JSON syntax only.",
+        "root_type": "array",
+        "minimum_items": 19,
+        "item_type": "single_key_wrapper_object",
+        "zero_based_indices": true,
+        "no_maximum_items": true,
+        "prime_total_not_required": true,
+        "wrapper_key": "scratchpad",
+        "wrapper_additional_keys_allowed": false,
+        "wrapper_value_type": "open_heterogeneous_json_object",
+        "registry_location": "reference_data.registered_scratchpad_fields",
+        "named_type_definitions_location": "reference_data.named_object_types",
+        "combined_catalog": true
+      },
+      "scratchpad_array": {
+        "root_type": "array",
+        "minimum_items": 19,
+        "first_index": 0,
+        "maximum_items": null,
+        "item_type": "single_key_object_wrapper",
+        "item_minimum_fields": 1,
+        "item_keys_optional": false,
+        "selection": "Choose any applicable registered typed fields inside each scratchpad value. The outer wrapper must have exactly the literal key scratchpad.",
+        "array_length_prime_requirement": false,
+        "legacy_record_compatibility": "Earlier three-named-object records, the unwrapped seven-entry Job #6 and the wrapped seven-entry Job #7 remain unchanged as historical records.",
+        "item_required_key": "scratchpad",
+        "item_additional_keys_allowed": false,
+        "item_value_type": "open_heterogeneous_json_object"
+      },
+      "activity_examples_count": 152,
+      "permitted_uses_and_input_types": {
+        "document_type": "issuescratch.scratchpad-permitted-uses-and-input-types",
+        "format_version": "1.1.0",
+        "path": "src/types/issuescratch.permitted-uses-and-input-types.v1.json",
+        "blob_sha": "03a624ae2cbc8fa84ce95aa6a98af1060a50f249",
+        "git_url": "https://github.com/BestNameYet/IssueScratch/blob/main/src/types/issuescratch.permitted-uses-and-input-types.v1.json",
+        "use_cases": 152,
+        "use_case_expected_inputs_typed": 152,
+        "registered_scratchpad_fields": 59,
+        "named_object_types": 68,
+        "example_scratchpads": 17,
+        "location_of_actions": "reference_data.permitted_use_cases",
+        "location_of_named_types": "reference_data.named_object_types",
+        "location_of_field_registry": "reference_data.registered_scratchpad_fields",
+        "precedence": "Authoritative use and input-type catalog; AGENTS.md remains authoritative on workflow, safeguards, and scratchpad array shape."
+      },
+      "comment_diagnostics": {
+        "schema_state": "issuescratch.comment-state.v1",
+        "schema_revision": "issuescratch.comment-diagnostics.v1",
+        "workspace_root": "workspaces/issue1-diagnostics/comments",
+        "state_path_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
+        "revision_path_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/revisions/<sha256-of-raw-comment>.json",
+        "workflow_path": ".github/workflows/issue1-json-validator.yml",
+        "workflow_blob_sha": "5cc1e0ff10a6f49b52e5e5a9f18fe7ab6f6c9dae",
+        "implementation_path": "src/issue1-diagnostics.js",
+        "implementation_blob_sha": "98371f51c09e56b622ccf9784fd2e1461eaffb90",
+        "source_events": [
+          "issue_comment.created",
+          "issue_comment.edited"
+        ],
+        "acceptance": "Exactly one new wrapped scratchpad entry per accepted edit, from index 0 through index 18, without changing earlier accepted content.",
+        "after_index_16": "Historical 17-entry runs remain unchanged. New runs freeze at index 18 after 19 accepted entries, while JSON and diagnostics continue.",
+        "invalid_json": "Record in saved JSON state and revision object without altering user-authored comment.",
+        "measurements": [
+          "raw source characters",
+          "raw bytes",
+          "root array length",
+          "total nested arrays",
+          "per-index serialized JSON characters",
+          "per-index string-value characters",
+          "per-index keys and recursive key occurrences",
+          "per-key value JSON/text character totals",
+          "per-index contribution in basis points"
+        ],
+        "existing_records": "Workflow dispatch/push scans record preexisting comments as historical snapshots; they are not claimed as sequentially accepted progression.",
+        "function_dispatch_state": "Use the versioned 1+15+3 framing-controller profile and randomly select a substantive registered opcode for next indices 1 through 18; publishing does not constitute autonomous agent execution.",
+        "root_objects_required": true,
+        "semantic_adjudication": false,
+        "after_index_18": "Freeze accepted entries at 19; continue structural JSON validation and revision diagnostics."
+      },
+      "document_opcode_adapter": {
+        "contract_path": "src/types/issuescratch.opcode-adapter-contract.v1.json",
+        "registry_path": "src/types/issuescratch.operation-registry.v1.json",
+        "registry_blob_sha": "233406589704b8b8a6ad8d1a749606867a2856c3",
+        "adapter_path": "src/opcode-document-adapter.js",
+        "tests_path": "src/opcode-document-adapter.test.js",
+        "first_source": "experiments/general-purpose-job-prompts.v1.json",
+        "first_mapping_profile": "experiments/general-purpose-job-opcode-map.v1.json",
+        "first_converted_output": "experiments/general-purpose-job-prompts.opcoded.v1.json",
+        "converted_output_sha": "6ded15c09b8959e15280e5abcf184072f4099e63",
+        "operation_opcode_namespace": "OP.01",
+        "procedure_opcode_namespace": "IS",
+        "operation_count": 16,
+        "record_identity_separate_from_opcode": true,
+        "lossless_exact_source_bytes": true,
+        "semantic_inference_by_default": false,
+        "specialized_operations_require_explicit_mapping": true,
+        "binary_files_preserved_without_implicit_parsing": true,
+        "output_is_json_object_not_scratchpad_array": true,
+        "execution_receipt_separate_from_declaration": true
+      },
+      "framing_controller": {
+        "profile_path": "src/types/issuescratch.framing-controller.v1.json",
+        "profile_sha": "124c2946e737160fd6e10157e2dc152581a7675d",
+        "profile_version": "2.1.1",
+        "implementation_path": "src/framing-controller.js",
+        "implementation_sha": "d889b283fc0591362f4a7a6ca8e407a8d152f605",
+        "tests_path": "src/framing-controller.test.js",
+        "workflow_path": ".github/workflows/issue1-json-validator.yml",
+        "workflow_sha": "11e220634dcabeeb3ebfdfc056f86edff77e899b",
+        "random_function_registry": "src/types/issuescratch.operation-registry.v1.json",
+        "random_pool_size": 14,
+        "random_selection": "node:crypto.randomInt",
+        "reference_slots": 15,
+        "unrestricted_slots": 0,
+        "persistent_instruction_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/instructions/<zero-padded-index>.json",
+        "persistent_state_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/state.json",
+        "controller_comment_schema": "issuescratch.frame-control-comment.v1",
+        "live_probe_source_comment": 6548135349,
+        "live_probe_controller_comment": 6548137149,
+        "live_probe_verified_indices": [
+          0,
+          1
+        ],
+        "live_probe_workflow_run_ids": [
+          41234676639,
+          41234726263
+        ],
+        "execution_scope": "Controller selects, validates structure and index progression, and publishes source-linked instructions; the agent authors a deliverable at index 18 and performs semantic verification independently.",
+        "preparatory_outer_index": 0,
+        "preparatory_nested_scratchpads": 5,
+        "framing_outer_indices": "1–15 (five sets of three)",
+        "reconciliation_outer_indices": [
+          16,
+          17,
+          18
+        ],
+        "initial_contextual_opcode_projection": true,
+        "atomic_opcode_steps": true,
+        "terminal_index": 18,
+        "expected_instruction_count": 18,
+        "historical_live_probe_verified_indices": [
+          0,
+          1
+        ],
+        "prior_17_entry_experiment": "historical; retained without modification",
+        "latest_live_probe_source_comment": 6548995651,
+        "latest_live_probe_controller_comment": 6548997266,
+        "latest_live_probe_accepted_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "latest_live_probe_verified_next_function_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "latest_live_probe_workflow_run_ids": [
+          41241007593,
+          41241048287,
+          41241090538,
+          41241155327
+        ],
+        "latest_live_probe_scope": "One complete three-index first frame, with ABSTRACT / IMPLEMENTATION chosen once and retained, plus new second-frame selection; 19-index completion not claimed.",
+        "verified_on_main": true,
+        "test_suite_run": 41241263066,
+        "test_count": 43,
+        "frame_count": 5,
+        "higher_order_frame_selection_count": 5,
+        "higher_order_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+        "higher_order_mode_count": 4,
+        "frame_selections_state_key": "progression.frame_selections",
+        "frame_input_validation": true,
+        "frame_output_validation": true,
+        "historical_17_entry_readme_comment": 6547874447
+      },
+      "agent_workflow_handshake": {
+        "schema": "issuescratch.agent-workflow-handshake.v1.4",
+        "job_scope": "Issue #1 source comment",
+        "controller_profile": "src/types/issuescratch.framing-controller.v1.json",
+        "workflow_path": ".github/workflows/issue1-json-validator.yml",
+        "source_of_truth": "GitHub-retrieved comment body + per-comment state.json + immutable instruction JSON + source-linked controller reply",
+        "index_sequence": "Index 0 prepares, indices 1–15 frame, index 16 reconciles all preceding work, index 17 compiles the solution, and index 18 supplies the actual answer or artifact contents. Controller source-linked acknowledgments gate each revision; following acceptance the agent reads back the published result.",
+        "ack_keys": [],
+        "max_poll_cycles_per_revision": 12,
+        "poll_checks": [
+          "same GitHub comment ID",
+          "current source revision SHA-256",
+          "progression.accepted_entries incremented by one",
+          "controller status delivered and instruction targets next index",
+          "workflow run conclusion if identifiable"
+        ],
+        "terminal_acceptance": [
+          "19 sequentially accepted revisions and saved source/hash lineage",
+          "five higher-order selections and eighteen source-linked instruction receipts",
+          "index 16 reconciliation and index 17 coherent compiled solution",
+          "agent-authored actual requested deliverable in index 18 (not a plan or placeholder)",
+          "acting agent independently tests semantic/request coverage and relevant content/format validations",
+          "where requested, exact published artifact content and generic publication receipt read back",
+          "completion claimed only for observed delivered result, with the controller's structural acceptance reported separately"
+        ],
+        "failure": "On 12 bounded polling cycles, stale/failed acknowledgement, unsupported extension, missing result or unverified publication, stop as blocked, preserve current comment and receipts, report exact missing evidence; do not submit another comment.",
+        "comment_echo_requirement": "Existing IS.03.05 obligations unchanged, but full echoes may be limited by the UI; record any inability explicitly.",
+        "acknowledgement_location": "per-comment revision diagnostic JSON and state.json history",
+        "acknowledgement_type": "automatic workflow-derived acceptance receipt, not worker authored",
+        "source_comment_contract": "Only substantive, single-key scratchpad wrappers. No job IDs, controller acknowledgements, hashes, opcodes, metadata fields, or workflow markers required in the comment.",
+        "job_registration": "Job registration is independent from generic output; publisher reads explicit source-linked artifact targets from the initial preparation, never inferred from prose or filename.",
+        "acknowledgement_timing": "The workflow records the accepted revision after the comment edit event; no explicit agent acknowledgement.",
+        "acknowledgement_protocol": [
+          "agent edits exactly one substantive scratchpad in Issue #1 source comment",
+          "agent re-reads saved comment ID and body",
+          "workflow validates and persists state, revision diagnostics, operation and response",
+          "agent reads state and controller output before next edit"
+        ],
+        "acceptance_is_separate_from_submission": true,
+        "repository_write_branch": "main",
+        "pull_requests_allowed": false,
+        "agent_writable_surfaces": [
+          "Issue #1 source comment only"
+        ],
+        "workflow_writable_surfaces": [
+          "workspaces/",
+          "Issue #1 controller reply",
+          "user-authorized artifact paths declared in the source, after completed verification"
+        ],
+        "agent_workspace_writes_allowed": false,
+        "agent_workflow_file_writes_allowed_during_job": false,
+        "scope": "Mandatory source comment handshake from index 0 through index 18, culminating in an agent-authored deliverable. Controller acknowledgments are structural; the agent tests the actual index-18 result. Publication/receipt readback verifies the result, not a later generation stage.",
+        "minimum_entries": 19,
+        "default_current_terminal_index": 18,
+        "tracked_extension_implemented": false,
+        "entries_beyond_19": "Allowed in conceptual RS contract; controller cannot currently accept/acknowledge index >= 19. Do not continue unacknowledged or assert task completion.",
+        "lifecycle_handshake_ref": "reference_data.job_lifecycle_handshake"
+      },
+      "preparation_and_reconciliation": {
+        "profile_path": "src/types/issuescratch.framing-controller.v1.json",
+        "profile_version": "1.6.0",
+        "outer_minimum_items": 19,
+        "outer_preparation_index": 0,
+        "nested_preparation_count": 5,
+        "nested_preparation_roles": [
+          "contextual_instruction_and_initial_opcode_projection",
+          "requirements_rumination",
+          "adversarial_review",
+          "atomistic_action_decomposition",
+          "atomic_opcode_rendering"
+        ],
+        "context_field": "context_elements[array<object>]",
+        "initial_opcode_field": "initial_opcode_projection[array<object>]",
+        "framing_indices": {
+          "start": 1,
+          "end": 15,
+          "exercises": 5,
+          "entries_per_exercise": 3
+        },
+        "reconciliation_indices": [
+          16,
+          17,
+          18
+        ],
+        "terminal_index": 18,
+        "minimum_atomic_op_steps": 2,
+        "historical_runs_preserved": true,
+        "workflow_artifacts_in_agent_comment": false,
+        "reconciliation_roles": [
+          "16:reconcile",
+          "17:compile",
+          "18:deliver"
+        ],
+        "final_deliverable_index": 18,
+        "agent_verifies_semantic_deliverable": true
+      },
+      "higher_order_framing": {
+        "registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+        "registry_blob_sha": "79e993b7e852461bac99bc3a4b7b5b25cf8d1ed0",
+        "operator_ids": [
+          "OP.02.001",
+          "OP.02.002"
+        ],
+        "mode_ids": [
+          "CONTRACT",
+          "IMPLEMENTATION",
+          "CONSTRUCT",
+          "GENERAL"
+        ],
+        "selection_indices": [
+          1,
+          4,
+          7,
+          10,
+          13
+        ],
+        "operator_random_method": "crypto.randomInt(2) once per 3-index frame",
+        "conditional_abstract_mode_random_method": "crypto.randomInt(4) when ABSTRACT chosen",
+        "atomic_function_registry": "src/types/issuescratch.operation-registry.v1.json",
+        "atomic_registry_blob_sha": "233406589704b8b8a6ad8d1a749606867a2856c3",
+        "atomic_random_method": "crypto.randomInt(14) per target index",
+        "persisted_frame_state_path": "progression.frame_selections",
+        "persisted_draw_receipt": "next_function.random_selection.draws",
+        "substantive_input_fields": [
+          "solver_or_subject[object]",
+          "enclosing_target[object]"
+        ],
+        "substantive_output_field": "higher_order_result[object]",
+        "reframing_count": 5,
+        "scope": "indices 1..15, three entries per frame",
+        "validation": "structural only, semantic agent execution unverified",
+        "no_worker_workspace_writes": true,
+        "no_worker_workflow_writes": true,
+        "main_branch_only": true
+      },
+      "artifact_publication": {
+        "schema": "issuescratch.generic-artifact-publication.v1",
+        "implementation_path": "src/artifact-publisher.js",
+        "tests_path": "src/artifact-publisher.test.js",
+        "workflow_path": ".github/workflows/issue1-json-validator.yml",
+        "authorizing_actor": "repository owner, source comment author",
+        "authorization": "artifact_targets declared in nested preparation index 0 with paths and source_context_id referencing explicit_user context",
+        "output": "artifacts[array<object>] at outer index 18; UTF-8 path/content records matching declared paths",
+        "preconditions": [
+          "19 consecutive accepted revisions",
+          "5 saved higher-order frame selections",
+          "18 controller instructions matched to immutable instruction receipts",
+          "current source digest and controller completion"
+        ],
+        "publication": "Use a single generic create-or-update GitHub file operation with optimistic blob SHA concurrency; any existing artifact is replaced directly regardless of filename",
+        "receipt_pattern": "workspaces/issue1-diagnostics/comments/<comment_id>/published-artifacts/<source-sha256>.json",
+        "receipt_schema": "issuescratch.artifact-publication-receipt.v1",
+        "no_special_readme_rule": true,
+        "historical_experiments": "Retain old candidate files and receipts only as historical evidence; no new README-only generation or comparison steps"
+      },
+      "job_lifecycle_handshake": {
+        "schema": "issuescratch.job-lifecycle-handshake.v1.1",
+        "mandatory": true,
+        "scope": "Each controlled Issue #1 job culminates in substantive user-requested deliverable at index 18; subsequent output readback is verification, never a separate solution-generation stage.",
+        "minimum_outer_entries": 19,
+        "phases": [
+          {
+            "phase": "preflight",
+            "worker_action": "Read instructions and current sources; deduplicate; record user-authorized output, validators and task success criteria",
+            "workflow_evidence": "none required before source creation",
+            "advance": "only if a fresh job is authorized and no matching active source job exists"
+          },
+          {
+            "phase": "source_creation",
+            "worker_action": "Create single source comment with one index-0 entry and five nested preparatory scratchpads; read back comment ID, author, full JSON and hash",
+            "workflow_evidence": "immutable GitHub source comment",
+            "advance": "only after source identity is independently verified"
+          },
+          {
+            "phase": "first_acceptance",
+            "worker_action": "Inspect saved state and instruction 01 and controller reply",
+            "workflow_evidence": "accepted_entries=1, next_index=1, matching source hash, persisted index-1 instruction and delivered status",
+            "advance": "only when all sources agree"
+          },
+          {
+            "phase": "tracked_loop",
+            "worker_action": "For i=1..18, apply exactly the published instruction, append one distinct substantive entry without mutating prefix, read back source, then poll state, revision and next instruction/receipt",
+            "workflow_evidence": "one accepted transition per edit; source hash, prefix, selected operation and frame persisted; next index verified",
+            "advance": "only after independent acknowledgement of the current index and delivered next instruction"
+          },
+          {
+            "phase": "solution_reconciliation_and_compilation",
+            "worker_action": "At index 16 reconcile preceding work; at index 17 compile a coherent working solution; at index 18 submit the complete requested answer or file bytes. Perform agent-owned content and requirement checks while composing these entries.",
+            "workflow_evidence": "19 accepted revisions, five framing selections, eighteen immutable controller instructions, terminal digest; structural receipt only",
+            "advance": "only after the agent produced a concrete deliverable at index 18; controller acceptance alone is not a semantic success check"
+          },
+          {
+            "phase": "delivery_verification",
+            "worker_action": "Independently evaluate the actual index-18 deliverable for the original user's requested content, format, access and correctness; inspect published destination bytes and receipts for files.",
+            "workflow_evidence": "workflow-owned publication receipt and destination readback where applicable; task-specific evidence independently inspected by agent",
+            "advance": "only if the index-18 result is substantively produced and verified; no new plan or content-generation stage"
+          },
+          {
+            "phase": "terminal_readback",
+            "worker_action": "Read final saved state and the same index-18 output, file readback and generic publication receipts; report completed only if the actual deliverable is verified, otherwise blocked/incomplete.",
+            "workflow_evidence": "exact job identity, completion status and immutable receipts",
+            "advance": "mark completed only with both minimum_proof and deliverables evidence"
+          },
+          {
+            "phase": "extension_if_needed",
+            "worker_action": "If original task remains unfinished after index 18, retain same identity and fail closed until a separately implemented/tested continuation protocol supports each extra index",
+            "workflow_evidence": "current controller has no accepted indices beyond 18",
+            "advance": "never describe post-19 material as an accepted handshake without verified controller support"
+          }
+        ],
+        "no_worker_workspace_writes": true,
+        "no_special_readme_path": true,
+        "abort_on_unverified_transition": true,
+        "implementation_status": {
+          "tracked_0_through_18": "Controller source progression and structural validation; final item must contain an agent-authored deliverable under the procedural contract, but semantic adequacy cannot be controller-certified.",
+          "post_19": "not implemented",
+          "semantic_task_completion": "Not controller-enforced: the agent evaluates semantic adequacy and correctness of its index-18 deliverable and records evidence; the workflow only validates configured structural conditions."
+        },
+        "agent_owned_semantic_verification": true,
+        "delivery_is_index_18": true,
+        "post_index_18_activity": "verification and readback only"
+      }
+    },
+    "source_archive": {
+      "original_blob_sha": "8a0912e5cfa641a899e19ba02cbefde7f61d59bd",
+      "previous_active_document_blob_sha": "837b72c80bf1fb0a5e2a68ac03532fda0a125642",
+      "historic_file_url": "https://github.com/BestNameYet/IssueScratch/blob/b57af6a799b66ae2798b651f77d1208f0f1995af/AGENTS.md",
+      "current_amendment": "Correct the terminal phase: indices 16–18 reconcile, compile, then DELIVER the actual result. Controller only authenticates structure and source progression; the acting agent independently assesses correctness, completeness and utility, and verifies publication receipts as evidence after index 18. No separate solution-generation stage.",
+      "previous_type_registry_reference": {
+        "path": "src/types/issuescratch.scratchpad-field-registry.v2.json",
+        "blob_sha": "1cb51d65f22264ada20e35c7c908452aabbfd57e",
+        "version": "issuescratch.scratchpad-field-registry.v2"
+      }
+    },
+    "coverage": {
+      "active_section_count": 25,
+      "active_procedure_count": 208,
+      "registered_fields": 59,
+      "linked_registry_sha": "03a624ae2cbc8fa84ce95aa6a98af1060a50f249",
+      "active_examples": 0,
+      "source_traceability": "Historical procedures reference their original blob SHA and source section; new procedures reference the current amendment. Deleted historical text remains in Git history, not in this active document.",
+      "all_active_sections_mapped": true,
+      "array_root_minimum_items": 19,
+      "legacy_RS_objects_preserved": true,
+      "array_item_wrapper_key": "scratchpad",
+      "array_item_wrapper_exact_keys": true,
+      "expanded_flat_permitted_activities": 152,
+      "shuffled_illustrative_scratchpads": 17,
+      "linked_uses_types_sha": "03a624ae2cbc8fa84ce95aa6a98af1060a50f249",
+      "externalized_permitted_use_statements": true,
+      "externalized_named_types": true,
+      "comment_diagnostics_enabled": true,
+      "comment_diagnostics_history_json_objects": true,
+      "comment_tracking_maximum_index": 18,
+      "comment_progression_function_selected": true,
+      "document_opcode_adapter": true,
+      "operation_registry_entries": 16,
+      "opcode_procedural_sort_valid": true,
+      "framing_controller_random_selection": true,
+      "framing_controller_issued_live_indices": 2,
+      "framing_controller_agent_semantic_execution": false,
+      "agent_workflow_handshake_defined": true,
+      "preparation_nested_count": 5,
+      "reframing_exercises": 5,
+      "reconciliation_slots": 3,
+      "initial_opcode_projection_required": true,
+      "framing_controller_current_live_probe_accepted": 4,
+      "framing_controller_complete_19_index_run_verified": false,
+      "higher_order_operators": 2,
+      "higher_order_abstraction_modes": 4,
+      "higher_order_framing_selection_count": 5,
+      "higher_order_full_run_verified": false,
+      "higher_order_one_frame_live_verified": true,
+      "higher_order_live_accepted_indices": 4,
+      "higher_order_tests_passed": 43,
+      "higher_order_test_run": 41241263066,
+      "generic_artifact_publication": true,
+      "readme_specific_publication_active": false,
+      "required_end_to_end_job_handshake": true,
+      "extended_entry_handshake_deployed": false,
+      "final_deliverable_required": true,
+      "final_deliverable_semantic_verification_owner": "agent",
+      "controller_semantic_enforcement": false
+    }
+  },
+  "controller_profile": {
+    "schema": "issuescratch.framing-controller-profile.v1",
+    "version": "2.1.1",
+    "purpose": "One preparation entry; five three-slot higher-order frames; three solution-producing final entries: reconcile all source work (16), compile it into an actionable solution (17), and produce the requested deliverable (18). The controller verifies structure and source-linked progression; the agent independently evaluates the delivered result against the user's task.",
+    "source": "An original instruction must be substantively unpacked before reframing, and opcode reconciliation must cover preceding scratchpads and the preparatory array.",
+    "first_index": 0,
+    "last_tracked_index": 18,
+    "frame_count": 5,
+    "slots_per_frame": 3,
+    "reference_ids": [
+      "R-A",
+      "R-B"
+    ],
+    "free_indices": [],
+    "layout": "0: one preparatory scratchpad holding five nested scratchpads; 1..15: five frames of R-A, R-B and narrative expansion (3 each); 16: reconcile all contributions; 17: compile a coherent solution with atomic opcode lineage; 18: produce the actual answer/artifact and agent-evaluate it.",
+    "selection_method": "On the first slot of each three-index frame, draw SOLVER_LIFT or ABSTRACT uniformly using crypto.randomInt(2). If ABSTRACT is chosen, draw one mode from CONTRACT, IMPLEMENTATION, CONSTRUCT, GENERAL using crypto.randomInt(4). Retain that single higher-order choice across the frame's three indices. Independently draw an eligible OP.01 atomic function for each new index, including reconciliation. Persist every draw and never reroll after interruption.",
+    "constraints": [
+      "Each accepted revision is a single root JSON array and adds exactly one scratchpad wrapper at its next zero-based index.",
+      "Preserve all previously accepted entries without edits; keep references R-A and R-B distinct through all five frames.",
+      "An enclosing statement about an inner claim must not silently become a direct assertion that the inner claim is true.",
+      "Each narrative expansion adds new substantive content rather than merely paraphrasing the preceding frame.",
+      "No semantic compliance checker is asserted: the workflow checks structural validity and retains complete diagnostic evidence.",
+      "After index 18, freeze progression while continuing JSON validation.",
+      "The preparatory entry retains the entire original instruction and an explicit opcode rendering as substantive scratchpad content, not workflow metadata.",
+      "The three final entries are explicitly reconciliatory, not unrestricted.",
+      "The opcode reconciler must reference the preparatory array and all earlier framing entries without promoting narrated claims to verified truths.",
+      "Opcode rendering is action-granular; each action is mapped to bound OP steps with operands and traceability, not one omnibus opcode.",
+      "The adversarial preparation must drive concrete checks for the action decomposition and the final reconciler.",
+      "The preparatory instruction record must include explicit, minimalist, maximalist, inferred beginning/post states, and inferred change as distinct projections.",
+      "Prepare an initial context-aware opcode-step projection in the first of the five nested preparatory scratchpads, with context_elements as an explicitly typed array.",
+      "Keep the first opcode projection provisional and preserve traceability through adversarial review, atomic decomposition, final rendering and reconciliation.",
+      "Select exactly one OP.02 higher-order framing operator for each of the five three-index exercises; never choose a separate higher-order operator for each slot.",
+      "SOLVER_LIFT takes the preceding solver, its assumptions/method/limitations and its provenance as input to an enclosing solver; it must not simply paraphrase the original problem.",
+      "ABSTRACT changes representation under one of four explicit modes; IMPLEMENTATION represents a mechanism without executing code.",
+      "Retain the same higher-order mode/operator through all three slots, and preserve identity, attribution, invariants, suppression lists and source mapping across frames.",
+      "Retain independently selected atomic OP.01 steps per index where useful; atomic and higher-order choices have different semantics and must not be conflated.",
+      "No claim of semantic correctness or actual solver execution follows from structural validation or opcode publication.",
+      "Require substantive frame input and transformed output structures, including source mappings, under the selected higher-order operator; an opcode name alone cannot satisfy the third slot."
+    ],
+    "delivery": "Persist next_function as a JSON object in comment state, record an instruction JSON object in the workspace, and publish/update a source-linked controller comment on Issue #1. This publishes instructions; an external agent still must act on them.",
+    "candidate_status": "Revised 1+15+3 layout requires updated tests and end-to-end run",
+    "random_function_pool": [
+      "OP.01.002",
+      "OP.01.003",
+      "OP.01.004",
+      "OP.01.005",
+      "OP.01.006",
+      "OP.01.007",
+      "OP.01.008",
+      "OP.01.009",
+      "OP.01.010",
+      "OP.01.011",
+      "OP.01.012",
+      "OP.01.013",
+      "OP.01.014",
+      "OP.01.015"
+    ],
+    "random_pool_registry": "src/types/issuescratch.operation-registry.v1.json",
+    "random_exclusions": {
+      "OP.01.001": "CAPTURE is source preservation, not a substantive operator",
+      "OP.01.016": "EMIT is serialization, not a substantive operator"
+    },
+    "operation_application": "The selected operation is applied by the agent to the designated scratchpad/frame inputs, while its fixed structural obligations preserve two referent identities and increase framing depth. OP functions are abstract; the workflow does not itself generate the agent's narrative.",
+    "enclosing_actions_obsolete_at_version": "1.1.0",
+    "preparatory_index": 0,
+    "preparatory_array_length": 5,
+    "preparatory_field": "preparation[array<object>]",
+    "preparatory_nested_wrapper_key": "scratchpad",
+    "preparatory_roles": [
+      {
+        "index": 0,
+        "role": "contextual_instruction_and_initial_opcode_projection",
+        "requirements": [
+          "Preserve the full original instruction as text, without replacing the verbatim source.",
+          "Capture relevant surrounding conversation in a context_elements array, with source references, order, excerpt/summary status, and explicit-vs-inferred authority.",
+          "Immediately produce an initial_opcode_projection array after examining the instruction against the context_elements; use separate atomic action steps rather than one omnibus opcode.",
+          "Supply minimalist and maximalist user-intent projections, explicit intent, inferred beginning state, inferred desired post state, and inferred change.",
+          "Flag the initial opcode projection as provisional; later adversarial review and atomistic decomposition may revise it without modifying the source wording.",
+          "Do not treat projected intent as an independently issued user command."
+        ],
+        "projection_fields": {
+          "verbatim_instruction": "Preserve the source wording exactly without replacing it with the projection.",
+          "context_elements": "Ordered array of relevant surrounding-conversation elements, each linked to an identifiable source and explicitly typed by authority.",
+          "initial_opcode_projection": "Ordered, context-aware, action-granular preliminary OP steps. Every step cites source instruction/context and is flagged provisional.",
+          "minimalist_user_intent": "Smallest defensible user goal.",
+          "maximalist_user_intent": "Largest defensible user goal bounded by source.",
+          "explicit_intent": "Directly stated requirements grounded in source wording.",
+          "inferred_beginning_state": "Inferred state before work, with basis and uncertainty.",
+          "inferred_post_state": "Inferred desired future state, not an execution claim.",
+          "inferred_change": "Difference between inferred beginning and post states, with provenance."
+        },
+        "inference_rules": [
+          "Explicit intent must have clear grounding in original wording.",
+          "All inferred content requires evidence_basis and uncertainty or an explicit unknown marker.",
+          "Competing plausible readings may be represented without selecting a winner.",
+          "Inferred post state is desired/anticipated, not evidence of actual completion."
+        ],
+        "context_element_contract": {
+          "required_fields": [
+            "context_id",
+            "sequence",
+            "source_kind",
+            "source_ref",
+            "content",
+            "representation",
+            "authority",
+            "relevance"
+          ],
+          "source_kind_options": [
+            "user_message",
+            "assistant_message",
+            "repository_rule",
+            "previous_job_record",
+            "other"
+          ],
+          "representation_options": [
+            "verbatim_excerpt",
+            "faithful_summary"
+          ],
+          "authority_options": [
+            "explicit_user",
+            "assistant_interpretation",
+            "repository_instruction",
+            "historical_observation",
+            "inferred"
+          ],
+          "constraints": [
+            "Preserve temporal order and source references; do not confuse assistant proposals with user instructions.",
+            "Only claim an exact quote when representation=verbatim_excerpt and the words actually match source.",
+            "Record omissions or uncertainty instead of manufacturing context.",
+            "The context_elements array is substantive source interpretation, not a workflow handshake or acknowledgement."
+          ]
+        },
+        "initial_opcode_contract": {
+          "required_step_fields": [
+            "step_id",
+            "action_id",
+            "opcode",
+            "operands",
+            "depends_on",
+            "result_ref",
+            "source_refs",
+            "context_refs",
+            "status"
+          ],
+          "status": "provisional",
+          "minimum_steps": 2,
+          "mapping": "Each step maps a bounded action to exactly one registered OP opcode. The source_refs and context_refs must resolve to the original instruction or entries of context_elements.",
+          "prohibits": [
+            "Single OP code for the entire instruction",
+            "Substituting CAPTURE or EMIT for substantive actions",
+            "Claiming a projection has already been executed"
+          ],
+          "revision_path": "Nested preparatory scratchpads 2 (adversarial review), 3 (atomistic decomposition), and 4 (revised opcode rendering)."
+        }
+      },
+      {
+        "index": 1,
+        "role": "requirements_rumination",
+        "requirements": [
+          "Examine explicit and implicit demands, ambiguities, boundary cases, and acceptance criteria; reason about the full instruction without replacing the verbatim source."
+        ]
+      },
+      {
+        "index": 2,
+        "role": "adversarial_review",
+        "requirements": [
+          "Challenge assumptions, identify contradictory or underdetermined requirements, test failure cases, and identify unauthorized interpretations.",
+          "Present counterarguments and discriminating checks rather than merely restating the requirements.",
+          "Challenge contextual assumptions and the initial opcode projection, distinguishing explicit user instructions from assistant-originated or inferred context."
+        ]
+      },
+      {
+        "index": 3,
+        "role": "atomistic_action_decomposition",
+        "requirements": [
+          "Break the instruction into independently identifiable executable actions; each action has a stable action_id, source span or quote, typed inputs, expected output, dependencies, and explicit completion predicate.",
+          "Avoid a single omnibus action or one operator standing for the entire instruction.",
+          "Use adversarial findings to identify missing actions or failure paths.",
+          "Tag each atomic action with its source projection, distinguishing explicitly requested actions from inferred supporting actions.",
+          "Compare atomic actions with the initial contextual opcode projection and trace divergences."
+        ]
+      },
+      {
+        "index": 4,
+        "role": "atomic_opcode_rendering",
+        "requirements": [
+          "Render every decomposed action as one or more reusable operation opcodes with typed operands, explicit dependencies, and expected result references.",
+          "Maintain a one-to-many or many-to-many mapping between actions and opcode steps where required; do not represent all instructions as one giant command.",
+          "Carry forward the source instruction, adversarial checks, and decomposition identifiers.",
+          "Do not claim the opcode declaration executes any action.",
+          "Retain links from atomic opcode steps to the instruction projections and record which steps implement explicit versus inferred actions.",
+          "Reconcile the final action-level rendering with the initial contextual projection, including contextual authority, provenance and deviations."
+        ]
+      }
+    ],
+    "frame_start_index": 1,
+    "frame_end_index": 15,
+    "reconciliation_indices": [
+      16,
+      17,
+      18
+    ],
+    "reconciliation_roles": [
+      {
+        "index": 16,
+        "role": "collect_and_reconcile",
+        "read_indices": "0..15",
+        "requirements": [
+          "Consolidate all preparatory and framing entries into one source-traceable account of the user's problem, evidence, constraints, and useful intermediate results.",
+          "Resolve conflicts, distinguish explicit user requirements from inference, identify unresolved gaps, and specify the complete solution that the next entry must compile.",
+          "Carry all relevant contributions forward; the output of this step must be usable by the solution compiler, not merely a summary of previous entries."
+        ]
+      },
+      {
+        "index": 17,
+        "role": "opcode_reconciliation",
+        "read_indices": "0..16",
+        "requirements": [
+          "Compile the reconciled contributions and the agent's substantive work into a coherent actionable solution that satisfies the original user's request; do not stop at an opcode projection.",
+          "Preserve individually registered opcode steps with typed operands, dependencies, result references and source pointers, accounting for all five preparatory scratchpads and framing outputs.",
+          "Supply the deliverable specification and actual solution content or construction inputs needed by index 18, with explicit linkage between requirements, outputs, and verification predicates.",
+          "Distinguish declared operations from operations actually performed; selected opcodes and structural validity are not proof that compilation or task execution succeeded."
+        ]
+      },
+      {
+        "index": 18,
+        "role": "final_synthesis_and_validation",
+        "read_indices": "0..17",
+        "requirements": [
+          "Use the compiled solution from index 17 to produce the ACTUAL user-requested deliverable in index 18, not a proposed answer, TODO list, outline, or artifact plan.",
+          "For a response-only task, include the complete user-facing answer in final_output[string]. For an explicitly authorized repository-file task, include the complete UTF-8 target content in artifacts[array<object>] with the previously declared exact destination path; final_output[string] may instead point to the declared artifact (repository-relative path or JSON pointer).",
+          "Independently, as the acting agent, inspect the actual deliverable against the original user instruction, required format, source provenance, and domain-specific validation (for example, the real opcode-document adapter where required). Distinguish observed results from inferred assertions.",
+          "Report any missing or failed essential deliverable checks as incomplete/blocked; do not claim success solely because the controller accepted the nineteenth entry.",
+          "Keep workflow acknowledgments, publication receipts and later readback as external evidence of publishing the content already supplied at index 18; they do not constitute another content-generation stage."
+        ]
+      }
+    ],
+    "atomistic_mapping_contract": {
+      "minimum_independent_actions": 2,
+      "action_fields": [
+        "action_id",
+        "source_text_or_span",
+        "verb",
+        "inputs",
+        "expected_output",
+        "depends_on",
+        "completion_test"
+      ],
+      "step_fields": [
+        "step_id",
+        "action_id",
+        "opcode",
+        "operands",
+        "depends_on",
+        "result_ref",
+        "validation"
+      ],
+      "rule": "A rendered step binds exactly one registered OP operator to a bounded action or subaction. Each decomposed action must be mapped; composite instructions require multiple explicit steps. CAPTURE and EMIT may bookend the artifact but are not substitutes for the substantive steps.",
+      "adversarial_review_link": "Every review objection must be explicitly resolved, rejected with rationale, or recorded as unresolved before final synthesis.",
+      "instruction_provenance": "The original instruction and all named intent/state projections remain available at nested preparatory index 0; action decomposition at nested index 3 must cite those projections and distinguish explicit versus inferred actions.",
+      "initial_projection_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/initial_opcode_projection[array<object>]",
+      "context_pointer": "/0/scratchpad/preparation[array<object>]/0/scratchpad/context_elements[array<object>]",
+      "revision_rule": "Nested index 4 must reconcile each preliminary step with atomistic actions from nested index 3, recording amended, retained, rejected and added step mappings."
+    },
+    "higher_order_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+    "higher_order_operator_pool": [
+      "OP.02.001",
+      "OP.02.002"
+    ],
+    "higher_order_abstract_modes": [
+      "CONTRACT",
+      "IMPLEMENTATION",
+      "CONSTRUCT",
+      "GENERAL"
+    ],
+    "higher_order_frame_selection": "one new higher-order selection per frame, at indices 1,4,7,10,13; reuse at every later index inside the same frame",
+    "higher_order_randomness": "50/50 operator class; four modes equiprobable conditional on ABSTRACT; atomic operator is independently selected from fourteen OP.01 codes at each index",
+    "frame_input_contract": {
+      "inner_solver_fields": [
+        "problem_ref",
+        "method_ref",
+        "assumptions_ref",
+        "intermediate_result_refs",
+        "limitations_ref",
+        "source_refs"
+      ],
+      "abstraction_fields": [
+        "subject_ref",
+        "context_refs",
+        "invariants",
+        "mode",
+        "target"
+      ],
+      "frame_lineage_fields": [
+        "frame_id",
+        "enclosing_frame_id",
+        "source_indices",
+        "source_refs",
+        "invariants"
+      ],
+      "frame_output_fields": [
+        "preserved_properties",
+        "suppressed_details",
+        "introduced_assumptions",
+        "source_mapping",
+        "next_solver_input"
+      ],
+      "note": "At framing slot 0 identify the inner solver/subject; slot 1 identify enclosing perspective and invariants; slot 2 construct transformed output plus source mappings. No autonomous solver execution is implied."
+    },
+    "frame_selection_persistence": {
+      "state_field": "progression.frame_selections",
+      "instruction_field": "higher_order_frame",
+      "choice_receipt": "Same per-index immutable instruction JSON and controller comment used by OP.01 selections",
+      "replay": "Upon retry, re-read the saved per-index draw sequence (operator, optional mode, atomic), and use the existing frame selection for the other two slots.",
+      "compatibility": "Prior issued instructions remain immutable; this operator profile applies to newly initiated frames and new comments."
+    },
+    "substantive_frame_output_contract": {
+      "index_role_fields": {
+        "reference_a": "solver_or_subject[object]",
+        "reference_b": "enclosing_target[object]",
+        "third_slot": "higher_order_result[object]"
+      },
+      "required_solver_fields": [
+        "problem_ref",
+        "method_ref",
+        "assumptions_ref",
+        "intermediate_result_refs",
+        "limitations_ref",
+        "source_refs"
+      ],
+      "required_enclosing_target_fields": [
+        "target_ref",
+        "context_refs",
+        "invariants",
+        "purpose"
+      ],
+      "required_result_fields": [
+        "preserved_properties",
+        "suppressed_details",
+        "introduced_assumptions",
+        "source_mapping",
+        "next_solver_input"
+      ],
+      "solver_lift_specific": "outer_solver_input object with subject_solver_ref, question_about_solver, problem_ref, source_refs",
+      "abstraction_specific": "representation object with the fields declared by the selected CONTRACT, IMPLEMENTATION, CONSTRUCT or GENERAL mode",
+      "validation": "Structural validation of content fields and source references against current frame selection. It does not prove semantic correctness or execution.",
+      "source_comment_policy": "These fields are substantive solver output, NOT workflow acknowledgement, selection metadata, controller IDs or execution receipts."
+    },
+    "agent_deliverable_contract": {
+      "schema": "issuescratch.agent-final-deliverable.v1",
+      "indices": {
+        "reconcile": 16,
+        "compile": 17,
+        "deliver": 18
+      },
+      "required_principle": "Every completed controlled task culminates in a substantive deliverable at index 18, grounded in the compiled output of indices 16 and 17.",
+      "response_delivery": "final_output[string] must contain the actual answer, not a plan to answer.",
+      "artifact_delivery": "For targets declared by the user, artifacts[array<object>] at index 18 contains full UTF-8 path/content objects. The existing general publisher verifies its own technical preconditions and writes the exact output after controller acceptance.",
+      "verification_owner": "The acting agent evaluates semantic adequacy, requirement coverage, originality, provenance, applicable tests, and whether the submitted output actually addresses the user request.",
+      "controller_boundary": "The controller can verify syntax, shape, identity, ordinal progression, framing structures, and persisted instruction receipts; it cannot verify the semantic adequacy, correctness, or usefulness of the delivered answer.",
+      "post_acceptance": "The acting agent independently checks destination readback and external receipts and reports success only if delivery evidence matches the user's requirements. This is verification of index 18, not a new generation step.",
+      "failure": "If a substantive deliverable cannot be produced, report incomplete/blocked and identify deficiencies; do not substitute an outline, a candidate plan, or a completion claim."
+    }
+  },
+  "atomic_operation_registry": {
+    "document_type": "issuescratch.operation-registry",
+    "format_version": "1.0.0",
+    "opcode_namespace": "OP.01",
+    "opcode_pattern": "^OP\\.01\\.[0-9]{3}$",
+    "relationship_to_agents_opcode": "OP.* is a reusable functional operation namespace distinct from the unique IS.* procedure identifiers in AGENTS.md. A job/record identity is not an operation opcode.",
+    "registry_intent": "Small, extensible vocabulary of first-level operators; higher-order procedures are sequences or compositions. These describe requested operations, not proof of execution or semantic correctness.",
+    "operational_semantics": "An opcode selects an abstract operation. Any concrete executor must separately register and verify the function or transformation used to realize it; no opcode by itself grants tool permissions or establishes task completion.",
+    "no_semantic_guess": "Generic conversion MUST use CAPTURE only when no explicit mapping profile exists. Specialized opcode sequences are supplied by a mapping profile, not inferred from arbitrary prose.",
+    "primitives": [
+      {
+        "opcode": "OP.01.001",
+        "name": "CAPTURE",
+        "description": "Preserve a source fragment and its identity without interpreting its meaning",
+        "input_contract": "source_fragment",
+        "output_contract": "source_reference"
+      },
+      {
+        "opcode": "OP.01.002",
+        "name": "GENERATE",
+        "description": "Produce new content under given constraints",
+        "input_contract": "input_and_constraints",
+        "output_contract": "candidate"
+      },
+      {
+        "opcode": "OP.01.003",
+        "name": "TRANSFORM",
+        "description": "Convert existing material while respecting stated invariants",
+        "input_contract": "existing_content_and_constraints",
+        "output_contract": "transformed_content"
+      },
+      {
+        "opcode": "OP.01.004",
+        "name": "ANALYZE",
+        "description": "Extract or examine properties and relationships",
+        "input_contract": "subject_and_questions",
+        "output_contract": "observations"
+      },
+      {
+        "opcode": "OP.01.005",
+        "name": "EVALUATE",
+        "description": "Appraise a claim or artifact against declared criteria",
+        "input_contract": "subject_and_criteria",
+        "output_contract": "assessment"
+      },
+      {
+        "opcode": "OP.01.006",
+        "name": "COMPARE",
+        "description": "Contrast two or more subjects with respect to dimensions",
+        "input_contract": "subjects_and_dimensions",
+        "output_contract": "comparison"
+      },
+      {
+        "opcode": "OP.01.007",
+        "name": "COMPUTE",
+        "description": "Apply an explicit mathematical or computational procedure",
+        "input_contract": "function_and_operands",
+        "output_contract": "result"
+      },
+      {
+        "opcode": "OP.01.008",
+        "name": "DESIGN",
+        "description": "Specify a structure or mechanism meeting requirements",
+        "input_contract": "requirements",
+        "output_contract": "design"
+      },
+      {
+        "opcode": "OP.01.009",
+        "name": "PLAN",
+        "description": "Arrange actions with constraints and dependencies",
+        "input_contract": "goal_and_constraints",
+        "output_contract": "plan"
+      },
+      {
+        "opcode": "OP.01.010",
+        "name": "SELECT",
+        "description": "Choose one or more candidates according to a rule",
+        "input_contract": "candidates_and_rule",
+        "output_contract": "selection"
+      },
+      {
+        "opcode": "OP.01.011",
+        "name": "APPLY",
+        "description": "Apply a named, separately defined function to arguments",
+        "input_contract": "function_ref_and_arguments",
+        "output_contract": "result"
+      },
+      {
+        "opcode": "OP.01.012",
+        "name": "BRANCH",
+        "description": "Select a branch based on an explicit predicate",
+        "input_contract": "condition_and_branches",
+        "output_contract": "selected_branch"
+      },
+      {
+        "opcode": "OP.01.013",
+        "name": "ITERATE",
+        "description": "Repeat a specified operator under an explicit bound or stopping test",
+        "input_contract": "operator_state_and_stop_condition",
+        "output_contract": "iteration_result"
+      },
+      {
+        "opcode": "OP.01.014",
+        "name": "VALIDATE",
+        "description": "Check a result against machine-checkable or declared conditions",
+        "input_contract": "result_and_conditions",
+        "output_contract": "validation_result"
+      },
+      {
+        "opcode": "OP.01.015",
+        "name": "REFERENCE",
+        "description": "Bind or resolve an identifier, scope, or contextual relationship",
+        "input_contract": "reference_and_environment",
+        "output_contract": "resolution"
+      },
+      {
+        "opcode": "OP.01.016",
+        "name": "EMIT",
+        "description": "Return or serialize an artifact without claiming successful evaluation",
+        "input_contract": "artifact_and_format",
+        "output_contract": "output"
+      }
+    ],
+    "mapping_profile_example": "experiments/general-purpose-job-opcode-map.v1.json"
+  },
+  "higher_order_operation_registry": {
+    "schema": "issuescratch.higher-order-operators.v1",
+    "version": "1.0.0",
+    "description": "Five recursive frames each select exactly one higher-order operator, retaining that selection across all three frame indices. Atomic OP.01 functions remain available per index and never substitute for the frame operator.",
+    "namespace": "OP.02",
+    "selection": {
+      "operator_pool": [
+        "OP.02.001",
+        "OP.02.002"
+      ],
+      "mechanism": "node:crypto.randomInt(2) once at the beginning of each three-index frame",
+      "mode_selection": "When OP.02.002 is selected, independently draw one of four ABSTRACT modes uniformly with crypto.randomInt(4); preserve both selections through the frame.",
+      "retention": "Commit selected operator, mode, random ordinals and source revision into controller per-comment state and immutable next-function instruction, never choose again inside that frame.",
+      "randomness_note": "No claim of uniformity across all five resulting behaviors; operator types are 50/50, modes conditioned on ABSTRACT."
+    },
+    "operators": [
+      {
+        "opcode": "OP.02.001",
+        "name": "SOLVER_LIFT",
+        "class": "higher_order",
+        "input_contract": {
+          "inner_solver": {
+            "problem_ref": "string",
+            "method_ref": "string",
+            "assumptions_ref": "string",
+            "intermediate_result_refs": "string[]",
+            "limitations_ref": "string",
+            "source_refs": "string[]"
+          },
+          "enclosing_context_refs": "string[]",
+          "question_about_solver": "string"
+        },
+        "output_contract": {
+          "outer_solver_input": "object",
+          "changed_reasoning_level": "integer",
+          "preserved_invariants": "string[]",
+          "source_lineage": "object[]",
+          "unresolved": "object[]"
+        },
+        "semantics": "Construct an enclosing solver whose subject is the preceding solver (including its method, assumptions, and limitations), rather than merely reissuing the original problem.",
+        "constraints": [
+          "The inner solver is an input artifact, not an automatically executed subroutine.",
+          "Retain a trace from every new assertion to the inner solver and original source.",
+          "No semantic execution claimed by assigning opcode."
+        ]
+      },
+      {
+        "opcode": "OP.02.002",
+        "name": "ABSTRACT",
+        "class": "higher_order",
+        "input_contract": {
+          "subject_ref": "string",
+          "context_refs": "string[]",
+          "invariants": "string[]",
+          "mode": "CONTRACT|IMPLEMENTATION|CONSTRUCT|GENERAL",
+          "target": "string"
+        },
+        "output_contract": {
+          "representation": "object",
+          "preserved_properties": "string[]",
+          "suppressed_details": "string[]",
+          "new_assumptions": "object[]",
+          "source_mapping": "object[]",
+          "unresolved_questions": "object[]",
+          "next_solver_input": "object"
+        },
+        "semantics": "Change the subject's representation under an explicitly selected abstraction mode while preserving source traceability and recording intentionally omitted details.",
+        "constraints": [
+          "IMPLEMENTATION denotes an abstraction of implementation mechanisms, not authorization to implement code.",
+          "The output must be distinguishable from merely paraphrasing the prior solver.",
+          "Selection and structural validation are not evidence of correct semantic abstraction."
+        ]
+      }
+    ],
+    "modes": [
+      {
+        "id": "CONTRACT",
+        "description": "Model obligations, interfaces, preconditions, postconditions, and invariants.",
+        "required_output_fields": [
+          "obligations",
+          "interfaces",
+          "preconditions",
+          "postconditions",
+          "invariants"
+        ]
+      },
+      {
+        "id": "IMPLEMENTATION",
+        "description": "Model architecture, components, algorithms and dependencies without executing or writing code.",
+        "required_output_fields": [
+          "components",
+          "algorithms",
+          "dependencies",
+          "operational_boundaries"
+        ]
+      },
+      {
+        "id": "CONSTRUCT",
+        "description": "Reconstruct the subject as an organized formal or conceptual structure.",
+        "required_output_fields": [
+          "elements",
+          "relationships",
+          "construction_rules",
+          "invariants"
+        ]
+      },
+      {
+        "id": "GENERAL",
+        "description": "Extract properties that survive across instances or domains, with counterexamples and limits.",
+        "required_output_fields": [
+          "generalized_properties",
+          "supporting_instances",
+          "counterexamples",
+          "scope_limits"
+        ]
+      }
+    ],
+    "frame_structure": [
+      {
+        "slot": 0,
+        "role": "reference_a",
+        "requirements": [
+          "Identify preceding solver or subject representation with source lineage, method and limitations.",
+          "Do not invent a completed solver when only a draft or stated problem exists."
+        ]
+      },
+      {
+        "slot": 1,
+        "role": "reference_b",
+        "requirements": [
+          "Identify higher-order perspective, target contract/construct/mechanism, criteria and invariants.",
+          "Preserve the source and attribution of inner claims."
+        ]
+      },
+      {
+        "slot": 2,
+        "role": "apply_and_project",
+        "requirements": [
+          "Apply the selected higher-order operator, not merely repeat or rename the preceding material.",
+          "Record preserved properties, suppressed details, introduced assumptions and source mappings.",
+          "Produce a separately identifiable next solver input or representation."
+        ]
+      }
+    ],
+    "shared_invariants": [
+      "Two distinguishable referents across levels",
+      "Traceable ancestry of each enclosing solver",
+      "No promotion of inferred claims to direct user instructions",
+      "Meaningful change of reasoning level or representation"
+    ],
+    "outside_scope": [
+      "Autonomous execution of a chosen solver",
+      "Semantic verification of the content generated by an agent",
+      "Unrestricted repository mutation by the agent",
+      "Changing the 19 outer-index allocation"
+    ]
+  },
+  "render_instruction_templates": [
+    {
+      "opcode": "R.01.001",
+      "key": "reconcile.atomic",
+      "text": "Use atomic {atomic_name} ({atomic_opcode}) for a bounded supporting action.",
+      "source_opcodes": [
+        "IS.10.006",
+        "IS.12.008"
+      ]
+    },
+    {
+      "opcode": "R.01.002",
+      "key": "reconcile.lineage",
+      "text": "Reconcile all five persisted higher-order frames and their lineage, not merely the atomic function choices.",
+      "source_opcodes": [
+        "IS.12.011"
+      ]
+    },
+    {
+      "opcode": "R.01.003",
+      "key": "reconcile.append",
+      "text": "Append exactly one substantive scratchpad at index {index}; keep the accepted prefix unchanged.",
+      "source_opcodes": [
+        "IS.10.006"
+      ]
+    },
+    {
+      "opcode": "R.01.004",
+      "key": "frame.atomic",
+      "text": "Use atomic {atomic_name} ({atomic_opcode}) inside the fixed higher-order frame {frame_name}{mode_suffix}. An opcode instruction is not execution evidence.",
+      "source_opcodes": [
+        "IS.12.003",
+        "IS.12.008"
+      ]
+    },
+    {
+      "opcode": "R.01.005",
+      "key": "frame.lineage.input",
+      "text": "The enclosing frame receives the preceding solver or subject as an input with problem, method, assumptions, intermediate results, limitations and source references.",
+      "source_opcodes": [
+        "IS.12.003",
+        "IS.12.004"
+      ]
+    },
+    {
+      "opcode": "R.01.006",
+      "key": "frame.lineage.preserve",
+      "text": "Preserve source mapping, referent identities, attribution and invariants; record suppressed details, introduced assumptions and unresolved questions.",
+      "source_opcodes": [
+        "IS.12.006"
+      ]
+    },
+    {
+      "opcode": "R.01.007",
+      "key": "frame.lineage.transform",
+      "text": "Build a distinct new solver input or representation, not a paraphrase or an ungrounded claim of higher abstraction.",
+      "source_opcodes": [
+        "IS.12.004",
+        "IS.12.005"
+      ]
+    },
+    {
+      "opcode": "R.01.008",
+      "key": "frame.A.identify",
+      "text": "Reference A: identify the prior solver or subject representation, with its assumptions, method, evidence and limitations.",
+      "source_opcodes": [
+        "IS.12.003"
+      ]
+    },
+    {
+      "opcode": "R.01.009",
+      "key": "frame.A.cite",
+      "text": "Cite the actual preceding solver or preparatory instruction; do not invent completed execution.",
+      "source_opcodes": [
+        "IS.11.010"
+      ]
+    },
+    {
+      "opcode": "R.01.010",
+      "key": "frame.B.identify",
+      "text": "Reference B: identify the enclosing perspective, selected abstraction mode if applicable, target representation, and preservation criteria.",
+      "source_opcodes": [
+        "IS.12.003"
+      ]
+    },
+    {
+      "opcode": "R.01.011",
+      "key": "frame.B.distinguish",
+      "text": "Differentiate this framing reference from the inner solver or subject.",
+      "source_opcodes": [
+        "IS.12.004"
+      ]
+    },
+    {
+      "opcode": "R.01.012",
+      "key": "frame.append.reference",
+      "text": "Append exactly one substantive scratchpad at index {index} and retain the accepted prefix.",
+      "source_opcodes": [
+        "IS.10.006"
+      ]
+    },
+    {
+      "opcode": "R.01.013",
+      "key": "frame.reuse",
+      "text": "Apply the *same* higher-order choice as the other two slots of {frame_id}; do not reroll or switch modes.",
+      "source_opcodes": [
+        "IS.12.007"
+      ]
+    },
+    {
+      "opcode": "R.01.014",
+      "key": "frame.solver_lift",
+      "text": "Construct a higher-level solver whose subject is the previous solver, including its method, assumptions, intermediate results and limitations.",
+      "source_opcodes": [
+        "IS.12.004"
+      ]
+    },
+    {
+      "opcode": "R.01.015",
+      "key": "frame.abstract",
+      "text": "Construct an explicit {mode} representation with its specified fields; IMPLEMENTATION describes mechanisms, not execution.",
+      "source_opcodes": [
+        "IS.12.005"
+      ]
+    },
+    {
+      "opcode": "R.01.016",
+      "key": "frame.result.fields",
+      "text": "Supply preserved_properties, suppressed_details, introduced_assumptions, source_mapping, and next_solver_input in substantive output.",
+      "source_opcodes": [
+        "IS.12.006"
+      ]
+    },
+    {
+      "opcode": "R.01.017",
+      "key": "frame.expand",
+      "text": "Add substantive development rather than a quotation ladder or paraphrase.",
+      "source_opcodes": [
+        "IS.11.007"
+      ]
+    },
+    {
+      "opcode": "R.01.018",
+      "key": "frame.append.result",
+      "text": "Append exactly one substantive scratchpad at index {index}; retain the accepted prefix.",
+      "source_opcodes": [
+        "IS.10.006"
+      ]
+    },
+    {
+      "opcode": "R.01.019",
+      "key": "selection.replay_note",
+      "text": "Replay the complete ordered draw list for the exact source revision; frame choices are persisted once per frame.",
+      "source_opcodes": [
+        "IS.12.007"
+      ]
+    }
+  ],
+  "instruction_sequence": {
+    "reconcile": [
+      "reconcile.atomic",
+      "$reconciliation_role_requirements",
+      "reconcile.lineage",
+      "reconcile.append"
+    ],
+    "frame_reference_A": [
+      "frame.atomic",
+      "frame.A.identify",
+      "frame.A.cite",
+      "frame.lineage.input",
+      "frame.lineage.preserve",
+      "frame.lineage.transform",
+      "frame.append.reference"
+    ],
+    "frame_reference_B": [
+      "frame.atomic",
+      "frame.B.identify",
+      "frame.B.distinguish",
+      "frame.lineage.input",
+      "frame.lineage.preserve",
+      "frame.lineage.transform",
+      "frame.append.reference"
+    ],
+    "frame_result": [
+      "frame.atomic",
+      "frame.reuse",
+      "$selected_frame_transform",
+      "frame.result.fields",
+      "frame.lineage.input",
+      "frame.lineage.preserve",
+      "frame.lineage.transform",
+      "frame.expand",
+      "frame.append.result"
+    ]
+  },
+  "resolved_conflicts": [
+    {
+      "id": "C001",
+      "description": "For a file-artifact job, final_output[string] may be a pointer to the artifact (path or JSON pointer), while artifacts[array<object>] contains its full UTF-8 content.",
+      "source": "User clarification in current conversation",
+      "affected_procedure": "IS.10.009",
+      "affected_profile_index": 18
+    }
+  ],
+  "compatibility": {
+    "frozen_profile_path": "src/types/issuescratch.framing-controller.v1.json",
+    "frozen_atomic_registry_path": "src/types/issuescratch.operation-registry.v1.json",
+    "frozen_higher_registry_path": "src/types/issuescratch.higher-order-operators.v1.json",
+    "legacy_snapshots": "Prior receipts remain unchanged and their profile/registries remain available for provenance. The runtime checks current compatibility snapshots against canonical definitions."
+  }
+}
