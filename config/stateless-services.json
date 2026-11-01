@@ -33,19 +33,16 @@
         "result": {
           "service": "renderer",
           "upstream_path": "/render",
-          "mode": "validation-result",
           "then_service": "fsm",
           "then_path": "/transition"
         },
         "rejection": {
           "service": "renderer",
-          "upstream_path": "/render",
-          "mode": "input-error"
+          "upstream_path": "/render"
         },
         "error": {
           "service": "renderer",
-          "upstream_path": "/render",
-          "mode": "fsm-diagnostic"
+          "upstream_path": "/render"
         }
       }
     },
@@ -70,18 +67,15 @@
       "response_contract": {
         "result": {
           "service": "renderer",
-          "upstream_path": "/render",
-          "mode": "validation-result"
+          "upstream_path": "/render"
         },
         "rejection": {
           "service": "renderer",
-          "upstream_path": "/render",
-          "mode": "validation-result"
+          "upstream_path": "/render"
         },
         "error": {
           "service": "renderer",
-          "upstream_path": "/render",
-          "mode": "fsm-diagnostic"
+          "upstream_path": "/render"
         }
       }
     }
@@ -118,17 +112,6 @@
       },
       "state-file": {
         "adapter": "file-replace"
-      }
-    },
-    "service_render_locations": {
-      "validation": {
-        "result": "validation-result",
-        "rejection": "input-error",
-        "error": "fsm-diagnostic"
-      },
-      "fsm": {
-        "result": "procedure",
-        "error": "fsm-diagnostic"
       }
     }
   },
