@@ -1,0 +1,17 @@
+name: Issue listener container integration
+on:
+  issue_comment:
+    types: [created, edited]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  container-listener:
+    if: github.event_name == 'issue_comment' && github.event.issue.number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build container image
+        run: docker build -t issuescratch-runtime:local .
+      - name: Invoke Issue listener through runtime container
+        run: node container-listener.js
