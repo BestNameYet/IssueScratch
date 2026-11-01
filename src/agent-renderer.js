@@ -16,6 +16,7 @@ function render(envelope,settings){
   ?{request_id:envelope.request_id,type:envelope.type,
     payload_contract:envelope.payload_contract,payload:envelope.payload,error:envelope.error}
   :envelope.payload;
+ if(content===undefined)throw Error("Renderer payload is undefined");
  const text=mode.format==="jsonl"?JSON.stringify(content)+"\n":JSON.stringify(content,null,2)+"\n";
  if(typeof text!=="string"||Buffer.byteLength(text)>1048576)throw Error("Rendered output is empty or too large");
  return {mode:modeName,destination_ref:mode.destination,
@@ -62,7 +63,7 @@ function fileWriteAndVerify(adapter,destination,text,root){
  const observed=adapter==="file-append"?persisted.subarray(Math.max(0,persisted.length-expected.length)):persisted;
  const readbackHash=sha256(observed);
  if(!observed.equals(expected)||readbackHash!==hash)throw Error("Persistence readback mismatch");
- return {destination_ref:destination.name||null,content_sha256:hash,
+ return {content_sha256:hash,
   readback_sha256:readbackHash,write_id:target,readback_id:target};
 }
 async function publish(envelope,settings,options={}){
