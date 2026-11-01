@@ -77,13 +77,13 @@
     },
     {
       "path": "src/agent-renderer.js",
-      "blob_sha": "a0790134fa41e4f26be9ed68132062f86da33aa7",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "0f1aaa519497f5d6964df538434c984906f6a7f9",
+      "description": "C002 candidate: real file append/replace, readback hash receipts, bounded rendering and GitHub adapter contract."
     },
     {
       "path": "src/renderer-server.js",
-      "blob_sha": "0a42081f2ab5fd87cf79177e8f523f304f9c8253",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "a025c595b090a0b80c7e3932ba0670a82a900f9e",
+      "description": "C002 candidate: HTTP renderer invokes durable publisher and returns verified receipt."
     },
     {
       "path": "src/stateless-router-server.js",
@@ -93,8 +93,8 @@
     },
     {
       "path": "config/stateless-services.json",
-      "blob_sha": "7818071e4360e74dd1613f23c716e219a2d6048d",
-      "description": "Independent stateless service implementation or routing configuration."
+      "blob_sha": "d6094e23e245413f0817f31ab3e2f168ce1de865",
+      "description": "C002 candidate: distinct service-error destination and configured file paths."
     },
     {
       "path": "src/stateless-services.test.js",
@@ -103,8 +103,8 @@
     },
     {
       "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "4ae3aaedd5f43c1b9e27027314f838f695f41229",
-      "description": "Candidate service CI includes router write-gate tests.",
+      "blob_sha": "ef018f1f1e7e353cf69481ee5b569a9c99324e0b",
+      "description": "C002 candidate: run Renderer persistence tests in HTTP service workflow.",
       "change_commit": "c6388ee406126b6cc700a24627331a5bf235c91e"
     },
     {
@@ -200,9 +200,14 @@
     },
     {
       "path": ".github/workflows/container-image.yml",
-      "blob_sha": "15a1f9f3c11c5418bfc7283f04db714368075e34",
-      "description": "Candidate image CI runs router write-gate regressions before building.",
+      "blob_sha": "243b934703c8078e708315f293c65d2487357cc0",
+      "description": "C002 candidate: gate image build on Renderer persistence regression tests.",
       "change_commit": "de7340956b25ef54f1816eec7cd1e5892d998348"
+    },
+    {
+      "path": "src/renderer-persistence.test.js",
+      "blob_sha": "67074cf8ca2583bd9190d1303a83d98cf6f92da5",
+      "description": "C002 candidate: actual file system persistence/readback and failure path tests."
     }
   ]
 }
