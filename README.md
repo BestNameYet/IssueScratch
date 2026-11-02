@@ -1,5 +1,10 @@
 # IssueScratch
 
+> **Repository status — 2026-11-01:** All JavaScript source and test files (`.js`, `.mjs`, `.cjs`) and all GitHub Actions workflow files (`.github/workflows/*.yml` and `*.yaml`) have been explicitly deleted from `main`. The code implementing the Node.js runtime, issue Listener, GitHub writer, controller, and test harness is no longer present. No Issue #1 comment-processing automation, CI workflow, container-image publication workflow, ChatGPT-share export workflow, or end-to-end verification workflow is installed.
+>
+> **Historical documentation notice:** The remainder of this README is retained as an archival description of the former implementation and may contain links to files that no longer exist on `main`. It is not an inventory of currently executable components. Prior source and workflow definitions remain retrievable from [the immutable predeletion commit](https://github.com/BestNameYet/IssueScratch/tree/285b9e7e8d80af855e6ac3f02a67181985936c05), together with prior CI execution records. `AGENTS.md`, JSON procedure libraries, configurations, documents, conversation records, and other non-JavaScript files remain present. `Dockerfile` remains as a historical artifact, but its entry point was deleted and it cannot operate as before.
+
+
 IssueScratch is an experimental, GitHub Issue-based workspace for capturing heterogeneous scratchpad arrays, measuring their structure deterministically, and representing source documents as lossless, opcode-annotated JSON. This README is the **repository manifest and navigation guide**; [`AGENTS.md`](AGENTS.md), not this overview, contains the normative agent procedures.
 
 - **Repository:** [BestNameYet/IssueScratch](https://github.com/BestNameYet/IssueScratch)
