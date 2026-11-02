@@ -16,7 +16,9 @@ IssueScratch/
 ├── AGENTS.md
 ├── .github/
 │   └── workflows/
-│       └── issue1-json-validator.yml
+│       ├── chatgpt-share-export.yml
+│       ├── container-image.yml
+│       └── renderer-mode-contract.yml
 ├── src/
 │   ├── issue1-diagnostics.js
 │   ├── issue1-diagnostics.test.js
@@ -60,7 +62,7 @@ The `workspaces/` example is a **path pattern**, not a literal `<comment-id>` di
 | --- | --- |
 | [`README.md`](README.md) | Human-readable manifest, architecture, invocation examples, and operational status. |
 | [`AGENTS.md`](AGENTS.md) | Authoritative, JSON-formatted agent instructions, including numbered `IS.*` procedural opcodes, scope, return schema, job handling, and acceptance checks. |
-| [`.github/workflows/issue1-json-validator.yml`](.github/workflows/issue1-json-validator.yml) | GitHub Actions entry point: tests the Node modules; diagnoses Issue #1 comments; persists revision and state JSON; converts and verifies the prompt manifest during non-comment runs. |
+| **Deleted 2026-11-01:** `.github/workflows/issue1-json-validator.yml` and `.github/workflows/stateless-services.yml` | No active Issue #1 comment Listener or standalone stateless-services CI. Their previous definitions and run history remain in Git history; no replacement verification workflow has been created. |
 
 ### Executable Node.js components
 
@@ -159,9 +161,9 @@ Five **three-index exercises** occupy outer indices 1–15. The controller choos
 
 Each new frame may choose another higher-order operation. The five frame outputs form a traceable hierarchy leading into the reconciliation stages at indices 16–18. The controller **selects and publishes instructions**; an external agent remains responsible for authoring solver transformations.
 
-### 2. Event-driven diagnostics
+### 2. Event-driven diagnostics (prior behavior; not currently triggered)
 
-The single workflow responds to `issue_comment.created` and `issue_comment.edited` events **on Issue #1**. On `push` to selected implementation/input paths or manual `workflow_dispatch`, it also scans existing Issue #1 comments. It runs automated tests first.
+Historically, the Issue #1 workflow responded to `issue_comment.created` and `issue_comment.edited` on Issue #1 and could scan existing comments on selected pushes or manual dispatch. **That workflow was deleted from `main` on 2026-11-01. New or edited Issue #1 comments no longer invoke this Listener automatically via that workflow.** The diagnostic modules and prior execution history remain available.
 
 For each observed comment revision it deterministically records:
 
@@ -184,7 +186,7 @@ The same procedure applies to **every authorized UTF-8 repository artifact**, in
 - `artifact_targets[array<object>]`: an array of `{ "path": "repository/relative/path", "source_context_id": "C1" }` records. Each `source_context_id` must resolve to a `context_elements[array<object>]` entry with `authority: "explicit_user"`. The source comment must be authored by the repository owner for automatic repository mutation.
 - `artifacts[array<object>]` at outer index 18: one `{ "path": "...", "content": "complete UTF-8 output" }` for each declared target. Destination names, not file types, are checked for equality.
 
-After verifying all **19 sequentially accepted source revisions**, five retained higher-order frame selections, 18 source-linked instructions and their immutable receipts, and the current source-body digest, [the workflow](.github/workflows/issue1-json-validator.yml) writes each artifact directly to its requested path using the existing blob SHA as an optimistic concurrency guard. If a file exists—including `README.md`—its contents are **replaced in place**, read back, and verified; the workflow stores a source-linked receipt under `workspaces/issue1-diagnostics/comments/<comment-id>/published-artifacts/`. The same rule applies to a new path, which is created.
+The prior Issue #1 publication workflow specified verifying all **19 sequentially accepted source revisions**, five frame selections, 18 instructions, and source digests before writing an explicitly authorized artifact. Its implementation used blob-SHA concurrency checks and readback receipts under `workspaces/issue1-diagnostics/comments/<comment-id>/published-artifacts/`. **That workflow has been deleted, so this contract is not currently invoked by GitHub comment events.** The supporting source and historical receipts have not been deleted.
 
 This is not a semantic review or permission to invent an artifact target. Publication is not automatic for a source without an explicitly user-grounded target, an owner-authored comment, or full verified completion. There is **no README-only candidate generator, promotion step, comparison hold, or filename-specific approval requirement**. Historical experiment candidates and receipts remain in the repository only as records of earlier runs.
 
@@ -230,13 +232,13 @@ For deployed behavior, check [GitHub Actions](https://github.com/BestNameYet/Iss
 
 ## Present boundaries and maintenance
 
-- **Implemented:** one Issue #1 diagnostic workflow; per-comment JSON-object state and metrics; persisted higher-order framing and atomic choices; typed source-linked input/output validation and instruction publication; one general artifact publication workflow step with destination replacement and readback; a lossless document adapter; operation registries and automated tests.
+- **Code remains:** per-comment diagnostics/state modules, framing and atomic operators, typed validation and publication adapters, a lossless document adapter, registries, and test suites. **Disabled:** the former Issue #1 diagnostic Listener workflow and standalone stateless-services CI were deleted from `main` on 2026-11-01; their historical execution results are retained.
 - **Not implemented/verified:** autonomous agent execution of published functions, creation of the next scratchpad by the workflow, or a complete live 19-index artifact publication. Generic publisher code and tests must be verified in a new workflow execution before claiming deployed success. Earlier README candidates remain historical only.
 - **Experiment status:** the 17 prompts are prepared and opcode-mapped, but producing the converted manifest does not mean the 17 agent tasks were run.
 - **Historical compatibility:** preserve older three-object and seven-entry records rather than rewriting them to the current 19-entry RS contract.
 - **On changes:** review `AGENTS.md` and Issue #1 first; update this file manifest when adding, moving, renaming, or changing the responsibilities of major components. Regenerate derived files from their declared sources, validate JSON records, run tests, and verify the GitHub Actions result before claiming operational success.
 
-The most important entry points are **[`AGENTS.md`](AGENTS.md)** for rules, **[Issue #1](https://github.com/BestNameYet/IssueScratch/issues/1)** for work, **[the workflow](.github/workflows/issue1-json-validator.yml)** for event handling, **[the canonical type catalog](src/types/issuescratch.permitted-uses-and-input-types.v1.json)** for permitted scratchpad content, and **[the opcode adapter](src/opcode-document-adapter.js)** for reversible document conversion.
+The most important current references are **[`AGENTS.md`](AGENTS.md)** for rules, **[Issue #1](https://github.com/BestNameYet/IssueScratch/issues/1)** for historical/working comments, **[the canonical type catalog](src/types/issuescratch.permitted-uses-and-input-types.v1.json)** for permitted content, and **[the opcode adapter](src/opcode-document-adapter.js)** for reversible conversion. There is currently no Issue #1 comment-triggered execution workflow on `main`.
 
 ## Index projection procedure
 
@@ -252,7 +254,7 @@ Read [config/workflow-routing.json](config/workflow-routing.json) for the concre
 
 ### Executable router
 
-The workflow calls `runWorkflow({github, core, context, config})` from [src/workflow-router.js](src/workflow-router.js), passing the parsed [routing configuration](config/workflow-routing.json). Runtime argument overrides may be supplied through the function's `arguments` object. Route expressions resolve declared arguments, prior values, current iteration items, concatenated paths and padded indices; they do not evaluate arbitrary code. Existing framing/diagnostic and artifact-publication modules perform processing separately from transport.
+The former workflow called `runWorkflow({github, core, context, config})` from [src/workflow-router.js](src/workflow-router.js), passing the parsed [routing configuration](config/workflow-routing.json). The module remains but the deleted workflow no longer invokes it automatically. Runtime argument overrides may be supplied through the function's `arguments` object. Route expressions resolve declared arguments, prior values, current iteration items, concatenated paths and padded indices; they do not evaluate arbitrary code. Existing framing/diagnostic and artifact-publication modules perform processing separately from transport.
 
 Run `node --test src/*.test.js` to include [router regression tests](src/workflow-router.test.js), including accepted/rejected inputs, reply reuse, alternate configured paths and branch, and recovery of a persisted random instruction after failed delivery. Workflow integration does not by itself verify the newer generic procedure specifications or completion of a nineteen-entry job.
 
@@ -284,7 +286,7 @@ There must be **no Renderer invocation or write-receipt prerequisite between suc
 
 **Implementation does not yet conform:** at main commit `174f57c1bd77b4d5570a0c1905ae261d84282b5e`, [container-listener.js](container-listener.js) sends `/validate` through `docker exec -i`; RO's [current server implementation](src/stateless-router-server.js) contains `prepare()` and a render-before-FSM gate; the production Renderer is not wired to verified GitHub publication. C003 added outbound bridge networking, Actions token forwarding and a callable [GitHub Issue writer](src/github-issue-writer.js), but **these are not evidence of successful end-to-end transition or publication**. C002 Renderer persistence remains a separate pending review. The new design-documentation job is [6560092235](https://github.com/BestNameYet/IssueStack-/issues/2#issuecomment-6560092235); code repair belongs to the revised runtime job [6557693257](https://github.com/BestNameYet/IssueStack-/issues/2#issuecomment-6557693257).
 
-Run independent [service tests](src/stateless-services.test.js), [Router boundary tests](src/router-boundary.test.js), [GitHub writer tests](src/github-issue-writer.test.js), and [CI](.github/workflows/stateless-services.yml). Passing a subset of unit tests does not prove the complete contract. Specifically, the conformance suite must observe Listener→RV→RO→FSMV→FSM→RV→RO→RE, including rejected input, invalid returned envelope, strict no-render-before-transition ordering, actual durable publication and verified receipts.
+Run the Node test suite directly with `node --test src/*.test.js` or inspect historical [GitHub Actions runs](https://github.com/BestNameYet/IssueScratch/actions). The standalone stateless-services CI workflow was deleted on 2026-11-01 and is no longer an active verification entry point. Previous tests covered Listener→RV→RO→FSMV→FSM→RV→RO→RE, but historical passes do not establish a new live, authenticated GitHub Issue publication; a replacement fit-for-purpose verification workflow is not yet installed.
 
 ### Independent validation service
 
