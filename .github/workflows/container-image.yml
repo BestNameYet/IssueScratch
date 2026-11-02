@@ -7,7 +7,6 @@ on:
       - 'src/router-write-gate.test.js'
       - '.dockerignore'
       - 'container-entrypoint.js'
-      - 'container-listener.js'
       - 'config/stateless-services.json'
       - 'src/**'
       - '.github/workflows/container-image.yml'
