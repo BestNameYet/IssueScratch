@@ -11,16 +11,6 @@
       "description": "Metadata for substantive repository file changes."
     },
     {
-      "path": "src/index-projection.js",
-      "blob_sha": "96792f7af5cc7e98eff241c7f80261a6d3a70059",
-      "description": "Programmatic index projection factory; consumes the current procedure on each call."
-    },
-    {
-      "path": "src/index-projection.test.js",
-      "blob_sha": "b5c8614e5e61694d53ccad01790df60b06e39275",
-      "description": "Regression tests for dynamic procedure projection."
-    },
-    {
       "path": "docs/index-projection-procedure.json",
       "blob_sha": "6c2baaf8cf836be0446fe3bac5dbc32bed388285",
       "description": "Source/destination-agnostic opcode/JSON index projection procedure."
@@ -32,9 +22,9 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "065fc4037ec2cadc6daf36cde50764ffbb663513",
-      "description": "Repository manifest updated to document deletion of Issue #1 listener and stateless-services workflows, retaining historical evidence and noting no replacement verification workflow.",
-      "change_commit": "f3b2893c5e09334c3dc377cec38f826d4ac51c2f"
+      "blob_sha": "47cdae6598a52ef0a26962b431d3a11703cb02bc",
+      "description": "Repository README with archival notice: all JavaScript and GitHub Actions workflows deleted at user direction, with historical documents retained.",
+      "change_commit": "b4a55fcc196cd4a620430c55d066324834932ccf"
     },
     {
       "path": "docs/agent-input-validation-procedure.json",
@@ -47,74 +37,8 @@
       "description": "Executable router configuration with live workflow run evidence and 54 passing tests."
     },
     {
-      "path": "src/workflow-router.js",
-      "blob_sha": "852357bd849764a98c4a4aa3a1a5af075be8700c",
-      "description": "Executable configuration-driven transport router."
-    },
-    {
-      "path": "src/workflow-router.test.js",
-      "blob_sha": "e508b239538dd7f6bb84d31431e5727e2982ec79",
-      "description": "Workflow router tests including persistence recovery."
-    },
-    {
-      "path": "src/stateless-fsm.js",
-      "blob_sha": "116f17e5c9f202cbefe3220316cfef18ed7191af",
-      "description": "Independent stateless service implementation or routing configuration."
-    },
-    {
-      "path": "src/http-json-service.js",
-      "blob_sha": "1f06430d2b69435bc1becdb1ae4af8602f1e1475",
-      "description": "Independent stateless service implementation or routing configuration."
-    },
-    {
-      "path": "src/fsm-server.js",
-      "blob_sha": "907aaf50d535c1a10f89e231ddb46e87670a67c8",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/agent-renderer.js",
-      "blob_sha": "a0790134fa41e4f26be9ed68132062f86da33aa7",
-      "description": "Independent stateless service implementation or routing configuration."
-    },
-    {
-      "path": "src/renderer-server.js",
-      "blob_sha": "9a182928833e56a437cdd52593d4aadc4bd8d723",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/stateless-router-server.js",
-      "blob_sha": "02b7a02cd57f73ed5a0ea18404eb1635f46c007f",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
       "path": "config/stateless-services.json",
       "blob_sha": "19edfba4fc0850c916d05f7fdbfea8bd7380a7eb",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/stateless-services.test.js",
-      "blob_sha": "9b3703256a28088fda2acd9a61ec5a57b4225f23",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/input-validator.js",
-      "blob_sha": "6587bbfeba8979bc2885ff70a564d2ea8946368c",
-      "description": "Independent raw-input validation service, API contract or regression checks."
-    },
-    {
-      "path": "src/validation-server.js",
-      "blob_sha": "e15eb869462c5284e361813cb31ee06b35bf3bb6",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/validation-service.test.js",
-      "blob_sha": "b3d1074c7e571ec425e5408536f801a12b61ca43",
       "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
       "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
     },
@@ -124,20 +48,6 @@
       "blob_sha": "ad0e32d042f84a57bfa72b47ce9b45b6b1e01597",
       "sha256": "2e3eb12c03575424ee4235ae48adac1d2b8404c711994dba696bf9f7523a7912",
       "size_bytes": 222
-    },
-    {
-      "path": ".github/workflows/chatgpt-share-export.yml",
-      "description": "Per-repository GitHub Actions export workflow",
-      "blob_sha": "8c828ed8e5724b162075fb596a4842350f933c07",
-      "sha256": "57f186d9b2acd06e5bbf67e7cfdfc869643d56e68d4f2eb7371b758e83d0ea44",
-      "size_bytes": 14637
-    },
-    {
-      "path": "src/chatgpt-share-extract.js",
-      "description": "Independent Node.js share HTML extractor",
-      "blob_sha": "9826031d599275820442ad71b384ca8ead84aea6",
-      "sha256": "07aaa09d2b73f0c3f006c428cbf47e2044c3e6f5a01344e79d2b184cdb7c890e",
-      "size_bytes": 10439
     },
     {
       "path": "workspaces/chatgpt-share-exports/6ae6b576-9fa8-83e8-a040-4091fe0218e3/conversation.md",
@@ -168,13 +78,6 @@
       "size_bytes": 24253
     },
     {
-      "path": "src/chatgpt-share-extract.test.js",
-      "description": "Deterministic message-selection and Markdown-renderer regression tests",
-      "blob_sha": "d2a83df73f262ac810833fdb905024396d3c73cc",
-      "sha256": "b8bae86abad4929cf1f0c0327ca29c25acd4c779fdb3b79cb6ac9e2743748db5",
-      "size_bytes": 4693
-    },
-    {
       "path": "workspaces/chatgpt-share-exports/6ae6eb2c-2bf8-83e8-9382-ff442df2c570/conversation.md",
       "description": "Readable shared ChatGPT conversation",
       "blob_sha": "bacab32e5c753ac14830c3af9dc15e172b7251f0",
@@ -187,64 +90,6 @@
       "blob_sha": "8d38d23a5d91add5e68490a8e2e8f3a8dd7655f5",
       "sha256": "23a7f54390840420ae9fffa6f13955bbc97d479d887d4843e809bf09b325ff07",
       "size_bytes": 98426
-    },
-    {
-      "path": "src/router-write-gate.test.js",
-      "blob_sha": "59e62eef5a9f16276398afa23a582e08e2728494",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": ".github/workflows/container-image.yml",
-      "blob_sha": "f734228505bff2eecc884298d1b3baa006432190",
-      "description": "Runtime CI validation of corrected route and independent output publication, job 6560681262.",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/github-issue-writer.js",
-      "description": "Callable authenticated GitHub Issue create/readback adapter; token supplied only at runtime.",
-      "blob_sha": "91e65bea575fe6c6d74c648d038e664e0da4747a"
-    },
-    {
-      "path": "src/github-issue-writer.test.js",
-      "description": "Mocked tests for authenticated Issue writes, readback identity, failures and credentials.",
-      "blob_sha": "c54c61766f094cc4edbc8e8b714878aa1cd03178"
-    },
-    {
-      "path": "container-listener.js",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "blob_sha": "3429cce7b127a29af48181b993d0eb081de162b8",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "container-entrypoint.js",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "blob_sha": "2a896f569d61ab0bf0e9808dda0fed3f26dfd51d",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/envelope-services.test.js",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "blob_sha": "915cc85c5a32c9d9269dcbc268be18469f10e5d9",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/router-boundary.test.js",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "blob_sha": "49ab49d56f785c924d887c1c707f59c8287a5a2f",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/router-validator-server.js",
-      "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
-      "blob_sha": "8fb2d8e9cc8b72abe3238db456f77e99bff76cb1",
-      "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": "src/docker-route-smoke.js",
-      "description": "Real Docker bridge ingress-to-Renderer file persistence integration smoke test, IssueStack job 6560681262.",
-      "blob_sha": "9c34c292a4dd92cea2d229b5471e6a9ef7a0d1a6",
-      "change_commit": "823d625c1a6f37b1375d10686f820bd06e3a27b8"
     },
     {
       "path": ".dockerignore",
