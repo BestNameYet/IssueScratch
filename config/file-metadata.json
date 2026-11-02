@@ -32,8 +32,9 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "b22af883fed69c370f1b449636b26126a1d50c6b",
-      "description": "Live repository manifest: current user-confirmed RV→RO→FSMV→FSM→RV→RO→RE runtime topology and implementation gaps, separate from historical snapshot"
+      "blob_sha": "065fc4037ec2cadc6daf36cde50764ffbb663513",
+      "description": "Repository manifest updated to document deletion of Issue #1 listener and stateless-services workflows, retaining historical evidence and noting no replacement verification workflow.",
+      "change_commit": "f3b2893c5e09334c3dc377cec38f826d4ac51c2f"
     },
     {
       "path": "docs/agent-input-validation-procedure.json",
@@ -54,11 +55,6 @@
       "path": "src/workflow-router.test.js",
       "blob_sha": "e508b239538dd7f6bb84d31431e5727e2982ec79",
       "description": "Workflow router tests including persistence recovery."
-    },
-    {
-      "path": ".github/workflows/issue1-json-validator.yml",
-      "blob_sha": "bc156c6bfb100fe2a5b9935b861c7841143f8c49",
-      "description": "Issue #1 listener workflow uses issues:write, supplies GITHUB_TOKEN to listener and tests GitHub Issue writer."
     },
     {
       "path": "src/stateless-fsm.js",
@@ -104,12 +100,6 @@
       "blob_sha": "9b3703256a28088fda2acd9a61ec5a57b4225f23",
       "description": "Runtime implementation aligned to corrected FSMV-to-FSM and FSM-to-RV→RO→RE topology; job 6560681262.",
       "change_commit": "7f4468a2b502aa9c5a8ef242eb35c00707e2df0d"
-    },
-    {
-      "path": ".github/workflows/stateless-services.yml",
-      "blob_sha": "b6823c06b3cd637be16426375eec431fbf164292",
-      "description": "Runs complete 85-test Node suite plus six GitHub writer mocks, Docker full routing and real listener no-write smoke, job 6560681262.",
-      "change_commit": "2dee5792f5341a390c12e9acffb4f3ce2d15d94a"
     },
     {
       "path": "src/input-validator.js",
