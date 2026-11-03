@@ -26,6 +26,8 @@ on:
       - 'src/stateless-services.test.js'
       - 'src/router-write-gate.test.js'
       - 'src/input-validator.js'
+      - 'src/issue1-diagnostics.js'
+      - 'config/file-metadata.json'
       - 'src/validation-server.js'
       - 'src/validation-service.test.js'
       - 'config/stateless-services.json'
