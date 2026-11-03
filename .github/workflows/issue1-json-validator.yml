@@ -1,0 +1,27 @@
+name: Issue 1 container listener
+on:
+  issue_comment:
+    types: [created, edited]
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: issuescratch-issue1-state
+  cancel-in-progress: false
+jobs:
+  listener:
+    if: github.event_name == 'issue_comment' && github.event.issue.number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test GitHub Issue writer
+        run: node --test src/github-issue-writer.test.js
+      - name: Test router boundary and envelope services
+        run: node --test src/router-boundary.test.js src/envelope-services.test.js
+      - name: Build stateless runtime
+        run: docker build -t issuescratch-runtime:local .
+      - name: Process Issue event through Router Validator
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node container-listener.js
