@@ -25,6 +25,7 @@ on:
       - '.dockerignore'
       - 'src/stateless-services.test.js'
       - 'src/router-write-gate.test.js'
+      - 'src/transition-topology.test.js'
       - 'src/input-validator.js'
       - 'src/issue1-diagnostics.js'
       - 'src/procedure-renderer.js'
