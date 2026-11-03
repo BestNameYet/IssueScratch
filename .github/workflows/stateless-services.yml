@@ -1,0 +1,115 @@
+name: Stateless HTTP services
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/stateless-services.yml'
+      - 'src/stateless-fsm.js'
+      - 'src/http-json-service.js'
+      - 'src/fsm-server.js'
+      - 'src/agent-renderer.js'
+      - 'src/renderer-server.js'
+      - 'src/github-issue-writer.js'
+      - 'src/github-issue-writer.test.js'
+      - 'src/stateless-router-server.js'
+      - 'src/router-validator-server.js'
+      - 'src/router-envelope-validator.js'
+      - 'src/router-boundary.test.js'
+      - 'src/envelope-services.test.js'
+      - 'src/router-mode-contract.test.js'
+      - 'src/docker-route-smoke.js'
+      - 'src/validation-service.test.js'
+      - 'container-listener.js'
+      - 'container-entrypoint.js'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - 'src/stateless-services.test.js'
+      - 'src/router-write-gate.test.js'
+      - 'src/transition-topology.test.js'
+      - 'src/input-validator.js'
+      - 'src/issue1-diagnostics.js'
+      - 'src/procedure-renderer.js'
+      - 'config/file-metadata.json'
+      - 'src/validation-server.js'
+      - 'src/validation-service.test.js'
+      - 'config/stateless-services.json'
+      - 'src/types/issuescratch.procedure-library.v1.json'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test callable GitHub Issue writer
+        run: node --test src/github-issue-writer.test.js
+      - name: Test complete Node suite including corrected service routing
+        run: node --test src/*.test.js
+
+      - name: Verify Docker HTTPS egress and environment propagation
+        env:
+          GITHUB_TOKEN: connectivity-smoke-not-a-credential
+        run: |
+          docker build --tag issuescratch-runtime:connectivity-smoke .
+          docker run --rm --network bridge -e GITHUB_TOKEN -e GITHUB_REPOSITORY \
+            --entrypoint node issuescratch-runtime:connectivity-smoke -e '
+              if (process.env.GITHUB_TOKEN !== "connectivity-smoke-not-a-credential" ||
+                  process.env.GITHUB_REPOSITORY !== "BestNameYet/IssueScratch") {
+                process.stderr.write("Container environment forwarding failed\n");
+                process.exit(2);
+              }
+              fetch("https://api.github.com/zen", {signal: AbortSignal.timeout(15000)})
+                .then(response => {
+                  if (response.status >= 500) throw Error("GitHub HTTPS service returned "+response.status);
+                  console.log("Container HTTPS response "+response.status+"; network and environment verified, API authorization not asserted");
+                })
+                .catch(error => { console.error(error.message); process.exitCode=1; });
+            '
+      - name: Verify full Docker ingress, transition route, and durable file output
+        run: |
+          tempdir="$(mktemp -d)"
+          name="issuescratch-smoke-${GITHUB_RUN_ID}"
+          cleanup(){ status=$?; if [ "$status" -ne 0 ]; then docker ps -a --filter "name=$name" || true; docker logs "$name" || true; fi; docker rm -f "$name" >/dev/null 2>&1 || true; rm -rf "$tempdir"; return "$status"; }
+          trap cleanup EXIT
+          mkdir -p "$tempdir/config" "$tempdir/output"
+          cp src/types/issuescratch.procedure-library.v1.json "$tempdir/config/procedure-library.json"
+          node - "$tempdir/config/stateless-services.json" <<'NODE'
+          const fs=require('node:fs');
+          const cfg=require('./config/stateless-services.json');
+          cfg.renderer_settings.modes.procedure.destination='state-file';
+          fs.writeFileSync(process.argv[2],JSON.stringify(cfg));
+          NODE
+          docker run -d --name "$name" --network bridge -p 127.0.0.1:8787:8787 \
+            --user "$(id -u):$(id -g)" \
+            -v "$tempdir/config:/runtime/config:ro" \
+            -v "$tempdir/output:/runtime/output" \
+            issuescratch-runtime:connectivity-smoke
+          node src/docker-route-smoke.js "$tempdir/output/state.json"
+      - name: Test actual Issue listener with validation rejection (no remote write)
+        run: |
+          testdir="$(mktemp -d)"
+          trap 'rm -rf "$testdir"' EXIT
+          node - "$testdir/event.json" <<'NODE'
+          const fs=require('node:fs');
+          const event={issue:{number:1},comment:{id:321,body:'{',user:{type:'User'}}};
+          fs.writeFileSync(process.argv[2],JSON.stringify(event));
+          NODE
+          GITHUB_EVENT_PATH="$testdir/event.json" \
+          GITHUB_REPOSITORY="BestNameYet/IssueScratch" \
+          GITHUB_TOKEN="listener-test-not-a-credential" \
+          ISSUESCRATCH_IMAGE="issuescratch-runtime:connectivity-smoke" \
+          ISSUESCRATCH_OUTPUT_DIR="$testdir/output" \
+          node container-listener.js | tee "$testdir/receipt.log"
+          node - "$testdir/receipt.log" <<'NODE'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const lines=fs.readFileSync(process.argv[2],'utf8').trim().split('\n');
+          const receipt=JSON.parse(lines.at(-1));
+          assert.equal(receipt.schema,'issuescratch.container-listener-receipt.v1');
+          assert.equal(receipt.status,'rejected');
+          assert.equal(receipt.http_status,200);
+          assert.equal(receipt.result.type,'rejection');
+          console.log('Host listener lifecycle and rejected transition ingress verified without GitHub publication');
+          NODE
